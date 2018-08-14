@@ -1,6 +1,6 @@
 {
     "description": "This repository contains GroupDocs.Signature for Cloud SDK for PHP source code.",
-    "name": "groupdocscloud/signature-sdk-php",
+    "name": "groupdocscloud/groupdocs-signature-cloud",
     "version": "18.5",
     "license": "MIT",
     "type": "library",
