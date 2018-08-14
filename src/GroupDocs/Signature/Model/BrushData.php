@@ -1,7 +1,7 @@
 <?php
 /*
  * --------------------------------------------------------------------------------------------------------------------
- * <copyright company="Aspose Pty Ltd" file="CellsSignQRCodeOptionsData.php">
+ * <copyright company="Aspose Pty Ltd" file="BrushData.php">
  *   Copyright (c) 2003-2018 Aspose Pty Ltd
  * </copyright>
  * <summary>
@@ -26,27 +26,29 @@
  * --------------------------------------------------------------------------------------------------------------------
  */
 /*
- * CellsSignQRCodeOptionsData
+ * BrushData
  */
 
 namespace GroupDocs\Signature\Model;
+
+use \ArrayAccess;
 use \GroupDocs\Signature\ObjectSerializer;
 
 /*
- * CellsSignQRCodeOptionsData
+ * BrushData
  *
- * @description Represents the QRCode Signature Options for Cells Documents.
+ * @description Represents base class for various brushes.
  */
-class CellsSignQRCodeOptionsData extends SignQRCodeOptionsData 
+class BrushData implements ArrayAccess
 {
-    const DISCRIMINATOR = null;
+    const DISCRIMINATOR = 'Type';
 
     /*
      * The original name of the model.
      *
      * @var string
      */
-    protected static $swaggerModelName = "CellsSignQRCodeOptionsData";
+    protected static $swaggerModelName = "BrushData";
 
     /*
      * Array of property to type mappings. Used for (de)serialization
@@ -54,9 +56,7 @@ class CellsSignQRCodeOptionsData extends SignQRCodeOptionsData
      * @var string[]
      */
     protected static $swaggerTypes = [
-        'sheetNumber' => 'int',
-        'rowNumber' => 'int',
-        'columnNumber' => 'int'
+        'brushType' => 'string'
     ];
 
     /*
@@ -65,9 +65,7 @@ class CellsSignQRCodeOptionsData extends SignQRCodeOptionsData
      * @var string[]
      */
     protected static $swaggerFormats = [
-        'sheetNumber' => 'int32',
-        'rowNumber' => 'int32',
-        'columnNumber' => 'int32'
+        'brushType' => null
     ];
 
     /*
@@ -77,7 +75,7 @@ class CellsSignQRCodeOptionsData extends SignQRCodeOptionsData
      */
     public static function swaggerTypes()
     {
-        return self::$swaggerTypes + parent::swaggerTypes();
+        return self::$swaggerTypes;
     }
 
     /*
@@ -87,7 +85,7 @@ class CellsSignQRCodeOptionsData extends SignQRCodeOptionsData
      */
     public static function swaggerFormats()
     {
-        return self::$swaggerFormats + parent::swaggerFormats();
+        return self::$swaggerFormats;
     }
 
     /*
@@ -97,9 +95,7 @@ class CellsSignQRCodeOptionsData extends SignQRCodeOptionsData
      * @var string[]
      */
     protected static $attributeMap = [
-        'sheetNumber' => 'SheetNumber',
-        'rowNumber' => 'RowNumber',
-        'columnNumber' => 'ColumnNumber'
+        'brushType' => 'BrushType'
     ];
 
     /*
@@ -108,9 +104,7 @@ class CellsSignQRCodeOptionsData extends SignQRCodeOptionsData
      * @var string[]
      */
     protected static $setters = [
-        'sheetNumber' => 'setSheetNumber',
-        'rowNumber' => 'setRowNumber',
-        'columnNumber' => 'setColumnNumber'
+        'brushType' => 'setBrushType'
     ];
 
     /*
@@ -119,9 +113,7 @@ class CellsSignQRCodeOptionsData extends SignQRCodeOptionsData
      * @var string[]
      */
     protected static $getters = [
-        'sheetNumber' => 'getSheetNumber',
-        'rowNumber' => 'getRowNumber',
-        'columnNumber' => 'getColumnNumber'
+        'brushType' => 'getBrushType'
     ];
 
     /*
@@ -132,7 +124,7 @@ class CellsSignQRCodeOptionsData extends SignQRCodeOptionsData
      */
     public static function attributeMap()
     {
-        return parent::attributeMap() + self::$attributeMap;
+        return self::$attributeMap;
     }
 
     /*
@@ -142,7 +134,7 @@ class CellsSignQRCodeOptionsData extends SignQRCodeOptionsData
      */
     public static function setters()
     {
-        return parent::setters() + self::$setters;
+        return self::$setters;
     }
 
     /*
@@ -152,7 +144,7 @@ class CellsSignQRCodeOptionsData extends SignQRCodeOptionsData
      */
     public static function getters()
     {
-        return parent::getters() + self::$getters;
+        return self::$getters;
     }
 
     /*
@@ -169,6 +161,12 @@ class CellsSignQRCodeOptionsData extends SignQRCodeOptionsData
 
     
 
+    /*
+     * Associative array for storing property values
+     *
+     * @var mixed[]
+     */
+    protected $container = [];
 
     /*
      * Constructor
@@ -178,11 +176,11 @@ class CellsSignQRCodeOptionsData extends SignQRCodeOptionsData
      */
     public function __construct(array $data = null)
     {
-        parent::__construct($data);
+        $this->container['brushType'] = isset($data['brushType']) ? $data['brushType'] : null;
 
-        $this->container['sheetNumber'] = isset($data['sheetNumber']) ? $data['sheetNumber'] : null;
-        $this->container['rowNumber'] = isset($data['rowNumber']) ? $data['rowNumber'] : null;
-        $this->container['columnNumber'] = isset($data['columnNumber']) ? $data['columnNumber'] : null;
+        // Initialize discriminator property with the model name.
+        $discriminator = array_search('Type', self::$attributeMap);
+        $this->container[$discriminator] = static::$swaggerModelName;
     }
 
     /*
@@ -192,7 +190,7 @@ class CellsSignQRCodeOptionsData extends SignQRCodeOptionsData
      */
     public function listInvalidProperties()
     {
-        $invalidProperties = parent::listInvalidProperties();
+        $invalidProperties = [];
 
         return $invalidProperties;
     }
@@ -205,82 +203,31 @@ class CellsSignQRCodeOptionsData extends SignQRCodeOptionsData
      */
     public function valid()
     {
-        if (!parent::valid()) {
-            return false;
-        }
 
         return true;
     }
 
 
     /*
-     * Gets sheetNumber
+     * Gets brushType
      *
-     * @return int
+     * @return string
      */
-    public function getSheetNumber()
+    public function getBrushType()
     {
-        return $this->container['sheetNumber'];
+        return $this->container['brushType'];
     }
 
     /*
-     * Sets sheetNumber
+     * Sets brushType
      *
-     * @param int $sheetNumber Gets or sets worksheet number for signing. DocumentPageNumber parameter contains the same value.
+     * @param string $brushType Internal property that specify the current brush type.
      *
      * @return $this
      */
-    public function setSheetNumber($sheetNumber)
+    public function setBrushType($brushType)
     {
-        $this->container['sheetNumber'] = $sheetNumber;
-
-        return $this;
-    }
-
-    /*
-     * Gets rowNumber
-     *
-     * @return int
-     */
-    public function getRowNumber()
-    {
-        return $this->container['rowNumber'];
-    }
-
-    /*
-     * Sets rowNumber
-     *
-     * @param int $rowNumber Gets or sets the top row number of signature (min value is 0). Top parameter contains the same value.
-     *
-     * @return $this
-     */
-    public function setRowNumber($rowNumber)
-    {
-        $this->container['rowNumber'] = $rowNumber;
-
-        return $this;
-    }
-
-    /*
-     * Gets columnNumber
-     *
-     * @return int
-     */
-    public function getColumnNumber()
-    {
-        return $this->container['columnNumber'];
-    }
-
-    /*
-     * Sets columnNumber
-     *
-     * @param int $columnNumber Gets or sets the left column number of signature (min value is 0). Left parameter contains the same value.
-     *
-     * @return $this
-     */
-    public function setColumnNumber($columnNumber)
-    {
-        $this->container['columnNumber'] = $columnNumber;
+        $this->container['brushType'] = $brushType;
 
         return $this;
     }

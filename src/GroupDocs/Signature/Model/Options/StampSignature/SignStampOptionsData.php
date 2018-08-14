@@ -57,6 +57,7 @@ class SignStampOptionsData extends SignImageOptionsData
         'outerLines' => '\GroupDocs\Signature\Model\StampLineData[]',
         'innerLines' => '\GroupDocs\Signature\Model\StampLineData[]',
         'backgroundColor' => '\GroupDocs\Signature\Model\Color',
+        'backgroundBrush' => '\GroupDocs\Signature\Model\BrushData',
         'backgroundColorCropType' => 'string',
         'backgroundImageCropType' => 'string'
     ];
@@ -70,6 +71,7 @@ class SignStampOptionsData extends SignImageOptionsData
         'outerLines' => null,
         'innerLines' => null,
         'backgroundColor' => null,
+        'backgroundBrush' => null,
         'backgroundColorCropType' => null,
         'backgroundImageCropType' => null
     ];
@@ -104,6 +106,7 @@ class SignStampOptionsData extends SignImageOptionsData
         'outerLines' => 'OuterLines',
         'innerLines' => 'InnerLines',
         'backgroundColor' => 'BackgroundColor',
+        'backgroundBrush' => 'BackgroundBrush',
         'backgroundColorCropType' => 'BackgroundColorCropType',
         'backgroundImageCropType' => 'BackgroundImageCropType'
     ];
@@ -117,6 +120,7 @@ class SignStampOptionsData extends SignImageOptionsData
         'outerLines' => 'setOuterLines',
         'innerLines' => 'setInnerLines',
         'backgroundColor' => 'setBackgroundColor',
+        'backgroundBrush' => 'setBackgroundBrush',
         'backgroundColorCropType' => 'setBackgroundColorCropType',
         'backgroundImageCropType' => 'setBackgroundImageCropType'
     ];
@@ -130,6 +134,7 @@ class SignStampOptionsData extends SignImageOptionsData
         'outerLines' => 'getOuterLines',
         'innerLines' => 'getInnerLines',
         'backgroundColor' => 'getBackgroundColor',
+        'backgroundBrush' => 'getBackgroundBrush',
         'backgroundColorCropType' => 'getBackgroundColorCropType',
         'backgroundImageCropType' => 'getBackgroundImageCropType'
     ];
@@ -231,6 +236,7 @@ class SignStampOptionsData extends SignImageOptionsData
         $this->container['outerLines'] = isset($data['outerLines']) ? $data['outerLines'] : null;
         $this->container['innerLines'] = isset($data['innerLines']) ? $data['innerLines'] : null;
         $this->container['backgroundColor'] = isset($data['backgroundColor']) ? $data['backgroundColor'] : null;
+        $this->container['backgroundBrush'] = isset($data['backgroundBrush']) ? $data['backgroundBrush'] : null;
         $this->container['backgroundColorCropType'] = isset($data['backgroundColorCropType']) ? $data['backgroundColorCropType'] : null;
         $this->container['backgroundImageCropType'] = isset($data['backgroundImageCropType']) ? $data['backgroundImageCropType'] : null;
     }
@@ -355,6 +361,30 @@ class SignStampOptionsData extends SignImageOptionsData
     public function setBackgroundColor($backgroundColor)
     {
         $this->container['backgroundColor'] = $backgroundColor;
+
+        return $this;
+    }
+
+    /*
+     * Gets backgroundBrush
+     *
+     * @return \GroupDocs\Signature\Model\BrushData
+     */
+    public function getBackgroundBrush()
+    {
+        return $this->container['backgroundBrush'];
+    }
+
+    /*
+     * Sets backgroundBrush
+     *
+     * @param \GroupDocs\Signature\Model\BrushData $backgroundBrush Gets or sets the signature background brush. Value by default is null.  When property has a value it is used instead BackgroundBrush property.
+     *
+     * @return $this
+     */
+    public function setBackgroundBrush($backgroundBrush)
+    {
+        $this->container['backgroundBrush'] = $backgroundBrush;
 
         return $this;
     }

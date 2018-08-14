@@ -57,7 +57,10 @@ class SlidesSignTextOptionsData extends SignTextOptionsData
         'borderTransparency' => 'double',
         'borderWeight' => 'double',
         'backgroundTransparency' => 'double',
-        'signatureImplementation' => 'string'
+        'signatureImplementation' => 'string',
+        'backgroundBrush' => '\GroupDocs\Signature\Model\BrushData',
+        'textHorizontalAlignment' => 'string',
+        'textVerticalAlignment' => 'string'
     ];
 
     /*
@@ -69,7 +72,10 @@ class SlidesSignTextOptionsData extends SignTextOptionsData
         'borderTransparency' => 'double',
         'borderWeight' => 'double',
         'backgroundTransparency' => 'double',
-        'signatureImplementation' => null
+        'signatureImplementation' => null,
+        'backgroundBrush' => null,
+        'textHorizontalAlignment' => null,
+        'textVerticalAlignment' => null
     ];
 
     /*
@@ -102,7 +108,10 @@ class SlidesSignTextOptionsData extends SignTextOptionsData
         'borderTransparency' => 'BorderTransparency',
         'borderWeight' => 'BorderWeight',
         'backgroundTransparency' => 'BackgroundTransparency',
-        'signatureImplementation' => 'SignatureImplementation'
+        'signatureImplementation' => 'SignatureImplementation',
+        'backgroundBrush' => 'BackgroundBrush',
+        'textHorizontalAlignment' => 'TextHorizontalAlignment',
+        'textVerticalAlignment' => 'TextVerticalAlignment'
     ];
 
     /*
@@ -114,7 +123,10 @@ class SlidesSignTextOptionsData extends SignTextOptionsData
         'borderTransparency' => 'setBorderTransparency',
         'borderWeight' => 'setBorderWeight',
         'backgroundTransparency' => 'setBackgroundTransparency',
-        'signatureImplementation' => 'setSignatureImplementation'
+        'signatureImplementation' => 'setSignatureImplementation',
+        'backgroundBrush' => 'setBackgroundBrush',
+        'textHorizontalAlignment' => 'setTextHorizontalAlignment',
+        'textVerticalAlignment' => 'setTextVerticalAlignment'
     ];
 
     /*
@@ -126,7 +138,10 @@ class SlidesSignTextOptionsData extends SignTextOptionsData
         'borderTransparency' => 'getBorderTransparency',
         'borderWeight' => 'getBorderWeight',
         'backgroundTransparency' => 'getBackgroundTransparency',
-        'signatureImplementation' => 'getSignatureImplementation'
+        'signatureImplementation' => 'getSignatureImplementation',
+        'backgroundBrush' => 'getBackgroundBrush',
+        'textHorizontalAlignment' => 'getTextHorizontalAlignment',
+        'textVerticalAlignment' => 'getTextVerticalAlignment'
     ];
 
     /*
@@ -172,6 +187,12 @@ class SlidesSignTextOptionsData extends SignTextOptionsData
 
     const SIGNATURE_IMPLEMENTATION_TEXT_STAMP = 'TextStamp';
     const SIGNATURE_IMPLEMENTATION_TEXT_AS_IMAGE = 'TextAsImage';
+    const TEXT_HORIZONTAL_ALIGNMENT_LEFT = 'Left';
+    const TEXT_HORIZONTAL_ALIGNMENT_CENTER = 'Center';
+    const TEXT_HORIZONTAL_ALIGNMENT_RIGHT = 'Right';
+    const TEXT_VERTICAL_ALIGNMENT_TOP = 'Top';
+    const TEXT_VERTICAL_ALIGNMENT_CENTER = 'Center';
+    const TEXT_VERTICAL_ALIGNMENT_BOTTOM = 'Bottom';
     
 
     
@@ -185,6 +206,34 @@ class SlidesSignTextOptionsData extends SignTextOptionsData
         return [
             self::SIGNATURE_IMPLEMENTATION_TEXT_STAMP,
             self::SIGNATURE_IMPLEMENTATION_TEXT_AS_IMAGE,
+        ];
+    }
+    
+    /*
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getTextHorizontalAlignmentAllowableValues()
+    {
+        return [
+            self::TEXT_HORIZONTAL_ALIGNMENT_LEFT,
+            self::TEXT_HORIZONTAL_ALIGNMENT_CENTER,
+            self::TEXT_HORIZONTAL_ALIGNMENT_RIGHT,
+        ];
+    }
+    
+    /*
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getTextVerticalAlignmentAllowableValues()
+    {
+        return [
+            self::TEXT_VERTICAL_ALIGNMENT_TOP,
+            self::TEXT_VERTICAL_ALIGNMENT_CENTER,
+            self::TEXT_VERTICAL_ALIGNMENT_BOTTOM,
         ];
     }
     
@@ -204,6 +253,9 @@ class SlidesSignTextOptionsData extends SignTextOptionsData
         $this->container['borderWeight'] = isset($data['borderWeight']) ? $data['borderWeight'] : null;
         $this->container['backgroundTransparency'] = isset($data['backgroundTransparency']) ? $data['backgroundTransparency'] : null;
         $this->container['signatureImplementation'] = isset($data['signatureImplementation']) ? $data['signatureImplementation'] : null;
+        $this->container['backgroundBrush'] = isset($data['backgroundBrush']) ? $data['backgroundBrush'] : null;
+        $this->container['textHorizontalAlignment'] = isset($data['textHorizontalAlignment']) ? $data['textHorizontalAlignment'] : null;
+        $this->container['textVerticalAlignment'] = isset($data['textVerticalAlignment']) ? $data['textVerticalAlignment'] : null;
     }
 
     /*
@@ -219,6 +271,22 @@ class SlidesSignTextOptionsData extends SignTextOptionsData
         if (!in_array($this->container['signatureImplementation'], $allowedValues)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'signatureImplementation', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getTextHorizontalAlignmentAllowableValues();
+        if (!in_array($this->container['textHorizontalAlignment'], $allowedValues)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'textHorizontalAlignment', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getTextVerticalAlignmentAllowableValues();
+        if (!in_array($this->container['textVerticalAlignment'], $allowedValues)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'textVerticalAlignment', must be one of '%s'",
                 implode("', '", $allowedValues)
             );
         }
@@ -240,6 +308,14 @@ class SlidesSignTextOptionsData extends SignTextOptionsData
 
         $allowedValues = $this->getSignatureImplementationAllowableValues();
         if (!in_array($this->container['signatureImplementation'], $allowedValues)) {
+            return false;
+        }
+        $allowedValues = $this->getTextHorizontalAlignmentAllowableValues();
+        if (!in_array($this->container['textHorizontalAlignment'], $allowedValues)) {
+            return false;
+        }
+        $allowedValues = $this->getTextVerticalAlignmentAllowableValues();
+        if (!in_array($this->container['textVerticalAlignment'], $allowedValues)) {
             return false;
         }
         return true;
@@ -343,6 +419,88 @@ class SlidesSignTextOptionsData extends SignTextOptionsData
         }
 			
         $this->container['signatureImplementation'] = $signatureImplementation;
+
+        return $this;
+    }
+
+    /*
+     * Gets backgroundBrush
+     *
+     * @return \GroupDocs\Signature\Model\BrushData
+     */
+    public function getBackgroundBrush()
+    {
+        return $this->container['backgroundBrush'];
+    }
+
+    /*
+     * Sets backgroundBrush
+     *
+     * @param \GroupDocs\Signature\Model\BrushData $backgroundBrush Gets or sets the signature background brush. Value by default is null.  When property has a value it is used instead BackgroundBrush property. For TextStamp implementation RadialGradientBrush is not applicable, it is replaced by LinearGradientBrush. It is not used for Watermark implementation.
+     *
+     * @return $this
+     */
+    public function setBackgroundBrush($backgroundBrush)
+    {
+        $this->container['backgroundBrush'] = $backgroundBrush;
+
+        return $this;
+    }
+
+    /*
+     * Gets textHorizontalAlignment
+     *
+     * @return string
+     */
+    public function getTextHorizontalAlignment()
+    {
+        return $this->container['textHorizontalAlignment'];
+    }
+
+    /*
+     * Sets textHorizontalAlignment
+     *
+     * @param string $textHorizontalAlignment Horizontal alignment of text inside a signature.
+     *
+     * @return $this
+     */
+    public function setTextHorizontalAlignment($textHorizontalAlignment)
+    {
+        $allowedValues = $this->getTextHorizontalAlignmentAllowableValues();
+        if ((!is_numeric($textHorizontalAlignment) && !in_array($textHorizontalAlignment, $allowedValues)) || (is_numeric($textHorizontalAlignment) && !in_array($allowedValues[$textHorizontalAlignment], $allowedValues))) {
+            throw new \InvalidArgumentException(sprintf("Invalid value for 'textHorizontalAlignment', must be one of '%s'", implode("', '", $allowedValues)));
+        }
+			
+        $this->container['textHorizontalAlignment'] = $textHorizontalAlignment;
+
+        return $this;
+    }
+
+    /*
+     * Gets textVerticalAlignment
+     *
+     * @return string
+     */
+    public function getTextVerticalAlignment()
+    {
+        return $this->container['textVerticalAlignment'];
+    }
+
+    /*
+     * Sets textVerticalAlignment
+     *
+     * @param string $textVerticalAlignment Vertical alignment of text inside a signature.
+     *
+     * @return $this
+     */
+    public function setTextVerticalAlignment($textVerticalAlignment)
+    {
+        $allowedValues = $this->getTextVerticalAlignmentAllowableValues();
+        if ((!is_numeric($textVerticalAlignment) && !in_array($textVerticalAlignment, $allowedValues)) || (is_numeric($textVerticalAlignment) && !in_array($allowedValues[$textVerticalAlignment], $allowedValues))) {
+            throw new \InvalidArgumentException(sprintf("Invalid value for 'textVerticalAlignment', must be one of '%s'", implode("', '", $allowedValues)));
+        }
+			
+        $this->container['textVerticalAlignment'] = $textVerticalAlignment;
 
         return $this;
     }

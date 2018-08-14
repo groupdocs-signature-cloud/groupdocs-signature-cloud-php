@@ -37,7 +37,7 @@ use GuzzleHttp\RequestOptions;
 use GroupDocs\Signature\Model\Requests;
 
 /*
- * GroupDocs.Signature for Cloud API References
+ * GroupDocs.Signature Cloud API References
  */
 class SignatureApi
 {
@@ -10382,6 +10382,16 @@ class SignatureApi
         if ($request->password !== null) {
             $localName = lcfirst('Password');
             $localValue = is_bool($request->password) ? ($request->password ? 'true' : 'false') : $request->password;
+            if (strpos($resourcePath, '{' . $localName . '}') !== false) {
+                $resourcePath = str_replace('{' . $localName . '}', ObjectSerializer::toPathValue($localValue), $resourcePath);
+            } else {
+                $queryParams[$localName] = ObjectSerializer::toQueryValue($localValue);
+            }
+        }
+        // query params
+        if ($request->certificateGuid !== null) {
+            $localName = lcfirst('CertificateGuid');
+            $localValue = is_bool($request->certificateGuid) ? ($request->certificateGuid ? 'true' : 'false') : $request->certificateGuid;
             if (strpos($resourcePath, '{' . $localName . '}') !== false) {
                 $resourcePath = str_replace('{' . $localName . '}', ObjectSerializer::toPathValue($localValue), $resourcePath);
             } else {

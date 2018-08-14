@@ -1,7 +1,7 @@
 <?php
 /*
  * --------------------------------------------------------------------------------------------------------------------
- * <copyright company="Aspose Pty Ltd" file="CellsSignQRCodeOptionsData.php">
+ * <copyright company="Aspose Pty Ltd" file="SolidBrushData.php">
  *   Copyright (c) 2003-2018 Aspose Pty Ltd
  * </copyright>
  * <summary>
@@ -26,18 +26,18 @@
  * --------------------------------------------------------------------------------------------------------------------
  */
 /*
- * CellsSignQRCodeOptionsData
+ * SolidBrushData
  */
 
 namespace GroupDocs\Signature\Model;
 use \GroupDocs\Signature\ObjectSerializer;
 
 /*
- * CellsSignQRCodeOptionsData
+ * SolidBrushData
  *
- * @description Represents the QRCode Signature Options for Cells Documents.
+ * @description Represents solid brush. It could be used instead background color property.
  */
-class CellsSignQRCodeOptionsData extends SignQRCodeOptionsData 
+class SolidBrushData extends BrushData 
 {
     const DISCRIMINATOR = null;
 
@@ -46,7 +46,7 @@ class CellsSignQRCodeOptionsData extends SignQRCodeOptionsData
      *
      * @var string
      */
-    protected static $swaggerModelName = "CellsSignQRCodeOptionsData";
+    protected static $swaggerModelName = "SolidBrushData";
 
     /*
      * Array of property to type mappings. Used for (de)serialization
@@ -54,9 +54,7 @@ class CellsSignQRCodeOptionsData extends SignQRCodeOptionsData
      * @var string[]
      */
     protected static $swaggerTypes = [
-        'sheetNumber' => 'int',
-        'rowNumber' => 'int',
-        'columnNumber' => 'int'
+        'color' => '\GroupDocs\Signature\Model\Color'
     ];
 
     /*
@@ -65,9 +63,7 @@ class CellsSignQRCodeOptionsData extends SignQRCodeOptionsData
      * @var string[]
      */
     protected static $swaggerFormats = [
-        'sheetNumber' => 'int32',
-        'rowNumber' => 'int32',
-        'columnNumber' => 'int32'
+        'color' => null
     ];
 
     /*
@@ -97,9 +93,7 @@ class CellsSignQRCodeOptionsData extends SignQRCodeOptionsData
      * @var string[]
      */
     protected static $attributeMap = [
-        'sheetNumber' => 'SheetNumber',
-        'rowNumber' => 'RowNumber',
-        'columnNumber' => 'ColumnNumber'
+        'color' => 'Color'
     ];
 
     /*
@@ -108,9 +102,7 @@ class CellsSignQRCodeOptionsData extends SignQRCodeOptionsData
      * @var string[]
      */
     protected static $setters = [
-        'sheetNumber' => 'setSheetNumber',
-        'rowNumber' => 'setRowNumber',
-        'columnNumber' => 'setColumnNumber'
+        'color' => 'setColor'
     ];
 
     /*
@@ -119,9 +111,7 @@ class CellsSignQRCodeOptionsData extends SignQRCodeOptionsData
      * @var string[]
      */
     protected static $getters = [
-        'sheetNumber' => 'getSheetNumber',
-        'rowNumber' => 'getRowNumber',
-        'columnNumber' => 'getColumnNumber'
+        'color' => 'getColor'
     ];
 
     /*
@@ -180,9 +170,7 @@ class CellsSignQRCodeOptionsData extends SignQRCodeOptionsData
     {
         parent::__construct($data);
 
-        $this->container['sheetNumber'] = isset($data['sheetNumber']) ? $data['sheetNumber'] : null;
-        $this->container['rowNumber'] = isset($data['rowNumber']) ? $data['rowNumber'] : null;
-        $this->container['columnNumber'] = isset($data['columnNumber']) ? $data['columnNumber'] : null;
+        $this->container['color'] = isset($data['color']) ? $data['color'] : null;
     }
 
     /*
@@ -214,73 +202,25 @@ class CellsSignQRCodeOptionsData extends SignQRCodeOptionsData
 
 
     /*
-     * Gets sheetNumber
+     * Gets color
      *
-     * @return int
+     * @return \GroupDocs\Signature\Model\Color
      */
-    public function getSheetNumber()
+    public function getColor()
     {
-        return $this->container['sheetNumber'];
+        return $this->container['color'];
     }
 
     /*
-     * Sets sheetNumber
+     * Sets color
      *
-     * @param int $sheetNumber Gets or sets worksheet number for signing. DocumentPageNumber parameter contains the same value.
+     * @param \GroupDocs\Signature\Model\Color $color Gets or sets color of solid brush.
      *
      * @return $this
      */
-    public function setSheetNumber($sheetNumber)
+    public function setColor($color)
     {
-        $this->container['sheetNumber'] = $sheetNumber;
-
-        return $this;
-    }
-
-    /*
-     * Gets rowNumber
-     *
-     * @return int
-     */
-    public function getRowNumber()
-    {
-        return $this->container['rowNumber'];
-    }
-
-    /*
-     * Sets rowNumber
-     *
-     * @param int $rowNumber Gets or sets the top row number of signature (min value is 0). Top parameter contains the same value.
-     *
-     * @return $this
-     */
-    public function setRowNumber($rowNumber)
-    {
-        $this->container['rowNumber'] = $rowNumber;
-
-        return $this;
-    }
-
-    /*
-     * Gets columnNumber
-     *
-     * @return int
-     */
-    public function getColumnNumber()
-    {
-        return $this->container['columnNumber'];
-    }
-
-    /*
-     * Sets columnNumber
-     *
-     * @param int $columnNumber Gets or sets the left column number of signature (min value is 0). Left parameter contains the same value.
-     *
-     * @return $this
-     */
-    public function setColumnNumber($columnNumber)
-    {
-        $this->container['columnNumber'] = $columnNumber;
+        $this->container['color'] = $color;
 
         return $this;
     }

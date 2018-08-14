@@ -287,7 +287,7 @@ class SignOptionsData implements ArrayAccess
     /*
      * Sets optionsType
      *
-     * @param string $optionsType Internal property that specify the name of Options
+     * @param string $optionsType Internal property that specify the name of Options.
      *
      * @return $this
      */

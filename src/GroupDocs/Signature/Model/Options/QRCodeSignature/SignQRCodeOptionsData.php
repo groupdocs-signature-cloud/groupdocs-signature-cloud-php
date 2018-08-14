@@ -55,12 +55,17 @@ class SignQRCodeOptionsData extends SignTextOptionsData
      */
     protected static $swaggerTypes = [
         'qRCodeTypeName' => 'string',
+        'foreColor' => '\GroupDocs\Signature\Model\Color',
+        'borderColor' => '\GroupDocs\Signature\Model\Color',
+        'backgroundColor' => '\GroupDocs\Signature\Model\Color',
+        'backgroundBrush' => '\GroupDocs\Signature\Model\BrushData',
         'borderVisiblity' => 'bool',
         'borderDashStyle' => 'string',
         'borderWeight' => 'double',
         'opacity' => 'double',
         'codeTextAlignment' => 'string',
-        'innerMargins' => '\GroupDocs\Signature\Model\PaddingData'
+        'innerMargins' => '\GroupDocs\Signature\Model\PaddingData',
+        'logoGuid' => 'string'
     ];
 
     /*
@@ -70,12 +75,17 @@ class SignQRCodeOptionsData extends SignTextOptionsData
      */
     protected static $swaggerFormats = [
         'qRCodeTypeName' => null,
+        'foreColor' => null,
+        'borderColor' => null,
+        'backgroundColor' => null,
+        'backgroundBrush' => null,
         'borderVisiblity' => null,
         'borderDashStyle' => null,
         'borderWeight' => 'double',
         'opacity' => 'double',
         'codeTextAlignment' => null,
-        'innerMargins' => null
+        'innerMargins' => null,
+        'logoGuid' => null
     ];
 
     /*
@@ -106,12 +116,17 @@ class SignQRCodeOptionsData extends SignTextOptionsData
      */
     protected static $attributeMap = [
         'qRCodeTypeName' => 'QRCodeTypeName',
+        'foreColor' => 'ForeColor',
+        'borderColor' => 'BorderColor',
+        'backgroundColor' => 'BackgroundColor',
+        'backgroundBrush' => 'BackgroundBrush',
         'borderVisiblity' => 'BorderVisiblity',
         'borderDashStyle' => 'BorderDashStyle',
         'borderWeight' => 'BorderWeight',
         'opacity' => 'Opacity',
         'codeTextAlignment' => 'CodeTextAlignment',
-        'innerMargins' => 'InnerMargins'
+        'innerMargins' => 'InnerMargins',
+        'logoGuid' => 'LogoGuid'
     ];
 
     /*
@@ -121,12 +136,17 @@ class SignQRCodeOptionsData extends SignTextOptionsData
      */
     protected static $setters = [
         'qRCodeTypeName' => 'setQRCodeTypeName',
+        'foreColor' => 'setForeColor',
+        'borderColor' => 'setBorderColor',
+        'backgroundColor' => 'setBackgroundColor',
+        'backgroundBrush' => 'setBackgroundBrush',
         'borderVisiblity' => 'setBorderVisiblity',
         'borderDashStyle' => 'setBorderDashStyle',
         'borderWeight' => 'setBorderWeight',
         'opacity' => 'setOpacity',
         'codeTextAlignment' => 'setCodeTextAlignment',
-        'innerMargins' => 'setInnerMargins'
+        'innerMargins' => 'setInnerMargins',
+        'logoGuid' => 'setLogoGuid'
     ];
 
     /*
@@ -136,12 +156,17 @@ class SignQRCodeOptionsData extends SignTextOptionsData
      */
     protected static $getters = [
         'qRCodeTypeName' => 'getQRCodeTypeName',
+        'foreColor' => 'getForeColor',
+        'borderColor' => 'getBorderColor',
+        'backgroundColor' => 'getBackgroundColor',
+        'backgroundBrush' => 'getBackgroundBrush',
         'borderVisiblity' => 'getBorderVisiblity',
         'borderDashStyle' => 'getBorderDashStyle',
         'borderWeight' => 'getBorderWeight',
         'opacity' => 'getOpacity',
         'codeTextAlignment' => 'getCodeTextAlignment',
-        'innerMargins' => 'getInnerMargins'
+        'innerMargins' => 'getInnerMargins',
+        'logoGuid' => 'getLogoGuid'
     ];
 
     /*
@@ -247,12 +272,17 @@ class SignQRCodeOptionsData extends SignTextOptionsData
         parent::__construct($data);
 
         $this->container['qRCodeTypeName'] = isset($data['qRCodeTypeName']) ? $data['qRCodeTypeName'] : null;
+        $this->container['foreColor'] = isset($data['foreColor']) ? $data['foreColor'] : null;
+        $this->container['borderColor'] = isset($data['borderColor']) ? $data['borderColor'] : null;
+        $this->container['backgroundColor'] = isset($data['backgroundColor']) ? $data['backgroundColor'] : null;
+        $this->container['backgroundBrush'] = isset($data['backgroundBrush']) ? $data['backgroundBrush'] : null;
         $this->container['borderVisiblity'] = isset($data['borderVisiblity']) ? $data['borderVisiblity'] : null;
         $this->container['borderDashStyle'] = isset($data['borderDashStyle']) ? $data['borderDashStyle'] : null;
         $this->container['borderWeight'] = isset($data['borderWeight']) ? $data['borderWeight'] : null;
         $this->container['opacity'] = isset($data['opacity']) ? $data['opacity'] : null;
         $this->container['codeTextAlignment'] = isset($data['codeTextAlignment']) ? $data['codeTextAlignment'] : null;
         $this->container['innerMargins'] = isset($data['innerMargins']) ? $data['innerMargins'] : null;
+        $this->container['logoGuid'] = isset($data['logoGuid']) ? $data['logoGuid'] : null;
     }
 
     /*
@@ -327,6 +357,102 @@ class SignQRCodeOptionsData extends SignTextOptionsData
     public function setQRCodeTypeName($qRCodeTypeName)
     {
         $this->container['qRCodeTypeName'] = $qRCodeTypeName;
+
+        return $this;
+    }
+
+    /*
+     * Gets foreColor
+     *
+     * @return \GroupDocs\Signature\Model\Color
+     */
+    public function getForeColor()
+    {
+        return $this->container['foreColor'];
+    }
+
+    /*
+     * Sets foreColor
+     *
+     * @param \GroupDocs\Signature\Model\Color $foreColor Gets or sets the Fore color of Barcode bars Using of this property could cause problems with verification. Use it carefully with maximum contrast with background.
+     *
+     * @return $this
+     */
+    public function setForeColor($foreColor)
+    {
+        $this->container['foreColor'] = $foreColor;
+
+        return $this;
+    }
+
+    /*
+     * Gets borderColor
+     *
+     * @return \GroupDocs\Signature\Model\Color
+     */
+    public function getBorderColor()
+    {
+        return $this->container['borderColor'];
+    }
+
+    /*
+     * Sets borderColor
+     *
+     * @param \GroupDocs\Signature\Model\Color $borderColor Gets or sets the border color of signature. Using of this property could cause problems with verification. Use it carefully with maximum contrast with background.
+     *
+     * @return $this
+     */
+    public function setBorderColor($borderColor)
+    {
+        $this->container['borderColor'] = $borderColor;
+
+        return $this;
+    }
+
+    /*
+     * Gets backgroundColor
+     *
+     * @return \GroupDocs\Signature\Model\Color
+     */
+    public function getBackgroundColor()
+    {
+        return $this->container['backgroundColor'];
+    }
+
+    /*
+     * Sets backgroundColor
+     *
+     * @param \GroupDocs\Signature\Model\Color $backgroundColor Gets or sets the background color of signature. Using of this property could cause problems with verification. Use it carefully with maximum contrast with background.
+     *
+     * @return $this
+     */
+    public function setBackgroundColor($backgroundColor)
+    {
+        $this->container['backgroundColor'] = $backgroundColor;
+
+        return $this;
+    }
+
+    /*
+     * Gets backgroundBrush
+     *
+     * @return \GroupDocs\Signature\Model\BrushData
+     */
+    public function getBackgroundBrush()
+    {
+        return $this->container['backgroundBrush'];
+    }
+
+    /*
+     * Sets backgroundBrush
+     *
+     * @param \GroupDocs\Signature\Model\BrushData $backgroundBrush Gets or sets the signature background brush. Value by default is null.  When property has a value it is used instead BackgroundBrush property. BackgroundBrush has limited scope of application for Qr-codes. SolidBrush, LinearGradientBrush (ColorStart) and RadialGradientBrush (ColorInner) are used   instead BackgroundColor. TextureBrush is not used.
+     *
+     * @return $this
+     */
+    public function setBackgroundBrush($backgroundBrush)
+    {
+        $this->container['backgroundBrush'] = $backgroundBrush;
 
         return $this;
     }
@@ -481,6 +607,30 @@ class SignQRCodeOptionsData extends SignTextOptionsData
     public function setInnerMargins($innerMargins)
     {
         $this->container['innerMargins'] = $innerMargins;
+
+        return $this;
+    }
+
+    /*
+     * Gets logoGuid
+     *
+     * @return string
+     */
+    public function getLogoGuid()
+    {
+        return $this->container['logoGuid'];
+    }
+
+    /*
+     * Sets logoGuid
+     *
+     * @param string $logoGuid Gets or sets the QR-code logo image file name. This property in use only if LogoStream is not specified. Using of this property could cause problems with verification. Use it carefully.
+     *
+     * @return $this
+     */
+    public function setLogoGuid($logoGuid)
+    {
+        $this->container['logoGuid'] = $logoGuid;
 
         return $this;
     }

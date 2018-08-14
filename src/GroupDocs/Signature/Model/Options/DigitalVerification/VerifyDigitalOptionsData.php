@@ -54,6 +54,8 @@ class VerifyDigitalOptionsData extends VerifyOptionsData
      * @var string[]
      */
     protected static $swaggerTypes = [
+        'documentPageNumber' => 'int',
+        'pagesSetup' => '\GroupDocs\Signature\Model\PagesSetupData',
         'password' => 'string',
         'certificateGuid' => 'string'
     ];
@@ -64,6 +66,8 @@ class VerifyDigitalOptionsData extends VerifyOptionsData
      * @var string[]
      */
     protected static $swaggerFormats = [
+        'documentPageNumber' => 'int32',
+        'pagesSetup' => null,
         'password' => null,
         'certificateGuid' => null
     ];
@@ -95,6 +99,8 @@ class VerifyDigitalOptionsData extends VerifyOptionsData
      * @var string[]
      */
     protected static $attributeMap = [
+        'documentPageNumber' => 'DocumentPageNumber',
+        'pagesSetup' => 'PagesSetup',
         'password' => 'Password',
         'certificateGuid' => 'CertificateGuid'
     ];
@@ -105,6 +111,8 @@ class VerifyDigitalOptionsData extends VerifyOptionsData
      * @var string[]
      */
     protected static $setters = [
+        'documentPageNumber' => 'setDocumentPageNumber',
+        'pagesSetup' => 'setPagesSetup',
         'password' => 'setPassword',
         'certificateGuid' => 'setCertificateGuid'
     ];
@@ -115,6 +123,8 @@ class VerifyDigitalOptionsData extends VerifyOptionsData
      * @var string[]
      */
     protected static $getters = [
+        'documentPageNumber' => 'getDocumentPageNumber',
+        'pagesSetup' => 'getPagesSetup',
         'password' => 'getPassword',
         'certificateGuid' => 'getCertificateGuid'
     ];
@@ -175,6 +185,8 @@ class VerifyDigitalOptionsData extends VerifyOptionsData
     {
         parent::__construct($data);
 
+        $this->container['documentPageNumber'] = isset($data['documentPageNumber']) ? $data['documentPageNumber'] : null;
+        $this->container['pagesSetup'] = isset($data['pagesSetup']) ? $data['pagesSetup'] : null;
         $this->container['password'] = isset($data['password']) ? $data['password'] : null;
         $this->container['certificateGuid'] = isset($data['certificateGuid']) ? $data['certificateGuid'] : null;
     }
@@ -206,6 +218,54 @@ class VerifyDigitalOptionsData extends VerifyOptionsData
         return true;
     }
 
+
+    /*
+     * Gets documentPageNumber
+     *
+     * @return int
+     */
+    public function getDocumentPageNumber()
+    {
+        return $this->container['documentPageNumber'];
+    }
+
+    /*
+     * Sets documentPageNumber
+     *
+     * @param int $documentPageNumber Document Page Number to be verified. If property is not set - all Pages of Document will be verified for first occurrence. Value is not supported for digital verification.
+     *
+     * @return $this
+     */
+    public function setDocumentPageNumber($documentPageNumber)
+    {
+        $this->container['documentPageNumber'] = $documentPageNumber;
+
+        return $this;
+    }
+
+    /*
+     * Gets pagesSetup
+     *
+     * @return \GroupDocs\Signature\Model\PagesSetupData
+     */
+    public function getPagesSetup()
+    {
+        return $this->container['pagesSetup'];
+    }
+
+    /*
+     * Sets pagesSetup
+     *
+     * @param \GroupDocs\Signature\Model\PagesSetupData $pagesSetup Page Options to specify pages to be verified. Value is not supported for digital verification.
+     *
+     * @return $this
+     */
+    public function setPagesSetup($pagesSetup)
+    {
+        $this->container['pagesSetup'] = $pagesSetup;
+
+        return $this;
+    }
 
     /*
      * Gets password

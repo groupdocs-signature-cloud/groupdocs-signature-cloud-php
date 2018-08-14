@@ -35,7 +35,7 @@ use \GroupDocs\Signature\ObjectSerializer;
 /*
  * VerifyTextOptionsData
  *
- * @description Verify Text Options - keeps options to verify Text Signature of Document
+ * @description Verify Text Options - keeps options to verify Text Signature of Document.
  */
 class VerifyTextOptionsData extends VerifyOptionsData 
 {
@@ -220,7 +220,7 @@ class VerifyTextOptionsData extends VerifyOptionsData
     /*
      * Sets text
      *
-     * @param string $text Specify Signature Text if it should be verified
+     * @param string $text Specify Signature Text if it should be verified.
      *
      * @return $this
      */
@@ -244,7 +244,7 @@ class VerifyTextOptionsData extends VerifyOptionsData
     /*
      * Sets verifyAllPages
      *
-     * @param bool $verifyAllPages Flag to verify each Document Page
+     * @param bool $verifyAllPages Flag to verify each Document Page.
      *
      * @return $this
      */

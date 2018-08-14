@@ -35,7 +35,7 @@ use \GroupDocs\Signature\ObjectSerializer;
 /*
  * ImagesSignStampOptionsData
  *
- * @description Represents the Stamp Signature Options for Cells Documents.
+ * @description Represents the Stamp Signature Options for Image Documents.
  */
 class ImagesSignStampOptionsData extends SignStampOptionsData 
 {
@@ -54,7 +54,9 @@ class ImagesSignStampOptionsData extends SignStampOptionsData
      * @var string[]
      */
     protected static $swaggerTypes = [
-        
+        'documentPageNumber' => 'int',
+        'pagesSetup' => '\GroupDocs\Signature\Model\PagesSetupData',
+        'signAllPages' => 'bool'
     ];
 
     /*
@@ -63,7 +65,9 @@ class ImagesSignStampOptionsData extends SignStampOptionsData
      * @var string[]
      */
     protected static $swaggerFormats = [
-        
+        'documentPageNumber' => 'int32',
+        'pagesSetup' => null,
+        'signAllPages' => null
     ];
 
     /*
@@ -93,7 +97,9 @@ class ImagesSignStampOptionsData extends SignStampOptionsData
      * @var string[]
      */
     protected static $attributeMap = [
-        
+        'documentPageNumber' => 'DocumentPageNumber',
+        'pagesSetup' => 'PagesSetup',
+        'signAllPages' => 'SignAllPages'
     ];
 
     /*
@@ -102,7 +108,9 @@ class ImagesSignStampOptionsData extends SignStampOptionsData
      * @var string[]
      */
     protected static $setters = [
-        
+        'documentPageNumber' => 'setDocumentPageNumber',
+        'pagesSetup' => 'setPagesSetup',
+        'signAllPages' => 'setSignAllPages'
     ];
 
     /*
@@ -111,7 +119,9 @@ class ImagesSignStampOptionsData extends SignStampOptionsData
      * @var string[]
      */
     protected static $getters = [
-        
+        'documentPageNumber' => 'getDocumentPageNumber',
+        'pagesSetup' => 'getPagesSetup',
+        'signAllPages' => 'getSignAllPages'
     ];
 
     /*
@@ -170,6 +180,9 @@ class ImagesSignStampOptionsData extends SignStampOptionsData
     {
         parent::__construct($data);
 
+        $this->container['documentPageNumber'] = isset($data['documentPageNumber']) ? $data['documentPageNumber'] : null;
+        $this->container['pagesSetup'] = isset($data['pagesSetup']) ? $data['pagesSetup'] : null;
+        $this->container['signAllPages'] = isset($data['signAllPages']) ? $data['signAllPages'] : null;
     }
 
     /*
@@ -199,6 +212,78 @@ class ImagesSignStampOptionsData extends SignStampOptionsData
         return true;
     }
 
+
+    /*
+     * Gets documentPageNumber
+     *
+     * @return int
+     */
+    public function getDocumentPageNumber()
+    {
+        return $this->container['documentPageNumber'];
+    }
+
+    /*
+     * Sets documentPageNumber
+     *
+     * @param int $documentPageNumber Gets or sets document page number for signing. This property can only be used for multi-frames image formats (Tiff). Minimal value is 1.
+     *
+     * @return $this
+     */
+    public function setDocumentPageNumber($documentPageNumber)
+    {
+        $this->container['documentPageNumber'] = $documentPageNumber;
+
+        return $this;
+    }
+
+    /*
+     * Gets pagesSetup
+     *
+     * @return \GroupDocs\Signature\Model\PagesSetupData
+     */
+    public function getPagesSetup()
+    {
+        return $this->container['pagesSetup'];
+    }
+
+    /*
+     * Sets pagesSetup
+     *
+     * @param \GroupDocs\Signature\Model\PagesSetupData $pagesSetup Options to specify pages to be signed. This property can only be used for multi-frames image formats (Tiff).
+     *
+     * @return $this
+     */
+    public function setPagesSetup($pagesSetup)
+    {
+        $this->container['pagesSetup'] = $pagesSetup;
+
+        return $this;
+    }
+
+    /*
+     * Gets signAllPages
+     *
+     * @return bool
+     */
+    public function getSignAllPages()
+    {
+        return $this->container['signAllPages'];
+    }
+
+    /*
+     * Sets signAllPages
+     *
+     * @param bool $signAllPages Put signature on all document pages. This property can only be used for multi-frames image formats (Tiff).
+     *
+     * @return $this
+     */
+    public function setSignAllPages($signAllPages)
+    {
+        $this->container['signAllPages'] = $signAllPages;
+
+        return $this;
+    }
     /*
      * Returns true if offset exists. False otherwise.
      *

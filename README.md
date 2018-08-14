@@ -1,4 +1,4 @@
-# GroupDocs.Signature Cloud SDK for PHP 
+# GroupDocs.Signature Cloud SDK for PHP
 This repository contains GroupDocs.Signature Cloud SDK for PHP source code. This SDK allows you to work with GroupDocs.Signature Cloud REST APIs in your PHP applications.
 
 ## Dependencies
@@ -12,7 +12,7 @@ To use SDK you need AppSID and AppKey authorization keys. You can your AppSID an
 
 The package is available at [Packagist](https://packagist.org/) and it can be installed via [Composer](http://getcomposer.org/) by executing following command:
 ```
-composer require groupdocscloud/groupdocs-signature-cloud
+composer require groupdocscloud/signature-sdk-php
 ``` 
 
 Or you can install SDK via [Composer](http://getcomposer.org/) directly from this repository, add the following to `composer.json`:
@@ -26,7 +26,7 @@ Or you can install SDK via [Composer](http://getcomposer.org/) directly from thi
     }
   ],
   "require": {
-    "groupdocscloud/groupdocs-signature-cloud": "*"
+    "groupdocscloud/signature-sdk-php": "*"
   }
 }
 ```

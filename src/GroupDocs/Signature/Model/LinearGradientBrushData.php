@@ -1,7 +1,7 @@
 <?php
 /*
  * --------------------------------------------------------------------------------------------------------------------
- * <copyright company="Aspose Pty Ltd" file="CellsSignQRCodeOptionsData.php">
+ * <copyright company="Aspose Pty Ltd" file="LinearGradientBrushData.php">
  *   Copyright (c) 2003-2018 Aspose Pty Ltd
  * </copyright>
  * <summary>
@@ -26,18 +26,18 @@
  * --------------------------------------------------------------------------------------------------------------------
  */
 /*
- * CellsSignQRCodeOptionsData
+ * LinearGradientBrushData
  */
 
 namespace GroupDocs\Signature\Model;
 use \GroupDocs\Signature\ObjectSerializer;
 
 /*
- * CellsSignQRCodeOptionsData
+ * LinearGradientBrushData
  *
- * @description Represents the QRCode Signature Options for Cells Documents.
+ * @description Represents linear gradient brush.
  */
-class CellsSignQRCodeOptionsData extends SignQRCodeOptionsData 
+class LinearGradientBrushData extends BrushData 
 {
     const DISCRIMINATOR = null;
 
@@ -46,7 +46,7 @@ class CellsSignQRCodeOptionsData extends SignQRCodeOptionsData
      *
      * @var string
      */
-    protected static $swaggerModelName = "CellsSignQRCodeOptionsData";
+    protected static $swaggerModelName = "LinearGradientBrushData";
 
     /*
      * Array of property to type mappings. Used for (de)serialization
@@ -54,9 +54,9 @@ class CellsSignQRCodeOptionsData extends SignQRCodeOptionsData
      * @var string[]
      */
     protected static $swaggerTypes = [
-        'sheetNumber' => 'int',
-        'rowNumber' => 'int',
-        'columnNumber' => 'int'
+        'startColor' => '\GroupDocs\Signature\Model\Color',
+        'endColor' => '\GroupDocs\Signature\Model\Color',
+        'angle' => 'double'
     ];
 
     /*
@@ -65,9 +65,9 @@ class CellsSignQRCodeOptionsData extends SignQRCodeOptionsData
      * @var string[]
      */
     protected static $swaggerFormats = [
-        'sheetNumber' => 'int32',
-        'rowNumber' => 'int32',
-        'columnNumber' => 'int32'
+        'startColor' => null,
+        'endColor' => null,
+        'angle' => 'double'
     ];
 
     /*
@@ -97,9 +97,9 @@ class CellsSignQRCodeOptionsData extends SignQRCodeOptionsData
      * @var string[]
      */
     protected static $attributeMap = [
-        'sheetNumber' => 'SheetNumber',
-        'rowNumber' => 'RowNumber',
-        'columnNumber' => 'ColumnNumber'
+        'startColor' => 'StartColor',
+        'endColor' => 'EndColor',
+        'angle' => 'Angle'
     ];
 
     /*
@@ -108,9 +108,9 @@ class CellsSignQRCodeOptionsData extends SignQRCodeOptionsData
      * @var string[]
      */
     protected static $setters = [
-        'sheetNumber' => 'setSheetNumber',
-        'rowNumber' => 'setRowNumber',
-        'columnNumber' => 'setColumnNumber'
+        'startColor' => 'setStartColor',
+        'endColor' => 'setEndColor',
+        'angle' => 'setAngle'
     ];
 
     /*
@@ -119,9 +119,9 @@ class CellsSignQRCodeOptionsData extends SignQRCodeOptionsData
      * @var string[]
      */
     protected static $getters = [
-        'sheetNumber' => 'getSheetNumber',
-        'rowNumber' => 'getRowNumber',
-        'columnNumber' => 'getColumnNumber'
+        'startColor' => 'getStartColor',
+        'endColor' => 'getEndColor',
+        'angle' => 'getAngle'
     ];
 
     /*
@@ -180,9 +180,9 @@ class CellsSignQRCodeOptionsData extends SignQRCodeOptionsData
     {
         parent::__construct($data);
 
-        $this->container['sheetNumber'] = isset($data['sheetNumber']) ? $data['sheetNumber'] : null;
-        $this->container['rowNumber'] = isset($data['rowNumber']) ? $data['rowNumber'] : null;
-        $this->container['columnNumber'] = isset($data['columnNumber']) ? $data['columnNumber'] : null;
+        $this->container['startColor'] = isset($data['startColor']) ? $data['startColor'] : null;
+        $this->container['endColor'] = isset($data['endColor']) ? $data['endColor'] : null;
+        $this->container['angle'] = isset($data['angle']) ? $data['angle'] : null;
     }
 
     /*
@@ -214,73 +214,73 @@ class CellsSignQRCodeOptionsData extends SignQRCodeOptionsData
 
 
     /*
-     * Gets sheetNumber
+     * Gets startColor
      *
-     * @return int
+     * @return \GroupDocs\Signature\Model\Color
      */
-    public function getSheetNumber()
+    public function getStartColor()
     {
-        return $this->container['sheetNumber'];
+        return $this->container['startColor'];
     }
 
     /*
-     * Sets sheetNumber
+     * Sets startColor
      *
-     * @param int $sheetNumber Gets or sets worksheet number for signing. DocumentPageNumber parameter contains the same value.
+     * @param \GroupDocs\Signature\Model\Color $startColor Gets or sets start gradient color.
      *
      * @return $this
      */
-    public function setSheetNumber($sheetNumber)
+    public function setStartColor($startColor)
     {
-        $this->container['sheetNumber'] = $sheetNumber;
+        $this->container['startColor'] = $startColor;
 
         return $this;
     }
 
     /*
-     * Gets rowNumber
+     * Gets endColor
      *
-     * @return int
+     * @return \GroupDocs\Signature\Model\Color
      */
-    public function getRowNumber()
+    public function getEndColor()
     {
-        return $this->container['rowNumber'];
+        return $this->container['endColor'];
     }
 
     /*
-     * Sets rowNumber
+     * Sets endColor
      *
-     * @param int $rowNumber Gets or sets the top row number of signature (min value is 0). Top parameter contains the same value.
+     * @param \GroupDocs\Signature\Model\Color $endColor Gets or sets finish gradient color.
      *
      * @return $this
      */
-    public function setRowNumber($rowNumber)
+    public function setEndColor($endColor)
     {
-        $this->container['rowNumber'] = $rowNumber;
+        $this->container['endColor'] = $endColor;
 
         return $this;
     }
 
     /*
-     * Gets columnNumber
+     * Gets angle
      *
-     * @return int
+     * @return double
      */
-    public function getColumnNumber()
+    public function getAngle()
     {
-        return $this->container['columnNumber'];
+        return $this->container['angle'];
     }
 
     /*
-     * Sets columnNumber
+     * Sets angle
      *
-     * @param int $columnNumber Gets or sets the left column number of signature (min value is 0). Left parameter contains the same value.
+     * @param double $angle Gets or sets gradient angle.
      *
      * @return $this
      */
-    public function setColumnNumber($columnNumber)
+    public function setAngle($angle)
     {
-        $this->container['columnNumber'] = $columnNumber;
+        $this->container['angle'] = $angle;
 
         return $this;
     }

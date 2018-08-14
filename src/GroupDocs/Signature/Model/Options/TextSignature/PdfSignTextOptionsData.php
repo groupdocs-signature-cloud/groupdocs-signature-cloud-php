@@ -58,7 +58,10 @@ class PdfSignTextOptionsData extends SignTextOptionsData
         'signatureID' => 'int',
         'signatureImplementation' => 'string',
         'formTextFieldTitle' => 'string',
-        'formTextFieldType' => 'string'
+        'formTextFieldType' => 'string',
+        'backgroundBrush' => '\GroupDocs\Signature\Model\BrushData',
+        'textHorizontalAlignment' => 'string',
+        'textVerticalAlignment' => 'string'
     ];
 
     /*
@@ -71,7 +74,10 @@ class PdfSignTextOptionsData extends SignTextOptionsData
         'signatureID' => 'int32',
         'signatureImplementation' => null,
         'formTextFieldTitle' => null,
-        'formTextFieldType' => null
+        'formTextFieldType' => null,
+        'backgroundBrush' => null,
+        'textHorizontalAlignment' => null,
+        'textVerticalAlignment' => null
     ];
 
     /*
@@ -105,7 +111,10 @@ class PdfSignTextOptionsData extends SignTextOptionsData
         'signatureID' => 'SignatureID',
         'signatureImplementation' => 'SignatureImplementation',
         'formTextFieldTitle' => 'FormTextFieldTitle',
-        'formTextFieldType' => 'FormTextFieldType'
+        'formTextFieldType' => 'FormTextFieldType',
+        'backgroundBrush' => 'BackgroundBrush',
+        'textHorizontalAlignment' => 'TextHorizontalAlignment',
+        'textVerticalAlignment' => 'TextVerticalAlignment'
     ];
 
     /*
@@ -118,7 +127,10 @@ class PdfSignTextOptionsData extends SignTextOptionsData
         'signatureID' => 'setSignatureID',
         'signatureImplementation' => 'setSignatureImplementation',
         'formTextFieldTitle' => 'setFormTextFieldTitle',
-        'formTextFieldType' => 'setFormTextFieldType'
+        'formTextFieldType' => 'setFormTextFieldType',
+        'backgroundBrush' => 'setBackgroundBrush',
+        'textHorizontalAlignment' => 'setTextHorizontalAlignment',
+        'textVerticalAlignment' => 'setTextVerticalAlignment'
     ];
 
     /*
@@ -131,7 +143,10 @@ class PdfSignTextOptionsData extends SignTextOptionsData
         'signatureID' => 'getSignatureID',
         'signatureImplementation' => 'getSignatureImplementation',
         'formTextFieldTitle' => 'getFormTextFieldTitle',
-        'formTextFieldType' => 'getFormTextFieldType'
+        'formTextFieldType' => 'getFormTextFieldType',
+        'backgroundBrush' => 'getBackgroundBrush',
+        'textHorizontalAlignment' => 'getTextHorizontalAlignment',
+        'textVerticalAlignment' => 'getTextVerticalAlignment'
     ];
 
     /*
@@ -184,6 +199,12 @@ class PdfSignTextOptionsData extends SignTextOptionsData
     const FORM_TEXT_FIELD_TYPE_ALL_TEXT_TYPES = 'AllTextTypes';
     const FORM_TEXT_FIELD_TYPE_PLAIN_TEXT = 'PlainText';
     const FORM_TEXT_FIELD_TYPE_RICH_TEXT = 'RichText';
+    const TEXT_HORIZONTAL_ALIGNMENT_LEFT = 'Left';
+    const TEXT_HORIZONTAL_ALIGNMENT_CENTER = 'Center';
+    const TEXT_HORIZONTAL_ALIGNMENT_RIGHT = 'Right';
+    const TEXT_VERTICAL_ALIGNMENT_TOP = 'Top';
+    const TEXT_VERTICAL_ALIGNMENT_CENTER = 'Center';
+    const TEXT_VERTICAL_ALIGNMENT_BOTTOM = 'Bottom';
     
 
     
@@ -218,6 +239,34 @@ class PdfSignTextOptionsData extends SignTextOptionsData
         ];
     }
     
+    /*
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getTextHorizontalAlignmentAllowableValues()
+    {
+        return [
+            self::TEXT_HORIZONTAL_ALIGNMENT_LEFT,
+            self::TEXT_HORIZONTAL_ALIGNMENT_CENTER,
+            self::TEXT_HORIZONTAL_ALIGNMENT_RIGHT,
+        ];
+    }
+    
+    /*
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getTextVerticalAlignmentAllowableValues()
+    {
+        return [
+            self::TEXT_VERTICAL_ALIGNMENT_TOP,
+            self::TEXT_VERTICAL_ALIGNMENT_CENTER,
+            self::TEXT_VERTICAL_ALIGNMENT_BOTTOM,
+        ];
+    }
+    
 
 
     /*
@@ -235,6 +284,9 @@ class PdfSignTextOptionsData extends SignTextOptionsData
         $this->container['signatureImplementation'] = isset($data['signatureImplementation']) ? $data['signatureImplementation'] : null;
         $this->container['formTextFieldTitle'] = isset($data['formTextFieldTitle']) ? $data['formTextFieldTitle'] : null;
         $this->container['formTextFieldType'] = isset($data['formTextFieldType']) ? $data['formTextFieldType'] : null;
+        $this->container['backgroundBrush'] = isset($data['backgroundBrush']) ? $data['backgroundBrush'] : null;
+        $this->container['textHorizontalAlignment'] = isset($data['textHorizontalAlignment']) ? $data['textHorizontalAlignment'] : null;
+        $this->container['textVerticalAlignment'] = isset($data['textVerticalAlignment']) ? $data['textVerticalAlignment'] : null;
     }
 
     /*
@@ -262,6 +314,22 @@ class PdfSignTextOptionsData extends SignTextOptionsData
             );
         }
 
+        $allowedValues = $this->getTextHorizontalAlignmentAllowableValues();
+        if (!in_array($this->container['textHorizontalAlignment'], $allowedValues)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'textHorizontalAlignment', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getTextVerticalAlignmentAllowableValues();
+        if (!in_array($this->container['textVerticalAlignment'], $allowedValues)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'textVerticalAlignment', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -283,6 +351,14 @@ class PdfSignTextOptionsData extends SignTextOptionsData
         }
         $allowedValues = $this->getFormTextFieldTypeAllowableValues();
         if (!in_array($this->container['formTextFieldType'], $allowedValues)) {
+            return false;
+        }
+        $allowedValues = $this->getTextHorizontalAlignmentAllowableValues();
+        if (!in_array($this->container['textHorizontalAlignment'], $allowedValues)) {
+            return false;
+        }
+        $allowedValues = $this->getTextVerticalAlignmentAllowableValues();
+        if (!in_array($this->container['textVerticalAlignment'], $allowedValues)) {
             return false;
         }
         return true;
@@ -415,6 +491,88 @@ class PdfSignTextOptionsData extends SignTextOptionsData
         }
 			
         $this->container['formTextFieldType'] = $formTextFieldType;
+
+        return $this;
+    }
+
+    /*
+     * Gets backgroundBrush
+     *
+     * @return \GroupDocs\Signature\Model\BrushData
+     */
+    public function getBackgroundBrush()
+    {
+        return $this->container['backgroundBrush'];
+    }
+
+    /*
+     * Sets backgroundBrush
+     *
+     * @param \GroupDocs\Signature\Model\BrushData $backgroundBrush Gets or sets the signature background brush. Value by default is null.  When property has a value it is used instead BackgroundBrush property. For Stamp implementation LinearGradientBrush (ColorStart) and RadialGradientBrush (ColorInner) are used   as SolidBrush. It is not used for Annotation, Sticker, TextToFormField and Watermark implementations.
+     *
+     * @return $this
+     */
+    public function setBackgroundBrush($backgroundBrush)
+    {
+        $this->container['backgroundBrush'] = $backgroundBrush;
+
+        return $this;
+    }
+
+    /*
+     * Gets textHorizontalAlignment
+     *
+     * @return string
+     */
+    public function getTextHorizontalAlignment()
+    {
+        return $this->container['textHorizontalAlignment'];
+    }
+
+    /*
+     * Sets textHorizontalAlignment
+     *
+     * @param string $textHorizontalAlignment Horizontal alignment of text inside a signature. This feature is supported only for Image and Annotation signature implementations  (see  SignatureImplementation property).
+     *
+     * @return $this
+     */
+    public function setTextHorizontalAlignment($textHorizontalAlignment)
+    {
+        $allowedValues = $this->getTextHorizontalAlignmentAllowableValues();
+        if ((!is_numeric($textHorizontalAlignment) && !in_array($textHorizontalAlignment, $allowedValues)) || (is_numeric($textHorizontalAlignment) && !in_array($allowedValues[$textHorizontalAlignment], $allowedValues))) {
+            throw new \InvalidArgumentException(sprintf("Invalid value for 'textHorizontalAlignment', must be one of '%s'", implode("', '", $allowedValues)));
+        }
+			
+        $this->container['textHorizontalAlignment'] = $textHorizontalAlignment;
+
+        return $this;
+    }
+
+    /*
+     * Gets textVerticalAlignment
+     *
+     * @return string
+     */
+    public function getTextVerticalAlignment()
+    {
+        return $this->container['textVerticalAlignment'];
+    }
+
+    /*
+     * Sets textVerticalAlignment
+     *
+     * @param string $textVerticalAlignment Vertical alignment of text inside a signature. This feature is supported only for Image signature implementation  (see  SignatureImplementation property).
+     *
+     * @return $this
+     */
+    public function setTextVerticalAlignment($textVerticalAlignment)
+    {
+        $allowedValues = $this->getTextVerticalAlignmentAllowableValues();
+        if ((!is_numeric($textVerticalAlignment) && !in_array($textVerticalAlignment, $allowedValues)) || (is_numeric($textVerticalAlignment) && !in_array($allowedValues[$textVerticalAlignment], $allowedValues))) {
+            throw new \InvalidArgumentException(sprintf("Invalid value for 'textVerticalAlignment', must be one of '%s'", implode("', '", $allowedValues)));
+        }
+			
+        $this->container['textVerticalAlignment'] = $textVerticalAlignment;
 
         return $this;
     }

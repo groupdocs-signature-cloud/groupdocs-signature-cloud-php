@@ -38,13 +38,15 @@ class PostVerificationDigitalFromUrlRequest
      * @param string $url The url of document.
      * @param \GroupDocs\Signature\Model\VerifyOptionsData $verifyOptionsData Verification Options
      * @param string $password Document password if required.
+     * @param string $certificateGuid Digital certificate Guid.
      * @param string $storage The file storage which have to be used.
      */
-    public function __construct($url, $verifyOptionsData = null, $password = null, $storage = null)             
+    public function __construct($url, $verifyOptionsData = null, $password = null, $certificateGuid = null, $storage = null)             
     {
         $this->url = $url;
         $this->verifyOptionsData = $verifyOptionsData;
         $this->password = $password;
+        $this->certificateGuid = $certificateGuid;
         $this->storage = $storage;
     }
 
@@ -62,6 +64,11 @@ class PostVerificationDigitalFromUrlRequest
      * Document password if required.
      */
     public $password;
+	
+    /*
+     * Digital certificate Guid.
+     */
+    public $certificateGuid;
 	
     /*
      * The file storage which have to be used.

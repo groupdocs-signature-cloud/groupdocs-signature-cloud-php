@@ -54,19 +54,22 @@ class CellsSignTextOptionsData extends SignTextOptionsData
      * @var string[]
      */
     protected static $swaggerTypes = [
+        'documentPageNumber' => 'int',
+        'top' => 'int',
+        'left' => 'int',
         'margin' => '\GroupDocs\Signature\Model\PaddingData',
+        'backgroundBrush' => '\GroupDocs\Signature\Model\BrushData',
         'sheetNumber' => 'int',
         'rowNumber' => 'int',
         'columnNumber' => 'int',
-        'locationMeasureType' => 'string',
-        'sizeMeasureType' => 'string',
-        'marginMeasureType' => 'string',
         'borderVisiblity' => 'bool',
         'borderDashStyle' => 'string',
         'borderTransparency' => 'double',
         'borderWeight' => 'double',
         'backgroundTransparency' => 'double',
-        'signatureImplementation' => 'string'
+        'signatureImplementation' => 'string',
+        'textHorizontalAlignment' => 'string',
+        'textVerticalAlignment' => 'string'
     ];
 
     /*
@@ -75,19 +78,22 @@ class CellsSignTextOptionsData extends SignTextOptionsData
      * @var string[]
      */
     protected static $swaggerFormats = [
+        'documentPageNumber' => 'int32',
+        'top' => 'int32',
+        'left' => 'int32',
         'margin' => null,
+        'backgroundBrush' => null,
         'sheetNumber' => 'int32',
         'rowNumber' => 'int32',
         'columnNumber' => 'int32',
-        'locationMeasureType' => null,
-        'sizeMeasureType' => null,
-        'marginMeasureType' => null,
         'borderVisiblity' => null,
         'borderDashStyle' => null,
         'borderTransparency' => 'double',
         'borderWeight' => 'double',
         'backgroundTransparency' => 'double',
-        'signatureImplementation' => null
+        'signatureImplementation' => null,
+        'textHorizontalAlignment' => null,
+        'textVerticalAlignment' => null
     ];
 
     /*
@@ -117,19 +123,22 @@ class CellsSignTextOptionsData extends SignTextOptionsData
      * @var string[]
      */
     protected static $attributeMap = [
+        'documentPageNumber' => 'DocumentPageNumber',
+        'top' => 'Top',
+        'left' => 'Left',
         'margin' => 'Margin',
+        'backgroundBrush' => 'BackgroundBrush',
         'sheetNumber' => 'SheetNumber',
         'rowNumber' => 'RowNumber',
         'columnNumber' => 'ColumnNumber',
-        'locationMeasureType' => 'LocationMeasureType',
-        'sizeMeasureType' => 'SizeMeasureType',
-        'marginMeasureType' => 'MarginMeasureType',
         'borderVisiblity' => 'BorderVisiblity',
         'borderDashStyle' => 'BorderDashStyle',
         'borderTransparency' => 'BorderTransparency',
         'borderWeight' => 'BorderWeight',
         'backgroundTransparency' => 'BackgroundTransparency',
-        'signatureImplementation' => 'SignatureImplementation'
+        'signatureImplementation' => 'SignatureImplementation',
+        'textHorizontalAlignment' => 'TextHorizontalAlignment',
+        'textVerticalAlignment' => 'TextVerticalAlignment'
     ];
 
     /*
@@ -138,19 +147,22 @@ class CellsSignTextOptionsData extends SignTextOptionsData
      * @var string[]
      */
     protected static $setters = [
+        'documentPageNumber' => 'setDocumentPageNumber',
+        'top' => 'setTop',
+        'left' => 'setLeft',
         'margin' => 'setMargin',
+        'backgroundBrush' => 'setBackgroundBrush',
         'sheetNumber' => 'setSheetNumber',
         'rowNumber' => 'setRowNumber',
         'columnNumber' => 'setColumnNumber',
-        'locationMeasureType' => 'setLocationMeasureType',
-        'sizeMeasureType' => 'setSizeMeasureType',
-        'marginMeasureType' => 'setMarginMeasureType',
         'borderVisiblity' => 'setBorderVisiblity',
         'borderDashStyle' => 'setBorderDashStyle',
         'borderTransparency' => 'setBorderTransparency',
         'borderWeight' => 'setBorderWeight',
         'backgroundTransparency' => 'setBackgroundTransparency',
-        'signatureImplementation' => 'setSignatureImplementation'
+        'signatureImplementation' => 'setSignatureImplementation',
+        'textHorizontalAlignment' => 'setTextHorizontalAlignment',
+        'textVerticalAlignment' => 'setTextVerticalAlignment'
     ];
 
     /*
@@ -159,19 +171,22 @@ class CellsSignTextOptionsData extends SignTextOptionsData
      * @var string[]
      */
     protected static $getters = [
+        'documentPageNumber' => 'getDocumentPageNumber',
+        'top' => 'getTop',
+        'left' => 'getLeft',
         'margin' => 'getMargin',
+        'backgroundBrush' => 'getBackgroundBrush',
         'sheetNumber' => 'getSheetNumber',
         'rowNumber' => 'getRowNumber',
         'columnNumber' => 'getColumnNumber',
-        'locationMeasureType' => 'getLocationMeasureType',
-        'sizeMeasureType' => 'getSizeMeasureType',
-        'marginMeasureType' => 'getMarginMeasureType',
         'borderVisiblity' => 'getBorderVisiblity',
         'borderDashStyle' => 'getBorderDashStyle',
         'borderTransparency' => 'getBorderTransparency',
         'borderWeight' => 'getBorderWeight',
         'backgroundTransparency' => 'getBackgroundTransparency',
-        'signatureImplementation' => 'getSignatureImplementation'
+        'signatureImplementation' => 'getSignatureImplementation',
+        'textHorizontalAlignment' => 'getTextHorizontalAlignment',
+        'textVerticalAlignment' => 'getTextVerticalAlignment'
     ];
 
     /*
@@ -215,15 +230,6 @@ class CellsSignTextOptionsData extends SignTextOptionsData
         return self::$swaggerModelName;
     }
 
-    const LOCATION_MEASURE_TYPE_PIXELS = 'Pixels';
-    const LOCATION_MEASURE_TYPE_PERCENTS = 'Percents';
-    const LOCATION_MEASURE_TYPE_MILLIMETERS = 'Millimeters';
-    const SIZE_MEASURE_TYPE_PIXELS = 'Pixels';
-    const SIZE_MEASURE_TYPE_PERCENTS = 'Percents';
-    const SIZE_MEASURE_TYPE_MILLIMETERS = 'Millimeters';
-    const MARGIN_MEASURE_TYPE_PIXELS = 'Pixels';
-    const MARGIN_MEASURE_TYPE_PERCENTS = 'Percents';
-    const MARGIN_MEASURE_TYPE_MILLIMETERS = 'Millimeters';
     const BORDER_DASH_STYLE_DASH = 'Dash';
     const BORDER_DASH_STYLE_DASH_DOT = 'DashDot';
     const BORDER_DASH_STYLE_DASH_DOT_DOT = 'DashDotDot';
@@ -234,50 +240,14 @@ class CellsSignTextOptionsData extends SignTextOptionsData
     const BORDER_DASH_STYLE_SQUARE_DOT = 'SquareDot';
     const SIGNATURE_IMPLEMENTATION_TEXT_STAMP = 'TextStamp';
     const SIGNATURE_IMPLEMENTATION_TEXT_AS_IMAGE = 'TextAsImage';
+    const TEXT_HORIZONTAL_ALIGNMENT_LEFT = 'Left';
+    const TEXT_HORIZONTAL_ALIGNMENT_CENTER = 'Center';
+    const TEXT_HORIZONTAL_ALIGNMENT_RIGHT = 'Right';
+    const TEXT_VERTICAL_ALIGNMENT_TOP = 'Top';
+    const TEXT_VERTICAL_ALIGNMENT_CENTER = 'Center';
+    const TEXT_VERTICAL_ALIGNMENT_BOTTOM = 'Bottom';
     
 
-    
-    /*
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getLocationMeasureTypeAllowableValues()
-    {
-        return [
-            self::LOCATION_MEASURE_TYPE_PIXELS,
-            self::LOCATION_MEASURE_TYPE_PERCENTS,
-            self::LOCATION_MEASURE_TYPE_MILLIMETERS,
-        ];
-    }
-    
-    /*
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getSizeMeasureTypeAllowableValues()
-    {
-        return [
-            self::SIZE_MEASURE_TYPE_PIXELS,
-            self::SIZE_MEASURE_TYPE_PERCENTS,
-            self::SIZE_MEASURE_TYPE_MILLIMETERS,
-        ];
-    }
-    
-    /*
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getMarginMeasureTypeAllowableValues()
-    {
-        return [
-            self::MARGIN_MEASURE_TYPE_PIXELS,
-            self::MARGIN_MEASURE_TYPE_PERCENTS,
-            self::MARGIN_MEASURE_TYPE_MILLIMETERS,
-        ];
-    }
     
     /*
      * Gets allowable values of the enum
@@ -311,6 +281,34 @@ class CellsSignTextOptionsData extends SignTextOptionsData
         ];
     }
     
+    /*
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getTextHorizontalAlignmentAllowableValues()
+    {
+        return [
+            self::TEXT_HORIZONTAL_ALIGNMENT_LEFT,
+            self::TEXT_HORIZONTAL_ALIGNMENT_CENTER,
+            self::TEXT_HORIZONTAL_ALIGNMENT_RIGHT,
+        ];
+    }
+    
+    /*
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getTextVerticalAlignmentAllowableValues()
+    {
+        return [
+            self::TEXT_VERTICAL_ALIGNMENT_TOP,
+            self::TEXT_VERTICAL_ALIGNMENT_CENTER,
+            self::TEXT_VERTICAL_ALIGNMENT_BOTTOM,
+        ];
+    }
+    
 
 
     /*
@@ -323,19 +321,22 @@ class CellsSignTextOptionsData extends SignTextOptionsData
     {
         parent::__construct($data);
 
+        $this->container['documentPageNumber'] = isset($data['documentPageNumber']) ? $data['documentPageNumber'] : null;
+        $this->container['top'] = isset($data['top']) ? $data['top'] : null;
+        $this->container['left'] = isset($data['left']) ? $data['left'] : null;
         $this->container['margin'] = isset($data['margin']) ? $data['margin'] : null;
+        $this->container['backgroundBrush'] = isset($data['backgroundBrush']) ? $data['backgroundBrush'] : null;
         $this->container['sheetNumber'] = isset($data['sheetNumber']) ? $data['sheetNumber'] : null;
         $this->container['rowNumber'] = isset($data['rowNumber']) ? $data['rowNumber'] : null;
         $this->container['columnNumber'] = isset($data['columnNumber']) ? $data['columnNumber'] : null;
-        $this->container['locationMeasureType'] = isset($data['locationMeasureType']) ? $data['locationMeasureType'] : null;
-        $this->container['sizeMeasureType'] = isset($data['sizeMeasureType']) ? $data['sizeMeasureType'] : null;
-        $this->container['marginMeasureType'] = isset($data['marginMeasureType']) ? $data['marginMeasureType'] : null;
         $this->container['borderVisiblity'] = isset($data['borderVisiblity']) ? $data['borderVisiblity'] : null;
         $this->container['borderDashStyle'] = isset($data['borderDashStyle']) ? $data['borderDashStyle'] : null;
         $this->container['borderTransparency'] = isset($data['borderTransparency']) ? $data['borderTransparency'] : null;
         $this->container['borderWeight'] = isset($data['borderWeight']) ? $data['borderWeight'] : null;
         $this->container['backgroundTransparency'] = isset($data['backgroundTransparency']) ? $data['backgroundTransparency'] : null;
         $this->container['signatureImplementation'] = isset($data['signatureImplementation']) ? $data['signatureImplementation'] : null;
+        $this->container['textHorizontalAlignment'] = isset($data['textHorizontalAlignment']) ? $data['textHorizontalAlignment'] : null;
+        $this->container['textVerticalAlignment'] = isset($data['textVerticalAlignment']) ? $data['textVerticalAlignment'] : null;
     }
 
     /*
@@ -346,30 +347,6 @@ class CellsSignTextOptionsData extends SignTextOptionsData
     public function listInvalidProperties()
     {
         $invalidProperties = parent::listInvalidProperties();
-
-        $allowedValues = $this->getLocationMeasureTypeAllowableValues();
-        if (!in_array($this->container['locationMeasureType'], $allowedValues)) {
-            $invalidProperties[] = sprintf(
-                "invalid value for 'locationMeasureType', must be one of '%s'",
-                implode("', '", $allowedValues)
-            );
-        }
-
-        $allowedValues = $this->getSizeMeasureTypeAllowableValues();
-        if (!in_array($this->container['sizeMeasureType'], $allowedValues)) {
-            $invalidProperties[] = sprintf(
-                "invalid value for 'sizeMeasureType', must be one of '%s'",
-                implode("', '", $allowedValues)
-            );
-        }
-
-        $allowedValues = $this->getMarginMeasureTypeAllowableValues();
-        if (!in_array($this->container['marginMeasureType'], $allowedValues)) {
-            $invalidProperties[] = sprintf(
-                "invalid value for 'marginMeasureType', must be one of '%s'",
-                implode("', '", $allowedValues)
-            );
-        }
 
         $allowedValues = $this->getBorderDashStyleAllowableValues();
         if (!in_array($this->container['borderDashStyle'], $allowedValues)) {
@@ -383,6 +360,22 @@ class CellsSignTextOptionsData extends SignTextOptionsData
         if (!in_array($this->container['signatureImplementation'], $allowedValues)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'signatureImplementation', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getTextHorizontalAlignmentAllowableValues();
+        if (!in_array($this->container['textHorizontalAlignment'], $allowedValues)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'textHorizontalAlignment', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getTextVerticalAlignmentAllowableValues();
+        if (!in_array($this->container['textVerticalAlignment'], $allowedValues)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'textVerticalAlignment', must be one of '%s'",
                 implode("', '", $allowedValues)
             );
         }
@@ -402,18 +395,6 @@ class CellsSignTextOptionsData extends SignTextOptionsData
             return false;
         }
 
-        $allowedValues = $this->getLocationMeasureTypeAllowableValues();
-        if (!in_array($this->container['locationMeasureType'], $allowedValues)) {
-            return false;
-        }
-        $allowedValues = $this->getSizeMeasureTypeAllowableValues();
-        if (!in_array($this->container['sizeMeasureType'], $allowedValues)) {
-            return false;
-        }
-        $allowedValues = $this->getMarginMeasureTypeAllowableValues();
-        if (!in_array($this->container['marginMeasureType'], $allowedValues)) {
-            return false;
-        }
         $allowedValues = $this->getBorderDashStyleAllowableValues();
         if (!in_array($this->container['borderDashStyle'], $allowedValues)) {
             return false;
@@ -422,9 +403,89 @@ class CellsSignTextOptionsData extends SignTextOptionsData
         if (!in_array($this->container['signatureImplementation'], $allowedValues)) {
             return false;
         }
+        $allowedValues = $this->getTextHorizontalAlignmentAllowableValues();
+        if (!in_array($this->container['textHorizontalAlignment'], $allowedValues)) {
+            return false;
+        }
+        $allowedValues = $this->getTextVerticalAlignmentAllowableValues();
+        if (!in_array($this->container['textVerticalAlignment'], $allowedValues)) {
+            return false;
+        }
         return true;
     }
 
+
+    /*
+     * Gets documentPageNumber
+     *
+     * @return int
+     */
+    public function getDocumentPageNumber()
+    {
+        return $this->container['documentPageNumber'];
+    }
+
+    /*
+     * Sets documentPageNumber
+     *
+     * @param int $documentPageNumber Gets or sets worksheet number for signing. Minimal value is 1.
+     *
+     * @return $this
+     */
+    public function setDocumentPageNumber($documentPageNumber)
+    {
+        $this->container['documentPageNumber'] = $documentPageNumber;
+
+        return $this;
+    }
+
+    /*
+     * Gets top
+     *
+     * @return int
+     */
+    public function getTop()
+    {
+        return $this->container['top'];
+    }
+
+    /*
+     * Sets top
+     *
+     * @param int $top Gets or sets the position of the top edge of the Signature area in pixels. This property is mutually exclusive with Row property. If Top property is set RowNumber will be reset to 0.
+     *
+     * @return $this
+     */
+    public function setTop($top)
+    {
+        $this->container['top'] = $top;
+
+        return $this;
+    }
+
+    /*
+     * Gets left
+     *
+     * @return int
+     */
+    public function getLeft()
+    {
+        return $this->container['left'];
+    }
+
+    /*
+     * Sets left
+     *
+     * @param int $left Gets or sets the position of the left edge of the Signature area in pixels. This property is mutually exclusive with Column property. If Left property is set ColumnNumber will be reset to 0.
+     *
+     * @return $this
+     */
+    public function setLeft($left)
+    {
+        $this->container['left'] = $left;
+
+        return $this;
+    }
 
     /*
      * Gets margin
@@ -446,6 +507,30 @@ class CellsSignTextOptionsData extends SignTextOptionsData
     public function setMargin($margin)
     {
         $this->container['margin'] = $margin;
+
+        return $this;
+    }
+
+    /*
+     * Gets backgroundBrush
+     *
+     * @return \GroupDocs\Signature\Model\BrushData
+     */
+    public function getBackgroundBrush()
+    {
+        return $this->container['backgroundBrush'];
+    }
+
+    /*
+     * Sets backgroundBrush
+     *
+     * @param \GroupDocs\Signature\Model\BrushData $backgroundBrush Gets or sets the signature background brush. Value by default is null.  When property has a value it is used instead BackgroundBrush property. For TextStamp implementation RadialGradientBrush is not applicable, it is replaced by LinearGradientBrush. It is not used for Watermark implementation.
+     *
+     * @return $this
+     */
+    public function setBackgroundBrush($backgroundBrush)
+    {
+        $this->container['backgroundBrush'] = $backgroundBrush;
 
         return $this;
     }
@@ -518,93 +603,6 @@ class CellsSignTextOptionsData extends SignTextOptionsData
     public function setColumnNumber($columnNumber)
     {
         $this->container['columnNumber'] = $columnNumber;
-
-        return $this;
-    }
-
-    /*
-     * Gets locationMeasureType
-     *
-     * @return string
-     */
-    public function getLocationMeasureType()
-    {
-        return $this->container['locationMeasureType'];
-    }
-
-    /*
-     * Sets locationMeasureType
-     *
-     * @param string $locationMeasureType Measure type (pixels or percent) for Left and Top properties. This property is obsolete.
-     *
-     * @return $this
-     */
-    public function setLocationMeasureType($locationMeasureType)
-    {
-        $allowedValues = $this->getLocationMeasureTypeAllowableValues();
-        if ((!is_numeric($locationMeasureType) && !in_array($locationMeasureType, $allowedValues)) || (is_numeric($locationMeasureType) && !in_array($allowedValues[$locationMeasureType], $allowedValues))) {
-            throw new \InvalidArgumentException(sprintf("Invalid value for 'locationMeasureType', must be one of '%s'", implode("', '", $allowedValues)));
-        }
-			
-        $this->container['locationMeasureType'] = $locationMeasureType;
-
-        return $this;
-    }
-
-    /*
-     * Gets sizeMeasureType
-     *
-     * @return string
-     */
-    public function getSizeMeasureType()
-    {
-        return $this->container['sizeMeasureType'];
-    }
-
-    /*
-     * Sets sizeMeasureType
-     *
-     * @param string $sizeMeasureType Measure type (pixels or percent) for Width and Height properties. This property is obsolete.
-     *
-     * @return $this
-     */
-    public function setSizeMeasureType($sizeMeasureType)
-    {
-        $allowedValues = $this->getSizeMeasureTypeAllowableValues();
-        if ((!is_numeric($sizeMeasureType) && !in_array($sizeMeasureType, $allowedValues)) || (is_numeric($sizeMeasureType) && !in_array($allowedValues[$sizeMeasureType], $allowedValues))) {
-            throw new \InvalidArgumentException(sprintf("Invalid value for 'sizeMeasureType', must be one of '%s'", implode("', '", $allowedValues)));
-        }
-			
-        $this->container['sizeMeasureType'] = $sizeMeasureType;
-
-        return $this;
-    }
-
-    /*
-     * Gets marginMeasureType
-     *
-     * @return string
-     */
-    public function getMarginMeasureType()
-    {
-        return $this->container['marginMeasureType'];
-    }
-
-    /*
-     * Sets marginMeasureType
-     *
-     * @param string $marginMeasureType Gets or sets the measure type (pixels or percent) for Margin. This property is obsolete.
-     *
-     * @return $this
-     */
-    public function setMarginMeasureType($marginMeasureType)
-    {
-        $allowedValues = $this->getMarginMeasureTypeAllowableValues();
-        if ((!is_numeric($marginMeasureType) && !in_array($marginMeasureType, $allowedValues)) || (is_numeric($marginMeasureType) && !in_array($allowedValues[$marginMeasureType], $allowedValues))) {
-            throw new \InvalidArgumentException(sprintf("Invalid value for 'marginMeasureType', must be one of '%s'", implode("', '", $allowedValues)));
-        }
-			
-        $this->container['marginMeasureType'] = $marginMeasureType;
 
         return $this;
     }
@@ -759,6 +757,64 @@ class CellsSignTextOptionsData extends SignTextOptionsData
         }
 			
         $this->container['signatureImplementation'] = $signatureImplementation;
+
+        return $this;
+    }
+
+    /*
+     * Gets textHorizontalAlignment
+     *
+     * @return string
+     */
+    public function getTextHorizontalAlignment()
+    {
+        return $this->container['textHorizontalAlignment'];
+    }
+
+    /*
+     * Sets textHorizontalAlignment
+     *
+     * @param string $textHorizontalAlignment Horizontal alignment of text inside a signature.
+     *
+     * @return $this
+     */
+    public function setTextHorizontalAlignment($textHorizontalAlignment)
+    {
+        $allowedValues = $this->getTextHorizontalAlignmentAllowableValues();
+        if ((!is_numeric($textHorizontalAlignment) && !in_array($textHorizontalAlignment, $allowedValues)) || (is_numeric($textHorizontalAlignment) && !in_array($allowedValues[$textHorizontalAlignment], $allowedValues))) {
+            throw new \InvalidArgumentException(sprintf("Invalid value for 'textHorizontalAlignment', must be one of '%s'", implode("', '", $allowedValues)));
+        }
+			
+        $this->container['textHorizontalAlignment'] = $textHorizontalAlignment;
+
+        return $this;
+    }
+
+    /*
+     * Gets textVerticalAlignment
+     *
+     * @return string
+     */
+    public function getTextVerticalAlignment()
+    {
+        return $this->container['textVerticalAlignment'];
+    }
+
+    /*
+     * Sets textVerticalAlignment
+     *
+     * @param string $textVerticalAlignment Vertical alignment of text inside a signature.
+     *
+     * @return $this
+     */
+    public function setTextVerticalAlignment($textVerticalAlignment)
+    {
+        $allowedValues = $this->getTextVerticalAlignmentAllowableValues();
+        if ((!is_numeric($textVerticalAlignment) && !in_array($textVerticalAlignment, $allowedValues)) || (is_numeric($textVerticalAlignment) && !in_array($allowedValues[$textVerticalAlignment], $allowedValues))) {
+            throw new \InvalidArgumentException(sprintf("Invalid value for 'textVerticalAlignment', must be one of '%s'", implode("', '", $allowedValues)));
+        }
+			
+        $this->container['textVerticalAlignment'] = $textVerticalAlignment;
 
         return $this;
     }

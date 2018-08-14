@@ -54,7 +54,9 @@ class SearchDigitalOptionsData extends SearchOptionsData
      * @var string[]
      */
     protected static $swaggerTypes = [
-        'documentPageNumber' => 'int'
+        'documentPageNumber' => 'int',
+        'pagesSetup' => '\GroupDocs\Signature\Model\PagesSetupData',
+        'searchAllPages' => 'bool'
     ];
 
     /*
@@ -63,7 +65,9 @@ class SearchDigitalOptionsData extends SearchOptionsData
      * @var string[]
      */
     protected static $swaggerFormats = [
-        'documentPageNumber' => 'int32'
+        'documentPageNumber' => 'int32',
+        'pagesSetup' => null,
+        'searchAllPages' => null
     ];
 
     /*
@@ -93,7 +97,9 @@ class SearchDigitalOptionsData extends SearchOptionsData
      * @var string[]
      */
     protected static $attributeMap = [
-        'documentPageNumber' => 'DocumentPageNumber'
+        'documentPageNumber' => 'DocumentPageNumber',
+        'pagesSetup' => 'PagesSetup',
+        'searchAllPages' => 'SearchAllPages'
     ];
 
     /*
@@ -102,7 +108,9 @@ class SearchDigitalOptionsData extends SearchOptionsData
      * @var string[]
      */
     protected static $setters = [
-        'documentPageNumber' => 'setDocumentPageNumber'
+        'documentPageNumber' => 'setDocumentPageNumber',
+        'pagesSetup' => 'setPagesSetup',
+        'searchAllPages' => 'setSearchAllPages'
     ];
 
     /*
@@ -111,7 +119,9 @@ class SearchDigitalOptionsData extends SearchOptionsData
      * @var string[]
      */
     protected static $getters = [
-        'documentPageNumber' => 'getDocumentPageNumber'
+        'documentPageNumber' => 'getDocumentPageNumber',
+        'pagesSetup' => 'getPagesSetup',
+        'searchAllPages' => 'getSearchAllPages'
     ];
 
     /*
@@ -171,6 +181,8 @@ class SearchDigitalOptionsData extends SearchOptionsData
         parent::__construct($data);
 
         $this->container['documentPageNumber'] = isset($data['documentPageNumber']) ? $data['documentPageNumber'] : null;
+        $this->container['pagesSetup'] = isset($data['pagesSetup']) ? $data['pagesSetup'] : null;
+        $this->container['searchAllPages'] = isset($data['searchAllPages']) ? $data['searchAllPages'] : null;
     }
 
     /*
@@ -214,13 +226,61 @@ class SearchDigitalOptionsData extends SearchOptionsData
     /*
      * Sets documentPageNumber
      *
-     * @param int $documentPageNumber Value is not supported for Digital Signatures search.
+     * @param int $documentPageNumber Gets or sets Document page number for searching. Value is optional.  Value is not supported for Digital Signatures search.
      *
      * @return $this
      */
     public function setDocumentPageNumber($documentPageNumber)
     {
         $this->container['documentPageNumber'] = $documentPageNumber;
+
+        return $this;
+    }
+
+    /*
+     * Gets pagesSetup
+     *
+     * @return \GroupDocs\Signature\Model\PagesSetupData
+     */
+    public function getPagesSetup()
+    {
+        return $this->container['pagesSetup'];
+    }
+
+    /*
+     * Sets pagesSetup
+     *
+     * @param \GroupDocs\Signature\Model\PagesSetupData $pagesSetup Options to specify pages for Signature searching. Value is not supported for Digital Signatures search.
+     *
+     * @return $this
+     */
+    public function setPagesSetup($pagesSetup)
+    {
+        $this->container['pagesSetup'] = $pagesSetup;
+
+        return $this;
+    }
+
+    /*
+     * Gets searchAllPages
+     *
+     * @return bool
+     */
+    public function getSearchAllPages()
+    {
+        return $this->container['searchAllPages'];
+    }
+
+    /*
+     * Sets searchAllPages
+     *
+     * @param bool $searchAllPages Flag to search on each Document page. Value is not supported for Digital Signatures search.
+     *
+     * @return $this
+     */
+    public function setSearchAllPages($searchAllPages)
+    {
+        $this->container['searchAllPages'] = $searchAllPages;
 
         return $this;
     }

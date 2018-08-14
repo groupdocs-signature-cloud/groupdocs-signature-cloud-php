@@ -35,7 +35,7 @@ use \GroupDocs\Signature\ObjectSerializer;
 /*
  * VerifyQRCodeOptionsData
  *
- * @description Verify QRCode Options - keeps options to verify QRCode Signature of Document
+ * @description Verify QRCode Options - keeps options to verify QRCode Signature of Document.
  */
 class VerifyQRCodeOptionsData extends VerifyTextOptionsData 
 {

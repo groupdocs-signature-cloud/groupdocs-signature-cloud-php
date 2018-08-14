@@ -36,7 +36,7 @@ class PostTextRequest
      * Initializes a new instance of the PostTextRequest class.
      *  
      * @param string $name The Document name.
-     * @param \GroupDocs\Signature\Model\SignTextOptionsData $signOptionsData Text Signature Options for corresponding Document Type
+     * @param \GroupDocs\Signature\Model\SignOptionsData $signOptionsData Text Signature Options for corresponding Document Type
      * @param string $password Document password if required.
      * @param string $folder The folder name.
      * @param string $storage The file storage which have to be used.

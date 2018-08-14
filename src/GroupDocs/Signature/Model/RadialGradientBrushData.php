@@ -1,7 +1,7 @@
 <?php
 /*
  * --------------------------------------------------------------------------------------------------------------------
- * <copyright company="Aspose Pty Ltd" file="CellsSignQRCodeOptionsData.php">
+ * <copyright company="Aspose Pty Ltd" file="RadialGradientBrushData.php">
  *   Copyright (c) 2003-2018 Aspose Pty Ltd
  * </copyright>
  * <summary>
@@ -26,18 +26,18 @@
  * --------------------------------------------------------------------------------------------------------------------
  */
 /*
- * CellsSignQRCodeOptionsData
+ * RadialGradientBrushData
  */
 
 namespace GroupDocs\Signature\Model;
 use \GroupDocs\Signature\ObjectSerializer;
 
 /*
- * CellsSignQRCodeOptionsData
+ * RadialGradientBrushData
  *
- * @description Represents the QRCode Signature Options for Cells Documents.
+ * @description Represents radial gradient brush.
  */
-class CellsSignQRCodeOptionsData extends SignQRCodeOptionsData 
+class RadialGradientBrushData extends BrushData 
 {
     const DISCRIMINATOR = null;
 
@@ -46,7 +46,7 @@ class CellsSignQRCodeOptionsData extends SignQRCodeOptionsData
      *
      * @var string
      */
-    protected static $swaggerModelName = "CellsSignQRCodeOptionsData";
+    protected static $swaggerModelName = "RadialGradientBrushData";
 
     /*
      * Array of property to type mappings. Used for (de)serialization
@@ -54,9 +54,8 @@ class CellsSignQRCodeOptionsData extends SignQRCodeOptionsData
      * @var string[]
      */
     protected static $swaggerTypes = [
-        'sheetNumber' => 'int',
-        'rowNumber' => 'int',
-        'columnNumber' => 'int'
+        'innerColor' => '\GroupDocs\Signature\Model\Color',
+        'outerColor' => '\GroupDocs\Signature\Model\Color'
     ];
 
     /*
@@ -65,9 +64,8 @@ class CellsSignQRCodeOptionsData extends SignQRCodeOptionsData
      * @var string[]
      */
     protected static $swaggerFormats = [
-        'sheetNumber' => 'int32',
-        'rowNumber' => 'int32',
-        'columnNumber' => 'int32'
+        'innerColor' => null,
+        'outerColor' => null
     ];
 
     /*
@@ -97,9 +95,8 @@ class CellsSignQRCodeOptionsData extends SignQRCodeOptionsData
      * @var string[]
      */
     protected static $attributeMap = [
-        'sheetNumber' => 'SheetNumber',
-        'rowNumber' => 'RowNumber',
-        'columnNumber' => 'ColumnNumber'
+        'innerColor' => 'InnerColor',
+        'outerColor' => 'OuterColor'
     ];
 
     /*
@@ -108,9 +105,8 @@ class CellsSignQRCodeOptionsData extends SignQRCodeOptionsData
      * @var string[]
      */
     protected static $setters = [
-        'sheetNumber' => 'setSheetNumber',
-        'rowNumber' => 'setRowNumber',
-        'columnNumber' => 'setColumnNumber'
+        'innerColor' => 'setInnerColor',
+        'outerColor' => 'setOuterColor'
     ];
 
     /*
@@ -119,9 +115,8 @@ class CellsSignQRCodeOptionsData extends SignQRCodeOptionsData
      * @var string[]
      */
     protected static $getters = [
-        'sheetNumber' => 'getSheetNumber',
-        'rowNumber' => 'getRowNumber',
-        'columnNumber' => 'getColumnNumber'
+        'innerColor' => 'getInnerColor',
+        'outerColor' => 'getOuterColor'
     ];
 
     /*
@@ -180,9 +175,8 @@ class CellsSignQRCodeOptionsData extends SignQRCodeOptionsData
     {
         parent::__construct($data);
 
-        $this->container['sheetNumber'] = isset($data['sheetNumber']) ? $data['sheetNumber'] : null;
-        $this->container['rowNumber'] = isset($data['rowNumber']) ? $data['rowNumber'] : null;
-        $this->container['columnNumber'] = isset($data['columnNumber']) ? $data['columnNumber'] : null;
+        $this->container['innerColor'] = isset($data['innerColor']) ? $data['innerColor'] : null;
+        $this->container['outerColor'] = isset($data['outerColor']) ? $data['outerColor'] : null;
     }
 
     /*
@@ -214,73 +208,49 @@ class CellsSignQRCodeOptionsData extends SignQRCodeOptionsData
 
 
     /*
-     * Gets sheetNumber
+     * Gets innerColor
      *
-     * @return int
+     * @return \GroupDocs\Signature\Model\Color
      */
-    public function getSheetNumber()
+    public function getInnerColor()
     {
-        return $this->container['sheetNumber'];
+        return $this->container['innerColor'];
     }
 
     /*
-     * Sets sheetNumber
+     * Sets innerColor
      *
-     * @param int $sheetNumber Gets or sets worksheet number for signing. DocumentPageNumber parameter contains the same value.
+     * @param \GroupDocs\Signature\Model\Color $innerColor Gets or sets inner gradient color.
      *
      * @return $this
      */
-    public function setSheetNumber($sheetNumber)
+    public function setInnerColor($innerColor)
     {
-        $this->container['sheetNumber'] = $sheetNumber;
+        $this->container['innerColor'] = $innerColor;
 
         return $this;
     }
 
     /*
-     * Gets rowNumber
+     * Gets outerColor
      *
-     * @return int
+     * @return \GroupDocs\Signature\Model\Color
      */
-    public function getRowNumber()
+    public function getOuterColor()
     {
-        return $this->container['rowNumber'];
+        return $this->container['outerColor'];
     }
 
     /*
-     * Sets rowNumber
+     * Sets outerColor
      *
-     * @param int $rowNumber Gets or sets the top row number of signature (min value is 0). Top parameter contains the same value.
+     * @param \GroupDocs\Signature\Model\Color $outerColor Gets or sets outer gradient color.
      *
      * @return $this
      */
-    public function setRowNumber($rowNumber)
+    public function setOuterColor($outerColor)
     {
-        $this->container['rowNumber'] = $rowNumber;
-
-        return $this;
-    }
-
-    /*
-     * Gets columnNumber
-     *
-     * @return int
-     */
-    public function getColumnNumber()
-    {
-        return $this->container['columnNumber'];
-    }
-
-    /*
-     * Sets columnNumber
-     *
-     * @param int $columnNumber Gets or sets the left column number of signature (min value is 0). Left parameter contains the same value.
-     *
-     * @return $this
-     */
-    public function setColumnNumber($columnNumber)
-    {
-        $this->container['columnNumber'] = $columnNumber;
+        $this->container['outerColor'] = $outerColor;
 
         return $this;
     }

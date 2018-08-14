@@ -35,7 +35,7 @@ use \GroupDocs\Signature\ObjectSerializer;
 /*
  * PdfSignStampOptionsData
  *
- * @description Represents the Stamp Signature Options for Cells Documents.
+ * @description Represents the Stamp Signature Options for Pdf Documents.
  */
 class PdfSignStampOptionsData extends SignStampOptionsData 
 {

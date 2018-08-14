@@ -54,12 +54,18 @@ class ImagesSignTextOptionsData extends SignTextOptionsData
      * @var string[]
      */
     protected static $swaggerTypes = [
-        'opacity' => 'double',
-        'signatureImplementation' => 'string',
         'borderDashStyle' => 'string',
         'borderTransparency' => 'double',
         'borderWeight' => 'double',
-        'backgroundTransparency' => 'double'
+        'backgroundTransparency' => 'double',
+        'signatureImplementation' => 'string',
+        'opacity' => 'double',
+        'documentPageNumber' => 'int',
+        'pagesSetup' => '\GroupDocs\Signature\Model\PagesSetupData',
+        'signAllPages' => 'bool',
+        'backgroundBrush' => '\GroupDocs\Signature\Model\BrushData',
+        'textHorizontalAlignment' => 'string',
+        'textVerticalAlignment' => 'string'
     ];
 
     /*
@@ -68,12 +74,18 @@ class ImagesSignTextOptionsData extends SignTextOptionsData
      * @var string[]
      */
     protected static $swaggerFormats = [
-        'opacity' => 'double',
-        'signatureImplementation' => null,
         'borderDashStyle' => null,
         'borderTransparency' => 'double',
         'borderWeight' => 'double',
-        'backgroundTransparency' => 'double'
+        'backgroundTransparency' => 'double',
+        'signatureImplementation' => null,
+        'opacity' => 'double',
+        'documentPageNumber' => 'int32',
+        'pagesSetup' => null,
+        'signAllPages' => null,
+        'backgroundBrush' => null,
+        'textHorizontalAlignment' => null,
+        'textVerticalAlignment' => null
     ];
 
     /*
@@ -103,12 +115,18 @@ class ImagesSignTextOptionsData extends SignTextOptionsData
      * @var string[]
      */
     protected static $attributeMap = [
-        'opacity' => 'Opacity',
-        'signatureImplementation' => 'SignatureImplementation',
         'borderDashStyle' => 'BorderDashStyle',
         'borderTransparency' => 'BorderTransparency',
         'borderWeight' => 'BorderWeight',
-        'backgroundTransparency' => 'BackgroundTransparency'
+        'backgroundTransparency' => 'BackgroundTransparency',
+        'signatureImplementation' => 'SignatureImplementation',
+        'opacity' => 'Opacity',
+        'documentPageNumber' => 'DocumentPageNumber',
+        'pagesSetup' => 'PagesSetup',
+        'signAllPages' => 'SignAllPages',
+        'backgroundBrush' => 'BackgroundBrush',
+        'textHorizontalAlignment' => 'TextHorizontalAlignment',
+        'textVerticalAlignment' => 'TextVerticalAlignment'
     ];
 
     /*
@@ -117,12 +135,18 @@ class ImagesSignTextOptionsData extends SignTextOptionsData
      * @var string[]
      */
     protected static $setters = [
-        'opacity' => 'setOpacity',
-        'signatureImplementation' => 'setSignatureImplementation',
         'borderDashStyle' => 'setBorderDashStyle',
         'borderTransparency' => 'setBorderTransparency',
         'borderWeight' => 'setBorderWeight',
-        'backgroundTransparency' => 'setBackgroundTransparency'
+        'backgroundTransparency' => 'setBackgroundTransparency',
+        'signatureImplementation' => 'setSignatureImplementation',
+        'opacity' => 'setOpacity',
+        'documentPageNumber' => 'setDocumentPageNumber',
+        'pagesSetup' => 'setPagesSetup',
+        'signAllPages' => 'setSignAllPages',
+        'backgroundBrush' => 'setBackgroundBrush',
+        'textHorizontalAlignment' => 'setTextHorizontalAlignment',
+        'textVerticalAlignment' => 'setTextVerticalAlignment'
     ];
 
     /*
@@ -131,12 +155,18 @@ class ImagesSignTextOptionsData extends SignTextOptionsData
      * @var string[]
      */
     protected static $getters = [
-        'opacity' => 'getOpacity',
-        'signatureImplementation' => 'getSignatureImplementation',
         'borderDashStyle' => 'getBorderDashStyle',
         'borderTransparency' => 'getBorderTransparency',
         'borderWeight' => 'getBorderWeight',
-        'backgroundTransparency' => 'getBackgroundTransparency'
+        'backgroundTransparency' => 'getBackgroundTransparency',
+        'signatureImplementation' => 'getSignatureImplementation',
+        'opacity' => 'getOpacity',
+        'documentPageNumber' => 'getDocumentPageNumber',
+        'pagesSetup' => 'getPagesSetup',
+        'signAllPages' => 'getSignAllPages',
+        'backgroundBrush' => 'getBackgroundBrush',
+        'textHorizontalAlignment' => 'getTextHorizontalAlignment',
+        'textVerticalAlignment' => 'getTextVerticalAlignment'
     ];
 
     /*
@@ -180,8 +210,6 @@ class ImagesSignTextOptionsData extends SignTextOptionsData
         return self::$swaggerModelName;
     }
 
-    const SIGNATURE_IMPLEMENTATION_TEXT_AS_IMAGE = 'TextAsImage';
-    const SIGNATURE_IMPLEMENTATION_WATERMARK = 'Watermark';
     const BORDER_DASH_STYLE__DEFAULT = 'Default';
     const BORDER_DASH_STYLE_SOLID = 'Solid';
     const BORDER_DASH_STYLE_SHORT_DASH = 'ShortDash';
@@ -194,21 +222,16 @@ class ImagesSignTextOptionsData extends SignTextOptionsData
     const BORDER_DASH_STYLE_DASH_DOT = 'DashDot';
     const BORDER_DASH_STYLE_LONG_DASH_DOT = 'LongDashDot';
     const BORDER_DASH_STYLE_LONG_DASH_DOT_DOT = 'LongDashDotDot';
+    const SIGNATURE_IMPLEMENTATION_TEXT_AS_IMAGE = 'TextAsImage';
+    const SIGNATURE_IMPLEMENTATION_WATERMARK = 'Watermark';
+    const TEXT_HORIZONTAL_ALIGNMENT_LEFT = 'Left';
+    const TEXT_HORIZONTAL_ALIGNMENT_CENTER = 'Center';
+    const TEXT_HORIZONTAL_ALIGNMENT_RIGHT = 'Right';
+    const TEXT_VERTICAL_ALIGNMENT_TOP = 'Top';
+    const TEXT_VERTICAL_ALIGNMENT_CENTER = 'Center';
+    const TEXT_VERTICAL_ALIGNMENT_BOTTOM = 'Bottom';
     
 
-    
-    /*
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getSignatureImplementationAllowableValues()
-    {
-        return [
-            self::SIGNATURE_IMPLEMENTATION_TEXT_AS_IMAGE,
-            self::SIGNATURE_IMPLEMENTATION_WATERMARK,
-        ];
-    }
     
     /*
      * Gets allowable values of the enum
@@ -233,6 +256,47 @@ class ImagesSignTextOptionsData extends SignTextOptionsData
         ];
     }
     
+    /*
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getSignatureImplementationAllowableValues()
+    {
+        return [
+            self::SIGNATURE_IMPLEMENTATION_TEXT_AS_IMAGE,
+            self::SIGNATURE_IMPLEMENTATION_WATERMARK,
+        ];
+    }
+    
+    /*
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getTextHorizontalAlignmentAllowableValues()
+    {
+        return [
+            self::TEXT_HORIZONTAL_ALIGNMENT_LEFT,
+            self::TEXT_HORIZONTAL_ALIGNMENT_CENTER,
+            self::TEXT_HORIZONTAL_ALIGNMENT_RIGHT,
+        ];
+    }
+    
+    /*
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getTextVerticalAlignmentAllowableValues()
+    {
+        return [
+            self::TEXT_VERTICAL_ALIGNMENT_TOP,
+            self::TEXT_VERTICAL_ALIGNMENT_CENTER,
+            self::TEXT_VERTICAL_ALIGNMENT_BOTTOM,
+        ];
+    }
+    
 
 
     /*
@@ -245,12 +309,18 @@ class ImagesSignTextOptionsData extends SignTextOptionsData
     {
         parent::__construct($data);
 
-        $this->container['opacity'] = isset($data['opacity']) ? $data['opacity'] : null;
-        $this->container['signatureImplementation'] = isset($data['signatureImplementation']) ? $data['signatureImplementation'] : null;
         $this->container['borderDashStyle'] = isset($data['borderDashStyle']) ? $data['borderDashStyle'] : null;
         $this->container['borderTransparency'] = isset($data['borderTransparency']) ? $data['borderTransparency'] : null;
         $this->container['borderWeight'] = isset($data['borderWeight']) ? $data['borderWeight'] : null;
         $this->container['backgroundTransparency'] = isset($data['backgroundTransparency']) ? $data['backgroundTransparency'] : null;
+        $this->container['signatureImplementation'] = isset($data['signatureImplementation']) ? $data['signatureImplementation'] : null;
+        $this->container['opacity'] = isset($data['opacity']) ? $data['opacity'] : null;
+        $this->container['documentPageNumber'] = isset($data['documentPageNumber']) ? $data['documentPageNumber'] : null;
+        $this->container['pagesSetup'] = isset($data['pagesSetup']) ? $data['pagesSetup'] : null;
+        $this->container['signAllPages'] = isset($data['signAllPages']) ? $data['signAllPages'] : null;
+        $this->container['backgroundBrush'] = isset($data['backgroundBrush']) ? $data['backgroundBrush'] : null;
+        $this->container['textHorizontalAlignment'] = isset($data['textHorizontalAlignment']) ? $data['textHorizontalAlignment'] : null;
+        $this->container['textVerticalAlignment'] = isset($data['textVerticalAlignment']) ? $data['textVerticalAlignment'] : null;
     }
 
     /*
@@ -262,6 +332,14 @@ class ImagesSignTextOptionsData extends SignTextOptionsData
     {
         $invalidProperties = parent::listInvalidProperties();
 
+        $allowedValues = $this->getBorderDashStyleAllowableValues();
+        if (!in_array($this->container['borderDashStyle'], $allowedValues)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'borderDashStyle', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
+
         $allowedValues = $this->getSignatureImplementationAllowableValues();
         if (!in_array($this->container['signatureImplementation'], $allowedValues)) {
             $invalidProperties[] = sprintf(
@@ -270,10 +348,18 @@ class ImagesSignTextOptionsData extends SignTextOptionsData
             );
         }
 
-        $allowedValues = $this->getBorderDashStyleAllowableValues();
-        if (!in_array($this->container['borderDashStyle'], $allowedValues)) {
+        $allowedValues = $this->getTextHorizontalAlignmentAllowableValues();
+        if (!in_array($this->container['textHorizontalAlignment'], $allowedValues)) {
             $invalidProperties[] = sprintf(
-                "invalid value for 'borderDashStyle', must be one of '%s'",
+                "invalid value for 'textHorizontalAlignment', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getTextVerticalAlignmentAllowableValues();
+        if (!in_array($this->container['textVerticalAlignment'], $allowedValues)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'textVerticalAlignment', must be one of '%s'",
                 implode("', '", $allowedValues)
             );
         }
@@ -293,70 +379,25 @@ class ImagesSignTextOptionsData extends SignTextOptionsData
             return false;
         }
 
+        $allowedValues = $this->getBorderDashStyleAllowableValues();
+        if (!in_array($this->container['borderDashStyle'], $allowedValues)) {
+            return false;
+        }
         $allowedValues = $this->getSignatureImplementationAllowableValues();
         if (!in_array($this->container['signatureImplementation'], $allowedValues)) {
             return false;
         }
-        $allowedValues = $this->getBorderDashStyleAllowableValues();
-        if (!in_array($this->container['borderDashStyle'], $allowedValues)) {
+        $allowedValues = $this->getTextHorizontalAlignmentAllowableValues();
+        if (!in_array($this->container['textHorizontalAlignment'], $allowedValues)) {
+            return false;
+        }
+        $allowedValues = $this->getTextVerticalAlignmentAllowableValues();
+        if (!in_array($this->container['textVerticalAlignment'], $allowedValues)) {
             return false;
         }
         return true;
     }
 
-
-    /*
-     * Gets opacity
-     *
-     * @return double
-     */
-    public function getOpacity()
-    {
-        return $this->container['opacity'];
-    }
-
-    /*
-     * Sets opacity
-     *
-     * @param double $opacity Gets or sets the signature opacity (value from 0.0 (clear) through 1.0 (opaque)). By default the value is 1.0.
-     *
-     * @return $this
-     */
-    public function setOpacity($opacity)
-    {
-        $this->container['opacity'] = $opacity;
-
-        return $this;
-    }
-
-    /*
-     * Gets signatureImplementation
-     *
-     * @return string
-     */
-    public function getSignatureImplementation()
-    {
-        return $this->container['signatureImplementation'];
-    }
-
-    /*
-     * Sets signatureImplementation
-     *
-     * @param string $signatureImplementation Gets or sets the type of text signature implementation.
-     *
-     * @return $this
-     */
-    public function setSignatureImplementation($signatureImplementation)
-    {
-        $allowedValues = $this->getSignatureImplementationAllowableValues();
-        if ((!is_numeric($signatureImplementation) && !in_array($signatureImplementation, $allowedValues)) || (is_numeric($signatureImplementation) && !in_array($allowedValues[$signatureImplementation], $allowedValues))) {
-            throw new \InvalidArgumentException(sprintf("Invalid value for 'signatureImplementation', must be one of '%s'", implode("', '", $allowedValues)));
-        }
-			
-        $this->container['signatureImplementation'] = $signatureImplementation;
-
-        return $this;
-    }
 
     /*
      * Gets borderDashStyle
@@ -455,6 +496,213 @@ class ImagesSignTextOptionsData extends SignTextOptionsData
     public function setBackgroundTransparency($backgroundTransparency)
     {
         $this->container['backgroundTransparency'] = $backgroundTransparency;
+
+        return $this;
+    }
+
+    /*
+     * Gets signatureImplementation
+     *
+     * @return string
+     */
+    public function getSignatureImplementation()
+    {
+        return $this->container['signatureImplementation'];
+    }
+
+    /*
+     * Sets signatureImplementation
+     *
+     * @param string $signatureImplementation Gets or sets the type of text signature implementation.
+     *
+     * @return $this
+     */
+    public function setSignatureImplementation($signatureImplementation)
+    {
+        $allowedValues = $this->getSignatureImplementationAllowableValues();
+        if ((!is_numeric($signatureImplementation) && !in_array($signatureImplementation, $allowedValues)) || (is_numeric($signatureImplementation) && !in_array($allowedValues[$signatureImplementation], $allowedValues))) {
+            throw new \InvalidArgumentException(sprintf("Invalid value for 'signatureImplementation', must be one of '%s'", implode("', '", $allowedValues)));
+        }
+			
+        $this->container['signatureImplementation'] = $signatureImplementation;
+
+        return $this;
+    }
+
+    /*
+     * Gets opacity
+     *
+     * @return double
+     */
+    public function getOpacity()
+    {
+        return $this->container['opacity'];
+    }
+
+    /*
+     * Sets opacity
+     *
+     * @param double $opacity Gets or sets the signature opacity (value from 0.0 (clear) through 1.0 (opaque)). By default the value is 1.0.
+     *
+     * @return $this
+     */
+    public function setOpacity($opacity)
+    {
+        $this->container['opacity'] = $opacity;
+
+        return $this;
+    }
+
+    /*
+     * Gets documentPageNumber
+     *
+     * @return int
+     */
+    public function getDocumentPageNumber()
+    {
+        return $this->container['documentPageNumber'];
+    }
+
+    /*
+     * Sets documentPageNumber
+     *
+     * @param int $documentPageNumber Gets or sets document page number for signing. This property can only be used for multi-frames image formats (Tiff). Minimal value is 1.
+     *
+     * @return $this
+     */
+    public function setDocumentPageNumber($documentPageNumber)
+    {
+        $this->container['documentPageNumber'] = $documentPageNumber;
+
+        return $this;
+    }
+
+    /*
+     * Gets pagesSetup
+     *
+     * @return \GroupDocs\Signature\Model\PagesSetupData
+     */
+    public function getPagesSetup()
+    {
+        return $this->container['pagesSetup'];
+    }
+
+    /*
+     * Sets pagesSetup
+     *
+     * @param \GroupDocs\Signature\Model\PagesSetupData $pagesSetup Options to specify pages to be signed. This property can only be used for multi-frames image formats (Tiff).
+     *
+     * @return $this
+     */
+    public function setPagesSetup($pagesSetup)
+    {
+        $this->container['pagesSetup'] = $pagesSetup;
+
+        return $this;
+    }
+
+    /*
+     * Gets signAllPages
+     *
+     * @return bool
+     */
+    public function getSignAllPages()
+    {
+        return $this->container['signAllPages'];
+    }
+
+    /*
+     * Sets signAllPages
+     *
+     * @param bool $signAllPages Put signature on all document pages. This property can only be used for multi-frames image formats (Tiff).
+     *
+     * @return $this
+     */
+    public function setSignAllPages($signAllPages)
+    {
+        $this->container['signAllPages'] = $signAllPages;
+
+        return $this;
+    }
+
+    /*
+     * Gets backgroundBrush
+     *
+     * @return \GroupDocs\Signature\Model\BrushData
+     */
+    public function getBackgroundBrush()
+    {
+        return $this->container['backgroundBrush'];
+    }
+
+    /*
+     * Sets backgroundBrush
+     *
+     * @param \GroupDocs\Signature\Model\BrushData $backgroundBrush Gets or sets the signature background brush. Value by default is null.  When property has a value it is used instead BackgroundBrush property. It is not used for Watermark implementation.
+     *
+     * @return $this
+     */
+    public function setBackgroundBrush($backgroundBrush)
+    {
+        $this->container['backgroundBrush'] = $backgroundBrush;
+
+        return $this;
+    }
+
+    /*
+     * Gets textHorizontalAlignment
+     *
+     * @return string
+     */
+    public function getTextHorizontalAlignment()
+    {
+        return $this->container['textHorizontalAlignment'];
+    }
+
+    /*
+     * Sets textHorizontalAlignment
+     *
+     * @param string $textHorizontalAlignment Horizontal alignment of text inside a signature.
+     *
+     * @return $this
+     */
+    public function setTextHorizontalAlignment($textHorizontalAlignment)
+    {
+        $allowedValues = $this->getTextHorizontalAlignmentAllowableValues();
+        if ((!is_numeric($textHorizontalAlignment) && !in_array($textHorizontalAlignment, $allowedValues)) || (is_numeric($textHorizontalAlignment) && !in_array($allowedValues[$textHorizontalAlignment], $allowedValues))) {
+            throw new \InvalidArgumentException(sprintf("Invalid value for 'textHorizontalAlignment', must be one of '%s'", implode("', '", $allowedValues)));
+        }
+			
+        $this->container['textHorizontalAlignment'] = $textHorizontalAlignment;
+
+        return $this;
+    }
+
+    /*
+     * Gets textVerticalAlignment
+     *
+     * @return string
+     */
+    public function getTextVerticalAlignment()
+    {
+        return $this->container['textVerticalAlignment'];
+    }
+
+    /*
+     * Sets textVerticalAlignment
+     *
+     * @param string $textVerticalAlignment Vertical alignment of text inside a signature.
+     *
+     * @return $this
+     */
+    public function setTextVerticalAlignment($textVerticalAlignment)
+    {
+        $allowedValues = $this->getTextVerticalAlignmentAllowableValues();
+        if ((!is_numeric($textVerticalAlignment) && !in_array($textVerticalAlignment, $allowedValues)) || (is_numeric($textVerticalAlignment) && !in_array($allowedValues[$textVerticalAlignment], $allowedValues))) {
+            throw new \InvalidArgumentException(sprintf("Invalid value for 'textVerticalAlignment', must be one of '%s'", implode("', '", $allowedValues)));
+        }
+			
+        $this->container['textVerticalAlignment'] = $textVerticalAlignment;
 
         return $this;
     }

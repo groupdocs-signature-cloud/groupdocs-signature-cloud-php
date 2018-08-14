@@ -55,6 +55,10 @@ class SignBarcodeOptionsData extends SignTextOptionsData
      */
     protected static $swaggerTypes = [
         'barcodeTypeName' => 'string',
+        'foreColor' => '\GroupDocs\Signature\Model\Color',
+        'borderColor' => '\GroupDocs\Signature\Model\Color',
+        'backgroundColor' => '\GroupDocs\Signature\Model\Color',
+        'backgroundBrush' => '\GroupDocs\Signature\Model\BrushData',
         'borderVisiblity' => 'bool',
         'borderDashStyle' => 'string',
         'borderWeight' => 'double',
@@ -70,6 +74,10 @@ class SignBarcodeOptionsData extends SignTextOptionsData
      */
     protected static $swaggerFormats = [
         'barcodeTypeName' => null,
+        'foreColor' => null,
+        'borderColor' => null,
+        'backgroundColor' => null,
+        'backgroundBrush' => null,
         'borderVisiblity' => null,
         'borderDashStyle' => null,
         'borderWeight' => 'double',
@@ -106,6 +114,10 @@ class SignBarcodeOptionsData extends SignTextOptionsData
      */
     protected static $attributeMap = [
         'barcodeTypeName' => 'BarcodeTypeName',
+        'foreColor' => 'ForeColor',
+        'borderColor' => 'BorderColor',
+        'backgroundColor' => 'BackgroundColor',
+        'backgroundBrush' => 'BackgroundBrush',
         'borderVisiblity' => 'BorderVisiblity',
         'borderDashStyle' => 'BorderDashStyle',
         'borderWeight' => 'BorderWeight',
@@ -121,6 +133,10 @@ class SignBarcodeOptionsData extends SignTextOptionsData
      */
     protected static $setters = [
         'barcodeTypeName' => 'setBarcodeTypeName',
+        'foreColor' => 'setForeColor',
+        'borderColor' => 'setBorderColor',
+        'backgroundColor' => 'setBackgroundColor',
+        'backgroundBrush' => 'setBackgroundBrush',
         'borderVisiblity' => 'setBorderVisiblity',
         'borderDashStyle' => 'setBorderDashStyle',
         'borderWeight' => 'setBorderWeight',
@@ -136,6 +152,10 @@ class SignBarcodeOptionsData extends SignTextOptionsData
      */
     protected static $getters = [
         'barcodeTypeName' => 'getBarcodeTypeName',
+        'foreColor' => 'getForeColor',
+        'borderColor' => 'getBorderColor',
+        'backgroundColor' => 'getBackgroundColor',
+        'backgroundBrush' => 'getBackgroundBrush',
         'borderVisiblity' => 'getBorderVisiblity',
         'borderDashStyle' => 'getBorderDashStyle',
         'borderWeight' => 'getBorderWeight',
@@ -247,6 +267,10 @@ class SignBarcodeOptionsData extends SignTextOptionsData
         parent::__construct($data);
 
         $this->container['barcodeTypeName'] = isset($data['barcodeTypeName']) ? $data['barcodeTypeName'] : null;
+        $this->container['foreColor'] = isset($data['foreColor']) ? $data['foreColor'] : null;
+        $this->container['borderColor'] = isset($data['borderColor']) ? $data['borderColor'] : null;
+        $this->container['backgroundColor'] = isset($data['backgroundColor']) ? $data['backgroundColor'] : null;
+        $this->container['backgroundBrush'] = isset($data['backgroundBrush']) ? $data['backgroundBrush'] : null;
         $this->container['borderVisiblity'] = isset($data['borderVisiblity']) ? $data['borderVisiblity'] : null;
         $this->container['borderDashStyle'] = isset($data['borderDashStyle']) ? $data['borderDashStyle'] : null;
         $this->container['borderWeight'] = isset($data['borderWeight']) ? $data['borderWeight'] : null;
@@ -327,6 +351,102 @@ class SignBarcodeOptionsData extends SignTextOptionsData
     public function setBarcodeTypeName($barcodeTypeName)
     {
         $this->container['barcodeTypeName'] = $barcodeTypeName;
+
+        return $this;
+    }
+
+    /*
+     * Gets foreColor
+     *
+     * @return \GroupDocs\Signature\Model\Color
+     */
+    public function getForeColor()
+    {
+        return $this->container['foreColor'];
+    }
+
+    /*
+     * Sets foreColor
+     *
+     * @param \GroupDocs\Signature\Model\Color $foreColor Gets or sets the Fore color of Barcode bars Using of this property could cause problems with verification. Use it carefully with maximum contrast with background.
+     *
+     * @return $this
+     */
+    public function setForeColor($foreColor)
+    {
+        $this->container['foreColor'] = $foreColor;
+
+        return $this;
+    }
+
+    /*
+     * Gets borderColor
+     *
+     * @return \GroupDocs\Signature\Model\Color
+     */
+    public function getBorderColor()
+    {
+        return $this->container['borderColor'];
+    }
+
+    /*
+     * Sets borderColor
+     *
+     * @param \GroupDocs\Signature\Model\Color $borderColor Gets or sets the border color of signature. Using of this property could cause problems with verification. Use it carefully with maximum contrast with background.
+     *
+     * @return $this
+     */
+    public function setBorderColor($borderColor)
+    {
+        $this->container['borderColor'] = $borderColor;
+
+        return $this;
+    }
+
+    /*
+     * Gets backgroundColor
+     *
+     * @return \GroupDocs\Signature\Model\Color
+     */
+    public function getBackgroundColor()
+    {
+        return $this->container['backgroundColor'];
+    }
+
+    /*
+     * Sets backgroundColor
+     *
+     * @param \GroupDocs\Signature\Model\Color $backgroundColor Gets or sets the background color of signature. Using of this property could cause problems with verification. Use it carefully with maximum contrast with background.
+     *
+     * @return $this
+     */
+    public function setBackgroundColor($backgroundColor)
+    {
+        $this->container['backgroundColor'] = $backgroundColor;
+
+        return $this;
+    }
+
+    /*
+     * Gets backgroundBrush
+     *
+     * @return \GroupDocs\Signature\Model\BrushData
+     */
+    public function getBackgroundBrush()
+    {
+        return $this->container['backgroundBrush'];
+    }
+
+    /*
+     * Sets backgroundBrush
+     *
+     * @param \GroupDocs\Signature\Model\BrushData $backgroundBrush Gets or sets the signature background brush. Value by default is null.  When property has a value it is used instead BackgroundBrush property. BackgroundBrush has limited scope of application for Bar-codes. SolidBrush, LinearGradientBrush (ColorStart) and RadialGradientBrush (ColorInner) are used   instead BackgroundColor. TextureBrush is not used.
+     *
+     * @return $this
+     */
+    public function setBackgroundBrush($backgroundBrush)
+    {
+        $this->container['backgroundBrush'] = $backgroundBrush;
 
         return $this;
     }

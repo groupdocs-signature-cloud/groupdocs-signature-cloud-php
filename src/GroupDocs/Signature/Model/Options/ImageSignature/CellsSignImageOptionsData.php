@@ -55,12 +55,12 @@ class CellsSignImageOptionsData extends SignImageOptionsData
      */
     protected static $swaggerTypes = [
         'margin' => '\GroupDocs\Signature\Model\PaddingData',
+        'documentPageNumber' => 'int',
+        'top' => 'int',
+        'left' => 'int',
         'sheetNumber' => 'int',
         'rowNumber' => 'int',
-        'columnNumber' => 'int',
-        'locationMeasureType' => 'string',
-        'sizeMeasureType' => 'string',
-        'marginMeasureType' => 'string'
+        'columnNumber' => 'int'
     ];
 
     /*
@@ -70,12 +70,12 @@ class CellsSignImageOptionsData extends SignImageOptionsData
      */
     protected static $swaggerFormats = [
         'margin' => null,
+        'documentPageNumber' => 'int32',
+        'top' => 'int32',
+        'left' => 'int32',
         'sheetNumber' => 'int32',
         'rowNumber' => 'int32',
-        'columnNumber' => 'int32',
-        'locationMeasureType' => null,
-        'sizeMeasureType' => null,
-        'marginMeasureType' => null
+        'columnNumber' => 'int32'
     ];
 
     /*
@@ -106,12 +106,12 @@ class CellsSignImageOptionsData extends SignImageOptionsData
      */
     protected static $attributeMap = [
         'margin' => 'Margin',
+        'documentPageNumber' => 'DocumentPageNumber',
+        'top' => 'Top',
+        'left' => 'Left',
         'sheetNumber' => 'SheetNumber',
         'rowNumber' => 'RowNumber',
-        'columnNumber' => 'ColumnNumber',
-        'locationMeasureType' => 'LocationMeasureType',
-        'sizeMeasureType' => 'SizeMeasureType',
-        'marginMeasureType' => 'MarginMeasureType'
+        'columnNumber' => 'ColumnNumber'
     ];
 
     /*
@@ -121,12 +121,12 @@ class CellsSignImageOptionsData extends SignImageOptionsData
      */
     protected static $setters = [
         'margin' => 'setMargin',
+        'documentPageNumber' => 'setDocumentPageNumber',
+        'top' => 'setTop',
+        'left' => 'setLeft',
         'sheetNumber' => 'setSheetNumber',
         'rowNumber' => 'setRowNumber',
-        'columnNumber' => 'setColumnNumber',
-        'locationMeasureType' => 'setLocationMeasureType',
-        'sizeMeasureType' => 'setSizeMeasureType',
-        'marginMeasureType' => 'setMarginMeasureType'
+        'columnNumber' => 'setColumnNumber'
     ];
 
     /*
@@ -136,12 +136,12 @@ class CellsSignImageOptionsData extends SignImageOptionsData
      */
     protected static $getters = [
         'margin' => 'getMargin',
+        'documentPageNumber' => 'getDocumentPageNumber',
+        'top' => 'getTop',
+        'left' => 'getLeft',
         'sheetNumber' => 'getSheetNumber',
         'rowNumber' => 'getRowNumber',
-        'columnNumber' => 'getColumnNumber',
-        'locationMeasureType' => 'getLocationMeasureType',
-        'sizeMeasureType' => 'getSizeMeasureType',
-        'marginMeasureType' => 'getMarginMeasureType'
+        'columnNumber' => 'getColumnNumber'
     ];
 
     /*
@@ -185,59 +185,8 @@ class CellsSignImageOptionsData extends SignImageOptionsData
         return self::$swaggerModelName;
     }
 
-    const LOCATION_MEASURE_TYPE_PIXELS = 'Pixels';
-    const LOCATION_MEASURE_TYPE_PERCENTS = 'Percents';
-    const LOCATION_MEASURE_TYPE_MILLIMETERS = 'Millimeters';
-    const SIZE_MEASURE_TYPE_PIXELS = 'Pixels';
-    const SIZE_MEASURE_TYPE_PERCENTS = 'Percents';
-    const SIZE_MEASURE_TYPE_MILLIMETERS = 'Millimeters';
-    const MARGIN_MEASURE_TYPE_PIXELS = 'Pixels';
-    const MARGIN_MEASURE_TYPE_PERCENTS = 'Percents';
-    const MARGIN_MEASURE_TYPE_MILLIMETERS = 'Millimeters';
     
 
-    
-    /*
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getLocationMeasureTypeAllowableValues()
-    {
-        return [
-            self::LOCATION_MEASURE_TYPE_PIXELS,
-            self::LOCATION_MEASURE_TYPE_PERCENTS,
-            self::LOCATION_MEASURE_TYPE_MILLIMETERS,
-        ];
-    }
-    
-    /*
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getSizeMeasureTypeAllowableValues()
-    {
-        return [
-            self::SIZE_MEASURE_TYPE_PIXELS,
-            self::SIZE_MEASURE_TYPE_PERCENTS,
-            self::SIZE_MEASURE_TYPE_MILLIMETERS,
-        ];
-    }
-    
-    /*
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getMarginMeasureTypeAllowableValues()
-    {
-        return [
-            self::MARGIN_MEASURE_TYPE_PIXELS,
-            self::MARGIN_MEASURE_TYPE_PERCENTS,
-            self::MARGIN_MEASURE_TYPE_MILLIMETERS,
-        ];
-    }
     
 
 
@@ -252,12 +201,12 @@ class CellsSignImageOptionsData extends SignImageOptionsData
         parent::__construct($data);
 
         $this->container['margin'] = isset($data['margin']) ? $data['margin'] : null;
+        $this->container['documentPageNumber'] = isset($data['documentPageNumber']) ? $data['documentPageNumber'] : null;
+        $this->container['top'] = isset($data['top']) ? $data['top'] : null;
+        $this->container['left'] = isset($data['left']) ? $data['left'] : null;
         $this->container['sheetNumber'] = isset($data['sheetNumber']) ? $data['sheetNumber'] : null;
         $this->container['rowNumber'] = isset($data['rowNumber']) ? $data['rowNumber'] : null;
         $this->container['columnNumber'] = isset($data['columnNumber']) ? $data['columnNumber'] : null;
-        $this->container['locationMeasureType'] = isset($data['locationMeasureType']) ? $data['locationMeasureType'] : null;
-        $this->container['sizeMeasureType'] = isset($data['sizeMeasureType']) ? $data['sizeMeasureType'] : null;
-        $this->container['marginMeasureType'] = isset($data['marginMeasureType']) ? $data['marginMeasureType'] : null;
     }
 
     /*
@@ -268,30 +217,6 @@ class CellsSignImageOptionsData extends SignImageOptionsData
     public function listInvalidProperties()
     {
         $invalidProperties = parent::listInvalidProperties();
-
-        $allowedValues = $this->getLocationMeasureTypeAllowableValues();
-        if (!in_array($this->container['locationMeasureType'], $allowedValues)) {
-            $invalidProperties[] = sprintf(
-                "invalid value for 'locationMeasureType', must be one of '%s'",
-                implode("', '", $allowedValues)
-            );
-        }
-
-        $allowedValues = $this->getSizeMeasureTypeAllowableValues();
-        if (!in_array($this->container['sizeMeasureType'], $allowedValues)) {
-            $invalidProperties[] = sprintf(
-                "invalid value for 'sizeMeasureType', must be one of '%s'",
-                implode("', '", $allowedValues)
-            );
-        }
-
-        $allowedValues = $this->getMarginMeasureTypeAllowableValues();
-        if (!in_array($this->container['marginMeasureType'], $allowedValues)) {
-            $invalidProperties[] = sprintf(
-                "invalid value for 'marginMeasureType', must be one of '%s'",
-                implode("', '", $allowedValues)
-            );
-        }
 
         return $invalidProperties;
     }
@@ -308,18 +233,6 @@ class CellsSignImageOptionsData extends SignImageOptionsData
             return false;
         }
 
-        $allowedValues = $this->getLocationMeasureTypeAllowableValues();
-        if (!in_array($this->container['locationMeasureType'], $allowedValues)) {
-            return false;
-        }
-        $allowedValues = $this->getSizeMeasureTypeAllowableValues();
-        if (!in_array($this->container['sizeMeasureType'], $allowedValues)) {
-            return false;
-        }
-        $allowedValues = $this->getMarginMeasureTypeAllowableValues();
-        if (!in_array($this->container['marginMeasureType'], $allowedValues)) {
-            return false;
-        }
         return true;
     }
 
@@ -344,6 +257,78 @@ class CellsSignImageOptionsData extends SignImageOptionsData
     public function setMargin($margin)
     {
         $this->container['margin'] = $margin;
+
+        return $this;
+    }
+
+    /*
+     * Gets documentPageNumber
+     *
+     * @return int
+     */
+    public function getDocumentPageNumber()
+    {
+        return $this->container['documentPageNumber'];
+    }
+
+    /*
+     * Sets documentPageNumber
+     *
+     * @param int $documentPageNumber Gets or sets worksheet number for signing. Minimal value is 1.
+     *
+     * @return $this
+     */
+    public function setDocumentPageNumber($documentPageNumber)
+    {
+        $this->container['documentPageNumber'] = $documentPageNumber;
+
+        return $this;
+    }
+
+    /*
+     * Gets top
+     *
+     * @return int
+     */
+    public function getTop()
+    {
+        return $this->container['top'];
+    }
+
+    /*
+     * Sets top
+     *
+     * @param int $top Gets or sets the position of the top edge of the Signature area in pixels. This property is mutually exclusive with Row property. If Top property is set RowNumber will be reset to 0.
+     *
+     * @return $this
+     */
+    public function setTop($top)
+    {
+        $this->container['top'] = $top;
+
+        return $this;
+    }
+
+    /*
+     * Gets left
+     *
+     * @return int
+     */
+    public function getLeft()
+    {
+        return $this->container['left'];
+    }
+
+    /*
+     * Sets left
+     *
+     * @param int $left Gets or sets the position of the left edge of the Signature area in pixels. This property is mutually exclusive with Column property. If Left property is set ColumnNumber will be reset to 0.
+     *
+     * @return $this
+     */
+    public function setLeft($left)
+    {
+        $this->container['left'] = $left;
 
         return $this;
     }
@@ -416,93 +401,6 @@ class CellsSignImageOptionsData extends SignImageOptionsData
     public function setColumnNumber($columnNumber)
     {
         $this->container['columnNumber'] = $columnNumber;
-
-        return $this;
-    }
-
-    /*
-     * Gets locationMeasureType
-     *
-     * @return string
-     */
-    public function getLocationMeasureType()
-    {
-        return $this->container['locationMeasureType'];
-    }
-
-    /*
-     * Sets locationMeasureType
-     *
-     * @param string $locationMeasureType Measure type (pixels or percent) for Left and Top properties. This property is obsolete.
-     *
-     * @return $this
-     */
-    public function setLocationMeasureType($locationMeasureType)
-    {
-        $allowedValues = $this->getLocationMeasureTypeAllowableValues();
-        if ((!is_numeric($locationMeasureType) && !in_array($locationMeasureType, $allowedValues)) || (is_numeric($locationMeasureType) && !in_array($allowedValues[$locationMeasureType], $allowedValues))) {
-            throw new \InvalidArgumentException(sprintf("Invalid value for 'locationMeasureType', must be one of '%s'", implode("', '", $allowedValues)));
-        }
-			
-        $this->container['locationMeasureType'] = $locationMeasureType;
-
-        return $this;
-    }
-
-    /*
-     * Gets sizeMeasureType
-     *
-     * @return string
-     */
-    public function getSizeMeasureType()
-    {
-        return $this->container['sizeMeasureType'];
-    }
-
-    /*
-     * Sets sizeMeasureType
-     *
-     * @param string $sizeMeasureType Measure type (pixels or percent) for Width and Height properties. This property is obsolete.
-     *
-     * @return $this
-     */
-    public function setSizeMeasureType($sizeMeasureType)
-    {
-        $allowedValues = $this->getSizeMeasureTypeAllowableValues();
-        if ((!is_numeric($sizeMeasureType) && !in_array($sizeMeasureType, $allowedValues)) || (is_numeric($sizeMeasureType) && !in_array($allowedValues[$sizeMeasureType], $allowedValues))) {
-            throw new \InvalidArgumentException(sprintf("Invalid value for 'sizeMeasureType', must be one of '%s'", implode("', '", $allowedValues)));
-        }
-			
-        $this->container['sizeMeasureType'] = $sizeMeasureType;
-
-        return $this;
-    }
-
-    /*
-     * Gets marginMeasureType
-     *
-     * @return string
-     */
-    public function getMarginMeasureType()
-    {
-        return $this->container['marginMeasureType'];
-    }
-
-    /*
-     * Sets marginMeasureType
-     *
-     * @param string $marginMeasureType Gets or sets the measure type (pixels or percent) for Margin. This property is obsolete.
-     *
-     * @return $this
-     */
-    public function setMarginMeasureType($marginMeasureType)
-    {
-        $allowedValues = $this->getMarginMeasureTypeAllowableValues();
-        if ((!is_numeric($marginMeasureType) && !in_array($marginMeasureType, $allowedValues)) || (is_numeric($marginMeasureType) && !in_array($allowedValues[$marginMeasureType], $allowedValues))) {
-            throw new \InvalidArgumentException(sprintf("Invalid value for 'marginMeasureType', must be one of '%s'", implode("', '", $allowedValues)));
-        }
-			
-        $this->container['marginMeasureType'] = $marginMeasureType;
 
         return $this;
     }

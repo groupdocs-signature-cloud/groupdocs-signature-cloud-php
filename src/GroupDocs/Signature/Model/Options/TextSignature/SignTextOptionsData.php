@@ -54,7 +54,6 @@ class SignTextOptionsData extends SignOptionsData
      * @var string[]
      */
     protected static $swaggerTypes = [
-        'text' => 'string',
         'left' => 'int',
         'top' => 'int',
         'width' => 'int',
@@ -67,11 +66,13 @@ class SignTextOptionsData extends SignOptionsData
         'verticalAlignment' => 'string',
         'margin' => '\GroupDocs\Signature\Model\PaddingData',
         'marginMeasureType' => 'string',
+        'text' => 'string',
         'signAllPages' => 'bool',
         'font' => '\GroupDocs\Signature\Model\SignatureFontData',
         'foreColor' => '\GroupDocs\Signature\Model\Color',
         'borderColor' => '\GroupDocs\Signature\Model\Color',
-        'backgroundColor' => '\GroupDocs\Signature\Model\Color'
+        'backgroundColor' => '\GroupDocs\Signature\Model\Color',
+        'backgroundBrush' => '\GroupDocs\Signature\Model\BrushData'
     ];
 
     /*
@@ -80,7 +81,6 @@ class SignTextOptionsData extends SignOptionsData
      * @var string[]
      */
     protected static $swaggerFormats = [
-        'text' => null,
         'left' => 'int32',
         'top' => 'int32',
         'width' => 'int32',
@@ -93,11 +93,13 @@ class SignTextOptionsData extends SignOptionsData
         'verticalAlignment' => null,
         'margin' => null,
         'marginMeasureType' => null,
+        'text' => null,
         'signAllPages' => null,
         'font' => null,
         'foreColor' => null,
         'borderColor' => null,
-        'backgroundColor' => null
+        'backgroundColor' => null,
+        'backgroundBrush' => null
     ];
 
     /*
@@ -127,7 +129,6 @@ class SignTextOptionsData extends SignOptionsData
      * @var string[]
      */
     protected static $attributeMap = [
-        'text' => 'Text',
         'left' => 'Left',
         'top' => 'Top',
         'width' => 'Width',
@@ -140,11 +141,13 @@ class SignTextOptionsData extends SignOptionsData
         'verticalAlignment' => 'VerticalAlignment',
         'margin' => 'Margin',
         'marginMeasureType' => 'MarginMeasureType',
+        'text' => 'Text',
         'signAllPages' => 'SignAllPages',
         'font' => 'Font',
         'foreColor' => 'ForeColor',
         'borderColor' => 'BorderColor',
-        'backgroundColor' => 'BackgroundColor'
+        'backgroundColor' => 'BackgroundColor',
+        'backgroundBrush' => 'BackgroundBrush'
     ];
 
     /*
@@ -153,7 +156,6 @@ class SignTextOptionsData extends SignOptionsData
      * @var string[]
      */
     protected static $setters = [
-        'text' => 'setText',
         'left' => 'setLeft',
         'top' => 'setTop',
         'width' => 'setWidth',
@@ -166,11 +168,13 @@ class SignTextOptionsData extends SignOptionsData
         'verticalAlignment' => 'setVerticalAlignment',
         'margin' => 'setMargin',
         'marginMeasureType' => 'setMarginMeasureType',
+        'text' => 'setText',
         'signAllPages' => 'setSignAllPages',
         'font' => 'setFont',
         'foreColor' => 'setForeColor',
         'borderColor' => 'setBorderColor',
-        'backgroundColor' => 'setBackgroundColor'
+        'backgroundColor' => 'setBackgroundColor',
+        'backgroundBrush' => 'setBackgroundBrush'
     ];
 
     /*
@@ -179,7 +183,6 @@ class SignTextOptionsData extends SignOptionsData
      * @var string[]
      */
     protected static $getters = [
-        'text' => 'getText',
         'left' => 'getLeft',
         'top' => 'getTop',
         'width' => 'getWidth',
@@ -192,11 +195,13 @@ class SignTextOptionsData extends SignOptionsData
         'verticalAlignment' => 'getVerticalAlignment',
         'margin' => 'getMargin',
         'marginMeasureType' => 'getMarginMeasureType',
+        'text' => 'getText',
         'signAllPages' => 'getSignAllPages',
         'font' => 'getFont',
         'foreColor' => 'getForeColor',
         'borderColor' => 'getBorderColor',
-        'backgroundColor' => 'getBackgroundColor'
+        'backgroundColor' => 'getBackgroundColor',
+        'backgroundBrush' => 'getBackgroundBrush'
     ];
 
     /*
@@ -367,7 +372,6 @@ class SignTextOptionsData extends SignOptionsData
     {
         parent::__construct($data);
 
-        $this->container['text'] = isset($data['text']) ? $data['text'] : null;
         $this->container['left'] = isset($data['left']) ? $data['left'] : null;
         $this->container['top'] = isset($data['top']) ? $data['top'] : null;
         $this->container['width'] = isset($data['width']) ? $data['width'] : null;
@@ -380,11 +384,13 @@ class SignTextOptionsData extends SignOptionsData
         $this->container['verticalAlignment'] = isset($data['verticalAlignment']) ? $data['verticalAlignment'] : null;
         $this->container['margin'] = isset($data['margin']) ? $data['margin'] : null;
         $this->container['marginMeasureType'] = isset($data['marginMeasureType']) ? $data['marginMeasureType'] : null;
+        $this->container['text'] = isset($data['text']) ? $data['text'] : null;
         $this->container['signAllPages'] = isset($data['signAllPages']) ? $data['signAllPages'] : null;
         $this->container['font'] = isset($data['font']) ? $data['font'] : null;
         $this->container['foreColor'] = isset($data['foreColor']) ? $data['foreColor'] : null;
         $this->container['borderColor'] = isset($data['borderColor']) ? $data['borderColor'] : null;
         $this->container['backgroundColor'] = isset($data['backgroundColor']) ? $data['backgroundColor'] : null;
+        $this->container['backgroundBrush'] = isset($data['backgroundBrush']) ? $data['backgroundBrush'] : null;
     }
 
     /*
@@ -486,30 +492,6 @@ class SignTextOptionsData extends SignOptionsData
         return true;
     }
 
-
-    /*
-     * Gets text
-     *
-     * @return string
-     */
-    public function getText()
-    {
-        return $this->container['text'];
-    }
-
-    /*
-     * Sets text
-     *
-     * @param string $text Text of signature
-     *
-     * @return $this
-     */
-    public function setText($text)
-    {
-        $this->container['text'] = $text;
-
-        return $this;
-    }
 
     /*
      * Gets left
@@ -830,6 +812,30 @@ class SignTextOptionsData extends SignOptionsData
     }
 
     /*
+     * Gets text
+     *
+     * @return string
+     */
+    public function getText()
+    {
+        return $this->container['text'];
+    }
+
+    /*
+     * Sets text
+     *
+     * @param string $text Text of signature
+     *
+     * @return $this
+     */
+    public function setText($text)
+    {
+        $this->container['text'] = $text;
+
+        return $this;
+    }
+
+    /*
      * Gets signAllPages
      *
      * @return bool
@@ -945,6 +951,30 @@ class SignTextOptionsData extends SignOptionsData
     public function setBackgroundColor($backgroundColor)
     {
         $this->container['backgroundColor'] = $backgroundColor;
+
+        return $this;
+    }
+
+    /*
+     * Gets backgroundBrush
+     *
+     * @return \GroupDocs\Signature\Model\BrushData
+     */
+    public function getBackgroundBrush()
+    {
+        return $this->container['backgroundBrush'];
+    }
+
+    /*
+     * Sets backgroundBrush
+     *
+     * @param \GroupDocs\Signature\Model\BrushData $backgroundBrush Gets or sets the signature background brush. Value by default is null.  If this property has a value it will be used instead BackgroundBrush property.
+     *
+     * @return $this
+     */
+    public function setBackgroundBrush($backgroundBrush)
+    {
+        $this->container['backgroundBrush'] = $backgroundBrush;
 
         return $this;
     }

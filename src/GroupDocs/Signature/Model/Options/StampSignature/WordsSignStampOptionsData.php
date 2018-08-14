@@ -35,7 +35,7 @@ use \GroupDocs\Signature\ObjectSerializer;
 /*
  * WordsSignStampOptionsData
  *
- * @description Represents the Stamp Signature Options for Cells Documents.
+ * @description Represents the Stamp Signature Options for Words Documents.
  */
 class WordsSignStampOptionsData extends SignStampOptionsData 
 {
