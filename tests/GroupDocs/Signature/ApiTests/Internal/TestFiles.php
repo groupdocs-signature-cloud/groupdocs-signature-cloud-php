@@ -241,6 +241,14 @@ class TestFiles
     
     
     /* Image Documents */
+    public static function GetImage00()
+    {
+        $file = new TestFile();
+        $file->fileName = "JohnSmithSign.png";
+        $file->folder = "images";
+        return $file;
+    }
+
     public static function GetImage01()
     {
         $file = new TestFile();
