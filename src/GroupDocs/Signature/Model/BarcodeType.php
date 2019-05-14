@@ -2,7 +2,7 @@
 /*
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose Pty Ltd" file="BarcodeType.php">
- *   Copyright (c) 2003-2018 Aspose Pty Ltd
+ *   Copyright (c) 2003-2019 Aspose Pty Ltd
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -25,9 +25,6 @@
  * </summary>
  * --------------------------------------------------------------------------------------------------------------------
  */
-/*
- * BarcodeType
- */
 
 namespace GroupDocs\Signature\Model;
 
@@ -37,7 +34,7 @@ use \GroupDocs\Signature\ObjectSerializer;
 /*
  * BarcodeType
  *
- * @description Describes Barcode type.
+ * @description Describes Barcode type
  */
 class BarcodeType implements ArrayAccess
 {
@@ -217,7 +214,7 @@ class BarcodeType implements ArrayAccess
     /*
      * Sets name
      *
-     * @param string $name Barcode Type Name
+     * @param string $name Barcode type name
      *
      * @return $this
      */

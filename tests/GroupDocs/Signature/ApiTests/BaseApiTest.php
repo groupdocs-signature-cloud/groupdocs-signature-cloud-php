@@ -2,7 +2,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="BaseApiTest.php">
-*   Copyright (c) 2003-2018 Aspose Pty Ltd
+*   Copyright (c) 2003-2019 Aspose Pty Ltd
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -28,34 +28,42 @@
 namespace GroupDocs\Signature\ApiTests;
 
 use PHPUnit\Framework\TestCase;
-use Aspose\Storage\StorageApi;
 use GroupDocs\Signature\Configuration;
-use GroupDocs\Signature\SignatureApi;
+use GroupDocs\Signature\SignApi;
+use GroupDocs\Signature\InfoApi;
+use GroupDocs\Signature\StorageApi;
+use GroupDocs\Signature\FileApi;
+use GroupDocs\Signature\FolderApi;
+use GroupDocs\Signature\Model\Requests;
 
 abstract class BaseApiTest extends \PHPUnit_Framework_TestCase
 {
     protected static $config;
-    protected static $signatureApi;
+    protected static $signApi;
+    protected static $infoApi;
     protected static $storageApi;
-    
+    protected static $fileApi;
+    protected static $folderApi;
+
     protected static $fontsFolder = "fonts";
     protected static $fromUrlFolder = "tests\\from_url";
     protected static $fromContentFolder = "tests\\from_content";
 
-    protected static $testFilesUploaded;
+    protected static $testFilesUploaded = false;
 
     /**
      * Cleanup after each test case
      */
     public function tearDown()
     {
-        self::_removeTempFiles();
+        self::_deleteFolder("Output");
     }
 
-    private static function _removeTempFiles()
+    private static function _deleteFolder($folder)
     {
-        self::$storageApi->DeleteFolder("cache", null, "true");
-        self::$storageApi->DeleteFolder("tests", null, "true");
+        $request = new Requests\deleteFolderRequest($folder, null, true);
+
+        self::$folderApi->DeleteFolder($request);
     }
 
     /**
@@ -76,18 +84,18 @@ abstract class BaseApiTest extends \PHPUnit_Framework_TestCase
         $appKey = $config["AppKey"];
         $apiBaseUrl = $config["ApiBaseUrl"];
 
-        self::$storageApi = new StorageApi();
-        self::$storageApi->apiClient->appSid = $appSid;
-        self::$storageApi->apiClient->apiKey = $appKey;
-        self::$storageApi->apiClient->apiServer = $apiBaseUrl . "/v1";
-
         self::$config = new Configuration();
         self::$config->setAppSid($appSid);
         self::$config->setAppKey($appKey);
-        self::$config->setHost($apiBaseUrl);
-        self::$signatureApi = new SignatureApi(self::$config);
+        self::$config->setApiBaseUrl($apiBaseUrl);
+        #self::$config->setDebug(true);
 
-        //self::_uploadTestFiles();        
+        self::$signApi = new SignApi(self::$config);
+        self::$infoApi = new InfoApi(self::$config);
+        self::$storageApi = new StorageApi(self::$config);
+        self::$fileApi = new FileApi(self::$config);
+        self::$folderApi = new FolderApi(self::$config);
+        self::_uploadTestFiles();        
     }
 
     private static function _getConfig()
@@ -103,7 +111,7 @@ abstract class BaseApiTest extends \PHPUnit_Framework_TestCase
         if (self::$testFilesUploaded) {
             return;
         }
-        $color1 = \GroupDocs\Signature\Model\Color::$RED;
+        
         $folder = self::_getTestDataPath();
         $dir_iterator = new \RecursiveDirectoryIterator($folder);
         $iterator = new \RecursiveIteratorIterator($dir_iterator, \RecursiveIteratorIterator::SELF_FIRST);
@@ -115,9 +123,11 @@ abstract class BaseApiTest extends \PHPUnit_Framework_TestCase
                 $filePathInStorage = str_replace($folder . '\\', "", $filePath);
                 $filePathInStorage = str_replace("\\", "/", $filePathInStorage);
 
-                $response = self::$storageApi->GetIsExist($filePathInStorage);
-                if (!$response->fileExist->isExist) {
-                    self::$storageApi->PutCreate($filePathInStorage, null, null, $filePath);
+                $isExistRequest = new \GroupDocs\Signature\Model\Requests\objectExistsRequest($filePathInStorage);
+                $isExistResponse = self::$storageApi->objectExists($isExistRequest);
+                if (!$isExistResponse->getExists()) {
+                    $uploadRequest = new \GroupDocs\Signature\Model\Requests\uploadFileRequest($filePathInStorage, $filePath);
+                    $response = self::$fileApi->uploadFile($uploadRequest);
                 }
             }
         }
@@ -150,85 +160,5 @@ abstract class BaseApiTest extends \PHPUnit_Framework_TestCase
         return realpath(self::_getTestDataPath() . DIRECTORY_SEPARATOR .  $file->folder . DIRECTORY_SEPARATOR . $file->fileName);
     }
 
-    protected function getColor($web)
-    {
-        $color = new \GroupDocs\Signature\Model\Color();
-        $color->setWeb($web);
-        return $color;
-    }
-
-    protected function getFont($name,$size,$bold,$italic,$underline)
-    {
-        $font = new \GroupDocs\Signature\Model\SignatureFontData();
-        
-        $font->setFontFamily($name);
-        $font->setFontSize($size);
-        $font->setBold($bold);
-        $font->setItalic($italic);
-        $font->setUnderline($underline);
-        
-        return $font;
-    }
-
-    protected function getPagesSetup($first,$odd,$even,$last)
-    {
-        $pagesSetup = new \GroupDocs\Signature\Model\PagesSetupData();
-        $pagesSetup->setFirstPage($first);
-        $pagesSetup->setOddPages($odd);
-        $pagesSetup->setEvenPages($even);
-        $pagesSetup->setLastPage($last);
-        return $pagesSetup;
-    }
-
-    protected function assertDocumentInfoResponse($file, $response, $format)
-    {
-        $this->assertEquals($file->fileName, $response->getName());
-        $this->assertEquals($file->folder, $response->getFolder());
-        $ext = pathinfo($file->fileName, PATHINFO_EXTENSION);
-        $this->assertEquals($ext, $response->getExtension());
-        $this->assertEquals($format, $response->getFileFormat());
-    }
-
-    protected function assertSignedDocumentResponse($file, $response)
-    {
-        $this->assertEquals($file->fileName, $response->getFileName());
-        $this->assertEquals("Output", $response->getFolder());
-        $this->assertEquals("2", $response->getCode());
-        $this->assertEquals("OK", $response->getStatus());
-    }
-
-    protected function assertVerifiedDocumentResponse($file, $response)
-    {
-        $this->assertEquals($file->fileName, $response->getFileName());
-        $this->assertEquals(true, $response->getResult());
-        $this->assertEquals("OK", $response->getStatus());
-    }
-
-    protected function assertSearchDocumentResponse($file, $response)
-    {
-        $this->assertEquals($file->fileName, $response->getFileName());
-        $this->assertTrue (count($response->getSignatures()) > 0);
-    }
-
-    protected function assertSignedCollectionResponse($file, $response)
-    {
-        $this->assertEquals($file->fileName, $response->getFileName());
-        $this->assertEquals("Output", $response->getFolder());
-        $this->assertEquals("2", $response->getCode());
-        $this->assertEquals("OK", $response->getStatus());
-    }
-
-    protected function assertVerifiedCollectionResponse($file, $response)
-    {
-        $this->assertEquals($file->fileName, $response->getFileName());
-        $this->assertEquals(true, $response->getResult());
-        $this->assertEquals("OK", $response->getStatus());
-    }
-
-    protected function assertSearchCollectionResponse($file, $response)
-    {
-        $this->assertEquals($file->fileName, $response->getFileName());
-        $this->assertTrue (count($response->getSignatures()) > 0);
-    }
 }
 

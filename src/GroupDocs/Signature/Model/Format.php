@@ -2,7 +2,7 @@
 /*
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose Pty Ltd" file="Format.php">
- *   Copyright (c) 2003-2018 Aspose Pty Ltd
+ *   Copyright (c) 2003-2019 Aspose Pty Ltd
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -25,9 +25,6 @@
  * </summary>
  * --------------------------------------------------------------------------------------------------------------------
  */
-/*
- * Format
- */
 
 namespace GroupDocs\Signature\Model;
 
@@ -37,7 +34,7 @@ use \GroupDocs\Signature\ObjectSerializer;
 /*
  * Format
  *
- * @description Format description.
+ * @description File format
  */
 class Format implements ArrayAccess
 {
@@ -56,8 +53,8 @@ class Format implements ArrayAccess
      * @var string[]
      */
     protected static $swaggerTypes = [
-        'fileFormat' => 'string',
-        'extension' => 'string'
+        'extension' => 'string',
+        'fileFormat' => 'string'
     ];
 
     /*
@@ -66,8 +63,8 @@ class Format implements ArrayAccess
      * @var string[]
      */
     protected static $swaggerFormats = [
-        'fileFormat' => null,
-        'extension' => null
+        'extension' => null,
+        'fileFormat' => null
     ];
 
     /*
@@ -97,8 +94,8 @@ class Format implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'fileFormat' => 'FileFormat',
-        'extension' => 'Extension'
+        'extension' => 'Extension',
+        'fileFormat' => 'FileFormat'
     ];
 
     /*
@@ -107,8 +104,8 @@ class Format implements ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'fileFormat' => 'setFileFormat',
-        'extension' => 'setExtension'
+        'extension' => 'setExtension',
+        'fileFormat' => 'setFileFormat'
     ];
 
     /*
@@ -117,8 +114,8 @@ class Format implements ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'fileFormat' => 'getFileFormat',
-        'extension' => 'getExtension'
+        'extension' => 'getExtension',
+        'fileFormat' => 'getFileFormat'
     ];
 
     /*
@@ -181,8 +178,8 @@ class Format implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['fileFormat'] = isset($data['fileFormat']) ? $data['fileFormat'] : null;
         $this->container['extension'] = isset($data['extension']) ? $data['extension'] : null;
+        $this->container['fileFormat'] = isset($data['fileFormat']) ? $data['fileFormat'] : null;
     }
 
     /*
@@ -211,30 +208,6 @@ class Format implements ArrayAccess
 
 
     /*
-     * Gets fileFormat
-     *
-     * @return string
-     */
-    public function getFileFormat()
-    {
-        return $this->container['fileFormat'];
-    }
-
-    /*
-     * Sets fileFormat
-     *
-     * @param string $fileFormat File format.
-     *
-     * @return $this
-     */
-    public function setFileFormat($fileFormat)
-    {
-        $this->container['fileFormat'] = $fileFormat;
-
-        return $this;
-    }
-
-    /*
      * Gets extension
      *
      * @return string
@@ -247,13 +220,37 @@ class Format implements ArrayAccess
     /*
      * Sets extension
      *
-     * @param string $extension File extension.
+     * @param string $extension File format extension
      *
      * @return $this
      */
     public function setExtension($extension)
     {
         $this->container['extension'] = $extension;
+
+        return $this;
+    }
+
+    /*
+     * Gets fileFormat
+     *
+     * @return string
+     */
+    public function getFileFormat()
+    {
+        return $this->container['fileFormat'];
+    }
+
+    /*
+     * Sets fileFormat
+     *
+     * @param string $fileFormat File format name
+     *
+     * @return $this
+     */
+    public function setFileFormat($fileFormat)
+    {
+        $this->container['fileFormat'] = $fileFormat;
 
         return $this;
     }

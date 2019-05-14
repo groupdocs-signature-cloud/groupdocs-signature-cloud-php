@@ -2,7 +2,7 @@
 /*
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose Pty Ltd" file="QRCodeType.php">
- *   Copyright (c) 2003-2018 Aspose Pty Ltd
+ *   Copyright (c) 2003-2019 Aspose Pty Ltd
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -25,9 +25,6 @@
  * </summary>
  * --------------------------------------------------------------------------------------------------------------------
  */
-/*
- * QRCodeType
- */
 
 namespace GroupDocs\Signature\Model;
 
@@ -37,7 +34,7 @@ use \GroupDocs\Signature\ObjectSerializer;
 /*
  * QRCodeType
  *
- * @description Describes QRCode type.
+ * @description Describes QR-code type
  */
 class QRCodeType implements ArrayAccess
 {
@@ -217,7 +214,7 @@ class QRCodeType implements ArrayAccess
     /*
      * Sets name
      *
-     * @param string $name QRCode Type Name
+     * @param string $name QR-code type name
      *
      * @return $this
      */

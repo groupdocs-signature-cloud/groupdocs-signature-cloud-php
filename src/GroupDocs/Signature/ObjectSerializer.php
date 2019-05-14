@@ -2,7 +2,7 @@
 /*
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose Pty Ltd" file="ObjectSerializer.php">
- *   Copyright (c) 2003-2018 Aspose Pty Ltd
+ *   Copyright (c) 2003-2019 Aspose Pty Ltd
  * </copyright>
  * <summary>
  *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -54,19 +54,6 @@ class ObjectSerializer
             }
             return $data;
         } elseif (is_object($data)) {
-            $optionsType = get_class($data);
-            $optionsType = (new \ReflectionClass($data))->getShortName();
-            
-            if ($data instanceof \GroupDocs\Signature\Model\SignOptionsData){
-                $data->setOptionsType($optionsType);  
-            }
-            if ($data instanceof \GroupDocs\Signature\Model\VerifyOptionsData){
-                $data->setOptionsType($optionsType);  
-            }
-            if ($data instanceof \GroupDocs\Signature\Model\SearchOptionsData){
-                $data->setOptionsType($optionsType);  
-            }
-
             $values = [];
             $formats = $data::swaggerFormats();
             foreach ($data::swaggerTypes() as $property => $swaggerType) {
@@ -263,7 +250,7 @@ class ObjectSerializer
             // be interpreted as a missing field/value. Let's handle
             // this graceful.
             if (!empty($data)) {
-                return new \DateTime(date(\DATE_ATOM, preg_match("/^[1-9][0-9]*$/", $data)[0]));
+                return new \DateTime($data);
             } else {
                 return null;
             }
@@ -304,6 +291,14 @@ class ObjectSerializer
                     $class = $subclass;
                 }
             }
+            // Signature type fix 
+            $discriminator = 'signature' . $class::DISCRIMINATOR;
+            if (!empty($discriminator) && isset($data->{$discriminator}) && is_string($data->{$discriminator})) {
+                $subclass = '\GroupDocs\Signature\Model\\' . $data->{$discriminator} . 'Signature';
+                if (is_subclass_of($subclass, $class)) {
+                    $class = $subclass;
+                }
+            }            
             $instance = new $class();
             foreach ($instance::swaggerTypes() as $property => $type) {
                 $propertySetter = $instance::setters()[$property];

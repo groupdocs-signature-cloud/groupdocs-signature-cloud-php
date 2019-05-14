@@ -2,7 +2,7 @@
 /**
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose Pty Ltd" file="ApiException.php">
- *   Copyright (c) 2003-2018 Aspose Pty Ltd
+ *   Copyright (c) 2003-2019 Aspose Pty Ltd
  * </copyright>
  * <summary>
  *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -35,28 +35,6 @@ use \Exception;
  */
 class ApiException extends Exception
 {
-
-    /**
-     * The HTTP body of the server response either as Json or string.
-     *
-     * @var mixed
-     */
-    protected $responseBody;
-
-    /**
-     * The HTTP header of the server response.
-     *
-     * @var string[]|null
-     */
-    protected $responseHeaders;
-
-    /**
-     * The deserialized response object
-     *
-     * @var $responseObject;
-     */
-    protected $responseObject;
-
     /**
      * Constructor
      *
@@ -65,52 +43,8 @@ class ApiException extends Exception
      * @param string[]|null $responseHeaders HTTP response header
      * @param mixed         $responseBody    HTTP decoded body of the server response either as \stdClass or string
      */
-    public function __construct($message = "", $code = 0, $responseHeaders = [], $responseBody = null)
+    public function __construct($message = "", $code = 0)
     {
         parent::__construct($message, $code);
-        $this->responseHeaders = $responseHeaders;
-        $this->responseBody = $responseBody;
-    }
-
-    /**
-     * Gets the HTTP response header
-     *
-     * @return string[]|null HTTP response header
-     */
-    public function getResponseHeaders()
-    {
-        return $this->responseHeaders;
-    }
-
-    /**
-     * Gets the HTTP body of the server response either as Json or string
-     *
-     * @return mixed HTTP body of the server response either as \stdClass or string
-     */
-    public function getResponseBody()
-    {
-        return $this->responseBody;
-    }
-
-    /**
-     * Sets the deseralized response object (during deserialization)
-     *
-     * @param mixed $obj Deserialized response object
-     *
-     * @return void
-     */
-    public function setResponseObject($obj)
-    {
-        $this->responseObject = $obj;
-    }
-
-    /**
-     * Gets the deseralized response object (during deserialization)
-     *
-     * @return mixed the deserialized response object
-     */
-    public function getResponseObject()
-    {
-        return $this->responseObject;
     }
 }

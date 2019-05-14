@@ -2,7 +2,7 @@
 /*
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose Pty Ltd" file="PageInfo.php">
- *   Copyright (c) 2003-2018 Aspose Pty Ltd
+ *   Copyright (c) 2003-2019 Aspose Pty Ltd
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -25,9 +25,6 @@
  * </summary>
  * --------------------------------------------------------------------------------------------------------------------
  */
-/*
- * PageInfo
- */
 
 namespace GroupDocs\Signature\Model;
 
@@ -37,7 +34,7 @@ use \GroupDocs\Signature\ObjectSerializer;
 /*
  * PageInfo
  *
- * @description Page information.
+ * @description Page information
  */
 class PageInfo implements ArrayAccess
 {
@@ -277,7 +274,7 @@ class PageInfo implements ArrayAccess
     /*
      * Sets number
      *
-     * @param int $number Page number.
+     * @param int $number Page number
      *
      * @return $this
      */
@@ -301,7 +298,7 @@ class PageInfo implements ArrayAccess
     /*
      * Sets name
      *
-     * @param string $name Page name.
+     * @param string $name Page name
      *
      * @return $this
      */
@@ -325,7 +322,7 @@ class PageInfo implements ArrayAccess
     /*
      * Sets width
      *
-     * @param int $width Page width.
+     * @param int $width Page width
      *
      * @return $this
      */
@@ -349,7 +346,7 @@ class PageInfo implements ArrayAccess
     /*
      * Sets height
      *
-     * @param int $height Page height.
+     * @param int $height Page height
      *
      * @return $this
      */
@@ -373,7 +370,7 @@ class PageInfo implements ArrayAccess
     /*
      * Sets angle
      *
-     * @param int $angle Page angle.
+     * @param int $angle Page angle
      *
      * @return $this
      */
@@ -397,7 +394,7 @@ class PageInfo implements ArrayAccess
     /*
      * Sets visible
      *
-     * @param bool $visible Page visibility.
+     * @param bool $visible Page visibility
      *
      * @return $this
      */

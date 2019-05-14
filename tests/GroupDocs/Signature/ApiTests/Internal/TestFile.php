@@ -3,7 +3,7 @@
 /*
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose Pty Ltd" file="TestFile.php">
- *   Copyright (c) 2003-2018 Aspose Pty Ltd
+ *   Copyright (c) 2003-2019 Aspose Pty Ltd
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -43,5 +43,26 @@ class TestFile
     
     public $password;
     
-    public $url;
+    public $fileFormat;
+
+    public $maxPageHeight;
+
+    public $maxPageWidth;
+
+    public $pagesCount;
+
+    public $size;
+    
+    public function ToFileInfo()
+    {
+        $fileInfo = new \GroupDocs\Signature\Model\FileInfo();
+        $fileInfo->setFilePath($this->folder . DIRECTORY_SEPARATOR . $this->fileName);
+        $fileInfo->setPassword($this->password);
+        return $fileInfo;
+    } 
+    
+    public function getExt()
+    {
+        return pathinfo($this->fileName, PATHINFO_EXTENSION);
+    }     
 }

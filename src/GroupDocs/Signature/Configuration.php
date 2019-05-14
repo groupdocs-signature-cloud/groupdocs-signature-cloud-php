@@ -2,7 +2,7 @@
 /*
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose Pty Ltd" file="Configuration.php">
- *   Copyright (c) 2003-2018 Aspose Pty Ltd
+ *   Copyright (c) 2003-2019 Aspose Pty Ltd
  * </copyright>
  * <summary>
  *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -36,13 +36,6 @@ class Configuration
     private static $_defaultConfiguration;
 
     /*
-     * Associate array to store API key(s)
-     *
-     * @var string[]
-     */
-    protected $apiKeys = [];
-    
-    /*
      * AppKey for API
      *
      */
@@ -55,60 +48,20 @@ class Configuration
     protected $appSid = '';
 
     /*
-     * Associate array to store API prefix (e.g. Bearer)
+     * API base URL, default value is 'https://api.groupdocs.cloud'
      *
-     * @var string[]
+     * @var string
      */
-    protected $apiKeyPrefixes = [];
+    protected $apiBaseUrl = 'https://api.groupdocs.cloud';
 
-    /*
-     * Access token for OAuth
+     /*
+     * API version, default value is '/v2.0' 
      *
      * @var string
      */
-    protected $accessToken = '';
-    
-    /*
-     * Refresh token for OAuth
-     *
-     * @var string
-     */
-    protected $refreshToken = '';
+    protected $apiVersion = '/v2.0';
 
-    /*
-     * Username for HTTP basic authentication
-     *
-     * @var string
-     */
-    protected $username = '';
-
-    /*
-     * Password for HTTP basic authentication
-     *
-     * @var string
-     */
-    protected $password = '';
-
-    /*
-     * The host, set to 'https://localhost' by default
-     *
-     * @var string
-     */
-    protected $host = 'https://localhost';
-
-    /*
-     * The base path, set to '/v1' by default
-     *
-     * @var string
-     */
-    protected $basePath = '/v1';
-
-    /*
-     * User agent of the HTTP request, set to 'php sdk' by default
-     *
-     * @var string
-     */
-    protected $userAgent = 'php sdk';
+   
 
     /*
      * Debug switch (default set to false)
@@ -132,43 +85,28 @@ class Configuration
     protected $tempFolderPath;
     
     /*
+     * Client name, default value is 'php sdk'
+     *
+     * @var string
+     */
+    protected $clientName = 'php sdk';
+
+    /*
      * Version of client SDK
      *
      */
-    protected $clientVersion = '17.12';
+    protected $clientVersion = '19.5';
 
     /*
      * Constructor
-     *
+     * @param string   $appSid Application identifier (App SID)
+     * @param string   $appKey Application private key (App Key)
      */
     public function __construct()
     {
         $this->tempFolderPath = sys_get_temp_dir();
-    }
-    
-    /*
-     * Gets client version
-     *
-     */
-    public function getClientVersion()
-    {
-        return $this->clientVersion;
-    }
+    } 
 
-    /*
-     * Sets API key
-     *
-     * @param string $apiKeyIdentifier API key identifier (authentication scheme)
-     * @param string $key              API key or token
-     *
-     * @return $this
-     */
-    public function setApiKey($apiKeyIdentifier, $key)
-    {
-        $this->apiKeys[$apiKeyIdentifier] = $key;
-        return $this;
-    }
-    
     /*
      * Sets AppSid
      *
@@ -214,207 +152,26 @@ class Configuration
     }
 
     /*
-     * Gets API key
+     * Sets API base URL
      *
-     * @param string $apiKeyIdentifier API key identifier (authentication scheme)
-     *
-     * @return string API key or token
-     */
-    public function getApiKey($apiKeyIdentifier)
-    {
-        return isset($this->apiKeys[$apiKeyIdentifier]) ? $this->apiKeys[$apiKeyIdentifier] : null;
-    }
-
-    /*
-     * Sets the prefix for API key (e.g. Bearer)
-     *
-     * @param string $apiKeyIdentifier API key identifier (authentication scheme)
-     * @param string $prefix           API key prefix, e.g. Bearer
+     * @param string $apiBaseUrl
      *
      * @return $this
      */
-    public function setApiKeyPrefix($apiKeyIdentifier, $prefix)
+    public function setApiBaseUrl($apiBaseUrl)
     {
-        $this->apiKeyPrefixes[$apiKeyIdentifier] = $prefix;
+        $this->apiBaseUrl = $apiBaseUrl;
         return $this;
     }
 
     /*
-     * Gets API key prefix
+     * Gets API base URL
      *
-     * @param string $apiKeyIdentifier API key identifier (authentication scheme)
-     *
-     * @return string
+     * @return string ApiBaseUrl
      */
-    public function getApiKeyPrefix($apiKeyIdentifier)
+    public function getApiBaseUrl()
     {
-        return isset($this->apiKeyPrefixes[$apiKeyIdentifier]) ? $this->apiKeyPrefixes[$apiKeyIdentifier] : null;
-    }
-
-    /*
-     * Sets the access token for OAuth
-     *
-     * @param string $accessToken Token for OAuth
-     *
-     * @return $this
-     */
-    public function setAccessToken($accessToken)
-    {
-        $this->accessToken = $accessToken;
-        return $this;
-    }
-
-    /*
-     * Gets the access token for OAuth
-     *
-     * @return string Access token for OAuth
-     */
-    public function getAccessToken()
-    {
-        return $this->accessToken;
-    }
-    
-    /*
-     * Sets the refresh token for OAuth
-     *
-     * @param string $refreshToken Token for OAuth
-     *
-     * @return $this
-     */
-    public function setRefreshToken($refreshToken)
-    {
-        $this->refreshToken = $refreshToken;
-        return $this;
-    }
-
-    /*
-     * Gets the refresh token for OAuth
-     *
-     * @return string refresh token for OAuth
-     */
-    public function getRefreshToken()
-    {
-        return $this->refreshToken;
-    }
-
-    /*
-     * Sets the username for HTTP basic authentication
-     *
-     * @param string $username Username for HTTP basic authentication
-     *
-     * @return $this
-     */
-    public function setUsername($username)
-    {
-        $this->username = $username;
-        return $this;
-    }
-
-    /*
-     * Gets the username for HTTP basic authentication
-     *
-     * @return string Username for HTTP basic authentication
-     */
-    public function getUsername()
-    {
-        return $this->username;
-    }
-
-    /*
-     * Sets the password for HTTP basic authentication
-     *
-     * @param string $password Password for HTTP basic authentication
-     *
-     * @return $this
-     */
-    public function setPassword($password)
-    {
-        $this->password = $password;
-        return $this;
-    }
-
-    /*
-     * Gets the password for HTTP basic authentication
-     *
-     * @return string Password for HTTP basic authentication
-     */
-    public function getPassword()
-    {
-        return $this->password;
-    }
-
-    /*
-     * Sets the host
-     *
-     * @param string $host Host
-     *
-     * @return $this
-     */
-    public function setHost($host)
-    {
-        $this->host = $host;
-        return $this;
-    }
-
-    /*
-     * Gets the host
-     *
-     * @return string Host
-     */
-    public function getHost()
-    {
-        return $this->host;
-    }
-
-    /*
-     * Sets the BasePath
-     *
-     * @param string $basePath
-     *
-     * @return $this
-     */
-    public function setBasePath($basePath)
-    {
-        $this->basePath = $basePath;
-        return $this;
-    }
-
-    /*
-     * Gets the basePath
-     *
-     * @return string BasePath
-     */
-    public function getBasePath()
-    {
-        return $this->basePath;
-    }
-
-    /*
-     * Sets the user agent of the api client
-     *
-     * @param string $userAgent the user agent of the api client
-     *
-     * @throws \InvalidArgumentException
-     * @return $this
-     */
-    public function setUserAgent($userAgent)
-    {
-        if (!is_string($userAgent)) {
-            throw new \InvalidArgumentException('User-agent must be a string.');
-        }
-
-        $this->userAgent = $userAgent;
-        return $this;
-    }
-
-    /*
-     * Gets the user agent of the api client
-     *
-     * @return string user agent
-     */
-    public function getUserAgent()
-    {
-        return $this->userAgent;
+        return $this->apiBaseUrl;
     }
 
     /*
@@ -431,7 +188,7 @@ class Configuration
     }
 
     /*
-     * Gets the debug flag
+     * Gets debug flag
      *
      * @return bool
      */
@@ -441,7 +198,7 @@ class Configuration
     }
 
     /*
-     * Sets the debug file
+     * Sets debug file
      *
      * @param string $debugFile Debug file
      *
@@ -454,7 +211,7 @@ class Configuration
     }
 
     /*
-     * Gets the debug file
+     * Gets debug file
      *
      * @return string
      */
@@ -464,7 +221,7 @@ class Configuration
     }
 
     /*
-     * Sets the temp folder path
+     * Sets temp folder path
      *
      * @param string $tempFolderPath Temp folder path
      *
@@ -477,7 +234,7 @@ class Configuration
     }
 
     /*
-     * Gets the temp folder path
+     * Gets temp folder path
      *
      * @return string Temp folder path
      */
@@ -487,7 +244,17 @@ class Configuration
     }
 
     /*
-     * Gets the default configuration instance
+     * Gets server URL
+     *
+     * @return string Server URL e.g. 'https://api.groupdocs.cloud/v2.0'
+     */
+    public function getServerUrl()
+    {
+        return $this->apiBaseUrl . $this->apiVersion;
+    }
+
+    /*
+     * Gets default configuration instance
      *
      * @return Configuration
      */
@@ -501,7 +268,7 @@ class Configuration
     }
 
     /*
-     * Sets the detault configuration instance
+     * Sets detault configuration instance
      *
      * @param Configuration $config An instance of the Configuration Object
      *
@@ -513,7 +280,26 @@ class Configuration
     }
 
     /*
-     * Gets the essential information for debugging
+     * Gets client name, default value is 'php sdk'
+     *
+     * @return string
+     */
+    public function getClientName()
+    {
+        return $this->clientName;
+    }
+
+    /*
+     * Gets client version, default value is '19.5'
+     *
+     */
+    public function getClientVersion()
+    {
+        return $this->clientVersion;
+    }
+
+    /*
+     * Gets essential information for debugging
      *
      * @return string The report for debugging
      */
@@ -522,34 +308,9 @@ class Configuration
         $report  = 'PHP SDK (GroupDocs\Signature) Debug Report:' . PHP_EOL;
         $report .= '    OS: ' . php_uname() . PHP_EOL;
         $report .= '    PHP Version: ' . PHP_VERSION . PHP_EOL;
-        $report .= '    SDK Package Version: 17.12' . PHP_EOL;
+        $report .= '    SDK Package Version: 19.5' . PHP_EOL;
         $report .= '    Temp Folder Path: ' . self::getDefaultConfiguration()->getTempFolderPath() . PHP_EOL;
 
         return $report;
-    }
-
-    /*
-     * Get API key (with prefix if set)
-     *
-     * @param  string $apiKeyIdentifier name of apikey
-     *
-     * @return string API key with the prefix
-     */
-    public function getApiKeyWithPrefix($apiKeyIdentifier)
-    {
-        $prefix = $this->getApiKeyPrefix($apiKeyIdentifier);
-        $apiKey = $this->getApiKey($apiKeyIdentifier);
-
-        if ($apiKey === null) {
-            return null;
-        }
-
-        if ($prefix === null) {
-            $keyWithPrefix = $apiKey;
-        } else {
-            $keyWithPrefix = $prefix . ' ' . $apiKey;
-        }
-
-        return $keyWithPrefix;
     }
 }
