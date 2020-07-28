@@ -2,7 +2,7 @@
 /*
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose Pty Ltd" file="SignApi.php">
- *   Copyright (c) 2003-2019 Aspose Pty Ltd
+ *   Copyright (c) 2003-2020 Aspose Pty Ltd
  * </copyright>
  * <summary>
  *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -358,6 +358,276 @@ class SignApi
     }
 
     /*
+     * Operation deleteSignatures
+     *
+     * Deletes signatures in the document
+     *
+     * @param Requests\deleteSignaturesRequest $request is a request object for operation
+     *
+     * @throws \GroupDocs\Signature\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \GroupDocs\Signature\Model\DeleteResult
+     */
+    public function deleteSignatures(Requests\deleteSignaturesRequest $request)
+    {
+        list($response) = $this->deleteSignaturesWithHttpInfo($request);
+        return $response;
+    }
+
+    /*
+     * Operation deleteSignaturesWithHttpInfo
+     *
+     * Deletes signatures in the document
+     *
+     * @param Requests\deleteSignaturesRequest $request is a request object for operation
+     *
+     * @throws \GroupDocs\Signature\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \GroupDocs\Signature\Model\DeleteResult, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function deleteSignaturesWithHttpInfo(Requests\deleteSignaturesRequest $request)
+    {
+        $returnType = '\GroupDocs\Signature\Model\DeleteResult';
+        $request = $this->deleteSignaturesRequest($request);
+
+        try {
+            $options = $this->_createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                $responseBody = $e->getResponse()->getBody();
+                $content = $responseBody->getContents();
+                $error = json_decode($content);
+
+                $errorCode = $e->getCode();
+                $errorMessage = $error->Error != null && $error->Error->Message != null
+                    ? $error->Error->Message
+                    : $e->getMessage();
+                
+                throw new ApiException($errorMessage, $errorCode);
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {          
+                throw new ApiException(sprintf('[%d] Error connecting to the API (%s)', $statusCode, $request->getUri()), $statusCode);
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+            
+            if ($this->config->getDebug()) {
+                $this->_writeResponseLog($statusCode, $response->getHeaders(), ObjectSerializer::deserialize($content, $returnType, []));
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+            case 200:
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\GroupDocs\Signature\Model\DeleteResult', $e->getResponseHeaders());
+                    $e->setResponseObject($data);
+                break;
+            }
+            throw $e;
+        }
+    }
+
+    /*
+     * Operation deleteSignaturesAsync
+     *
+     * Deletes signatures in the document
+     *
+     * @param Requests\deleteSignaturesRequest $request is a request object for operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function deleteSignaturesAsync(Requests\deleteSignaturesRequest $request) 
+    {
+        return $this->deleteSignaturesAsyncWithHttpInfo($request)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /*
+     * Operation deleteSignaturesAsyncWithHttpInfo
+     *
+     * Deletes signatures in the document
+     *
+     * @param Requests\deleteSignaturesRequest $request is a request object for operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function deleteSignaturesAsyncWithHttpInfo(Requests\deleteSignaturesRequest $request) 
+    {
+        $returnType = '\GroupDocs\Signature\Model\DeleteResult';
+        $request = $this->deleteSignaturesRequest($request);
+
+        return $this->client
+            ->sendAsync($request, $this->_createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+                    
+                    if ($this->config->getDebug()) {
+                        $this->_writeResponseLog($response->getStatusCode(), $response->getHeaders(), ObjectSerializer::deserialize($content, $returnType, []));
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {        
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();        
+          
+                    throw new ApiException(
+                        sprintf('[%d] Error connecting to the API (%s)', $statusCode, $exception->getRequest()->getUri()), $statusCode
+                    );
+                }
+            );
+    }
+
+    /*
+     * Create request for operation 'deleteSignatures'
+     *
+     * @param Requests\deleteSignaturesRequest $request is a request object for operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function deleteSignaturesRequest(Requests\deleteSignaturesRequest $request)
+    {
+        // verify the required parameter 'deleteSettings' is set
+        if ($request->deleteSettings === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $deleteSettings when calling deleteSignatures');
+        }
+
+        $resourcePath = '/signature/delete';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = "";
+        $multipart = false;
+    
+
+    
+    
+        $resourcePath = $this->_buildUrl($resourcePath, $queryParams);
+
+        // body params
+        $_tempBody = null;
+        if (isset($request->deleteSettings)) {
+            if (is_string($request->deleteSettings)) {
+                $_tempBody = "\"" . $request->deleteSettings . "\"";   
+            } else {
+                $_tempBody = $request->deleteSettings;
+            }
+        }
+
+        if ($multipart) {
+            $headers= $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'filename' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = $formParams["data"];
+            }
+        }
+    
+        $this->_requestToken();
+
+        if ($this->accessToken !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->accessToken;
+        }
+
+        $defaultHeaders = [];
+        
+        if ($this->config->getClientName()) {
+            $defaultHeaders['x-groupdocs-client'] = $this->config->getClientName();
+        }
+
+        if ($this->config->getClientVersion()) {
+            $defaultHeaders['x-groupdocs-client-version'] = $this->config->getClientVersion();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+    
+        $req = new Request(
+            'POST',
+            $resourcePath,
+            $headers,
+            $httpBody
+        );
+        if ($this->config->getDebug()) {
+            $this->_writeRequestLog('POST', $resourcePath, $headers, $httpBody);
+        }
+        
+        return $req;
+    }
+
+    /*
      * Operation searchSignatures
      *
      * Searches for signatures applied to the document
@@ -548,6 +818,276 @@ class SignApi
                 $_tempBody = "\"" . $request->searchSettings . "\"";   
             } else {
                 $_tempBody = $request->searchSettings;
+            }
+        }
+
+        if ($multipart) {
+            $headers= $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'filename' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = $formParams["data"];
+            }
+        }
+    
+        $this->_requestToken();
+
+        if ($this->accessToken !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->accessToken;
+        }
+
+        $defaultHeaders = [];
+        
+        if ($this->config->getClientName()) {
+            $defaultHeaders['x-groupdocs-client'] = $this->config->getClientName();
+        }
+
+        if ($this->config->getClientVersion()) {
+            $defaultHeaders['x-groupdocs-client-version'] = $this->config->getClientVersion();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+    
+        $req = new Request(
+            'POST',
+            $resourcePath,
+            $headers,
+            $httpBody
+        );
+        if ($this->config->getDebug()) {
+            $this->_writeRequestLog('POST', $resourcePath, $headers, $httpBody);
+        }
+        
+        return $req;
+    }
+
+    /*
+     * Operation updateSignatures
+     *
+     * Updates signatures in the document
+     *
+     * @param Requests\updateSignaturesRequest $request is a request object for operation
+     *
+     * @throws \GroupDocs\Signature\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \GroupDocs\Signature\Model\UpdateResult
+     */
+    public function updateSignatures(Requests\updateSignaturesRequest $request)
+    {
+        list($response) = $this->updateSignaturesWithHttpInfo($request);
+        return $response;
+    }
+
+    /*
+     * Operation updateSignaturesWithHttpInfo
+     *
+     * Updates signatures in the document
+     *
+     * @param Requests\updateSignaturesRequest $request is a request object for operation
+     *
+     * @throws \GroupDocs\Signature\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \GroupDocs\Signature\Model\UpdateResult, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function updateSignaturesWithHttpInfo(Requests\updateSignaturesRequest $request)
+    {
+        $returnType = '\GroupDocs\Signature\Model\UpdateResult';
+        $request = $this->updateSignaturesRequest($request);
+
+        try {
+            $options = $this->_createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                $responseBody = $e->getResponse()->getBody();
+                $content = $responseBody->getContents();
+                $error = json_decode($content);
+
+                $errorCode = $e->getCode();
+                $errorMessage = $error->Error != null && $error->Error->Message != null
+                    ? $error->Error->Message
+                    : $e->getMessage();
+                
+                throw new ApiException($errorMessage, $errorCode);
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {          
+                throw new ApiException(sprintf('[%d] Error connecting to the API (%s)', $statusCode, $request->getUri()), $statusCode);
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+            
+            if ($this->config->getDebug()) {
+                $this->_writeResponseLog($statusCode, $response->getHeaders(), ObjectSerializer::deserialize($content, $returnType, []));
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+            case 200:
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\GroupDocs\Signature\Model\UpdateResult', $e->getResponseHeaders());
+                    $e->setResponseObject($data);
+                break;
+            }
+            throw $e;
+        }
+    }
+
+    /*
+     * Operation updateSignaturesAsync
+     *
+     * Updates signatures in the document
+     *
+     * @param Requests\updateSignaturesRequest $request is a request object for operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateSignaturesAsync(Requests\updateSignaturesRequest $request) 
+    {
+        return $this->updateSignaturesAsyncWithHttpInfo($request)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /*
+     * Operation updateSignaturesAsyncWithHttpInfo
+     *
+     * Updates signatures in the document
+     *
+     * @param Requests\updateSignaturesRequest $request is a request object for operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateSignaturesAsyncWithHttpInfo(Requests\updateSignaturesRequest $request) 
+    {
+        $returnType = '\GroupDocs\Signature\Model\UpdateResult';
+        $request = $this->updateSignaturesRequest($request);
+
+        return $this->client
+            ->sendAsync($request, $this->_createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+                    
+                    if ($this->config->getDebug()) {
+                        $this->_writeResponseLog($response->getStatusCode(), $response->getHeaders(), ObjectSerializer::deserialize($content, $returnType, []));
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {        
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();        
+          
+                    throw new ApiException(
+                        sprintf('[%d] Error connecting to the API (%s)', $statusCode, $exception->getRequest()->getUri()), $statusCode
+                    );
+                }
+            );
+    }
+
+    /*
+     * Create request for operation 'updateSignatures'
+     *
+     * @param Requests\updateSignaturesRequest $request is a request object for operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function updateSignaturesRequest(Requests\updateSignaturesRequest $request)
+    {
+        // verify the required parameter 'updateSettings' is set
+        if ($request->updateSettings === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $updateSettings when calling updateSignatures');
+        }
+
+        $resourcePath = '/signature/update';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = "";
+        $multipart = false;
+    
+
+    
+    
+        $resourcePath = $this->_buildUrl($resourcePath, $queryParams);
+
+        // body params
+        $_tempBody = null;
+        if (isset($request->updateSettings)) {
+            if (is_string($request->updateSettings)) {
+                $_tempBody = "\"" . $request->updateSettings . "\"";   
+            } else {
+                $_tempBody = $request->updateSettings;
             }
         }
 
@@ -999,7 +1539,7 @@ class SignApi
 /*
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose Pty Ltd" file="createSignaturesRequest.php">
- *   Copyright (c) 2003-2019 Aspose Pty Ltd
+ *   Copyright (c) 2003-2020 Aspose Pty Ltd
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -1047,8 +1587,57 @@ class createSignaturesRequest
 }
 /*
  * --------------------------------------------------------------------------------------------------------------------
+ * <copyright company="Aspose Pty Ltd" file="deleteSignaturesRequest.php">
+ *   Copyright (c) 2003-2020 Aspose Pty Ltd
+ * </copyright>
+ * <summary>
+ *   Permission is hereby granted, free of charge, to any person obtaining a copy
+ *  of this software and associated documentation files (the "Software"), to deal
+ *  in the Software without restriction, including without limitation the rights
+ *  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ *  copies of the Software, and to permit persons to whom the Software is
+ *  furnished to do so, subject to the following conditions:
+ * 
+ *  The above copyright notice and this permission notice shall be included in all
+ *  copies or substantial portions of the Software.
+ * 
+ *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ *  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ *  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ *  SOFTWARE.
+ * </summary>
+ * --------------------------------------------------------------------------------------------------------------------
+ */
+
+namespace GroupDocs\Signature\Model\Requests;
+
+/*
+ * Request model for deleteSignatures operation.
+ */
+class deleteSignaturesRequest
+{
+    /*
+     * Initializes a new instance of the deleteSignaturesRequest class.
+     *  
+     * @param \GroupDocs\Signature\Model\DeleteSettings $deleteSettings Delete signatures settings
+     */
+    public function __construct($deleteSettings)             
+    {
+        $this->deleteSettings = $deleteSettings;
+    }
+
+    /*
+     * Delete signatures settings
+     */
+    public $deleteSettings;
+}
+/*
+ * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose Pty Ltd" file="searchSignaturesRequest.php">
- *   Copyright (c) 2003-2019 Aspose Pty Ltd
+ *   Copyright (c) 2003-2020 Aspose Pty Ltd
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -1096,8 +1685,57 @@ class searchSignaturesRequest
 }
 /*
  * --------------------------------------------------------------------------------------------------------------------
+ * <copyright company="Aspose Pty Ltd" file="updateSignaturesRequest.php">
+ *   Copyright (c) 2003-2020 Aspose Pty Ltd
+ * </copyright>
+ * <summary>
+ *   Permission is hereby granted, free of charge, to any person obtaining a copy
+ *  of this software and associated documentation files (the "Software"), to deal
+ *  in the Software without restriction, including without limitation the rights
+ *  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ *  copies of the Software, and to permit persons to whom the Software is
+ *  furnished to do so, subject to the following conditions:
+ * 
+ *  The above copyright notice and this permission notice shall be included in all
+ *  copies or substantial portions of the Software.
+ * 
+ *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ *  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ *  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ *  SOFTWARE.
+ * </summary>
+ * --------------------------------------------------------------------------------------------------------------------
+ */
+
+namespace GroupDocs\Signature\Model\Requests;
+
+/*
+ * Request model for updateSignatures operation.
+ */
+class updateSignaturesRequest
+{
+    /*
+     * Initializes a new instance of the updateSignaturesRequest class.
+     *  
+     * @param \GroupDocs\Signature\Model\UpdateSettings $updateSettings Update signatures settings
+     */
+    public function __construct($updateSettings)             
+    {
+        $this->updateSettings = $updateSettings;
+    }
+
+    /*
+     * Update signatures settings
+     */
+    public $updateSettings;
+}
+/*
+ * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose Pty Ltd" file="verifySignaturesRequest.php">
- *   Copyright (c) 2003-2019 Aspose Pty Ltd
+ *   Copyright (c) 2003-2020 Aspose Pty Ltd
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy

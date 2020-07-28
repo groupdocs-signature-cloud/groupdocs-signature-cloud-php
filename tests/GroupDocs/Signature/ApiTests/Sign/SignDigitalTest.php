@@ -2,7 +2,7 @@
 /**
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose Pty Ltd">
-*   Copyright (c) 2003-2019 Aspose Pty Ltd
+*   Copyright (c) 2003-2020 Aspose Pty Ltd
 * </copyright>
 * <summary>
 *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -55,7 +55,6 @@ class SignDigitalTest extends  ApiTests\BaseApiTest
         $settings->setSaveOptions($saveOptions);
 
         $options = new Model\SignDigitalOptions();
-        $options->setDocumentType(Model\OptionsBase::DOCUMENT_TYPE_PDF);
         SignOptions::populateDigitalOptions($options);
 
         $settings->setOptions([$options]);
@@ -79,7 +78,6 @@ class SignDigitalTest extends  ApiTests\BaseApiTest
         $settings->setSaveOptions($saveOptions);
 
         $options = new Model\SignDigitalOptions();
-        $options->setDocumentType(Model\OptionsBase::DOCUMENT_TYPE_SPREADSHEET);
         SignOptions::populateDigitalOptions($options);
 
         $settings->setOptions([$options]);
@@ -98,7 +96,6 @@ class SignDigitalTest extends  ApiTests\BaseApiTest
         $settings->setSaveOptions($saveOptions);
 
         $options = new Model\SignDigitalOptions();
-        $options->setDocumentType(Model\OptionsBase::DOCUMENT_TYPE_WORD_PROCESSING);
         SignOptions::populateDigitalOptions($options);
 
         $settings->setOptions([$options]);

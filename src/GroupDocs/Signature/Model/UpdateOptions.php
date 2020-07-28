@@ -1,7 +1,7 @@
 <?php
 /*
  * --------------------------------------------------------------------------------------------------------------------
- * <copyright company="Aspose Pty Ltd" file="Signature.php">
+ * <copyright company="Aspose Pty Ltd" file="UpdateOptions.php">
  *   Copyright (c) 2003-2020 Aspose Pty Ltd
  * </copyright>
  * <summary>
@@ -32,20 +32,20 @@ use \ArrayAccess;
 use \GroupDocs\Signature\ObjectSerializer;
 
 /*
- * Signature
+ * UpdateOptions
  *
- * @description Describes base class for signatures
+ * @description Base container class for update signature options
  */
-class Signature implements ArrayAccess
+class UpdateOptions implements ArrayAccess
 {
-    const DISCRIMINATOR = 'Type';
+    const DISCRIMINATOR = null;
 
     /*
      * The original name of the model.
      *
      * @var string
      */
-    protected static $swaggerModelName = "Signature";
+    protected static $swaggerModelName = "UpdateOptions";
 
     /*
      * Array of property to type mappings. Used for (de)serialization
@@ -54,15 +54,13 @@ class Signature implements ArrayAccess
      */
     protected static $swaggerTypes = [
         'signatureType' => 'string',
-        'pageNumber' => 'int',
         'signatureId' => 'string',
-        'isSignature' => 'bool',
-        'createdOn' => '\DateTime',
-        'modifiedOn' => '\DateTime',
-        'top' => 'int',
         'left' => 'int',
+        'top' => 'int',
         'width' => 'int',
-        'height' => 'int'
+        'height' => 'int',
+        'isSignature' => 'bool',
+        'text' => 'string'
     ];
 
     /*
@@ -72,15 +70,13 @@ class Signature implements ArrayAccess
      */
     protected static $swaggerFormats = [
         'signatureType' => null,
-        'pageNumber' => 'int32',
         'signatureId' => null,
-        'isSignature' => null,
-        'createdOn' => 'date-time',
-        'modifiedOn' => 'date-time',
-        'top' => 'int32',
         'left' => 'int32',
+        'top' => 'int32',
         'width' => 'int32',
-        'height' => 'int32'
+        'height' => 'int32',
+        'isSignature' => null,
+        'text' => null
     ];
 
     /*
@@ -111,15 +107,13 @@ class Signature implements ArrayAccess
      */
     protected static $attributeMap = [
         'signatureType' => 'SignatureType',
-        'pageNumber' => 'PageNumber',
         'signatureId' => 'SignatureId',
-        'isSignature' => 'IsSignature',
-        'createdOn' => 'CreatedOn',
-        'modifiedOn' => 'ModifiedOn',
-        'top' => 'Top',
         'left' => 'Left',
+        'top' => 'Top',
         'width' => 'Width',
-        'height' => 'Height'
+        'height' => 'Height',
+        'isSignature' => 'IsSignature',
+        'text' => 'Text'
     ];
 
     /*
@@ -129,15 +123,13 @@ class Signature implements ArrayAccess
      */
     protected static $setters = [
         'signatureType' => 'setSignatureType',
-        'pageNumber' => 'setPageNumber',
         'signatureId' => 'setSignatureId',
-        'isSignature' => 'setIsSignature',
-        'createdOn' => 'setCreatedOn',
-        'modifiedOn' => 'setModifiedOn',
-        'top' => 'setTop',
         'left' => 'setLeft',
+        'top' => 'setTop',
         'width' => 'setWidth',
-        'height' => 'setHeight'
+        'height' => 'setHeight',
+        'isSignature' => 'setIsSignature',
+        'text' => 'setText'
     ];
 
     /*
@@ -147,15 +139,13 @@ class Signature implements ArrayAccess
      */
     protected static $getters = [
         'signatureType' => 'getSignatureType',
-        'pageNumber' => 'getPageNumber',
         'signatureId' => 'getSignatureId',
-        'isSignature' => 'getIsSignature',
-        'createdOn' => 'getCreatedOn',
-        'modifiedOn' => 'getModifiedOn',
-        'top' => 'getTop',
         'left' => 'getLeft',
+        'top' => 'getTop',
         'width' => 'getWidth',
-        'height' => 'getHeight'
+        'height' => 'getHeight',
+        'isSignature' => 'getIsSignature',
+        'text' => 'getText'
     ];
 
     /*
@@ -244,19 +234,13 @@ class Signature implements ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['signatureType'] = isset($data['signatureType']) ? $data['signatureType'] : null;
-        $this->container['pageNumber'] = isset($data['pageNumber']) ? $data['pageNumber'] : null;
         $this->container['signatureId'] = isset($data['signatureId']) ? $data['signatureId'] : null;
-        $this->container['isSignature'] = isset($data['isSignature']) ? $data['isSignature'] : null;
-        $this->container['createdOn'] = isset($data['createdOn']) ? $data['createdOn'] : null;
-        $this->container['modifiedOn'] = isset($data['modifiedOn']) ? $data['modifiedOn'] : null;
-        $this->container['top'] = isset($data['top']) ? $data['top'] : null;
         $this->container['left'] = isset($data['left']) ? $data['left'] : null;
+        $this->container['top'] = isset($data['top']) ? $data['top'] : null;
         $this->container['width'] = isset($data['width']) ? $data['width'] : null;
         $this->container['height'] = isset($data['height']) ? $data['height'] : null;
-
-        // Initialize discriminator property with the model name.
-        $discriminator = array_search('Type', self::$attributeMap);
-        $this->container[$discriminator] = static::$swaggerModelName;
+        $this->container['isSignature'] = isset($data['isSignature']) ? $data['isSignature'] : null;
+        $this->container['text'] = isset($data['text']) ? $data['text'] : null;
     }
 
     /*
@@ -279,26 +263,20 @@ class Signature implements ArrayAccess
             );
         }
 
-        if ($this->container['isSignature'] === null) {
-            $invalidProperties[] = "'isSignature' can't be null";
-        }
-        if ($this->container['createdOn'] === null) {
-            $invalidProperties[] = "'createdOn' can't be null";
-        }
-        if ($this->container['modifiedOn'] === null) {
-            $invalidProperties[] = "'modifiedOn' can't be null";
+        if ($this->container['left'] === null) {
+            $invalidProperties[] = "'left' can't be null";
         }
         if ($this->container['top'] === null) {
             $invalidProperties[] = "'top' can't be null";
-        }
-        if ($this->container['left'] === null) {
-            $invalidProperties[] = "'left' can't be null";
         }
         if ($this->container['width'] === null) {
             $invalidProperties[] = "'width' can't be null";
         }
         if ($this->container['height'] === null) {
             $invalidProperties[] = "'height' can't be null";
+        }
+        if ($this->container['isSignature'] === null) {
+            $invalidProperties[] = "'isSignature' can't be null";
         }
         return $invalidProperties;
     }
@@ -319,25 +297,19 @@ class Signature implements ArrayAccess
         if (!in_array($this->container['signatureType'], $allowedValues)) {
             return false;
         }
-        if ($this->container['isSignature'] === null) {
-            return false;
-        }
-        if ($this->container['createdOn'] === null) {
-            return false;
-        }
-        if ($this->container['modifiedOn'] === null) {
+        if ($this->container['left'] === null) {
             return false;
         }
         if ($this->container['top'] === null) {
-            return false;
-        }
-        if ($this->container['left'] === null) {
             return false;
         }
         if ($this->container['width'] === null) {
             return false;
         }
         if ($this->container['height'] === null) {
+            return false;
+        }
+        if ($this->container['isSignature'] === null) {
             return false;
         }
         return true;
@@ -357,7 +329,7 @@ class Signature implements ArrayAccess
     /*
      * Sets signatureType
      *
-     * @param string $signatureType Specifies the signature type (Text, Image, Digital, Barcode, QRCode, Stamp)
+     * @param string $signatureType Specifies the type of signature
      *
      * @return $this
      */
@@ -369,30 +341,6 @@ class Signature implements ArrayAccess
         }
 			
         $this->container['signatureType'] = $signatureType;
-
-        return $this;
-    }
-
-    /*
-     * Gets pageNumber
-     *
-     * @return int
-     */
-    public function getPageNumber()
-    {
-        return $this->container['pageNumber'];
-    }
-
-    /*
-     * Sets pageNumber
-     *
-     * @param int $pageNumber Specifies the page signature was found on
-     *
-     * @return $this
-     */
-    public function setPageNumber($pageNumber)
-    {
-        $this->container['pageNumber'] = $pageNumber;
 
         return $this;
     }
@@ -422,73 +370,25 @@ class Signature implements ArrayAccess
     }
 
     /*
-     * Gets isSignature
+     * Gets left
      *
-     * @return bool
+     * @return int
      */
-    public function getIsSignature()
+    public function getLeft()
     {
-        return $this->container['isSignature'];
+        return $this->container['left'];
     }
 
     /*
-     * Sets isSignature
+     * Sets left
      *
-     * @param bool $isSignature Get or set flag to indicate if this component is Signature or document content. This property is being used with Update method to set element as signature (true) or document element (false).
+     * @param int $left Specifies left position of signature
      *
      * @return $this
      */
-    public function setIsSignature($isSignature)
+    public function setLeft($left)
     {
-        $this->container['isSignature'] = $isSignature;
-
-        return $this;
-    }
-
-    /*
-     * Gets createdOn
-     *
-     * @return \DateTime
-     */
-    public function getCreatedOn()
-    {
-        return $this->container['createdOn'];
-    }
-
-    /*
-     * Sets createdOn
-     *
-     * @param \DateTime $createdOn Get or set the signature creation date
-     *
-     * @return $this
-     */
-    public function setCreatedOn($createdOn)
-    {
-        $this->container['createdOn'] = $createdOn;
-
-        return $this;
-    }
-
-    /*
-     * Gets modifiedOn
-     *
-     * @return \DateTime
-     */
-    public function getModifiedOn()
-    {
-        return $this->container['modifiedOn'];
-    }
-
-    /*
-     * Sets modifiedOn
-     *
-     * @param \DateTime $modifiedOn Get or set the signature modification date
-     *
-     * @return $this
-     */
-    public function setModifiedOn($modifiedOn)
-    {
-        $this->container['modifiedOn'] = $modifiedOn;
+        $this->container['left'] = $left;
 
         return $this;
     }
@@ -513,30 +413,6 @@ class Signature implements ArrayAccess
     public function setTop($top)
     {
         $this->container['top'] = $top;
-
-        return $this;
-    }
-
-    /*
-     * Gets left
-     *
-     * @return int
-     */
-    public function getLeft()
-    {
-        return $this->container['left'];
-    }
-
-    /*
-     * Sets left
-     *
-     * @param int $left Specifies left position of signature
-     *
-     * @return $this
-     */
-    public function setLeft($left)
-    {
-        $this->container['left'] = $left;
 
         return $this;
     }
@@ -585,6 +461,54 @@ class Signature implements ArrayAccess
     public function setHeight($height)
     {
         $this->container['height'] = $height;
+
+        return $this;
+    }
+
+    /*
+     * Gets isSignature
+     *
+     * @return bool
+     */
+    public function getIsSignature()
+    {
+        return $this->container['isSignature'];
+    }
+
+    /*
+     * Sets isSignature
+     *
+     * @param bool $isSignature Get or set flag to indicate if this component is Signature or document content. This property is being used with Update method to set element as signature (true) or document element (false).
+     *
+     * @return $this
+     */
+    public function setIsSignature($isSignature)
+    {
+        $this->container['isSignature'] = $isSignature;
+
+        return $this;
+    }
+
+    /*
+     * Gets text
+     *
+     * @return string
+     */
+    public function getText()
+    {
+        return $this->container['text'];
+    }
+
+    /*
+     * Sets text
+     *
+     * @param string $text The text to update text signature
+     *
+     * @return $this
+     */
+    public function setText($text)
+    {
+        $this->container['text'] = $text;
 
         return $this;
     }

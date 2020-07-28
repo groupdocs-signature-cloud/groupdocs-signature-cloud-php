@@ -2,7 +2,7 @@
 /**
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose Pty Ltd">
-*   Copyright (c) 2003-2019 Aspose Pty Ltd
+*   Copyright (c) 2003-2020 Aspose Pty Ltd
 * </copyright>
 * <summary>
 *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -51,7 +51,6 @@ class VerifyTextTest extends  ApiTests\BaseApiTest
         $settings->setFileInfo($file->ToFileInfo());
 
         $options = new Model\VerifyTextOptions();
-        $options->setDocumentType(Model\OptionsBase::DOCUMENT_TYPE_PDF);
         VerifyOptions::populateTextOptions($options);
 
         $settings->setOptions([$options]);
@@ -66,7 +65,6 @@ class VerifyTextTest extends  ApiTests\BaseApiTest
         $settings->setFileInfo($file->ToFileInfo());
 
         $options = new Model\VerifyTextOptions();
-        $options->setDocumentType(Model\OptionsBase::DOCUMENT_TYPE_PRESENTATION);
         VerifyOptions::populateTextOptions($options);
 
         $settings->setOptions([$options]);
@@ -81,7 +79,6 @@ class VerifyTextTest extends  ApiTests\BaseApiTest
         $settings->setFileInfo($file->ToFileInfo());
 
         $options = new Model\VerifyTextOptions();
-        $options->setDocumentType(Model\OptionsBase::DOCUMENT_TYPE_SPREADSHEET);
         VerifyOptions::populateTextOptions($options);
 
         $settings->setOptions([$options]);
@@ -96,7 +93,6 @@ class VerifyTextTest extends  ApiTests\BaseApiTest
         $settings->setFileInfo($file->ToFileInfo());
 
         $options = new Model\VerifyTextOptions();
-        $options->setDocumentType(Model\OptionsBase::DOCUMENT_TYPE_WORD_PROCESSING);
         VerifyOptions::populateTextOptions($options);
 
         $settings->setOptions([$options]);

@@ -2,7 +2,7 @@
 /*
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose Pty Ltd" file="SignResult.php">
- *   Copyright (c) 2003-2019 Aspose Pty Ltd
+ *   Copyright (c) 2003-2020 Aspose Pty Ltd
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -55,7 +55,9 @@ class SignResult implements ArrayAccess
     protected static $swaggerTypes = [
         'fileInfo' => '\GroupDocs\Signature\Model\FileInfo',
         'size' => 'int',
-        'downloadUrl' => 'string'
+        'downloadUrl' => 'string',
+        'succeeded' => '\GroupDocs\Signature\Model\Signature[]',
+        'failed' => '\GroupDocs\Signature\Model\Signature[]'
     ];
 
     /*
@@ -66,7 +68,9 @@ class SignResult implements ArrayAccess
     protected static $swaggerFormats = [
         'fileInfo' => null,
         'size' => 'int64',
-        'downloadUrl' => null
+        'downloadUrl' => null,
+        'succeeded' => null,
+        'failed' => null
     ];
 
     /*
@@ -98,7 +102,9 @@ class SignResult implements ArrayAccess
     protected static $attributeMap = [
         'fileInfo' => 'FileInfo',
         'size' => 'Size',
-        'downloadUrl' => 'DownloadUrl'
+        'downloadUrl' => 'DownloadUrl',
+        'succeeded' => 'Succeeded',
+        'failed' => 'Failed'
     ];
 
     /*
@@ -109,7 +115,9 @@ class SignResult implements ArrayAccess
     protected static $setters = [
         'fileInfo' => 'setFileInfo',
         'size' => 'setSize',
-        'downloadUrl' => 'setDownloadUrl'
+        'downloadUrl' => 'setDownloadUrl',
+        'succeeded' => 'setSucceeded',
+        'failed' => 'setFailed'
     ];
 
     /*
@@ -120,7 +128,9 @@ class SignResult implements ArrayAccess
     protected static $getters = [
         'fileInfo' => 'getFileInfo',
         'size' => 'getSize',
-        'downloadUrl' => 'getDownloadUrl'
+        'downloadUrl' => 'getDownloadUrl',
+        'succeeded' => 'getSucceeded',
+        'failed' => 'getFailed'
     ];
 
     /*
@@ -186,6 +196,8 @@ class SignResult implements ArrayAccess
         $this->container['fileInfo'] = isset($data['fileInfo']) ? $data['fileInfo'] : null;
         $this->container['size'] = isset($data['size']) ? $data['size'] : null;
         $this->container['downloadUrl'] = isset($data['downloadUrl']) ? $data['downloadUrl'] : null;
+        $this->container['succeeded'] = isset($data['succeeded']) ? $data['succeeded'] : null;
+        $this->container['failed'] = isset($data['failed']) ? $data['failed'] : null;
     }
 
     /*
@@ -287,6 +299,54 @@ class SignResult implements ArrayAccess
     public function setDownloadUrl($downloadUrl)
     {
         $this->container['downloadUrl'] = $downloadUrl;
+
+        return $this;
+    }
+
+    /*
+     * Gets succeeded
+     *
+     * @return \GroupDocs\Signature\Model\Signature[]
+     */
+    public function getSucceeded()
+    {
+        return $this->container['succeeded'];
+    }
+
+    /*
+     * Sets succeeded
+     *
+     * @param \GroupDocs\Signature\Model\Signature[] $succeeded List of newly created signatures
+     *
+     * @return $this
+     */
+    public function setSucceeded($succeeded)
+    {
+        $this->container['succeeded'] = $succeeded;
+
+        return $this;
+    }
+
+    /*
+     * Gets failed
+     *
+     * @return \GroupDocs\Signature\Model\Signature[]
+     */
+    public function getFailed()
+    {
+        return $this->container['failed'];
+    }
+
+    /*
+     * Sets failed
+     *
+     * @param \GroupDocs\Signature\Model\Signature[] $failed List of signatures that were failed to create
+     *
+     * @return $this
+     */
+    public function setFailed($failed)
+    {
+        $this->container['failed'] = $failed;
 
         return $this;
     }

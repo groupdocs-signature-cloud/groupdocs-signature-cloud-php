@@ -3,7 +3,7 @@
 /*
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose Pty Ltd" file="TestFiles.php">
- *   Copyright (c) 2003-2019 Aspose Pty Ltd
+ *   Copyright (c) 2003-2020 Aspose Pty Ltd
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -159,7 +159,7 @@ class TestFiles
         $file = new TestFile();
         $file->fileName = "01_pages.pdf";
         $file->folder = "Pdf";
-        $file->fileFormat = "Pdf";
+        $file->fileFormat = "Portable Document Format File";
         $file->maxPageHeight = 792;
         $file->maxPageWidth = 612;
         $file->pagesCount = 1;
@@ -192,7 +192,7 @@ class TestFiles
         $file = new TestFile();
         $file->fileName = "SignedForVerificationAll.pdf";
         $file->folder = "Signed";
-        $file->fileFormat = "Pdf";
+        $file->fileFormat = "Portable Document Format File";
         $file->size = 164060;
         return $file;
     }

@@ -2,7 +2,7 @@
 /**
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose Pty Ltd">
-*   Copyright (c) 2003-2019 Aspose Pty Ltd
+*   Copyright (c) 2003-2020 Aspose Pty Ltd
 * </copyright>
 * <summary>
 *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -43,10 +43,10 @@ class TestSearchCollection extends  ApiTests\BaseApiTest
         $settings = new Model\SearchSettings();
         $settings->setFileInfo($file->ToFileInfo());
         $optionsBarcode = new Model\SearchBarcodeOptions();
-        $optionsBarcode->setDocumentType(Model\OptionsBase::SIGNATURE_TYPE_IMAGE);
+        $optionsBarcode->setSignatureType(Model\OptionsBase::SIGNATURE_TYPE_IMAGE);
         $this->_populateBarcodeOptions($optionsBarcode);
         $optionsQRCode = new Model\SearchQRCodeOptions();
-        $optionsQRCode->setDocumentType(Model\OptionsBase::SIGNATURE_TYPE_IMAGE);
+        $optionsQRCode->setSignatureType(Model\OptionsBase::SIGNATURE_TYPE_IMAGE);
         $this->_populateQRCodeOptions($optionsQRCode);        
         $settings->setOptions([$optionsBarcode, $optionsQRCode]);
         $response = self::$signApi->searchSignatures(new Requests\searchSignaturesRequest($settings));
@@ -60,13 +60,10 @@ class TestSearchCollection extends  ApiTests\BaseApiTest
         $settings = new Model\SearchSettings();
         $settings->setFileInfo($file->ToFileInfo());
         $optionsBarcode = new Model\SearchBarcodeOptions();
-        $optionsBarcode->setDocumentType(Model\OptionsBase::DOCUMENT_TYPE_PDF);
         $this->_populateBarcodeOptions($optionsBarcode);
         $optionsQRCode = new Model\SearchQRCodeOptions();
-        $optionsQRCode->setDocumentType(Model\OptionsBase::DOCUMENT_TYPE_PDF);
         $this->_populateQRCodeOptions($optionsQRCode);        
         $optionsDigital = new Model\SearchDigitalOptions();
-        $optionsDigital->setDocumentType(Model\OptionsBase::DOCUMENT_TYPE_PDF);
         $this->_populateDigitalOptions($optionsDigital);        
         $settings->setOptions([$optionsBarcode, $optionsQRCode, $optionsDigital]);
         $response = self::$signApi->searchSignatures(new Requests\searchSignaturesRequest($settings));
@@ -79,10 +76,8 @@ class TestSearchCollection extends  ApiTests\BaseApiTest
         $settings = new Model\SearchSettings();
         $settings->setFileInfo($file->ToFileInfo());
         $optionsBarcode = new Model\SearchBarcodeOptions();
-        $optionsBarcode->setDocumentType(Model\OptionsBase::DOCUMENT_TYPE_PRESENTATION);
         $this->_populateBarcodeOptions($optionsBarcode);
         $optionsQRCode = new Model\SearchQRCodeOptions();
-        $optionsQRCode->setDocumentType(Model\OptionsBase::DOCUMENT_TYPE_PRESENTATION);
         $this->_populateQRCodeOptions($optionsQRCode);        
         $settings->setOptions([$optionsBarcode, $optionsQRCode]);
         $response = self::$signApi->searchSignatures(new Requests\searchSignaturesRequest($settings));
@@ -95,13 +90,10 @@ class TestSearchCollection extends  ApiTests\BaseApiTest
         $settings = new Model\SearchSettings();
         $settings->setFileInfo($file->ToFileInfo());
         $optionsBarcode = new Model\SearchBarcodeOptions();
-        $optionsBarcode->setDocumentType(Model\OptionsBase::DOCUMENT_TYPE_SPREADSHEET);
         $this->_populateBarcodeOptions($optionsBarcode);
         $optionsQRCode = new Model\SearchQRCodeOptions();
-        $optionsQRCode->setDocumentType(Model\OptionsBase::DOCUMENT_TYPE_SPREADSHEET);
         $this->_populateQRCodeOptions($optionsQRCode);        
         $optionsDigital = new Model\SearchDigitalOptions();
-        $optionsDigital->setDocumentType(Model\OptionsBase::DOCUMENT_TYPE_SPREADSHEET);
         $this->_populateDigitalOptions($optionsDigital);        
         $settings->setOptions([$optionsBarcode, $optionsQRCode, $optionsDigital]);
         $response = self::$signApi->searchSignatures(new Requests\searchSignaturesRequest($settings));
@@ -114,13 +106,10 @@ class TestSearchCollection extends  ApiTests\BaseApiTest
         $settings = new Model\SearchSettings();
         $settings->setFileInfo($file->ToFileInfo());
         $optionsBarcode = new Model\SearchBarcodeOptions();
-        $optionsBarcode->setDocumentType(Model\OptionsBase::DOCUMENT_TYPE_WORD_PROCESSING);
         $this->_populateBarcodeOptions($optionsBarcode);
         $optionsQRCode = new Model\SearchQRCodeOptions();
-        $optionsQRCode->setDocumentType(Model\OptionsBase::DOCUMENT_TYPE_WORD_PROCESSING);
         $this->_populateQRCodeOptions($optionsQRCode);        
         $optionsDigital = new Model\SearchDigitalOptions();
-        $optionsDigital->setDocumentType(Model\OptionsBase::DOCUMENT_TYPE_WORD_PROCESSING);
         $this->_populateDigitalOptions($optionsDigital);        
         $settings->setOptions([$optionsBarcode, $optionsQRCode, $optionsDigital]);
         $response = self::$signApi->searchSignatures(new Requests\searchSignaturesRequest($settings));

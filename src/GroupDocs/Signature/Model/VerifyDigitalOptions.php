@@ -2,7 +2,7 @@
 /*
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose Pty Ltd" file="VerifyDigitalOptions.php">
- *   Copyright (c) 2003-2019 Aspose Pty Ltd
+ *   Copyright (c) 2003-2020 Aspose Pty Ltd
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -52,7 +52,7 @@ class VerifyDigitalOptions extends VerifyOptions
      */
     protected static $swaggerTypes = [
         'password' => 'string',
-        'certificateGuid' => 'string',
+        'certificateFilePath' => 'string',
         'comments' => 'string',
         'signDateTimeFrom' => '\DateTime',
         'signDateTimeTo' => '\DateTime',
@@ -68,7 +68,7 @@ class VerifyDigitalOptions extends VerifyOptions
      */
     protected static $swaggerFormats = [
         'password' => null,
-        'certificateGuid' => null,
+        'certificateFilePath' => null,
         'comments' => null,
         'signDateTimeFrom' => 'date-time',
         'signDateTimeTo' => 'date-time',
@@ -105,7 +105,7 @@ class VerifyDigitalOptions extends VerifyOptions
      */
     protected static $attributeMap = [
         'password' => 'Password',
-        'certificateGuid' => 'CertificateGuid',
+        'certificateFilePath' => 'CertificateFilePath',
         'comments' => 'Comments',
         'signDateTimeFrom' => 'SignDateTimeFrom',
         'signDateTimeTo' => 'SignDateTimeTo',
@@ -121,7 +121,7 @@ class VerifyDigitalOptions extends VerifyOptions
      */
     protected static $setters = [
         'password' => 'setPassword',
-        'certificateGuid' => 'setCertificateGuid',
+        'certificateFilePath' => 'setCertificateFilePath',
         'comments' => 'setComments',
         'signDateTimeFrom' => 'setSignDateTimeFrom',
         'signDateTimeTo' => 'setSignDateTimeTo',
@@ -137,7 +137,7 @@ class VerifyDigitalOptions extends VerifyOptions
      */
     protected static $getters = [
         'password' => 'getPassword',
-        'certificateGuid' => 'getCertificateGuid',
+        'certificateFilePath' => 'getCertificateFilePath',
         'comments' => 'getComments',
         'signDateTimeFrom' => 'getSignDateTimeFrom',
         'signDateTimeTo' => 'getSignDateTimeTo',
@@ -203,7 +203,7 @@ class VerifyDigitalOptions extends VerifyOptions
         parent::__construct($data);
 
         $this->container['password'] = isset($data['password']) ? $data['password'] : null;
-        $this->container['certificateGuid'] = isset($data['certificateGuid']) ? $data['certificateGuid'] : null;
+        $this->container['certificateFilePath'] = isset($data['certificateFilePath']) ? $data['certificateFilePath'] : null;
         $this->container['comments'] = isset($data['comments']) ? $data['comments'] : null;
         $this->container['signDateTimeFrom'] = isset($data['signDateTimeFrom']) ? $data['signDateTimeFrom'] : null;
         $this->container['signDateTimeTo'] = isset($data['signDateTimeTo']) ? $data['signDateTimeTo'] : null;
@@ -265,25 +265,25 @@ class VerifyDigitalOptions extends VerifyOptions
     }
 
     /*
-     * Gets certificateGuid
+     * Gets certificateFilePath
      *
      * @return string
      */
-    public function getCertificateGuid()
+    public function getCertificateFilePath()
     {
-        return $this->container['certificateGuid'];
+        return $this->container['certificateFilePath'];
     }
 
     /*
-     * Sets certificateGuid
+     * Sets certificateFilePath
      *
-     * @param string $certificateGuid File Guid of Digital Certificate
+     * @param string $certificateFilePath File Guid of Digital Certificate
      *
      * @return $this
      */
-    public function setCertificateGuid($certificateGuid)
+    public function setCertificateFilePath($certificateFilePath)
     {
-        $this->container['certificateGuid'] = $certificateGuid;
+        $this->container['certificateFilePath'] = $certificateFilePath;
 
         return $this;
     }

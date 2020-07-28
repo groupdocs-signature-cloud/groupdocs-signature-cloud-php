@@ -2,7 +2,7 @@
 /*
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose Pty Ltd" file="SignImageOptions.php">
- *   Copyright (c) 2003-2019 Aspose Pty Ltd
+ *   Copyright (c) 2003-2020 Aspose Pty Ltd
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -51,7 +51,7 @@ class SignImageOptions extends SignOptions
      * @var string[]
      */
     protected static $swaggerTypes = [
-        'imageGuid' => 'string',
+        'imageFilePath' => 'string',
         'left' => 'int',
         'top' => 'int',
         'width' => 'int',
@@ -63,7 +63,8 @@ class SignImageOptions extends SignOptions
         'verticalAlignment' => 'string',
         'margin' => '\GroupDocs\Signature\Model\Padding',
         'marginMeasureType' => 'string',
-        'opacity' => 'double'
+        'transparency' => 'double',
+        'border' => '\GroupDocs\Signature\Model\BorderLine'
     ];
 
     /*
@@ -72,7 +73,7 @@ class SignImageOptions extends SignOptions
      * @var string[]
      */
     protected static $swaggerFormats = [
-        'imageGuid' => null,
+        'imageFilePath' => null,
         'left' => 'int32',
         'top' => 'int32',
         'width' => 'int32',
@@ -84,7 +85,8 @@ class SignImageOptions extends SignOptions
         'verticalAlignment' => null,
         'margin' => null,
         'marginMeasureType' => null,
-        'opacity' => 'double'
+        'transparency' => 'double',
+        'border' => null
     ];
 
     /*
@@ -114,7 +116,7 @@ class SignImageOptions extends SignOptions
      * @var string[]
      */
     protected static $attributeMap = [
-        'imageGuid' => 'ImageGuid',
+        'imageFilePath' => 'ImageFilePath',
         'left' => 'Left',
         'top' => 'Top',
         'width' => 'Width',
@@ -126,7 +128,8 @@ class SignImageOptions extends SignOptions
         'verticalAlignment' => 'VerticalAlignment',
         'margin' => 'Margin',
         'marginMeasureType' => 'MarginMeasureType',
-        'opacity' => 'Opacity'
+        'transparency' => 'Transparency',
+        'border' => 'Border'
     ];
 
     /*
@@ -135,7 +138,7 @@ class SignImageOptions extends SignOptions
      * @var string[]
      */
     protected static $setters = [
-        'imageGuid' => 'setImageGuid',
+        'imageFilePath' => 'setImageFilePath',
         'left' => 'setLeft',
         'top' => 'setTop',
         'width' => 'setWidth',
@@ -147,7 +150,8 @@ class SignImageOptions extends SignOptions
         'verticalAlignment' => 'setVerticalAlignment',
         'margin' => 'setMargin',
         'marginMeasureType' => 'setMarginMeasureType',
-        'opacity' => 'setOpacity'
+        'transparency' => 'setTransparency',
+        'border' => 'setBorder'
     ];
 
     /*
@@ -156,7 +160,7 @@ class SignImageOptions extends SignOptions
      * @var string[]
      */
     protected static $getters = [
-        'imageGuid' => 'getImageGuid',
+        'imageFilePath' => 'getImageFilePath',
         'left' => 'getLeft',
         'top' => 'getTop',
         'width' => 'getWidth',
@@ -168,7 +172,8 @@ class SignImageOptions extends SignOptions
         'verticalAlignment' => 'getVerticalAlignment',
         'margin' => 'getMargin',
         'marginMeasureType' => 'getMarginMeasureType',
-        'opacity' => 'getOpacity'
+        'transparency' => 'getTransparency',
+        'border' => 'getBorder'
     ];
 
     /*
@@ -218,12 +223,10 @@ class SignImageOptions extends SignOptions
     const SIZE_MEASURE_TYPE_PIXELS = 'Pixels';
     const SIZE_MEASURE_TYPE_PERCENTS = 'Percents';
     const SIZE_MEASURE_TYPE_MILLIMETERS = 'Millimeters';
-    const HORIZONTAL_ALIGNMENT__DEFAULT = 'Default';
     const HORIZONTAL_ALIGNMENT_NONE = 'None';
     const HORIZONTAL_ALIGNMENT_LEFT = 'Left';
     const HORIZONTAL_ALIGNMENT_CENTER = 'Center';
     const HORIZONTAL_ALIGNMENT_RIGHT = 'Right';
-    const VERTICAL_ALIGNMENT__DEFAULT = 'Default';
     const VERTICAL_ALIGNMENT_NONE = 'None';
     const VERTICAL_ALIGNMENT_TOP = 'Top';
     const VERTICAL_ALIGNMENT_CENTER = 'Center';
@@ -270,7 +273,6 @@ class SignImageOptions extends SignOptions
     public function getHorizontalAlignmentAllowableValues()
     {
         return [
-            self::HORIZONTAL_ALIGNMENT__DEFAULT,
             self::HORIZONTAL_ALIGNMENT_NONE,
             self::HORIZONTAL_ALIGNMENT_LEFT,
             self::HORIZONTAL_ALIGNMENT_CENTER,
@@ -286,7 +288,6 @@ class SignImageOptions extends SignOptions
     public function getVerticalAlignmentAllowableValues()
     {
         return [
-            self::VERTICAL_ALIGNMENT__DEFAULT,
             self::VERTICAL_ALIGNMENT_NONE,
             self::VERTICAL_ALIGNMENT_TOP,
             self::VERTICAL_ALIGNMENT_CENTER,
@@ -320,7 +321,7 @@ class SignImageOptions extends SignOptions
     {
         parent::__construct($data);
 
-        $this->container['imageGuid'] = isset($data['imageGuid']) ? $data['imageGuid'] : null;
+        $this->container['imageFilePath'] = isset($data['imageFilePath']) ? $data['imageFilePath'] : null;
         $this->container['left'] = isset($data['left']) ? $data['left'] : null;
         $this->container['top'] = isset($data['top']) ? $data['top'] : null;
         $this->container['width'] = isset($data['width']) ? $data['width'] : null;
@@ -332,7 +333,8 @@ class SignImageOptions extends SignOptions
         $this->container['verticalAlignment'] = isset($data['verticalAlignment']) ? $data['verticalAlignment'] : null;
         $this->container['margin'] = isset($data['margin']) ? $data['margin'] : null;
         $this->container['marginMeasureType'] = isset($data['marginMeasureType']) ? $data['marginMeasureType'] : null;
-        $this->container['opacity'] = isset($data['opacity']) ? $data['opacity'] : null;
+        $this->container['transparency'] = isset($data['transparency']) ? $data['transparency'] : null;
+        $this->container['border'] = isset($data['border']) ? $data['border'] : null;
     }
 
     /*
@@ -414,8 +416,8 @@ class SignImageOptions extends SignOptions
             );
         }
 
-        if ($this->container['opacity'] === null) {
-            $invalidProperties[] = "'opacity' can't be null";
+        if ($this->container['transparency'] === null) {
+            $invalidProperties[] = "'transparency' can't be null";
         }
         return $invalidProperties;
     }
@@ -482,7 +484,7 @@ class SignImageOptions extends SignOptions
         if (!in_array($this->container['marginMeasureType'], $allowedValues)) {
             return false;
         }
-        if ($this->container['opacity'] === null) {
+        if ($this->container['transparency'] === null) {
             return false;
         }
         return true;
@@ -490,25 +492,25 @@ class SignImageOptions extends SignOptions
 
 
     /*
-     * Gets imageGuid
+     * Gets imageFilePath
      *
      * @return string
      */
-    public function getImageGuid()
+    public function getImageFilePath()
     {
-        return $this->container['imageGuid'];
+        return $this->container['imageFilePath'];
     }
 
     /*
-     * Sets imageGuid
+     * Sets imageFilePath
      *
-     * @param string $imageGuid Gets or sets the signature image file name. This property is used only if ImageStream is not specified
+     * @param string $imageFilePath Gets or sets the signature image file name. This property is used only if ImageStream is not specified
      *
      * @return $this
      */
-    public function setImageGuid($imageGuid)
+    public function setImageFilePath($imageFilePath)
     {
-        $this->container['imageGuid'] = $imageGuid;
+        $this->container['imageFilePath'] = $imageFilePath;
 
         return $this;
     }
@@ -803,25 +805,49 @@ class SignImageOptions extends SignOptions
     }
 
     /*
-     * Gets opacity
+     * Gets transparency
      *
      * @return double
      */
-    public function getOpacity()
+    public function getTransparency()
     {
-        return $this->container['opacity'];
+        return $this->container['transparency'];
     }
 
     /*
-     * Sets opacity
+     * Sets transparency
      *
-     * @param double $opacity Gets or sets the additional opacity for sign image (value from 0.0 (clear) through 1.0 (opaque)). By default the value is 1.0
+     * @param double $transparency Gets or sets the signature transparency(value from 0.0 (opaque) through 1.0 (clear)). Default value is 0 (opaque).
      *
      * @return $this
      */
-    public function setOpacity($opacity)
+    public function setTransparency($transparency)
     {
-        $this->container['opacity'] = $opacity;
+        $this->container['transparency'] = $transparency;
+
+        return $this;
+    }
+
+    /*
+     * Gets border
+     *
+     * @return \GroupDocs\Signature\Model\BorderLine
+     */
+    public function getBorder()
+    {
+        return $this->container['border'];
+    }
+
+    /*
+     * Sets border
+     *
+     * @param \GroupDocs\Signature\Model\BorderLine $border Gets or sets the signature border properties
+     *
+     * @return $this
+     */
+    public function setBorder($border)
+    {
+        $this->container['border'] = $border;
 
         return $this;
     }

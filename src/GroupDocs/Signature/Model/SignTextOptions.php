@@ -2,7 +2,7 @@
 /*
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose Pty Ltd" file="SignTextOptions.php">
- *   Copyright (c) 2003-2019 Aspose Pty Ltd
+ *   Copyright (c) 2003-2020 Aspose Pty Ltd
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -66,14 +66,12 @@ class SignTextOptions extends SignOptions
         'text' => 'string',
         'font' => '\GroupDocs\Signature\Model\SignatureFont',
         'foreColor' => '\GroupDocs\Signature\Model\Color',
-        'borderColor' => '\GroupDocs\Signature\Model\Color',
         'backgroundColor' => '\GroupDocs\Signature\Model\Color',
         'backgroundBrush' => '\GroupDocs\Signature\Model\Brush',
-        'borderVisiblity' => 'bool',
-        'borderDashStyle' => 'string',
-        'borderTransparency' => 'double',
+        'border' => '\GroupDocs\Signature\Model\BorderLine',
         'textHorizontalAlignment' => 'string',
-        'textVerticalAlignment' => 'string'
+        'textVerticalAlignment' => 'string',
+        'zOrder' => 'int'
     ];
 
     /*
@@ -97,14 +95,12 @@ class SignTextOptions extends SignOptions
         'text' => null,
         'font' => null,
         'foreColor' => null,
-        'borderColor' => null,
         'backgroundColor' => null,
         'backgroundBrush' => null,
-        'borderVisiblity' => null,
-        'borderDashStyle' => null,
-        'borderTransparency' => 'double',
+        'border' => null,
         'textHorizontalAlignment' => null,
-        'textVerticalAlignment' => null
+        'textVerticalAlignment' => null,
+        'zOrder' => 'int32'
     ];
 
     /*
@@ -149,14 +145,12 @@ class SignTextOptions extends SignOptions
         'text' => 'Text',
         'font' => 'Font',
         'foreColor' => 'ForeColor',
-        'borderColor' => 'BorderColor',
         'backgroundColor' => 'BackgroundColor',
         'backgroundBrush' => 'BackgroundBrush',
-        'borderVisiblity' => 'BorderVisiblity',
-        'borderDashStyle' => 'BorderDashStyle',
-        'borderTransparency' => 'BorderTransparency',
+        'border' => 'Border',
         'textHorizontalAlignment' => 'TextHorizontalAlignment',
-        'textVerticalAlignment' => 'TextVerticalAlignment'
+        'textVerticalAlignment' => 'TextVerticalAlignment',
+        'zOrder' => 'ZOrder'
     ];
 
     /*
@@ -180,14 +174,12 @@ class SignTextOptions extends SignOptions
         'text' => 'setText',
         'font' => 'setFont',
         'foreColor' => 'setForeColor',
-        'borderColor' => 'setBorderColor',
         'backgroundColor' => 'setBackgroundColor',
         'backgroundBrush' => 'setBackgroundBrush',
-        'borderVisiblity' => 'setBorderVisiblity',
-        'borderDashStyle' => 'setBorderDashStyle',
-        'borderTransparency' => 'setBorderTransparency',
+        'border' => 'setBorder',
         'textHorizontalAlignment' => 'setTextHorizontalAlignment',
-        'textVerticalAlignment' => 'setTextVerticalAlignment'
+        'textVerticalAlignment' => 'setTextVerticalAlignment',
+        'zOrder' => 'setZOrder'
     ];
 
     /*
@@ -211,14 +203,12 @@ class SignTextOptions extends SignOptions
         'text' => 'getText',
         'font' => 'getFont',
         'foreColor' => 'getForeColor',
-        'borderColor' => 'getBorderColor',
         'backgroundColor' => 'getBackgroundColor',
         'backgroundBrush' => 'getBackgroundBrush',
-        'borderVisiblity' => 'getBorderVisiblity',
-        'borderDashStyle' => 'getBorderDashStyle',
-        'borderTransparency' => 'getBorderTransparency',
+        'border' => 'getBorder',
         'textHorizontalAlignment' => 'getTextHorizontalAlignment',
-        'textVerticalAlignment' => 'getTextVerticalAlignment'
+        'textVerticalAlignment' => 'getTextVerticalAlignment',
+        'zOrder' => 'getZOrder'
     ];
 
     /*
@@ -272,12 +262,10 @@ class SignTextOptions extends SignOptions
     const STRETCH_PAGE_WIDTH = 'PageWidth';
     const STRETCH_PAGE_HEIGHT = 'PageHeight';
     const STRETCH_PAGE_AREA = 'PageArea';
-    const HORIZONTAL_ALIGNMENT__DEFAULT = 'Default';
     const HORIZONTAL_ALIGNMENT_NONE = 'None';
     const HORIZONTAL_ALIGNMENT_LEFT = 'Left';
     const HORIZONTAL_ALIGNMENT_CENTER = 'Center';
     const HORIZONTAL_ALIGNMENT_RIGHT = 'Right';
-    const VERTICAL_ALIGNMENT__DEFAULT = 'Default';
     const VERTICAL_ALIGNMENT_NONE = 'None';
     const VERTICAL_ALIGNMENT_TOP = 'Top';
     const VERTICAL_ALIGNMENT_CENTER = 'Center';
@@ -285,14 +273,6 @@ class SignTextOptions extends SignOptions
     const MARGIN_MEASURE_TYPE_PIXELS = 'Pixels';
     const MARGIN_MEASURE_TYPE_PERCENTS = 'Percents';
     const MARGIN_MEASURE_TYPE_MILLIMETERS = 'Millimeters';
-    const BORDER_DASH_STYLE_DASH = 'Dash';
-    const BORDER_DASH_STYLE_DASH_DOT = 'DashDot';
-    const BORDER_DASH_STYLE_DASH_DOT_DOT = 'DashDotDot';
-    const BORDER_DASH_STYLE_DASH_LONG_DASH = 'DashLongDash';
-    const BORDER_DASH_STYLE_DASH_LONG_DASH_DOT = 'DashLongDashDot';
-    const BORDER_DASH_STYLE_ROUND_DOT = 'RoundDot';
-    const BORDER_DASH_STYLE_SOLID = 'Solid';
-    const BORDER_DASH_STYLE_SQUARE_DOT = 'SquareDot';
     const TEXT_HORIZONTAL_ALIGNMENT_LEFT = 'Left';
     const TEXT_HORIZONTAL_ALIGNMENT_CENTER = 'Center';
     const TEXT_HORIZONTAL_ALIGNMENT_RIGHT = 'Right';
@@ -353,7 +333,6 @@ class SignTextOptions extends SignOptions
     public function getHorizontalAlignmentAllowableValues()
     {
         return [
-            self::HORIZONTAL_ALIGNMENT__DEFAULT,
             self::HORIZONTAL_ALIGNMENT_NONE,
             self::HORIZONTAL_ALIGNMENT_LEFT,
             self::HORIZONTAL_ALIGNMENT_CENTER,
@@ -369,7 +348,6 @@ class SignTextOptions extends SignOptions
     public function getVerticalAlignmentAllowableValues()
     {
         return [
-            self::VERTICAL_ALIGNMENT__DEFAULT,
             self::VERTICAL_ALIGNMENT_NONE,
             self::VERTICAL_ALIGNMENT_TOP,
             self::VERTICAL_ALIGNMENT_CENTER,
@@ -388,25 +366,6 @@ class SignTextOptions extends SignOptions
             self::MARGIN_MEASURE_TYPE_PIXELS,
             self::MARGIN_MEASURE_TYPE_PERCENTS,
             self::MARGIN_MEASURE_TYPE_MILLIMETERS,
-        ];
-    }
-    
-    /*
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getBorderDashStyleAllowableValues()
-    {
-        return [
-            self::BORDER_DASH_STYLE_DASH,
-            self::BORDER_DASH_STYLE_DASH_DOT,
-            self::BORDER_DASH_STYLE_DASH_DOT_DOT,
-            self::BORDER_DASH_STYLE_DASH_LONG_DASH,
-            self::BORDER_DASH_STYLE_DASH_LONG_DASH_DOT,
-            self::BORDER_DASH_STYLE_ROUND_DOT,
-            self::BORDER_DASH_STYLE_SOLID,
-            self::BORDER_DASH_STYLE_SQUARE_DOT,
         ];
     }
     
@@ -465,14 +424,12 @@ class SignTextOptions extends SignOptions
         $this->container['text'] = isset($data['text']) ? $data['text'] : null;
         $this->container['font'] = isset($data['font']) ? $data['font'] : null;
         $this->container['foreColor'] = isset($data['foreColor']) ? $data['foreColor'] : null;
-        $this->container['borderColor'] = isset($data['borderColor']) ? $data['borderColor'] : null;
         $this->container['backgroundColor'] = isset($data['backgroundColor']) ? $data['backgroundColor'] : null;
         $this->container['backgroundBrush'] = isset($data['backgroundBrush']) ? $data['backgroundBrush'] : null;
-        $this->container['borderVisiblity'] = isset($data['borderVisiblity']) ? $data['borderVisiblity'] : null;
-        $this->container['borderDashStyle'] = isset($data['borderDashStyle']) ? $data['borderDashStyle'] : null;
-        $this->container['borderTransparency'] = isset($data['borderTransparency']) ? $data['borderTransparency'] : null;
+        $this->container['border'] = isset($data['border']) ? $data['border'] : null;
         $this->container['textHorizontalAlignment'] = isset($data['textHorizontalAlignment']) ? $data['textHorizontalAlignment'] : null;
         $this->container['textVerticalAlignment'] = isset($data['textVerticalAlignment']) ? $data['textVerticalAlignment'] : null;
+        $this->container['zOrder'] = isset($data['zOrder']) ? $data['zOrder'] : null;
     }
 
     /*
@@ -565,23 +522,6 @@ class SignTextOptions extends SignOptions
             );
         }
 
-        if ($this->container['borderVisiblity'] === null) {
-            $invalidProperties[] = "'borderVisiblity' can't be null";
-        }
-        if ($this->container['borderDashStyle'] === null) {
-            $invalidProperties[] = "'borderDashStyle' can't be null";
-        }
-        $allowedValues = $this->getBorderDashStyleAllowableValues();
-        if (!in_array($this->container['borderDashStyle'], $allowedValues)) {
-            $invalidProperties[] = sprintf(
-                "invalid value for 'borderDashStyle', must be one of '%s'",
-                implode("', '", $allowedValues)
-            );
-        }
-
-        if ($this->container['borderTransparency'] === null) {
-            $invalidProperties[] = "'borderTransparency' can't be null";
-        }
         if ($this->container['textHorizontalAlignment'] === null) {
             $invalidProperties[] = "'textHorizontalAlignment' can't be null";
         }
@@ -604,6 +544,9 @@ class SignTextOptions extends SignOptions
             );
         }
 
+        if ($this->container['zOrder'] === null) {
+            $invalidProperties[] = "'zOrder' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -676,19 +619,6 @@ class SignTextOptions extends SignOptions
         if (!in_array($this->container['marginMeasureType'], $allowedValues)) {
             return false;
         }
-        if ($this->container['borderVisiblity'] === null) {
-            return false;
-        }
-        if ($this->container['borderDashStyle'] === null) {
-            return false;
-        }
-        $allowedValues = $this->getBorderDashStyleAllowableValues();
-        if (!in_array($this->container['borderDashStyle'], $allowedValues)) {
-            return false;
-        }
-        if ($this->container['borderTransparency'] === null) {
-            return false;
-        }
         if ($this->container['textHorizontalAlignment'] === null) {
             return false;
         }
@@ -701,6 +631,9 @@ class SignTextOptions extends SignOptions
         }
         $allowedValues = $this->getTextVerticalAlignmentAllowableValues();
         if (!in_array($this->container['textVerticalAlignment'], $allowedValues)) {
+            return false;
+        }
+        if ($this->container['zOrder'] === null) {
             return false;
         }
         return true;
@@ -1098,30 +1031,6 @@ class SignTextOptions extends SignOptions
     }
 
     /*
-     * Gets borderColor
-     *
-     * @return \GroupDocs\Signature\Model\Color
-     */
-    public function getBorderColor()
-    {
-        return $this->container['borderColor'];
-    }
-
-    /*
-     * Sets borderColor
-     *
-     * @param \GroupDocs\Signature\Model\Color $borderColor Gets or sets the border color of signature
-     *
-     * @return $this
-     */
-    public function setBorderColor($borderColor)
-    {
-        $this->container['borderColor'] = $borderColor;
-
-        return $this;
-    }
-
-    /*
      * Gets backgroundColor
      *
      * @return \GroupDocs\Signature\Model\Color
@@ -1170,78 +1079,25 @@ class SignTextOptions extends SignOptions
     }
 
     /*
-     * Gets borderVisiblity
+     * Gets border
      *
-     * @return bool
+     * @return \GroupDocs\Signature\Model\BorderLine
      */
-    public function getBorderVisiblity()
+    public function getBorder()
     {
-        return $this->container['borderVisiblity'];
+        return $this->container['border'];
     }
 
     /*
-     * Sets borderVisiblity
+     * Sets border
      *
-     * @param bool $borderVisiblity Gets or sets the signature border visibility It is not suitable for PDF
+     * @param \GroupDocs\Signature\Model\BorderLine $border Gets or sets the signature border properties
      *
      * @return $this
      */
-    public function setBorderVisiblity($borderVisiblity)
+    public function setBorder($border)
     {
-        $this->container['borderVisiblity'] = $borderVisiblity;
-
-        return $this;
-    }
-
-    /*
-     * Gets borderDashStyle
-     *
-     * @return string
-     */
-    public function getBorderDashStyle()
-    {
-        return $this->container['borderDashStyle'];
-    }
-
-    /*
-     * Sets borderDashStyle
-     *
-     * @param string $borderDashStyle Gets or sets the signature border style It is not suitable for PDF
-     *
-     * @return $this
-     */
-    public function setBorderDashStyle($borderDashStyle)
-    {
-        $allowedValues = $this->getBorderDashStyleAllowableValues();
-        if ((!is_numeric($borderDashStyle) && !in_array($borderDashStyle, $allowedValues)) || (is_numeric($borderDashStyle) && !in_array($allowedValues[$borderDashStyle], $allowedValues))) {
-            throw new \InvalidArgumentException(sprintf("Invalid value for 'borderDashStyle', must be one of '%s'", implode("', '", $allowedValues)));
-        }
-			
-        $this->container['borderDashStyle'] = $borderDashStyle;
-
-        return $this;
-    }
-
-    /*
-     * Gets borderTransparency
-     *
-     * @return double
-     */
-    public function getBorderTransparency()
-    {
-        return $this->container['borderTransparency'];
-    }
-
-    /*
-     * Sets borderTransparency
-     *
-     * @param double $borderTransparency Gets or sets the signature border transparency (value from 0.0 (opaque) through 1.0 (clear)) It is not suitable for PDF
-     *
-     * @return $this
-     */
-    public function setBorderTransparency($borderTransparency)
-    {
-        $this->container['borderTransparency'] = $borderTransparency;
+        $this->container['border'] = $border;
 
         return $this;
     }
@@ -1300,6 +1156,30 @@ class SignTextOptions extends SignOptions
         }
 			
         $this->container['textVerticalAlignment'] = $textVerticalAlignment;
+
+        return $this;
+    }
+
+    /*
+     * Gets zOrder
+     *
+     * @return int
+     */
+    public function getZOrder()
+    {
+        return $this->container['zOrder'];
+    }
+
+    /*
+     * Sets zOrder
+     *
+     * @param int $zOrder Gets or sets the Z-order position of text signature. Determines the display order of overlapping signatures.
+     *
+     * @return $this
+     */
+    public function setZOrder($zOrder)
+    {
+        $this->container['zOrder'] = $zOrder;
 
         return $this;
     }

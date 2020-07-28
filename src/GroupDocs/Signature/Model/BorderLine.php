@@ -2,7 +2,7 @@
 /*
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose Pty Ltd" file="BorderLine.php">
- *   Copyright (c) 2003-2019 Aspose Pty Ltd
+ *   Copyright (c) 2003-2020 Aspose Pty Ltd
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -56,7 +56,8 @@ class BorderLine implements ArrayAccess
         'style' => 'string',
         'transparency' => 'double',
         'weight' => 'double',
-        'color' => '\GroupDocs\Signature\Model\Color'
+        'color' => '\GroupDocs\Signature\Model\Color',
+        'visible' => 'bool'
     ];
 
     /*
@@ -68,7 +69,8 @@ class BorderLine implements ArrayAccess
         'style' => null,
         'transparency' => 'double',
         'weight' => 'double',
-        'color' => null
+        'color' => null,
+        'visible' => null
     ];
 
     /*
@@ -101,7 +103,8 @@ class BorderLine implements ArrayAccess
         'style' => 'Style',
         'transparency' => 'Transparency',
         'weight' => 'Weight',
-        'color' => 'Color'
+        'color' => 'Color',
+        'visible' => 'Visible'
     ];
 
     /*
@@ -113,7 +116,8 @@ class BorderLine implements ArrayAccess
         'style' => 'setStyle',
         'transparency' => 'setTransparency',
         'weight' => 'setWeight',
-        'color' => 'setColor'
+        'color' => 'setColor',
+        'visible' => 'setVisible'
     ];
 
     /*
@@ -125,7 +129,8 @@ class BorderLine implements ArrayAccess
         'style' => 'getStyle',
         'transparency' => 'getTransparency',
         'weight' => 'getWeight',
-        'color' => 'getColor'
+        'color' => 'getColor',
+        'visible' => 'getVisible'
     ];
 
     /*
@@ -169,7 +174,6 @@ class BorderLine implements ArrayAccess
         return self::$swaggerModelName;
     }
 
-    const STYLE__DEFAULT = 'Default';
     const STYLE_SOLID = 'Solid';
     const STYLE_SHORT_DASH = 'ShortDash';
     const STYLE_SHORT_DOT = 'ShortDot';
@@ -181,6 +185,11 @@ class BorderLine implements ArrayAccess
     const STYLE_DASH_DOT = 'DashDot';
     const STYLE_LONG_DASH_DOT = 'LongDashDot';
     const STYLE_LONG_DASH_DOT_DOT = 'LongDashDotDot';
+    const STYLE_ROUND_DOT = 'RoundDot';
+    const STYLE_SQUARE_DOT = 'SquareDot';
+    const STYLE_DASH_DOT_DOT = 'DashDotDot';
+    const STYLE_DASH_LONG_DASH = 'DashLongDash';
+    const STYLE_DASH_LONG_DASH_DOT = 'DashLongDashDot';
     
 
     
@@ -192,7 +201,6 @@ class BorderLine implements ArrayAccess
     public function getStyleAllowableValues()
     {
         return [
-            self::STYLE__DEFAULT,
             self::STYLE_SOLID,
             self::STYLE_SHORT_DASH,
             self::STYLE_SHORT_DOT,
@@ -204,6 +212,11 @@ class BorderLine implements ArrayAccess
             self::STYLE_DASH_DOT,
             self::STYLE_LONG_DASH_DOT,
             self::STYLE_LONG_DASH_DOT_DOT,
+            self::STYLE_ROUND_DOT,
+            self::STYLE_SQUARE_DOT,
+            self::STYLE_DASH_DOT_DOT,
+            self::STYLE_DASH_LONG_DASH,
+            self::STYLE_DASH_LONG_DASH_DOT,
         ];
     }
     
@@ -227,6 +240,7 @@ class BorderLine implements ArrayAccess
         $this->container['transparency'] = isset($data['transparency']) ? $data['transparency'] : null;
         $this->container['weight'] = isset($data['weight']) ? $data['weight'] : null;
         $this->container['color'] = isset($data['color']) ? $data['color'] : null;
+        $this->container['visible'] = isset($data['visible']) ? $data['visible'] : null;
     }
 
     /*
@@ -255,6 +269,9 @@ class BorderLine implements ArrayAccess
         if ($this->container['weight'] === null) {
             $invalidProperties[] = "'weight' can't be null";
         }
+        if ($this->container['visible'] === null) {
+            $invalidProperties[] = "'visible' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -278,6 +295,9 @@ class BorderLine implements ArrayAccess
             return false;
         }
         if ($this->container['weight'] === null) {
+            return false;
+        }
+        if ($this->container['visible'] === null) {
             return false;
         }
         return true;
@@ -381,6 +401,30 @@ class BorderLine implements ArrayAccess
     public function setColor($color)
     {
         $this->container['color'] = $color;
+
+        return $this;
+    }
+
+    /*
+     * Gets visible
+     *
+     * @return bool
+     */
+    public function getVisible()
+    {
+        return $this->container['visible'];
+    }
+
+    /*
+     * Sets visible
+     *
+     * @param bool $visible Gets or sets the border visibility
+     *
+     * @return $this
+     */
+    public function setVisible($visible)
+    {
+        $this->container['visible'] = $visible;
 
         return $this;
     }

@@ -1,7 +1,7 @@
 <?php
 /*
  * --------------------------------------------------------------------------------------------------------------------
- * <copyright company="Aspose Pty Ltd" file="TextureBrush.php">
+ * <copyright company="Aspose Pty Ltd" file="ImageSignature.php">
  *   Copyright (c) 2003-2020 Aspose Pty Ltd
  * </copyright>
  * <summary>
@@ -30,11 +30,11 @@ namespace GroupDocs\Signature\Model;
 use \GroupDocs\Signature\ObjectSerializer;
 
 /*
- * TextureBrush
+ * ImageSignature
  *
- * @description Represents texture brush
+ * @description Contains Image signature properties
  */
-class TextureBrush extends Brush 
+class ImageSignature extends Signature 
 {
     const DISCRIMINATOR = null;
 
@@ -43,7 +43,7 @@ class TextureBrush extends Brush
      *
      * @var string
      */
-    protected static $swaggerModelName = "TextureBrush";
+    protected static $swaggerModelName = "ImageSignature";
 
     /*
      * Array of property to type mappings. Used for (de)serialization
@@ -51,7 +51,8 @@ class TextureBrush extends Brush
      * @var string[]
      */
     protected static $swaggerTypes = [
-        'imageFilePath' => 'string'
+        'size' => 'int',
+        'format' => 'string'
     ];
 
     /*
@@ -60,7 +61,8 @@ class TextureBrush extends Brush
      * @var string[]
      */
     protected static $swaggerFormats = [
-        'imageFilePath' => null
+        'size' => 'int32',
+        'format' => null
     ];
 
     /*
@@ -90,7 +92,8 @@ class TextureBrush extends Brush
      * @var string[]
      */
     protected static $attributeMap = [
-        'imageFilePath' => 'ImageFilePath'
+        'size' => 'Size',
+        'format' => 'Format'
     ];
 
     /*
@@ -99,7 +102,8 @@ class TextureBrush extends Brush
      * @var string[]
      */
     protected static $setters = [
-        'imageFilePath' => 'setImageFilePath'
+        'size' => 'setSize',
+        'format' => 'setFormat'
     ];
 
     /*
@@ -108,7 +112,8 @@ class TextureBrush extends Brush
      * @var string[]
      */
     protected static $getters = [
-        'imageFilePath' => 'getImageFilePath'
+        'size' => 'getSize',
+        'format' => 'getFormat'
     ];
 
     /*
@@ -167,7 +172,8 @@ class TextureBrush extends Brush
     {
         parent::__construct($data);
 
-        $this->container['imageFilePath'] = isset($data['imageFilePath']) ? $data['imageFilePath'] : null;
+        $this->container['size'] = isset($data['size']) ? $data['size'] : null;
+        $this->container['format'] = isset($data['format']) ? $data['format'] : null;
     }
 
     /*
@@ -179,6 +185,9 @@ class TextureBrush extends Brush
     {
         $invalidProperties = parent::listInvalidProperties();
 
+        if ($this->container['size'] === null) {
+            $invalidProperties[] = "'size' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -194,30 +203,57 @@ class TextureBrush extends Brush
             return false;
         }
 
+        if ($this->container['size'] === null) {
+            return false;
+        }
         return true;
     }
 
 
     /*
-     * Gets imageFilePath
+     * Gets size
      *
-     * @return string
+     * @return int
      */
-    public function getImageFilePath()
+    public function getSize()
     {
-        return $this->container['imageFilePath'];
+        return $this->container['size'];
     }
 
     /*
-     * Sets imageFilePath
+     * Sets size
      *
-     * @param string $imageFilePath Gets or sets the texture image file path
+     * @param int $size Specifies the image size
      *
      * @return $this
      */
-    public function setImageFilePath($imageFilePath)
+    public function setSize($size)
     {
-        $this->container['imageFilePath'] = $imageFilePath;
+        $this->container['size'] = $size;
+
+        return $this;
+    }
+
+    /*
+     * Gets format
+     *
+     * @return string
+     */
+    public function getFormat()
+    {
+        return $this->container['format'];
+    }
+
+    /*
+     * Sets format
+     *
+     * @param string $format Specifies the format of image
+     *
+     * @return $this
+     */
+    public function setFormat($format)
+    {
+        $this->container['format'] = $format;
 
         return $this;
     }

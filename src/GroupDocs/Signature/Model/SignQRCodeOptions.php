@@ -2,7 +2,7 @@
 /*
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose Pty Ltd" file="SignQRCodeOptions.php">
- *   Copyright (c) 2003-2019 Aspose Pty Ltd
+ *   Copyright (c) 2003-2020 Aspose Pty Ltd
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -52,11 +52,10 @@ class SignQRCodeOptions extends SignTextOptions
      */
     protected static $swaggerTypes = [
         'qRCodeType' => 'string',
-        'borderWeight' => 'double',
-        'opacity' => 'double',
+        'transparency' => 'double',
         'codeTextAlignment' => 'string',
         'innerMargins' => '\GroupDocs\Signature\Model\Padding',
-        'logoGuid' => 'string'
+        'logoFilePath' => 'string'
     ];
 
     /*
@@ -66,11 +65,10 @@ class SignQRCodeOptions extends SignTextOptions
      */
     protected static $swaggerFormats = [
         'qRCodeType' => null,
-        'borderWeight' => 'double',
-        'opacity' => 'double',
+        'transparency' => 'double',
         'codeTextAlignment' => null,
         'innerMargins' => null,
-        'logoGuid' => null
+        'logoFilePath' => null
     ];
 
     /*
@@ -101,11 +99,10 @@ class SignQRCodeOptions extends SignTextOptions
      */
     protected static $attributeMap = [
         'qRCodeType' => 'QRCodeType',
-        'borderWeight' => 'BorderWeight',
-        'opacity' => 'Opacity',
+        'transparency' => 'Transparency',
         'codeTextAlignment' => 'CodeTextAlignment',
         'innerMargins' => 'InnerMargins',
-        'logoGuid' => 'LogoGuid'
+        'logoFilePath' => 'LogoFilePath'
     ];
 
     /*
@@ -115,11 +112,10 @@ class SignQRCodeOptions extends SignTextOptions
      */
     protected static $setters = [
         'qRCodeType' => 'setQRCodeType',
-        'borderWeight' => 'setBorderWeight',
-        'opacity' => 'setOpacity',
+        'transparency' => 'setTransparency',
         'codeTextAlignment' => 'setCodeTextAlignment',
         'innerMargins' => 'setInnerMargins',
-        'logoGuid' => 'setLogoGuid'
+        'logoFilePath' => 'setLogoFilePath'
     ];
 
     /*
@@ -129,11 +125,10 @@ class SignQRCodeOptions extends SignTextOptions
      */
     protected static $getters = [
         'qRCodeType' => 'getQRCodeType',
-        'borderWeight' => 'getBorderWeight',
-        'opacity' => 'getOpacity',
+        'transparency' => 'getTransparency',
         'codeTextAlignment' => 'getCodeTextAlignment',
         'innerMargins' => 'getInnerMargins',
-        'logoGuid' => 'getLogoGuid'
+        'logoFilePath' => 'getLogoFilePath'
     ];
 
     /*
@@ -212,11 +207,10 @@ class SignQRCodeOptions extends SignTextOptions
         parent::__construct($data);
 
         $this->container['qRCodeType'] = isset($data['qRCodeType']) ? $data['qRCodeType'] : null;
-        $this->container['borderWeight'] = isset($data['borderWeight']) ? $data['borderWeight'] : null;
-        $this->container['opacity'] = isset($data['opacity']) ? $data['opacity'] : null;
+        $this->container['transparency'] = isset($data['transparency']) ? $data['transparency'] : null;
         $this->container['codeTextAlignment'] = isset($data['codeTextAlignment']) ? $data['codeTextAlignment'] : null;
         $this->container['innerMargins'] = isset($data['innerMargins']) ? $data['innerMargins'] : null;
-        $this->container['logoGuid'] = isset($data['logoGuid']) ? $data['logoGuid'] : null;
+        $this->container['logoFilePath'] = isset($data['logoFilePath']) ? $data['logoFilePath'] : null;
     }
 
     /*
@@ -228,11 +222,8 @@ class SignQRCodeOptions extends SignTextOptions
     {
         $invalidProperties = parent::listInvalidProperties();
 
-        if ($this->container['borderWeight'] === null) {
-            $invalidProperties[] = "'borderWeight' can't be null";
-        }
-        if ($this->container['opacity'] === null) {
-            $invalidProperties[] = "'opacity' can't be null";
+        if ($this->container['transparency'] === null) {
+            $invalidProperties[] = "'transparency' can't be null";
         }
         if ($this->container['codeTextAlignment'] === null) {
             $invalidProperties[] = "'codeTextAlignment' can't be null";
@@ -260,10 +251,7 @@ class SignQRCodeOptions extends SignTextOptions
             return false;
         }
 
-        if ($this->container['borderWeight'] === null) {
-            return false;
-        }
-        if ($this->container['opacity'] === null) {
+        if ($this->container['transparency'] === null) {
             return false;
         }
         if ($this->container['codeTextAlignment'] === null) {
@@ -302,49 +290,25 @@ class SignQRCodeOptions extends SignTextOptions
     }
 
     /*
-     * Gets borderWeight
+     * Gets transparency
      *
      * @return double
      */
-    public function getBorderWeight()
+    public function getTransparency()
     {
-        return $this->container['borderWeight'];
+        return $this->container['transparency'];
     }
 
     /*
-     * Sets borderWeight
+     * Sets transparency
      *
-     * @param double $borderWeight Gets or sets the weight of the signature border
+     * @param double $transparency Gets or sets the signature transparency (value from 0.0 (opaque) through 1.0 (clear)). Default value is 0 (opaque).
      *
      * @return $this
      */
-    public function setBorderWeight($borderWeight)
+    public function setTransparency($transparency)
     {
-        $this->container['borderWeight'] = $borderWeight;
-
-        return $this;
-    }
-
-    /*
-     * Gets opacity
-     *
-     * @return double
-     */
-    public function getOpacity()
-    {
-        return $this->container['opacity'];
-    }
-
-    /*
-     * Sets opacity
-     *
-     * @param double $opacity Gets or sets the signature opacity (value from 0.0 (clear) through 1.0 (opaque)) By default the value is 1.0
-     *
-     * @return $this
-     */
-    public function setOpacity($opacity)
-    {
-        $this->container['opacity'] = $opacity;
+        $this->container['transparency'] = $transparency;
 
         return $this;
     }
@@ -403,25 +367,25 @@ class SignQRCodeOptions extends SignTextOptions
     }
 
     /*
-     * Gets logoGuid
+     * Gets logoFilePath
      *
      * @return string
      */
-    public function getLogoGuid()
+    public function getLogoFilePath()
     {
-        return $this->container['logoGuid'];
+        return $this->container['logoFilePath'];
     }
 
     /*
-     * Sets logoGuid
+     * Sets logoFilePath
      *
-     * @param string $logoGuid Gets or sets the QR-code logo image file name. This property in use only if LogoStream is not specified. Using of this property could cause problems with verification. Use it carefully
+     * @param string $logoFilePath Gets or sets the QR-code logo image file name. This property in use only if LogoStream is not specified. Using of this property could cause problems with verification. Use it carefully
      *
      * @return $this
      */
-    public function setLogoGuid($logoGuid)
+    public function setLogoFilePath($logoFilePath)
     {
-        $this->container['logoGuid'] = $logoGuid;
+        $this->container['logoFilePath'] = $logoFilePath;
 
         return $this;
     }

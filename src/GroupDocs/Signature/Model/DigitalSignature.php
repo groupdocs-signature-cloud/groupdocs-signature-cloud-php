@@ -2,7 +2,7 @@
 /*
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose Pty Ltd" file="DigitalSignature.php">
- *   Copyright (c) 2003-2019 Aspose Pty Ltd
+ *   Copyright (c) 2003-2020 Aspose Pty Ltd
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -53,7 +53,6 @@ class DigitalSignature extends Signature
     protected static $swaggerTypes = [
         'comments' => 'string',
         'isValid' => 'bool',
-        'type' => 'string',
         'signTime' => '\DateTime'
     ];
 
@@ -65,7 +64,6 @@ class DigitalSignature extends Signature
     protected static $swaggerFormats = [
         'comments' => null,
         'isValid' => null,
-        'type' => null,
         'signTime' => 'date-time'
     ];
 
@@ -98,7 +96,6 @@ class DigitalSignature extends Signature
     protected static $attributeMap = [
         'comments' => 'Comments',
         'isValid' => 'IsValid',
-        'type' => 'Type',
         'signTime' => 'SignTime'
     ];
 
@@ -110,7 +107,6 @@ class DigitalSignature extends Signature
     protected static $setters = [
         'comments' => 'setComments',
         'isValid' => 'setIsValid',
-        'type' => 'setType',
         'signTime' => 'setSignTime'
     ];
 
@@ -122,7 +118,6 @@ class DigitalSignature extends Signature
     protected static $getters = [
         'comments' => 'getComments',
         'isValid' => 'getIsValid',
-        'type' => 'getType',
         'signTime' => 'getSignTime'
     ];
 
@@ -167,25 +162,8 @@ class DigitalSignature extends Signature
         return self::$swaggerModelName;
     }
 
-    const TYPE_UNKNOWN = 'Unknown';
-    const TYPE_CRYPTO_API = 'CryptoApi';
-    const TYPE_XML_DSIG = 'XmlDsig';
     
 
-    
-    /*
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getTypeAllowableValues()
-    {
-        return [
-            self::TYPE_UNKNOWN,
-            self::TYPE_CRYPTO_API,
-            self::TYPE_XML_DSIG,
-        ];
-    }
     
 
 
@@ -201,7 +179,6 @@ class DigitalSignature extends Signature
 
         $this->container['comments'] = isset($data['comments']) ? $data['comments'] : null;
         $this->container['isValid'] = isset($data['isValid']) ? $data['isValid'] : null;
-        $this->container['type'] = isset($data['type']) ? $data['type'] : null;
         $this->container['signTime'] = isset($data['signTime']) ? $data['signTime'] : null;
     }
 
@@ -217,17 +194,6 @@ class DigitalSignature extends Signature
         if ($this->container['isValid'] === null) {
             $invalidProperties[] = "'isValid' can't be null";
         }
-        if ($this->container['type'] === null) {
-            $invalidProperties[] = "'type' can't be null";
-        }
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!in_array($this->container['type'], $allowedValues)) {
-            $invalidProperties[] = sprintf(
-                "invalid value for 'type', must be one of '%s'",
-                implode("', '", $allowedValues)
-            );
-        }
-
         if ($this->container['signTime'] === null) {
             $invalidProperties[] = "'signTime' can't be null";
         }
@@ -247,13 +213,6 @@ class DigitalSignature extends Signature
         }
 
         if ($this->container['isValid'] === null) {
-            return false;
-        }
-        if ($this->container['type'] === null) {
-            return false;
-        }
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!in_array($this->container['type'], $allowedValues)) {
             return false;
         }
         if ($this->container['signTime'] === null) {
@@ -307,35 +266,6 @@ class DigitalSignature extends Signature
     public function setIsValid($isValid)
     {
         $this->container['isValid'] = $isValid;
-
-        return $this;
-    }
-
-    /*
-     * Gets type
-     *
-     * @return string
-     */
-    public function getType()
-    {
-        return $this->container['type'];
-    }
-
-    /*
-     * Sets type
-     *
-     * @param string $type Gets or sets the type of the digital signature
-     *
-     * @return $this
-     */
-    public function setType($type)
-    {
-        $allowedValues = $this->getTypeAllowableValues();
-        if ((!is_numeric($type) && !in_array($type, $allowedValues)) || (is_numeric($type) && !in_array($allowedValues[$type], $allowedValues))) {
-            throw new \InvalidArgumentException(sprintf("Invalid value for 'type', must be one of '%s'", implode("', '", $allowedValues)));
-        }
-			
-        $this->container['type'] = $type;
 
         return $this;
     }

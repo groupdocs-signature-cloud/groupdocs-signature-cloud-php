@@ -2,7 +2,7 @@
 /*
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose Pty Ltd" file="QRCodeSignature.php">
- *   Copyright (c) 2003-2019 Aspose Pty Ltd
+ *   Copyright (c) 2003-2020 Aspose Pty Ltd
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -52,7 +52,8 @@ class QRCodeSignature extends Signature
      */
     protected static $swaggerTypes = [
         'qrCodeType' => 'string',
-        'text' => 'string'
+        'text' => 'string',
+        'format' => 'string'
     ];
 
     /*
@@ -62,7 +63,8 @@ class QRCodeSignature extends Signature
      */
     protected static $swaggerFormats = [
         'qrCodeType' => null,
-        'text' => null
+        'text' => null,
+        'format' => null
     ];
 
     /*
@@ -93,7 +95,8 @@ class QRCodeSignature extends Signature
      */
     protected static $attributeMap = [
         'qrCodeType' => 'QRCodeType',
-        'text' => 'Text'
+        'text' => 'Text',
+        'format' => 'Format'
     ];
 
     /*
@@ -103,7 +106,8 @@ class QRCodeSignature extends Signature
      */
     protected static $setters = [
         'qrCodeType' => 'setQRCodeType',
-        'text' => 'setText'
+        'text' => 'setText',
+        'format' => 'setFormat'
     ];
 
     /*
@@ -113,7 +117,8 @@ class QRCodeSignature extends Signature
      */
     protected static $getters = [
         'qrCodeType' => 'getQRCodeType',
-        'text' => 'getText'
+        'text' => 'getText',
+        'format' => 'getFormat'
     ];
 
     /*
@@ -174,6 +179,7 @@ class QRCodeSignature extends Signature
 
         $this->container['qrCodeType'] = isset($data['qrCodeType']) ? $data['qrCodeType'] : null;
         $this->container['text'] = isset($data['text']) ? $data['text'] : null;
+        $this->container['format'] = isset($data['format']) ? $data['format'] : null;
     }
 
     /*
@@ -248,6 +254,30 @@ class QRCodeSignature extends Signature
     public function setText($text)
     {
         $this->container['text'] = $text;
+
+        return $this;
+    }
+
+    /*
+     * Gets format
+     *
+     * @return string
+     */
+    public function getFormat()
+    {
+        return $this->container['format'];
+    }
+
+    /*
+     * Sets format
+     *
+     * @param string $format Specifies the format of QR-code signature image.
+     *
+     * @return $this
+     */
+    public function setFormat($format)
+    {
+        $this->container['format'] = $format;
 
         return $this;
     }

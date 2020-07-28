@@ -1,7 +1,7 @@
 <?php
 /*
  * --------------------------------------------------------------------------------------------------------------------
- * <copyright company="Aspose Pty Ltd" file="TextureBrush.php">
+ * <copyright company="Aspose Pty Ltd" file="DeleteOptions.php">
  *   Copyright (c) 2003-2020 Aspose Pty Ltd
  * </copyright>
  * <summary>
@@ -27,14 +27,16 @@
  */
 
 namespace GroupDocs\Signature\Model;
+
+use \ArrayAccess;
 use \GroupDocs\Signature\ObjectSerializer;
 
 /*
- * TextureBrush
+ * DeleteOptions
  *
- * @description Represents texture brush
+ * @description Base container class for delete signature options
  */
-class TextureBrush extends Brush 
+class DeleteOptions implements ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -43,7 +45,7 @@ class TextureBrush extends Brush
      *
      * @var string
      */
-    protected static $swaggerModelName = "TextureBrush";
+    protected static $swaggerModelName = "DeleteOptions";
 
     /*
      * Array of property to type mappings. Used for (de)serialization
@@ -51,7 +53,8 @@ class TextureBrush extends Brush
      * @var string[]
      */
     protected static $swaggerTypes = [
-        'imageFilePath' => 'string'
+        'signatureType' => 'string',
+        'signatureId' => 'string'
     ];
 
     /*
@@ -60,7 +63,8 @@ class TextureBrush extends Brush
      * @var string[]
      */
     protected static $swaggerFormats = [
-        'imageFilePath' => null
+        'signatureType' => null,
+        'signatureId' => null
     ];
 
     /*
@@ -70,7 +74,7 @@ class TextureBrush extends Brush
      */
     public static function swaggerTypes()
     {
-        return self::$swaggerTypes + parent::swaggerTypes();
+        return self::$swaggerTypes;
     }
 
     /*
@@ -80,7 +84,7 @@ class TextureBrush extends Brush
      */
     public static function swaggerFormats()
     {
-        return self::$swaggerFormats + parent::swaggerFormats();
+        return self::$swaggerFormats;
     }
 
     /*
@@ -90,7 +94,8 @@ class TextureBrush extends Brush
      * @var string[]
      */
     protected static $attributeMap = [
-        'imageFilePath' => 'ImageFilePath'
+        'signatureType' => 'SignatureType',
+        'signatureId' => 'SignatureId'
     ];
 
     /*
@@ -99,7 +104,8 @@ class TextureBrush extends Brush
      * @var string[]
      */
     protected static $setters = [
-        'imageFilePath' => 'setImageFilePath'
+        'signatureType' => 'setSignatureType',
+        'signatureId' => 'setSignatureId'
     ];
 
     /*
@@ -108,7 +114,8 @@ class TextureBrush extends Brush
      * @var string[]
      */
     protected static $getters = [
-        'imageFilePath' => 'getImageFilePath'
+        'signatureType' => 'getSignatureType',
+        'signatureId' => 'getSignatureId'
     ];
 
     /*
@@ -119,7 +126,7 @@ class TextureBrush extends Brush
      */
     public static function attributeMap()
     {
-        return parent::attributeMap() + self::$attributeMap;
+        return self::$attributeMap;
     }
 
     /*
@@ -129,7 +136,7 @@ class TextureBrush extends Brush
      */
     public static function setters()
     {
-        return parent::setters() + self::$setters;
+        return self::$setters;
     }
 
     /*
@@ -139,7 +146,7 @@ class TextureBrush extends Brush
      */
     public static function getters()
     {
-        return parent::getters() + self::$getters;
+        return self::$getters;
     }
 
     /*
@@ -152,10 +159,41 @@ class TextureBrush extends Brush
         return self::$swaggerModelName;
     }
 
+    const SIGNATURE_TYPE_NONE = 'None';
+    const SIGNATURE_TYPE_TEXT = 'Text';
+    const SIGNATURE_TYPE_IMAGE = 'Image';
+    const SIGNATURE_TYPE_DIGITAL = 'Digital';
+    const SIGNATURE_TYPE_BARCODE = 'Barcode';
+    const SIGNATURE_TYPE_QR_CODE = 'QRCode';
+    const SIGNATURE_TYPE_STAMP = 'Stamp';
     
 
     
+    /*
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getSignatureTypeAllowableValues()
+    {
+        return [
+            self::SIGNATURE_TYPE_NONE,
+            self::SIGNATURE_TYPE_TEXT,
+            self::SIGNATURE_TYPE_IMAGE,
+            self::SIGNATURE_TYPE_DIGITAL,
+            self::SIGNATURE_TYPE_BARCODE,
+            self::SIGNATURE_TYPE_QR_CODE,
+            self::SIGNATURE_TYPE_STAMP,
+        ];
+    }
+    
 
+    /*
+     * Associative array for storing property values
+     *
+     * @var mixed[]
+     */
+    protected $container = [];
 
     /*
      * Constructor
@@ -165,9 +203,8 @@ class TextureBrush extends Brush
      */
     public function __construct(array $data = null)
     {
-        parent::__construct($data);
-
-        $this->container['imageFilePath'] = isset($data['imageFilePath']) ? $data['imageFilePath'] : null;
+        $this->container['signatureType'] = isset($data['signatureType']) ? $data['signatureType'] : null;
+        $this->container['signatureId'] = isset($data['signatureId']) ? $data['signatureId'] : null;
     }
 
     /*
@@ -177,7 +214,18 @@ class TextureBrush extends Brush
      */
     public function listInvalidProperties()
     {
-        $invalidProperties = parent::listInvalidProperties();
+        $invalidProperties = [];
+
+        if ($this->container['signatureType'] === null) {
+            $invalidProperties[] = "'signatureType' can't be null";
+        }
+        $allowedValues = $this->getSignatureTypeAllowableValues();
+        if (!in_array($this->container['signatureType'], $allowedValues)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'signatureType', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
 
         return $invalidProperties;
     }
@@ -190,34 +238,67 @@ class TextureBrush extends Brush
      */
     public function valid()
     {
-        if (!parent::valid()) {
+
+        if ($this->container['signatureType'] === null) {
             return false;
         }
-
+        $allowedValues = $this->getSignatureTypeAllowableValues();
+        if (!in_array($this->container['signatureType'], $allowedValues)) {
+            return false;
+        }
         return true;
     }
 
 
     /*
-     * Gets imageFilePath
+     * Gets signatureType
      *
      * @return string
      */
-    public function getImageFilePath()
+    public function getSignatureType()
     {
-        return $this->container['imageFilePath'];
+        return $this->container['signatureType'];
     }
 
     /*
-     * Sets imageFilePath
+     * Sets signatureType
      *
-     * @param string $imageFilePath Gets or sets the texture image file path
+     * @param string $signatureType Specifies the type of signature
      *
      * @return $this
      */
-    public function setImageFilePath($imageFilePath)
+    public function setSignatureType($signatureType)
     {
-        $this->container['imageFilePath'] = $imageFilePath;
+        $allowedValues = $this->getSignatureTypeAllowableValues();
+        if ((!is_numeric($signatureType) && !in_array($signatureType, $allowedValues)) || (is_numeric($signatureType) && !in_array($allowedValues[$signatureType], $allowedValues))) {
+            throw new \InvalidArgumentException(sprintf("Invalid value for 'signatureType', must be one of '%s'", implode("', '", $allowedValues)));
+        }
+			
+        $this->container['signatureType'] = $signatureType;
+
+        return $this;
+    }
+
+    /*
+     * Gets signatureId
+     *
+     * @return string
+     */
+    public function getSignatureId()
+    {
+        return $this->container['signatureId'];
+    }
+
+    /*
+     * Sets signatureId
+     *
+     * @param string $signatureId Unique signature identifier to modify signature in the document over Update or Delete methods. This property will be set automatically after Sign or Search method being called. If this property was saved before it can be set manually to manipulate the signature.
+     *
+     * @return $this
+     */
+    public function setSignatureId($signatureId)
+    {
+        $this->container['signatureId'] = $signatureId;
 
         return $this;
     }

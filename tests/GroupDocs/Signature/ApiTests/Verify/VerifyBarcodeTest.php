@@ -2,7 +2,7 @@
 /**
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose Pty Ltd">
-*   Copyright (c) 2003-2019 Aspose Pty Ltd
+*   Copyright (c) 2003-2020 Aspose Pty Ltd
 * </copyright>
 * <summary>
 *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -46,7 +46,7 @@ class VerifyBarcodeTest extends  ApiTests\BaseApiTest
         $settings->setFileInfo($file->ToFileInfo());
 
         $options = new Model\VerifyBarcodeOptions();
-        $options->setDocumentType(Model\OptionsBase::SIGNATURE_TYPE_IMAGE);
+        $options->setSignatureType(Model\OptionsBase::SIGNATURE_TYPE_IMAGE);
         VerifyOptions::populateBarcodeOptions($options);
 
         $settings->setOptions([$options]);
@@ -61,7 +61,6 @@ class VerifyBarcodeTest extends  ApiTests\BaseApiTest
         $settings->setFileInfo($file->ToFileInfo());
 
         $options = new Model\VerifyBarcodeOptions();
-        $options->setDocumentType(Model\OptionsBase::DOCUMENT_TYPE_PDF);
         VerifyOptions::populateBarcodeOptions($options);
 
         $settings->setOptions([$options]);
@@ -76,7 +75,6 @@ class VerifyBarcodeTest extends  ApiTests\BaseApiTest
         $settings->setFileInfo($file->ToFileInfo());
 
         $options = new Model\VerifyBarcodeOptions();
-        $options->setDocumentType(Model\OptionsBase::DOCUMENT_TYPE_PRESENTATION);
         VerifyOptions::populateBarcodeOptions($options);
 
         $settings->setOptions([$options]);
@@ -91,7 +89,6 @@ class VerifyBarcodeTest extends  ApiTests\BaseApiTest
         $settings->setFileInfo($file->ToFileInfo());
 
         $options = new Model\VerifyBarcodeOptions();
-        $options->setDocumentType(Model\OptionsBase::DOCUMENT_TYPE_SPREADSHEET);
         VerifyOptions::populateBarcodeOptions($options);
 
         $settings->setOptions([$options]);
@@ -106,7 +103,6 @@ class VerifyBarcodeTest extends  ApiTests\BaseApiTest
         $settings->setFileInfo($file->ToFileInfo());
 
         $options = new Model\VerifyBarcodeOptions();
-        $options->setDocumentType(Model\OptionsBase::DOCUMENT_TYPE_WORD_PROCESSING);
         VerifyOptions::populateBarcodeOptions($options);
 
         $settings->setOptions([$options]);

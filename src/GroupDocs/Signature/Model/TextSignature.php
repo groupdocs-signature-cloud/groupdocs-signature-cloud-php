@@ -1,7 +1,7 @@
 <?php
 /*
  * --------------------------------------------------------------------------------------------------------------------
- * <copyright company="Aspose Pty Ltd" file="TextureBrush.php">
+ * <copyright company="Aspose Pty Ltd" file="TextSignature.php">
  *   Copyright (c) 2003-2020 Aspose Pty Ltd
  * </copyright>
  * <summary>
@@ -30,11 +30,11 @@ namespace GroupDocs\Signature\Model;
 use \GroupDocs\Signature\ObjectSerializer;
 
 /*
- * TextureBrush
+ * TextSignature
  *
- * @description Represents texture brush
+ * @description Contains Text signature properties
  */
-class TextureBrush extends Brush 
+class TextSignature extends Signature 
 {
     const DISCRIMINATOR = null;
 
@@ -43,7 +43,7 @@ class TextureBrush extends Brush
      *
      * @var string
      */
-    protected static $swaggerModelName = "TextureBrush";
+    protected static $swaggerModelName = "TextSignature";
 
     /*
      * Array of property to type mappings. Used for (de)serialization
@@ -51,7 +51,8 @@ class TextureBrush extends Brush
      * @var string[]
      */
     protected static $swaggerTypes = [
-        'imageFilePath' => 'string'
+        'text' => 'string',
+        'signatureImplementation' => 'string'
     ];
 
     /*
@@ -60,7 +61,8 @@ class TextureBrush extends Brush
      * @var string[]
      */
     protected static $swaggerFormats = [
-        'imageFilePath' => null
+        'text' => null,
+        'signatureImplementation' => null
     ];
 
     /*
@@ -90,7 +92,8 @@ class TextureBrush extends Brush
      * @var string[]
      */
     protected static $attributeMap = [
-        'imageFilePath' => 'ImageFilePath'
+        'text' => 'Text',
+        'signatureImplementation' => 'SignatureImplementation'
     ];
 
     /*
@@ -99,7 +102,8 @@ class TextureBrush extends Brush
      * @var string[]
      */
     protected static $setters = [
-        'imageFilePath' => 'setImageFilePath'
+        'text' => 'setText',
+        'signatureImplementation' => 'setSignatureImplementation'
     ];
 
     /*
@@ -108,7 +112,8 @@ class TextureBrush extends Brush
      * @var string[]
      */
     protected static $getters = [
-        'imageFilePath' => 'getImageFilePath'
+        'text' => 'getText',
+        'signatureImplementation' => 'getSignatureImplementation'
     ];
 
     /*
@@ -167,7 +172,8 @@ class TextureBrush extends Brush
     {
         parent::__construct($data);
 
-        $this->container['imageFilePath'] = isset($data['imageFilePath']) ? $data['imageFilePath'] : null;
+        $this->container['text'] = isset($data['text']) ? $data['text'] : null;
+        $this->container['signatureImplementation'] = isset($data['signatureImplementation']) ? $data['signatureImplementation'] : null;
     }
 
     /*
@@ -199,25 +205,49 @@ class TextureBrush extends Brush
 
 
     /*
-     * Gets imageFilePath
+     * Gets text
      *
      * @return string
      */
-    public function getImageFilePath()
+    public function getText()
     {
-        return $this->container['imageFilePath'];
+        return $this->container['text'];
     }
 
     /*
-     * Sets imageFilePath
+     * Sets text
      *
-     * @param string $imageFilePath Gets or sets the texture image file path
+     * @param string $text Specifies signature text
      *
      * @return $this
      */
-    public function setImageFilePath($imageFilePath)
+    public function setText($text)
     {
-        $this->container['imageFilePath'] = $imageFilePath;
+        $this->container['text'] = $text;
+
+        return $this;
+    }
+
+    /*
+     * Gets signatureImplementation
+     *
+     * @return string
+     */
+    public function getSignatureImplementation()
+    {
+        return $this->container['signatureImplementation'];
+    }
+
+    /*
+     * Sets signatureImplementation
+     *
+     * @param string $signatureImplementation Text signature implementation
+     *
+     * @return $this
+     */
+    public function setSignatureImplementation($signatureImplementation)
+    {
+        $this->container['signatureImplementation'] = $signatureImplementation;
 
         return $this;
     }

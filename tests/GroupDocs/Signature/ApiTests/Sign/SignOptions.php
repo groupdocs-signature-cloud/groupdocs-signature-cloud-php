@@ -2,7 +2,7 @@
 /**
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose Pty Ltd">
-*   Copyright (c) 2003-2019 Aspose Pty Ltd
+*   Copyright (c) 2003-2020 Aspose Pty Ltd
 * </copyright>
 * <summary>
 *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -57,11 +57,14 @@ class SignOptions
         $options->setForeColor($color);
         $color = new Model\Color();
         $color->setWeb("DarkOrange");
-        $options->setBorderColor($color);        
-        $options->setBackgroundColor($color);
-        $options->setBorderVisiblity(true);
-        $options->setBorderDashStyle(Model\SignTextOptions::BORDER_DASH_STYLE_DASH);
 
+        $border = new Model\BorderLine();
+        $border->setColor($color);
+        $border->setVisible(true);
+        $border->setStyle(Model\BorderLine::STYLE_DASH);
+        $options->setBorder($border);
+
+        $options->setBackgroundColor($color);
         $pagesSetup = new Model\PagesSetup();
         $pagesSetup->setEvenPages(false);
         $pagesSetup->setFirstPage(true);
@@ -99,16 +102,17 @@ class SignOptions
         $options->setForeColor($color);
         $color = new Model\Color();
         $color->setWeb("DarkOrange");
-        $options->setBorderColor($color);        
+        $border = new Model\BorderLine();
+        $border->setColor($color);
+        $border->setVisible(true);
+        $border->setStyle(Model\BorderLine::STYLE_DASH);
+        $border->setWeight(12);
+        $options->setBorder($border);       
         $options->setBackgroundColor($color);
-        $options->setOpacity(0.8);
+        $options->setTransparency(0.8);
         $padding = new Model\Padding();
         $padding->setAll(2);        
         $options->setInnerMargins($padding);
-        $options->setBorderVisiblity(true);
-        $options->setBorderDashStyle(Model\SignTextOptions::BORDER_DASH_STYLE_DASH);
-        $options->setBorderWeight(12);
-
         $pagesSetup = new Model\PagesSetup();
         $pagesSetup->setEvenPages(false);
         $pagesSetup->setFirstPage(true);
@@ -123,8 +127,8 @@ class SignOptions
         $options->setPage(1);
         $options->setAllPages(false);        
         $options->setSignatureType(Model\OptionsBase::SIGNATURE_TYPE_DIGITAL);        
-        $options->setImageGuid("Additional\\signature_01.jpg");
-        $options->setCertificateGuid("Additional\SherlockHolmes.pfx");
+        $options->setImageFilePath("Additional\\signature_01.jpg");
+        $options->setCertificateFilePath("Additional\SherlockHolmes.pfx");
         $options->setPassword("1234567890");        
 
         $options->setLeft(100);
@@ -140,7 +144,7 @@ class SignOptions
         $padding->setAll(5);
         $options->setMargin($padding);
         $options->setMarginMeasureType(Model\SignTextOptions::MARGIN_MEASURE_TYPE_PIXELS);
-        $options->setOpacity(0.8);
+        $options->setTransparency(0.8);
 
         $pagesSetup = new Model\PagesSetup();
         $pagesSetup->setEvenPages(false);
@@ -156,7 +160,7 @@ class SignOptions
         $options->setPage(1);
         $options->setAllPages(false);        
         $options->setSignatureType(Model\OptionsBase::SIGNATURE_TYPE_IMAGE);
-        $options->setImageGuid("Additional\\JohnSmithSign.png");
+        $options->setImageFilePath("Additional\\JohnSmithSign.png");
 
         $options->setLeft(100);
         $options->setTop(100);
@@ -171,7 +175,7 @@ class SignOptions
         $padding->setAll(5);
         $options->setMargin($padding);
         $options->setMarginMeasureType(Model\SignTextOptions::MARGIN_MEASURE_TYPE_PIXELS);
-        $options->setOpacity(0.8);
+        $options->setTransparency(0.8);
 
         $pagesSetup = new Model\PagesSetup();
         $pagesSetup->setEvenPages(false);
@@ -208,17 +212,18 @@ class SignOptions
         $color->setWeb("BlueViolet");
         $options->setForeColor($color);
         $color = new Model\Color();
-        $color->setWeb("DarkOrange");
-        $options->setBorderColor($color);        
+        $color->setWeb("DarkOrange");        
+        $border = new Model\BorderLine();
+        $border->setColor($color);
+        $border->setVisible(true);
+        $border->setStyle(Model\BorderLine::STYLE_DASH);
+        $border->setWeight(12);
+        $options->setBorder($border); 
         $options->setBackgroundColor($color);
-        $options->setOpacity(0.8);
+        $options->setTransparency(0.8);
         $padding = new Model\Padding();
         $padding->setAll(2);        
         $options->setInnerMargins($padding);
-        $options->setBorderVisiblity(true);
-        $options->setBorderDashStyle(Model\SignTextOptions::BORDER_DASH_STYLE_DASH);
-        $options->setBorderWeight(12);
-
         $pagesSetup = new Model\PagesSetup();
         $pagesSetup->setEvenPages(false);
         $pagesSetup->setFirstPage(true);
@@ -233,7 +238,7 @@ class SignOptions
         $options->setPage(1);
         $options->setAllPages(false);        
         $options->setSignatureType(Model\OptionsBase::SIGNATURE_TYPE_STAMP);
-        $options->setImageGuid("Additional\\JohnSmithSign.png");
+        $options->setImageFilePath("Additional\\JohnSmithSign.png");
 
         $options->setLeft(100);
         $options->setTop(100);
@@ -248,7 +253,7 @@ class SignOptions
         $padding->setAll(5);
         $options->setMargin($padding);
         $options->setMarginMeasureType(Model\SignTextOptions::MARGIN_MEASURE_TYPE_PIXELS);
-        $options->setOpacity(0.8);
+        $options->setTransparency(0.8);
         $color = new Model\Color();
         $color->setWeb("CornflowerBlue");
         $options->setBackgroundColor($color);

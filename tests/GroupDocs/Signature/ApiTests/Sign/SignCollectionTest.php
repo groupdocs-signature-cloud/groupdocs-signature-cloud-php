@@ -2,7 +2,7 @@
 /**
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose Pty Ltd">
-*   Copyright (c) 2003-2019 Aspose Pty Ltd
+*   Copyright (c) 2003-2020 Aspose Pty Ltd
 * </copyright>
 * <summary>
 *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -50,23 +50,23 @@ class SignCollectionTest extends  ApiTests\BaseApiTest
         $settings->setSaveOptions($saveOptions);
 
         $options1 = new Model\SignBarcodeOptions();
-        $options1->setDocumentType(Model\OptionsBase::SIGNATURE_TYPE_IMAGE);
+        $options1->setSignatureType(Model\OptionsBase::SIGNATURE_TYPE_IMAGE);
         SignOptions::populateBarcodeOptions($options1);
 
         $options2 = new Model\SignQRCodeOptions();
-        $options2->setDocumentType(Model\OptionsBase::SIGNATURE_TYPE_IMAGE);
+        $options2->setSignatureType(Model\OptionsBase::SIGNATURE_TYPE_IMAGE);
         SignOptions::populateQRCodeOptions($options2);  
         
         $options4 = new Model\SignTextOptions();
-        $options4->setDocumentType(Model\OptionsBase::SIGNATURE_TYPE_IMAGE);
+        $options4->setSignatureType(Model\OptionsBase::SIGNATURE_TYPE_IMAGE);
         SignOptions::populateTextOptions($options4);
 
         $options5 = new Model\SignImageOptions();
-        $options5->setDocumentType(Model\OptionsBase::SIGNATURE_TYPE_IMAGE);
+        $options5->setSignatureType(Model\OptionsBase::SIGNATURE_TYPE_IMAGE);
         SignOptions::populateImageOptions($options5);        
 
         $options6 = new Model\SignStampOptions();
-        $options6->setDocumentType(Model\OptionsBase::SIGNATURE_TYPE_IMAGE);
+        $options6->setSignatureType(Model\OptionsBase::SIGNATURE_TYPE_IMAGE);
         SignOptions::populateStampOptions($options6);        
 
         $settings->setOptions([$options1, $options2, $options4, $options5, $options6]);
@@ -85,27 +85,21 @@ class SignCollectionTest extends  ApiTests\BaseApiTest
         $settings->setSaveOptions($saveOptions);
 
         $options1 = new Model\SignBarcodeOptions();
-        $options1->setDocumentType(Model\OptionsBase::DOCUMENT_TYPE_PDF);
         SignOptions::populateBarcodeOptions($options1);
 
         $options2 = new Model\SignQRCodeOptions();
-        $options2->setDocumentType(Model\OptionsBase::DOCUMENT_TYPE_PDF);
         SignOptions::populateQRCodeOptions($options2);  
         
         $options3 = new Model\SignDigitalOptions();
-        $options3->setDocumentType(Model\OptionsBase::DOCUMENT_TYPE_PDF);
         SignOptions::populateDigitalOptions($options3);        
 
         $options4 = new Model\SignTextOptions();
-        $options4->setDocumentType(Model\OptionsBase::DOCUMENT_TYPE_PDF);
         SignOptions::populateTextOptions($options4);
 
         $options5 = new Model\SignImageOptions();
-        $options5->setDocumentType(Model\OptionsBase::DOCUMENT_TYPE_PDF);
         SignOptions::populateImageOptions($options5);        
 
         $options6 = new Model\SignStampOptions();
-        $options6->setDocumentType(Model\OptionsBase::DOCUMENT_TYPE_PDF);
         SignOptions::populateStampOptions($options6);        
 
         $settings->setOptions([$options1, $options2, $options3, $options4, $options5, $options6]);
@@ -124,23 +118,18 @@ class SignCollectionTest extends  ApiTests\BaseApiTest
         $settings->setSaveOptions($saveOptions);
 
         $options1 = new Model\SignBarcodeOptions();
-        $options1->setDocumentType(Model\OptionsBase::DOCUMENT_TYPE_PRESENTATION);
         SignOptions::populateBarcodeOptions($options1);
 
         $options2 = new Model\SignQRCodeOptions();
-        $options2->setDocumentType(Model\OptionsBase::DOCUMENT_TYPE_PRESENTATION);
         SignOptions::populateQRCodeOptions($options2);  
         
         $options4 = new Model\SignTextOptions();
-        $options4->setDocumentType(Model\OptionsBase::DOCUMENT_TYPE_PRESENTATION);
         SignOptions::populateTextOptions($options4);
 
         $options5 = new Model\SignImageOptions();
-        $options5->setDocumentType(Model\OptionsBase::DOCUMENT_TYPE_PRESENTATION);
         SignOptions::populateImageOptions($options5);        
 
         $options6 = new Model\SignStampOptions();
-        $options6->setDocumentType(Model\OptionsBase::DOCUMENT_TYPE_PRESENTATION);
         SignOptions::populateStampOptions($options6);        
 
         $settings->setOptions([$options1, $options2, $options4, $options5, $options6]);
@@ -159,27 +148,21 @@ class SignCollectionTest extends  ApiTests\BaseApiTest
         $settings->setSaveOptions($saveOptions);
 
         $options1 = new Model\SignBarcodeOptions();
-        $options1->setDocumentType(Model\OptionsBase::DOCUMENT_TYPE_SPREADSHEET);
         SignOptions::populateBarcodeOptions($options1);
 
         $options2 = new Model\SignQRCodeOptions();
-        $options2->setDocumentType(Model\OptionsBase::DOCUMENT_TYPE_SPREADSHEET);
         SignOptions::populateQRCodeOptions($options2);  
         
         $options3 = new Model\SignDigitalOptions();
-        $options3->setDocumentType(Model\OptionsBase::DOCUMENT_TYPE_SPREADSHEET);
         SignOptions::populateDigitalOptions($options3);        
 
         $options4 = new Model\SignTextOptions();
-        $options4->setDocumentType(Model\OptionsBase::DOCUMENT_TYPE_SPREADSHEET);
         SignOptions::populateTextOptions($options4);
 
         $options5 = new Model\SignImageOptions();
-        $options5->setDocumentType(Model\OptionsBase::DOCUMENT_TYPE_SPREADSHEET);
         SignOptions::populateImageOptions($options5);        
 
         $options6 = new Model\SignStampOptions();
-        $options6->setDocumentType(Model\OptionsBase::DOCUMENT_TYPE_SPREADSHEET);
         SignOptions::populateStampOptions($options6);        
 
         $settings->setOptions([$options1, $options2, $options3, $options4, $options5, $options6]);
@@ -198,27 +181,21 @@ class SignCollectionTest extends  ApiTests\BaseApiTest
         $settings->setSaveOptions($saveOptions);
 
         $options1 = new Model\SignBarcodeOptions();
-        $options1->setDocumentType(Model\OptionsBase::DOCUMENT_TYPE_WORD_PROCESSING);
         SignOptions::populateBarcodeOptions($options1);
 
         $options2 = new Model\SignQRCodeOptions();
-        $options2->setDocumentType(Model\OptionsBase::DOCUMENT_TYPE_WORD_PROCESSING);
         SignOptions::populateQRCodeOptions($options2);  
         
         $options3 = new Model\SignDigitalOptions();
-        $options3->setDocumentType(Model\OptionsBase::DOCUMENT_TYPE_WORD_PROCESSING);
         SignOptions::populateDigitalOptions($options3);        
 
         $options4 = new Model\SignTextOptions();
-        $options4->setDocumentType(Model\OptionsBase::DOCUMENT_TYPE_WORD_PROCESSING);
         SignOptions::populateTextOptions($options4);
 
         $options5 = new Model\SignImageOptions();
-        $options5->setDocumentType(Model\OptionsBase::DOCUMENT_TYPE_WORD_PROCESSING);
         SignOptions::populateImageOptions($options5);        
 
         $options6 = new Model\SignStampOptions();
-        $options6->setDocumentType(Model\OptionsBase::DOCUMENT_TYPE_WORD_PROCESSING);
         SignOptions::populateStampOptions($options6);        
 
         $settings->setOptions([$options1, $options2, $options3, $options4, $options5, $options6]);

@@ -1,7 +1,7 @@
 <?php
 /*
  * --------------------------------------------------------------------------------------------------------------------
- * <copyright company="Aspose Pty Ltd" file="TextureBrush.php">
+ * <copyright company="Aspose Pty Ltd" file="UpdateResult.php">
  *   Copyright (c) 2003-2020 Aspose Pty Ltd
  * </copyright>
  * <summary>
@@ -27,14 +27,16 @@
  */
 
 namespace GroupDocs\Signature\Model;
+
+use \ArrayAccess;
 use \GroupDocs\Signature\ObjectSerializer;
 
 /*
- * TextureBrush
+ * UpdateResult
  *
- * @description Represents texture brush
+ * @description Update result information
  */
-class TextureBrush extends Brush 
+class UpdateResult implements ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -43,7 +45,7 @@ class TextureBrush extends Brush
      *
      * @var string
      */
-    protected static $swaggerModelName = "TextureBrush";
+    protected static $swaggerModelName = "UpdateResult";
 
     /*
      * Array of property to type mappings. Used for (de)serialization
@@ -51,7 +53,10 @@ class TextureBrush extends Brush
      * @var string[]
      */
     protected static $swaggerTypes = [
-        'imageFilePath' => 'string'
+        'fileInfo' => '\GroupDocs\Signature\Model\FileInfo',
+        'size' => 'int',
+        'succeeded' => '\GroupDocs\Signature\Model\Signature[]',
+        'failed' => '\GroupDocs\Signature\Model\Signature[]'
     ];
 
     /*
@@ -60,7 +65,10 @@ class TextureBrush extends Brush
      * @var string[]
      */
     protected static $swaggerFormats = [
-        'imageFilePath' => null
+        'fileInfo' => null,
+        'size' => 'int64',
+        'succeeded' => null,
+        'failed' => null
     ];
 
     /*
@@ -70,7 +78,7 @@ class TextureBrush extends Brush
      */
     public static function swaggerTypes()
     {
-        return self::$swaggerTypes + parent::swaggerTypes();
+        return self::$swaggerTypes;
     }
 
     /*
@@ -80,7 +88,7 @@ class TextureBrush extends Brush
      */
     public static function swaggerFormats()
     {
-        return self::$swaggerFormats + parent::swaggerFormats();
+        return self::$swaggerFormats;
     }
 
     /*
@@ -90,7 +98,10 @@ class TextureBrush extends Brush
      * @var string[]
      */
     protected static $attributeMap = [
-        'imageFilePath' => 'ImageFilePath'
+        'fileInfo' => 'FileInfo',
+        'size' => 'Size',
+        'succeeded' => 'Succeeded',
+        'failed' => 'Failed'
     ];
 
     /*
@@ -99,7 +110,10 @@ class TextureBrush extends Brush
      * @var string[]
      */
     protected static $setters = [
-        'imageFilePath' => 'setImageFilePath'
+        'fileInfo' => 'setFileInfo',
+        'size' => 'setSize',
+        'succeeded' => 'setSucceeded',
+        'failed' => 'setFailed'
     ];
 
     /*
@@ -108,7 +122,10 @@ class TextureBrush extends Brush
      * @var string[]
      */
     protected static $getters = [
-        'imageFilePath' => 'getImageFilePath'
+        'fileInfo' => 'getFileInfo',
+        'size' => 'getSize',
+        'succeeded' => 'getSucceeded',
+        'failed' => 'getFailed'
     ];
 
     /*
@@ -119,7 +136,7 @@ class TextureBrush extends Brush
      */
     public static function attributeMap()
     {
-        return parent::attributeMap() + self::$attributeMap;
+        return self::$attributeMap;
     }
 
     /*
@@ -129,7 +146,7 @@ class TextureBrush extends Brush
      */
     public static function setters()
     {
-        return parent::setters() + self::$setters;
+        return self::$setters;
     }
 
     /*
@@ -139,7 +156,7 @@ class TextureBrush extends Brush
      */
     public static function getters()
     {
-        return parent::getters() + self::$getters;
+        return self::$getters;
     }
 
     /*
@@ -156,6 +173,12 @@ class TextureBrush extends Brush
 
     
 
+    /*
+     * Associative array for storing property values
+     *
+     * @var mixed[]
+     */
+    protected $container = [];
 
     /*
      * Constructor
@@ -165,9 +188,10 @@ class TextureBrush extends Brush
      */
     public function __construct(array $data = null)
     {
-        parent::__construct($data);
-
-        $this->container['imageFilePath'] = isset($data['imageFilePath']) ? $data['imageFilePath'] : null;
+        $this->container['fileInfo'] = isset($data['fileInfo']) ? $data['fileInfo'] : null;
+        $this->container['size'] = isset($data['size']) ? $data['size'] : null;
+        $this->container['succeeded'] = isset($data['succeeded']) ? $data['succeeded'] : null;
+        $this->container['failed'] = isset($data['failed']) ? $data['failed'] : null;
     }
 
     /*
@@ -177,8 +201,11 @@ class TextureBrush extends Brush
      */
     public function listInvalidProperties()
     {
-        $invalidProperties = parent::listInvalidProperties();
+        $invalidProperties = [];
 
+        if ($this->container['size'] === null) {
+            $invalidProperties[] = "'size' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -190,34 +217,106 @@ class TextureBrush extends Brush
      */
     public function valid()
     {
-        if (!parent::valid()) {
+
+        if ($this->container['size'] === null) {
             return false;
         }
-
         return true;
     }
 
 
     /*
-     * Gets imageFilePath
+     * Gets fileInfo
      *
-     * @return string
+     * @return \GroupDocs\Signature\Model\FileInfo
      */
-    public function getImageFilePath()
+    public function getFileInfo()
     {
-        return $this->container['imageFilePath'];
+        return $this->container['fileInfo'];
     }
 
     /*
-     * Sets imageFilePath
+     * Sets fileInfo
      *
-     * @param string $imageFilePath Gets or sets the texture image file path
+     * @param \GroupDocs\Signature\Model\FileInfo $fileInfo Source document basic info
      *
      * @return $this
      */
-    public function setImageFilePath($imageFilePath)
+    public function setFileInfo($fileInfo)
     {
-        $this->container['imageFilePath'] = $imageFilePath;
+        $this->container['fileInfo'] = $fileInfo;
+
+        return $this;
+    }
+
+    /*
+     * Gets size
+     *
+     * @return int
+     */
+    public function getSize()
+    {
+        return $this->container['size'];
+    }
+
+    /*
+     * Sets size
+     *
+     * @param int $size Source document size in bytes
+     *
+     * @return $this
+     */
+    public function setSize($size)
+    {
+        $this->container['size'] = $size;
+
+        return $this;
+    }
+
+    /*
+     * Gets succeeded
+     *
+     * @return \GroupDocs\Signature\Model\Signature[]
+     */
+    public function getSucceeded()
+    {
+        return $this->container['succeeded'];
+    }
+
+    /*
+     * Sets succeeded
+     *
+     * @param \GroupDocs\Signature\Model\Signature[] $succeeded List of successfully modified signatures
+     *
+     * @return $this
+     */
+    public function setSucceeded($succeeded)
+    {
+        $this->container['succeeded'] = $succeeded;
+
+        return $this;
+    }
+
+    /*
+     * Gets failed
+     *
+     * @return \GroupDocs\Signature\Model\Signature[]
+     */
+    public function getFailed()
+    {
+        return $this->container['failed'];
+    }
+
+    /*
+     * Sets failed
+     *
+     * @param \GroupDocs\Signature\Model\Signature[] $failed List of signatures that were not updated
+     *
+     * @return $this
+     */
+    public function setFailed($failed)
+    {
+        $this->container['failed'] = $failed;
 
         return $this;
     }

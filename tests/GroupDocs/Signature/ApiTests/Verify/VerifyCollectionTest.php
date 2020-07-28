@@ -2,7 +2,7 @@
 /**
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose Pty Ltd">
-*   Copyright (c) 2003-2019 Aspose Pty Ltd
+*   Copyright (c) 2003-2020 Aspose Pty Ltd
 * </copyright>
 * <summary>
 *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -46,11 +46,11 @@ class VerifyCollectionTest extends  ApiTests\BaseApiTest
         $settings->setFileInfo($file->ToFileInfo());
 
         $options1 = new Model\VerifyBarcodeOptions();
-        $options1->setDocumentType(Model\OptionsBase::SIGNATURE_TYPE_IMAGE);
+        $options1->setSignatureType(Model\OptionsBase::SIGNATURE_TYPE_IMAGE);
         VerifyOptions::populateBarcodeOptions($options1);
 
         $options2 = new Model\VerifyQRCodeOptions();
-        $options2->setDocumentType(Model\OptionsBase::SIGNATURE_TYPE_IMAGE);
+        $options2->setSignatureType(Model\OptionsBase::SIGNATURE_TYPE_IMAGE);
         VerifyOptions::populateQRCodeOptions($options2);
 
         $settings->setOptions([$options1, $options2]);
@@ -65,19 +65,15 @@ class VerifyCollectionTest extends  ApiTests\BaseApiTest
         $settings->setFileInfo($file->ToFileInfo());
 
         $options1 = new Model\VerifyBarcodeOptions();
-        $options1->setDocumentType(Model\OptionsBase::DOCUMENT_TYPE_PDF);
         VerifyOptions::populateBarcodeOptions($options1);
 
         $options2 = new Model\VerifyQRCodeOptions();
-        $options2->setDocumentType(Model\OptionsBase::DOCUMENT_TYPE_PDF);
         VerifyOptions::populateQRCodeOptions($options2);
 
         $options3 = new Model\VerifyDigitalOptions();
-        $options3->setDocumentType(Model\OptionsBase::DOCUMENT_TYPE_PDF);
         VerifyOptions::populateDigitalOptions($options3);        
 
         $options4 = new Model\VerifyTextOptions();
-        $options4->setDocumentType(Model\OptionsBase::DOCUMENT_TYPE_PDF);
         VerifyOptions::populateTextOptions($options4);        
 
         $settings->setOptions([$options1, $options2, $options3, $options4]);                
@@ -92,15 +88,12 @@ class VerifyCollectionTest extends  ApiTests\BaseApiTest
         $settings->setFileInfo($file->ToFileInfo());
 
         $options1 = new Model\VerifyBarcodeOptions();
-        $options1->setDocumentType(Model\OptionsBase::DOCUMENT_TYPE_PRESENTATION);
         VerifyOptions::populateBarcodeOptions($options1);
 
         $options2 = new Model\VerifyQRCodeOptions();
-        $options2->setDocumentType(Model\OptionsBase::DOCUMENT_TYPE_PRESENTATION);
         VerifyOptions::populateQRCodeOptions($options2);
 
         $options4 = new Model\VerifyTextOptions();
-        $options4->setDocumentType(Model\OptionsBase::DOCUMENT_TYPE_PRESENTATION);
         VerifyOptions::populateTextOptions($options4);        
 
         $settings->setOptions([$options1, $options2, $options4]);
@@ -115,19 +108,15 @@ class VerifyCollectionTest extends  ApiTests\BaseApiTest
         $settings->setFileInfo($file->ToFileInfo());
 
         $options1 = new Model\VerifyBarcodeOptions();
-        $options1->setDocumentType(Model\OptionsBase::DOCUMENT_TYPE_SPREADSHEET);
         VerifyOptions::populateBarcodeOptions($options1);
 
         $options2 = new Model\VerifyQRCodeOptions();
-        $options2->setDocumentType(Model\OptionsBase::DOCUMENT_TYPE_SPREADSHEET);
         VerifyOptions::populateQRCodeOptions($options2);
 
         $options3 = new Model\VerifyDigitalOptions();
-        $options3->setDocumentType(Model\OptionsBase::DOCUMENT_TYPE_SPREADSHEET);
         VerifyOptions::populateDigitalOptions($options3);        
 
         $options4 = new Model\VerifyTextOptions();
-        $options4->setDocumentType(Model\OptionsBase::DOCUMENT_TYPE_SPREADSHEET);
         VerifyOptions::populateTextOptions($options4);        
 
         $settings->setOptions([$options1, $options2, $options3, $options4]);  
@@ -142,19 +131,15 @@ class VerifyCollectionTest extends  ApiTests\BaseApiTest
         $settings->setFileInfo($file->ToFileInfo());
 
         $options1 = new Model\VerifyBarcodeOptions();
-        $options1->setDocumentType(Model\OptionsBase::DOCUMENT_TYPE_WORD_PROCESSING);
         VerifyOptions::populateBarcodeOptions($options1);
 
         $options2 = new Model\VerifyQRCodeOptions();
-        $options2->setDocumentType(Model\OptionsBase::DOCUMENT_TYPE_WORD_PROCESSING);
         VerifyOptions::populateQRCodeOptions($options2);
 
         $options3 = new Model\VerifyDigitalOptions();
-        $options3->setDocumentType(Model\OptionsBase::DOCUMENT_TYPE_WORD_PROCESSING);
         VerifyOptions::populateDigitalOptions($options3);        
 
         $options4 = new Model\VerifyTextOptions();
-        $options4->setDocumentType(Model\OptionsBase::DOCUMENT_TYPE_WORD_PROCESSING);
         VerifyOptions::populateTextOptions($options4);        
 
         $settings->setOptions([$options1, $options2, $options3, $options4]); 

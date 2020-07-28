@@ -2,7 +2,7 @@
 /*
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose Pty Ltd" file="SignBarcodeOptions.php">
- *   Copyright (c) 2003-2019 Aspose Pty Ltd
+ *   Copyright (c) 2003-2020 Aspose Pty Ltd
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -52,8 +52,7 @@ class SignBarcodeOptions extends SignTextOptions
      */
     protected static $swaggerTypes = [
         'barcodeType' => 'string',
-        'borderWeight' => 'double',
-        'opacity' => 'double',
+        'transparency' => 'double',
         'codeTextAlignment' => 'string',
         'innerMargins' => '\GroupDocs\Signature\Model\Padding'
     ];
@@ -65,8 +64,7 @@ class SignBarcodeOptions extends SignTextOptions
      */
     protected static $swaggerFormats = [
         'barcodeType' => null,
-        'borderWeight' => 'double',
-        'opacity' => 'double',
+        'transparency' => 'double',
         'codeTextAlignment' => null,
         'innerMargins' => null
     ];
@@ -99,8 +97,7 @@ class SignBarcodeOptions extends SignTextOptions
      */
     protected static $attributeMap = [
         'barcodeType' => 'BarcodeType',
-        'borderWeight' => 'BorderWeight',
-        'opacity' => 'Opacity',
+        'transparency' => 'Transparency',
         'codeTextAlignment' => 'CodeTextAlignment',
         'innerMargins' => 'InnerMargins'
     ];
@@ -112,8 +109,7 @@ class SignBarcodeOptions extends SignTextOptions
      */
     protected static $setters = [
         'barcodeType' => 'setBarcodeType',
-        'borderWeight' => 'setBorderWeight',
-        'opacity' => 'setOpacity',
+        'transparency' => 'setTransparency',
         'codeTextAlignment' => 'setCodeTextAlignment',
         'innerMargins' => 'setInnerMargins'
     ];
@@ -125,8 +121,7 @@ class SignBarcodeOptions extends SignTextOptions
      */
     protected static $getters = [
         'barcodeType' => 'getBarcodeType',
-        'borderWeight' => 'getBorderWeight',
-        'opacity' => 'getOpacity',
+        'transparency' => 'getTransparency',
         'codeTextAlignment' => 'getCodeTextAlignment',
         'innerMargins' => 'getInnerMargins'
     ];
@@ -207,8 +202,7 @@ class SignBarcodeOptions extends SignTextOptions
         parent::__construct($data);
 
         $this->container['barcodeType'] = isset($data['barcodeType']) ? $data['barcodeType'] : null;
-        $this->container['borderWeight'] = isset($data['borderWeight']) ? $data['borderWeight'] : null;
-        $this->container['opacity'] = isset($data['opacity']) ? $data['opacity'] : null;
+        $this->container['transparency'] = isset($data['transparency']) ? $data['transparency'] : null;
         $this->container['codeTextAlignment'] = isset($data['codeTextAlignment']) ? $data['codeTextAlignment'] : null;
         $this->container['innerMargins'] = isset($data['innerMargins']) ? $data['innerMargins'] : null;
     }
@@ -222,9 +216,6 @@ class SignBarcodeOptions extends SignTextOptions
     {
         $invalidProperties = parent::listInvalidProperties();
 
-        if ($this->container['borderWeight'] === null) {
-            $invalidProperties[] = "'borderWeight' can't be null";
-        }
         if ($this->container['codeTextAlignment'] === null) {
             $invalidProperties[] = "'codeTextAlignment' can't be null";
         }
@@ -251,9 +242,6 @@ class SignBarcodeOptions extends SignTextOptions
             return false;
         }
 
-        if ($this->container['borderWeight'] === null) {
-            return false;
-        }
         if ($this->container['codeTextAlignment'] === null) {
             return false;
         }
@@ -290,49 +278,25 @@ class SignBarcodeOptions extends SignTextOptions
     }
 
     /*
-     * Gets borderWeight
+     * Gets transparency
      *
      * @return double
      */
-    public function getBorderWeight()
+    public function getTransparency()
     {
-        return $this->container['borderWeight'];
+        return $this->container['transparency'];
     }
 
     /*
-     * Sets borderWeight
+     * Sets transparency
      *
-     * @param double $borderWeight Gets or sets the weight of the signature border
+     * @param double $transparency Gets or sets the signature transparency (value from 0.0 (opaque) through 1.0 (clear)). Default value is 0 (opaque).
      *
      * @return $this
      */
-    public function setBorderWeight($borderWeight)
+    public function setTransparency($transparency)
     {
-        $this->container['borderWeight'] = $borderWeight;
-
-        return $this;
-    }
-
-    /*
-     * Gets opacity
-     *
-     * @return double
-     */
-    public function getOpacity()
-    {
-        return $this->container['opacity'];
-    }
-
-    /*
-     * Sets opacity
-     *
-     * @param double $opacity Gets or sets the signature opacity (value from 0.0 (clear) through 1.0 (opaque)). By default the value is 1.0
-     *
-     * @return $this
-     */
-    public function setOpacity($opacity)
-    {
-        $this->container['opacity'] = $opacity;
+        $this->container['transparency'] = $transparency;
 
         return $this;
     }

@@ -2,7 +2,7 @@
 /**
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose Pty Ltd">
-*   Copyright (c) 2003-2019 Aspose Pty Ltd
+*   Copyright (c) 2003-2020 Aspose Pty Ltd
 * </copyright>
 * <summary>
 *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -44,7 +44,7 @@ class SearchQRTest extends  ApiTests\BaseApiTest
         $settings = new Model\SearchSettings();
         $settings->setFileInfo($file->ToFileInfo());
         $options = new Model\SearchQRCodeOptions();
-        $options->setDocumentType(Model\OptionsBase::SIGNATURE_TYPE_IMAGE);
+        $options->setSignatureType(Model\OptionsBase::SIGNATURE_TYPE_IMAGE);
         $this->_populateOptions($options);
         $settings->setOptions([$options]);
         $response = self::$signApi->searchSignatures(new Requests\searchSignaturesRequest($settings));
@@ -57,7 +57,6 @@ class SearchQRTest extends  ApiTests\BaseApiTest
         $settings = new Model\SearchSettings();
         $settings->setFileInfo($file->ToFileInfo());
         $options = new Model\SearchQRCodeOptions();
-        $options->setDocumentType(Model\OptionsBase::DOCUMENT_TYPE_PDF);
         $this->_populateOptions($options);
         $settings->setOptions([$options]);
         $response = self::$signApi->searchSignatures(new Requests\searchSignaturesRequest($settings));
@@ -70,7 +69,6 @@ class SearchQRTest extends  ApiTests\BaseApiTest
         $settings = new Model\SearchSettings();
         $settings->setFileInfo($file->ToFileInfo());
         $options = new Model\SearchQRCodeOptions();
-        $options->setDocumentType(Model\OptionsBase::DOCUMENT_TYPE_PRESENTATION);
         $this->_populateOptions($options);
         $settings->setOptions([$options]);
         $response = self::$signApi->searchSignatures(new Requests\searchSignaturesRequest($settings));
@@ -83,7 +81,6 @@ class SearchQRTest extends  ApiTests\BaseApiTest
         $settings = new Model\SearchSettings();
         $settings->setFileInfo($file->ToFileInfo());
         $options = new Model\SearchQRCodeOptions();
-        $options->setDocumentType(Model\OptionsBase::DOCUMENT_TYPE_SPREADSHEET);
         $this->_populateOptions($options);
         $settings->setOptions([$options]);
         $response = self::$signApi->searchSignatures(new Requests\searchSignaturesRequest($settings));
@@ -96,7 +93,6 @@ class SearchQRTest extends  ApiTests\BaseApiTest
         $settings = new Model\SearchSettings();
         $settings->setFileInfo($file->ToFileInfo());
         $options = new Model\SearchQRCodeOptions();
-        $options->setDocumentType(Model\OptionsBase::DOCUMENT_TYPE_WORD_PROCESSING);
         $this->_populateOptions($options);
         $settings->setOptions([$options]);
         $response = self::$signApi->searchSignatures(new Requests\searchSignaturesRequest($settings));

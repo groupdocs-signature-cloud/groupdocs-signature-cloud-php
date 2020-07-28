@@ -1,7 +1,7 @@
 <?php
 /*
  * --------------------------------------------------------------------------------------------------------------------
- * <copyright company="Aspose Pty Ltd" file="TextureBrush.php">
+ * <copyright company="Aspose Pty Ltd" file="DeleteSettings.php">
  *   Copyright (c) 2003-2020 Aspose Pty Ltd
  * </copyright>
  * <summary>
@@ -30,11 +30,11 @@ namespace GroupDocs\Signature\Model;
 use \GroupDocs\Signature\ObjectSerializer;
 
 /*
- * TextureBrush
+ * DeleteSettings
  *
- * @description Represents texture brush
+ * @description Defines delete sign document settings
  */
-class TextureBrush extends Brush 
+class DeleteSettings extends BaseSettings 
 {
     const DISCRIMINATOR = null;
 
@@ -43,7 +43,7 @@ class TextureBrush extends Brush
      *
      * @var string
      */
-    protected static $swaggerModelName = "TextureBrush";
+    protected static $swaggerModelName = "DeleteSettings";
 
     /*
      * Array of property to type mappings. Used for (de)serialization
@@ -51,7 +51,7 @@ class TextureBrush extends Brush
      * @var string[]
      */
     protected static $swaggerTypes = [
-        'imageFilePath' => 'string'
+        'options' => '\GroupDocs\Signature\Model\DeleteOptions[]'
     ];
 
     /*
@@ -60,7 +60,7 @@ class TextureBrush extends Brush
      * @var string[]
      */
     protected static $swaggerFormats = [
-        'imageFilePath' => null
+        'options' => null
     ];
 
     /*
@@ -90,7 +90,7 @@ class TextureBrush extends Brush
      * @var string[]
      */
     protected static $attributeMap = [
-        'imageFilePath' => 'ImageFilePath'
+        'options' => 'Options'
     ];
 
     /*
@@ -99,7 +99,7 @@ class TextureBrush extends Brush
      * @var string[]
      */
     protected static $setters = [
-        'imageFilePath' => 'setImageFilePath'
+        'options' => 'setOptions'
     ];
 
     /*
@@ -108,7 +108,7 @@ class TextureBrush extends Brush
      * @var string[]
      */
     protected static $getters = [
-        'imageFilePath' => 'getImageFilePath'
+        'options' => 'getOptions'
     ];
 
     /*
@@ -167,7 +167,7 @@ class TextureBrush extends Brush
     {
         parent::__construct($data);
 
-        $this->container['imageFilePath'] = isset($data['imageFilePath']) ? $data['imageFilePath'] : null;
+        $this->container['options'] = isset($data['options']) ? $data['options'] : null;
     }
 
     /*
@@ -199,25 +199,25 @@ class TextureBrush extends Brush
 
 
     /*
-     * Gets imageFilePath
+     * Gets options
      *
-     * @return string
+     * @return \GroupDocs\Signature\Model\DeleteOptions[]
      */
-    public function getImageFilePath()
+    public function getOptions()
     {
-        return $this->container['imageFilePath'];
+        return $this->container['options'];
     }
 
     /*
-     * Sets imageFilePath
+     * Sets options
      *
-     * @param string $imageFilePath Gets or sets the texture image file path
+     * @param \GroupDocs\Signature\Model\DeleteOptions[] $options Gets or sets options to perform signatures delete
      *
      * @return $this
      */
-    public function setImageFilePath($imageFilePath)
+    public function setOptions($options)
     {
-        $this->container['imageFilePath'] = $imageFilePath;
+        $this->container['options'] = $options;
 
         return $this;
     }

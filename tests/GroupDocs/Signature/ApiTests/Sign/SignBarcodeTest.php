@@ -2,7 +2,7 @@
 /**
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose Pty Ltd">
-*   Copyright (c) 2003-2019 Aspose Pty Ltd
+*   Copyright (c) 2003-2020 Aspose Pty Ltd
 * </copyright>
 * <summary>
 *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -50,7 +50,7 @@ class SignBarcodeTest extends  ApiTests\BaseApiTest
         $settings->setSaveOptions($saveOptions);
 
         $options = new Model\SignBarcodeOptions();
-        $options->setDocumentType(Model\OptionsBase::SIGNATURE_TYPE_IMAGE);
+        $options->setSignatureType(Model\OptionsBase::SIGNATURE_TYPE_IMAGE);
         SignOptions::populateBarcodeOptions($options);
 
         $settings->setOptions([$options]);
@@ -69,7 +69,6 @@ class SignBarcodeTest extends  ApiTests\BaseApiTest
         $settings->setSaveOptions($saveOptions);
 
         $options = new Model\SignBarcodeOptions();
-        $options->setDocumentType(Model\OptionsBase::DOCUMENT_TYPE_PDF);
         SignOptions::populateBarcodeOptions($options);
 
         $settings->setOptions([$options]);
@@ -88,7 +87,6 @@ class SignBarcodeTest extends  ApiTests\BaseApiTest
         $settings->setSaveOptions($saveOptions);
 
         $options = new Model\SignBarcodeOptions();
-        $options->setDocumentType(Model\OptionsBase::DOCUMENT_TYPE_PRESENTATION);
         SignOptions::populateBarcodeOptions($options);
 
         $settings->setOptions([$options]);
@@ -107,7 +105,6 @@ class SignBarcodeTest extends  ApiTests\BaseApiTest
         $settings->setSaveOptions($saveOptions);
 
         $options = new Model\SignBarcodeOptions();
-        $options->setDocumentType(Model\OptionsBase::DOCUMENT_TYPE_SPREADSHEET);
         SignOptions::populateBarcodeOptions($options);
 
         $settings->setOptions([$options]);
@@ -126,7 +123,6 @@ class SignBarcodeTest extends  ApiTests\BaseApiTest
         $settings->setSaveOptions($saveOptions);
 
         $options = new Model\SignBarcodeOptions();
-        $options->setDocumentType(Model\OptionsBase::DOCUMENT_TYPE_WORD_PROCESSING);
         SignOptions::populateBarcodeOptions($options);
 
         $settings->setOptions([$options]);

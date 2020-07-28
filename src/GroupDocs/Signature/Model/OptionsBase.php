@@ -2,7 +2,7 @@
 /*
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose Pty Ltd" file="OptionsBase.php">
- *   Copyright (c) 2003-2019 Aspose Pty Ltd
+ *   Copyright (c) 2003-2020 Aspose Pty Ltd
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -53,7 +53,6 @@ class OptionsBase implements ArrayAccess
      * @var string[]
      */
     protected static $swaggerTypes = [
-        'documentType' => 'string',
         'signatureType' => 'string',
         'page' => 'int',
         'allPages' => 'bool',
@@ -66,7 +65,6 @@ class OptionsBase implements ArrayAccess
      * @var string[]
      */
     protected static $swaggerFormats = [
-        'documentType' => null,
         'signatureType' => null,
         'page' => 'int32',
         'allPages' => null,
@@ -100,7 +98,6 @@ class OptionsBase implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'documentType' => 'DocumentType',
         'signatureType' => 'SignatureType',
         'page' => 'Page',
         'allPages' => 'AllPages',
@@ -113,7 +110,6 @@ class OptionsBase implements ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'documentType' => 'setDocumentType',
         'signatureType' => 'setSignatureType',
         'page' => 'setPage',
         'allPages' => 'setAllPages',
@@ -126,7 +122,6 @@ class OptionsBase implements ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'documentType' => 'getDocumentType',
         'signatureType' => 'getSignatureType',
         'page' => 'getPage',
         'allPages' => 'getAllPages',
@@ -174,11 +169,6 @@ class OptionsBase implements ArrayAccess
         return self::$swaggerModelName;
     }
 
-    const DOCUMENT_TYPE_IMAGE = 'Image';
-    const DOCUMENT_TYPE_PDF = 'Pdf';
-    const DOCUMENT_TYPE_PRESENTATION = 'Presentation';
-    const DOCUMENT_TYPE_SPREADSHEET = 'Spreadsheet';
-    const DOCUMENT_TYPE_WORD_PROCESSING = 'WordProcessing';
     const SIGNATURE_TYPE_NONE = 'None';
     const SIGNATURE_TYPE_TEXT = 'Text';
     const SIGNATURE_TYPE_IMAGE = 'Image';
@@ -188,22 +178,6 @@ class OptionsBase implements ArrayAccess
     const SIGNATURE_TYPE_STAMP = 'Stamp';
     
 
-    
-    /*
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getDocumentTypeAllowableValues()
-    {
-        return [
-            self::DOCUMENT_TYPE_IMAGE,
-            self::DOCUMENT_TYPE_PDF,
-            self::DOCUMENT_TYPE_PRESENTATION,
-            self::DOCUMENT_TYPE_SPREADSHEET,
-            self::DOCUMENT_TYPE_WORD_PROCESSING,
-        ];
-    }
     
     /*
      * Gets allowable values of the enum
@@ -239,7 +213,6 @@ class OptionsBase implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['documentType'] = isset($data['documentType']) ? $data['documentType'] : null;
         $this->container['signatureType'] = isset($data['signatureType']) ? $data['signatureType'] : null;
         $this->container['page'] = isset($data['page']) ? $data['page'] : null;
         $this->container['allPages'] = isset($data['allPages']) ? $data['allPages'] : null;
@@ -258,17 +231,6 @@ class OptionsBase implements ArrayAccess
     public function listInvalidProperties()
     {
         $invalidProperties = [];
-
-        if ($this->container['documentType'] === null) {
-            $invalidProperties[] = "'documentType' can't be null";
-        }
-        $allowedValues = $this->getDocumentTypeAllowableValues();
-        if (!in_array($this->container['documentType'], $allowedValues)) {
-            $invalidProperties[] = sprintf(
-                "invalid value for 'documentType', must be one of '%s'",
-                implode("', '", $allowedValues)
-            );
-        }
 
         if ($this->container['signatureType'] === null) {
             $invalidProperties[] = "'signatureType' can't be null";
@@ -296,13 +258,6 @@ class OptionsBase implements ArrayAccess
     public function valid()
     {
 
-        if ($this->container['documentType'] === null) {
-            return false;
-        }
-        $allowedValues = $this->getDocumentTypeAllowableValues();
-        if (!in_array($this->container['documentType'], $allowedValues)) {
-            return false;
-        }
         if ($this->container['signatureType'] === null) {
             return false;
         }
@@ -316,35 +271,6 @@ class OptionsBase implements ArrayAccess
         return true;
     }
 
-
-    /*
-     * Gets documentType
-     *
-     * @return string
-     */
-    public function getDocumentType()
-    {
-        return $this->container['documentType'];
-    }
-
-    /*
-     * Sets documentType
-     *
-     * @param string $documentType Specifies the type of document to process
-     *
-     * @return $this
-     */
-    public function setDocumentType($documentType)
-    {
-        $allowedValues = $this->getDocumentTypeAllowableValues();
-        if ((!is_numeric($documentType) && !in_array($documentType, $allowedValues)) || (is_numeric($documentType) && !in_array($allowedValues[$documentType], $allowedValues))) {
-            throw new \InvalidArgumentException(sprintf("Invalid value for 'documentType', must be one of '%s'", implode("', '", $allowedValues)));
-        }
-			
-        $this->container['documentType'] = $documentType;
-
-        return $this;
-    }
 
     /*
      * Gets signatureType

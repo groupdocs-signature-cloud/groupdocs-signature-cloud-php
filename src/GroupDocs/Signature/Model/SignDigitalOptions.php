@@ -2,7 +2,7 @@
 /*
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose Pty Ltd" file="SignDigitalOptions.php">
- *   Copyright (c) 2003-2019 Aspose Pty Ltd
+ *   Copyright (c) 2003-2020 Aspose Pty Ltd
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -51,8 +51,13 @@ class SignDigitalOptions extends SignImageOptions
      * @var string[]
      */
     protected static $swaggerTypes = [
+        'reason' => 'string',
+        'contact' => 'string',
+        'location' => 'string',
+        'visible' => 'bool',
         'password' => 'string',
-        'certificateGuid' => 'string'
+        'certificateFilePath' => 'string',
+        'xAdESType' => 'string'
     ];
 
     /*
@@ -61,8 +66,13 @@ class SignDigitalOptions extends SignImageOptions
      * @var string[]
      */
     protected static $swaggerFormats = [
+        'reason' => null,
+        'contact' => null,
+        'location' => null,
+        'visible' => null,
         'password' => null,
-        'certificateGuid' => null
+        'certificateFilePath' => null,
+        'xAdESType' => null
     ];
 
     /*
@@ -92,8 +102,13 @@ class SignDigitalOptions extends SignImageOptions
      * @var string[]
      */
     protected static $attributeMap = [
+        'reason' => 'Reason',
+        'contact' => 'Contact',
+        'location' => 'Location',
+        'visible' => 'Visible',
         'password' => 'Password',
-        'certificateGuid' => 'CertificateGuid'
+        'certificateFilePath' => 'CertificateFilePath',
+        'xAdESType' => 'XAdESType'
     ];
 
     /*
@@ -102,8 +117,13 @@ class SignDigitalOptions extends SignImageOptions
      * @var string[]
      */
     protected static $setters = [
+        'reason' => 'setReason',
+        'contact' => 'setContact',
+        'location' => 'setLocation',
+        'visible' => 'setVisible',
         'password' => 'setPassword',
-        'certificateGuid' => 'setCertificateGuid'
+        'certificateFilePath' => 'setCertificateFilePath',
+        'xAdESType' => 'setXAdESType'
     ];
 
     /*
@@ -112,8 +132,13 @@ class SignDigitalOptions extends SignImageOptions
      * @var string[]
      */
     protected static $getters = [
+        'reason' => 'getReason',
+        'contact' => 'getContact',
+        'location' => 'getLocation',
+        'visible' => 'getVisible',
         'password' => 'getPassword',
-        'certificateGuid' => 'getCertificateGuid'
+        'certificateFilePath' => 'getCertificateFilePath',
+        'xAdESType' => 'getXAdESType'
     ];
 
     /*
@@ -157,8 +182,23 @@ class SignDigitalOptions extends SignImageOptions
         return self::$swaggerModelName;
     }
 
+    const X_AD_ES_TYPE_NONE = 'None';
+    const X_AD_ES_TYPE_X_AD_ES = 'XAdES';
     
 
+    
+    /*
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getXAdESTypeAllowableValues()
+    {
+        return [
+            self::X_AD_ES_TYPE_NONE,
+            self::X_AD_ES_TYPE_X_AD_ES,
+        ];
+    }
     
 
 
@@ -172,8 +212,13 @@ class SignDigitalOptions extends SignImageOptions
     {
         parent::__construct($data);
 
+        $this->container['reason'] = isset($data['reason']) ? $data['reason'] : null;
+        $this->container['contact'] = isset($data['contact']) ? $data['contact'] : null;
+        $this->container['location'] = isset($data['location']) ? $data['location'] : null;
+        $this->container['visible'] = isset($data['visible']) ? $data['visible'] : null;
         $this->container['password'] = isset($data['password']) ? $data['password'] : null;
-        $this->container['certificateGuid'] = isset($data['certificateGuid']) ? $data['certificateGuid'] : null;
+        $this->container['certificateFilePath'] = isset($data['certificateFilePath']) ? $data['certificateFilePath'] : null;
+        $this->container['xAdESType'] = isset($data['xAdESType']) ? $data['xAdESType'] : null;
     }
 
     /*
@@ -184,6 +229,20 @@ class SignDigitalOptions extends SignImageOptions
     public function listInvalidProperties()
     {
         $invalidProperties = parent::listInvalidProperties();
+
+        if ($this->container['visible'] === null) {
+            $invalidProperties[] = "'visible' can't be null";
+        }
+        if ($this->container['xAdESType'] === null) {
+            $invalidProperties[] = "'xAdESType' can't be null";
+        }
+        $allowedValues = $this->getXAdESTypeAllowableValues();
+        if (!in_array($this->container['xAdESType'], $allowedValues)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'xAdESType', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
 
         return $invalidProperties;
     }
@@ -200,9 +259,115 @@ class SignDigitalOptions extends SignImageOptions
             return false;
         }
 
+        if ($this->container['visible'] === null) {
+            return false;
+        }
+        if ($this->container['xAdESType'] === null) {
+            return false;
+        }
+        $allowedValues = $this->getXAdESTypeAllowableValues();
+        if (!in_array($this->container['xAdESType'], $allowedValues)) {
+            return false;
+        }
         return true;
     }
 
+
+    /*
+     * Gets reason
+     *
+     * @return string
+     */
+    public function getReason()
+    {
+        return $this->container['reason'];
+    }
+
+    /*
+     * Sets reason
+     *
+     * @param string $reason Gets or sets the reason of signature.
+     *
+     * @return $this
+     */
+    public function setReason($reason)
+    {
+        $this->container['reason'] = $reason;
+
+        return $this;
+    }
+
+    /*
+     * Gets contact
+     *
+     * @return string
+     */
+    public function getContact()
+    {
+        return $this->container['contact'];
+    }
+
+    /*
+     * Sets contact
+     *
+     * @param string $contact Gets or sets the signature contact.
+     *
+     * @return $this
+     */
+    public function setContact($contact)
+    {
+        $this->container['contact'] = $contact;
+
+        return $this;
+    }
+
+    /*
+     * Gets location
+     *
+     * @return string
+     */
+    public function getLocation()
+    {
+        return $this->container['location'];
+    }
+
+    /*
+     * Sets location
+     *
+     * @param string $location Gets or sets the signature location.
+     *
+     * @return $this
+     */
+    public function setLocation($location)
+    {
+        $this->container['location'] = $location;
+
+        return $this;
+    }
+
+    /*
+     * Gets visible
+     *
+     * @return bool
+     */
+    public function getVisible()
+    {
+        return $this->container['visible'];
+    }
+
+    /*
+     * Sets visible
+     *
+     * @param bool $visible Gets or sets the visibility of signature.
+     *
+     * @return $this
+     */
+    public function setVisible($visible)
+    {
+        $this->container['visible'] = $visible;
+
+        return $this;
+    }
 
     /*
      * Gets password
@@ -229,25 +394,54 @@ class SignDigitalOptions extends SignImageOptions
     }
 
     /*
-     * Gets certificateGuid
+     * Gets certificateFilePath
      *
      * @return string
      */
-    public function getCertificateGuid()
+    public function getCertificateFilePath()
     {
-        return $this->container['certificateGuid'];
+        return $this->container['certificateFilePath'];
     }
 
     /*
-     * Sets certificateGuid
+     * Sets certificateFilePath
      *
-     * @param string $certificateGuid Gets or sets the digital certificate file GUID
+     * @param string $certificateFilePath Gets or sets the digital certificate file GUID
      *
      * @return $this
      */
-    public function setCertificateGuid($certificateGuid)
+    public function setCertificateFilePath($certificateFilePath)
     {
-        $this->container['certificateGuid'] = $certificateGuid;
+        $this->container['certificateFilePath'] = $certificateFilePath;
+
+        return $this;
+    }
+
+    /*
+     * Gets xAdESType
+     *
+     * @return string
+     */
+    public function getXAdESType()
+    {
+        return $this->container['xAdESType'];
+    }
+
+    /*
+     * Sets xAdESType
+     *
+     * @param string $xAdESType XAdES type GroupDocs.Signature.Options.DigitalSignOptions.XAdESType. Default value is None (XAdES is off). At this moment XAdES signature type is supported only for Spreadsheet documents.
+     *
+     * @return $this
+     */
+    public function setXAdESType($xAdESType)
+    {
+        $allowedValues = $this->getXAdESTypeAllowableValues();
+        if ((!is_numeric($xAdESType) && !in_array($xAdESType, $allowedValues)) || (is_numeric($xAdESType) && !in_array($allowedValues[$xAdESType], $allowedValues))) {
+            throw new \InvalidArgumentException(sprintf("Invalid value for 'xAdESType', must be one of '%s'", implode("', '", $allowedValues)));
+        }
+			
+        $this->container['xAdESType'] = $xAdESType;
 
         return $this;
     }
