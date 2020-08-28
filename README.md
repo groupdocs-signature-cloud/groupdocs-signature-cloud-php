@@ -83,14 +83,4 @@ try {
 ## Licensing
 GroupDocs.Signature for Cloud SDK for PHP is licensed under [MIT License](LICENSE).
 
-## Resources
-+ [**Website**](https://www.groupdocs.cloud)
-+ [**Product Home**](https://products.groupdocs.cloud/signature)
-+ [**Documentation**](https://wiki.groupdocs.cloud/display/signaturecloud/Home)
-+ [**Free Support Forum**](https://forum.groupdocs.cloud/c/signature)
-+ [**Blog**](https://blog.groupdocs.cloud/category/signature)
-
-
-
-## Contact Us
-Your feedback is very important to us. Please feel free to contact us using our [Support Forums](https://forum.groupdocs.cloud/c/signature).
+[Home](https://www.groupdocs.cloud/) | [Product Page](https://products.groupdocs.cloud/signature/php) | [Docs](https://docs.groupdocs.cloud/signature/) | [Demos](https://products.groupdocs.app/signature/family) | [API Reference](https://apireference.groupdocs.cloud/signature/) | [Examples](https://github.com/groupdocs-signature-cloud/groupdocs-signature-cloud-php) | [Blog](https://blog.groupdocs.cloud/category/signature/) | [Free Support](https://forum.groupdocs.cloud/c/signature) | [Free Trial](https://purchase.groupdocs.cloud/trial)
