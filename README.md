@@ -1,4 +1,4 @@
-![](https://img.shields.io/badge/api-v2.0-lightgrey) ![Packagist Version](https://img.shields.io/packagist/v/groupdocscloud/groupdocs-signature-cloud) ![Packagist PHP Version Support](https://img.shields.io/packagist/php-v/groupdocscloud/groupdocs-signature-cloud) [![GitHub license](https://img.shields.io/github/license/groupdocs-signature-cloud/groupdocs-signature-cloud-php)](https://github.com/groupdocs-signature-cloud/groupdocs-signature-cloud-php/blob/master/LICENSE) 
+![](https://img.shields.io/badge/api-v2.0-lightgrey) ![Packagist Version](https://img.shields.io/packagist/v/groupdocscloud/groupdocs-signature-cloud) ![Packagist PHP Version Support](https://img.shields.io/packagist/php-v/groupdocscloud/groupdocs-signature-cloud) [![GitHub license](https://img.shields.io/github/license/groupdocs-signature-cloud/groupdocs-signature-cloud-php)](https://github.com/groupdocs-signature-cloud/groupdocs-signature-cloud-php/blob/master/LICENSE)
 
 # PHP SDK to Document Signature REST API
 
@@ -20,11 +20,11 @@ Check out the [Developer's Guide](https://docs.groupdocs.cloud/signature/develop
 
 ## Supported Signature Types
 
-- **Text Signature** 
-- **Image Signature** 
-- **Barcode Signature** 
+- **Text Signature**
+- **Image Signature**
+- **Barcode Signature**
 - **QR-Code Signature**
-- **Digital Signature** 
+- **Digital Signature**
 - **Stamp Signature**
 
 ## Microsoft Office Formats
@@ -50,7 +50,7 @@ The package is available at [Packagist](https://packagist.org/packages/groupdocs
 
 ```
 composer require groupdocscloud/signature-sdk-php
-``` 
+```
 
 You can also install the SDK via Composer directly from this repository. Please add the following to `composer.json` to get the package from GitHub, then run `composer install`.
 
@@ -88,30 +88,27 @@ composer install
 ## Get Supported Document Formats
 
 ```php
-<?php
+use GroupDocs\Signature\Model;
+use GroupDocs\Signature\Model\Requests;
 
-require_once(__DIR__ . '/vendor/autoload.php');
+//Get Client Id and Client Secret from https://dashboard.groupdocs.cloud
+$myClientId = "";
+$myClientSecret = "";
 
-//TODO: Get your AppSID and AppKey at https://dashboard.groupdocs.cloud (free registration is required).
+// Create instance of the API
 $configuration = new GroupDocs\Signature\Configuration();
-$configuration->setAppSid("XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX");
-$configuration->setAppKey("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+$configuration->setAppSid($myClientId);
+$configuration->setAppKey($myClientSecret);
+$signatureApi = new GroupDocs\Signature\CompareApi($configuration);
 
-$signatureApi = new GroupDocs\Signature\SignatureApi($configuration); 
+$signatureApi = new GroupDocs\Signature\SignatureApi($configuration);
 
-try {
-    $request = new GroupDocs\Signature\Model\Requests\GetSupportedFileFormatsRequest();
-    $response = $signatureApi->getSupportedFileFormats($request);
+$request = new GroupDocs\Signature\Model\Requests\GetSupportedFileFormatsRequest();
+$response = $signatureApi->getSupportedFileFormats($request);
 
-    foreach ($response->getFormats() as $key => $format) {
-        echo $format->getFileFormat() . " - " .  $format->getExtension(), "\n";
-    }
-} catch (Exception $e) {
-    echo  "Something went wrong: ",  $e->getMessage(), "\n";
-    PHP_EOL;
+foreach ($response->getFormats() as $key => $format) {
+	echo $format->getFileFormat() . " - " .  $format->getExtension(), "\n";
 }
-
-?>
 ```
 
 ## GroupDocs.Signature Cloud SDKs in Popular Languages
@@ -119,6 +116,6 @@ try {
 | .NET | Java | PHP | Python | Ruby | Node.js |
 |---|---|---|---|---|---|
 | [GitHub](https://github.com/groupdocs-signature-cloud/groupdocs-signature-cloud-dotnet) | [GitHub](https://github.com/groupdocs-signature-cloud/groupdocs-signature-cloud-java) | [GitHub](https://github.com/groupdocs-signature-cloud/groupdocs-signature-cloud-php) | [GitHub](https://github.com/groupdocs-signature-cloud/groupdocs-signature-cloud-python) | [GitHub](https://github.com/groupdocs-signature-cloud/groupdocs-signature-cloud-ruby)  | [GitHub](https://github.com/groupdocs-signature-cloud/groupdocs-signature-cloud-node) |
-| [NuGet](https://www.nuget.org/packages/GroupDocs.Signature-Cloud/) | [Maven](https://repository.groupdocs.cloud/webapp/#/artifacts/browse/tree/General/repo/com/groupdocs/groupdocs-signature-cloud) | [Composer](https://packagist.org/packages/groupdocscloud/groupdocs-signature-cloud) | [PIP](https://pypi.org/project/groupdocs-signature-cloud/) | [GEM](https://rubygems.org/gems/groupdocs_signature_cloud)  | [NPM](https://www.npmjs.com/package/groupdocs-signature-cloud) | 
+| [NuGet](https://www.nuget.org/packages/GroupDocs.Signature-Cloud/) | [Maven](https://repository.groupdocs.cloud/webapp/#/artifacts/browse/tree/General/repo/com/groupdocs/groupdocs-signature-cloud) | [Composer](https://packagist.org/packages/groupdocscloud/groupdocs-signature-cloud) | [PIP](https://pypi.org/project/groupdocs-signature-cloud/) | [GEM](https://rubygems.org/gems/groupdocs_signature_cloud)  | [NPM](https://www.npmjs.com/package/groupdocs-signature-cloud) |
 
 [Home](https://www.groupdocs.cloud/) | [Product Page](https://products.groupdocs.cloud/signature/php) | [Documentation](https://docs.groupdocs.cloud/signature/) | [Live Demo](https://products.groupdocs.app/signature/total) | [API Reference](https://apireference.groupdocs.cloud/signature/) | [Code Samples](https://github.com/groupdocs-signature-cloud/groupdocs-signature-cloud-php-samples) | [Blog](https://blog.groupdocs.cloud/category/signature/) | [Free Support](https://forum.groupdocs.cloud/c/signature) | [Free Trial](https://dashboard.groupdocs.cloud)
