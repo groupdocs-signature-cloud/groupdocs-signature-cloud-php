@@ -1,7 +1,7 @@
 <?php
 /*
  * --------------------------------------------------------------------------------------------------------------------
- * <copyright company="Aspose Pty Ltd" file="StorageFile.php">
+ * <copyright company="Aspose Pty Ltd" file="TimeStamp.php">
  *   Copyright (c) 2003-2021 Aspose Pty Ltd
  * </copyright>
  * <summary>
@@ -32,20 +32,20 @@ use \ArrayAccess;
 use \GroupDocs\Signature\ObjectSerializer;
 
 /*
- * StorageFile
+ * TimeStamp
  *
- * @description File or folder information
+ * @description Represents data to get time stamp from third-party site.
  */
-class StorageFile implements ArrayAccess
+class TimeStamp implements ArrayAccess
 {
-    const DISCRIMINATOR = 'Type';
+    const DISCRIMINATOR = null;
 
     /*
      * The original name of the model.
      *
      * @var string
      */
-    protected static $swaggerModelName = "StorageFile";
+    protected static $swaggerModelName = "TimeStamp";
 
     /*
      * Array of property to type mappings. Used for (de)serialization
@@ -53,11 +53,9 @@ class StorageFile implements ArrayAccess
      * @var string[]
      */
     protected static $swaggerTypes = [
-        'name' => 'string',
-        'isFolder' => 'bool',
-        'modifiedDate' => '\DateTime',
-        'size' => 'int',
-        'path' => 'string'
+        'url' => 'string',
+        'user' => 'string',
+        'password' => 'string'
     ];
 
     /*
@@ -66,11 +64,9 @@ class StorageFile implements ArrayAccess
      * @var string[]
      */
     protected static $swaggerFormats = [
-        'name' => null,
-        'isFolder' => null,
-        'modifiedDate' => 'date-time',
-        'size' => 'int64',
-        'path' => null
+        'url' => null,
+        'user' => null,
+        'password' => null
     ];
 
     /*
@@ -100,11 +96,9 @@ class StorageFile implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'Name',
-        'isFolder' => 'IsFolder',
-        'modifiedDate' => 'ModifiedDate',
-        'size' => 'Size',
-        'path' => 'Path'
+        'url' => 'Url',
+        'user' => 'User',
+        'password' => 'Password'
     ];
 
     /*
@@ -113,11 +107,9 @@ class StorageFile implements ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
-        'isFolder' => 'setIsFolder',
-        'modifiedDate' => 'setModifiedDate',
-        'size' => 'setSize',
-        'path' => 'setPath'
+        'url' => 'setUrl',
+        'user' => 'setUser',
+        'password' => 'setPassword'
     ];
 
     /*
@@ -126,11 +118,9 @@ class StorageFile implements ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
-        'isFolder' => 'getIsFolder',
-        'modifiedDate' => 'getModifiedDate',
-        'size' => 'getSize',
-        'path' => 'getPath'
+        'url' => 'getUrl',
+        'user' => 'getUser',
+        'password' => 'getPassword'
     ];
 
     /*
@@ -193,15 +183,9 @@ class StorageFile implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
-        $this->container['isFolder'] = isset($data['isFolder']) ? $data['isFolder'] : null;
-        $this->container['modifiedDate'] = isset($data['modifiedDate']) ? $data['modifiedDate'] : null;
-        $this->container['size'] = isset($data['size']) ? $data['size'] : null;
-        $this->container['path'] = isset($data['path']) ? $data['path'] : null;
-
-        // Initialize discriminator property with the model name.
-        $discriminator = array_search('Type', self::$attributeMap);
-        $this->container[$discriminator] = static::$swaggerModelName;
+        $this->container['url'] = isset($data['url']) ? $data['url'] : null;
+        $this->container['user'] = isset($data['user']) ? $data['user'] : null;
+        $this->container['password'] = isset($data['password']) ? $data['password'] : null;
     }
 
     /*
@@ -213,12 +197,6 @@ class StorageFile implements ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['isFolder'] === null) {
-            $invalidProperties[] = "'isFolder' can't be null";
-        }
-        if ($this->container['size'] === null) {
-            $invalidProperties[] = "'size' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -231,132 +209,78 @@ class StorageFile implements ArrayAccess
     public function valid()
     {
 
-        if ($this->container['isFolder'] === null) {
-            return false;
-        }
-        if ($this->container['size'] === null) {
-            return false;
-        }
         return true;
     }
 
 
     /*
-     * Gets name
+     * Gets url
      *
      * @return string
      */
-    public function getName()
+    public function getUrl()
     {
-        return $this->container['name'];
+        return $this->container['url'];
     }
 
     /*
-     * Sets name
+     * Sets url
      *
-     * @param string $name File or folder name.
+     * @param string $url Url of third-party site.
      *
      * @return $this
      */
-    public function setName($name)
+    public function setUrl($url)
     {
-        $this->container['name'] = $name;
+        $this->container['url'] = $url;
 
         return $this;
     }
 
     /*
-     * Gets isFolder
-     *
-     * @return bool
-     */
-    public function getIsFolder()
-    {
-        return $this->container['isFolder'];
-    }
-
-    /*
-     * Sets isFolder
-     *
-     * @param bool $isFolder True if it is a folder.
-     *
-     * @return $this
-     */
-    public function setIsFolder($isFolder)
-    {
-        $this->container['isFolder'] = $isFolder;
-
-        return $this;
-    }
-
-    /*
-     * Gets modifiedDate
-     *
-     * @return \DateTime
-     */
-    public function getModifiedDate()
-    {
-        return $this->container['modifiedDate'];
-    }
-
-    /*
-     * Sets modifiedDate
-     *
-     * @param \DateTime $modifiedDate File or folder last modified DateTime.
-     *
-     * @return $this
-     */
-    public function setModifiedDate($modifiedDate)
-    {
-        $this->container['modifiedDate'] = $modifiedDate;
-
-        return $this;
-    }
-
-    /*
-     * Gets size
-     *
-     * @return int
-     */
-    public function getSize()
-    {
-        return $this->container['size'];
-    }
-
-    /*
-     * Sets size
-     *
-     * @param int $size File or folder size.
-     *
-     * @return $this
-     */
-    public function setSize($size)
-    {
-        $this->container['size'] = $size;
-
-        return $this;
-    }
-
-    /*
-     * Gets path
+     * Gets user
      *
      * @return string
      */
-    public function getPath()
+    public function getUser()
     {
-        return $this->container['path'];
+        return $this->container['user'];
     }
 
     /*
-     * Sets path
+     * Sets user
      *
-     * @param string $path File or folder path.
+     * @param string $user User.
      *
      * @return $this
      */
-    public function setPath($path)
+    public function setUser($user)
     {
-        $this->container['path'] = $path;
+        $this->container['user'] = $user;
+
+        return $this;
+    }
+
+    /*
+     * Gets password
+     *
+     * @return string
+     */
+    public function getPassword()
+    {
+        return $this->container['password'];
+    }
+
+    /*
+     * Sets password
+     *
+     * @param string $password Password.
+     *
+     * @return $this
+     */
+    public function setPassword($password)
+    {
+        $this->container['password'] = $password;
 
         return $this;
     }

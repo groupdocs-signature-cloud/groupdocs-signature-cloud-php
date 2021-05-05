@@ -2,7 +2,7 @@
 /*
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose Pty Ltd" file="DigitalSignature.php">
- *   Copyright (c) 2003-2020 Aspose Pty Ltd
+ *   Copyright (c) 2003-2021 Aspose Pty Ltd
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -53,7 +53,8 @@ class DigitalSignature extends Signature
     protected static $swaggerTypes = [
         'comments' => 'string',
         'isValid' => 'bool',
-        'signTime' => '\DateTime'
+        'signTime' => '\DateTime',
+        'pdfDigitalSignature' => '\GroupDocs\Signature\Model\PdfDigitalSignature'
     ];
 
     /*
@@ -64,7 +65,8 @@ class DigitalSignature extends Signature
     protected static $swaggerFormats = [
         'comments' => null,
         'isValid' => null,
-        'signTime' => 'date-time'
+        'signTime' => 'date-time',
+        'pdfDigitalSignature' => null
     ];
 
     /*
@@ -96,7 +98,8 @@ class DigitalSignature extends Signature
     protected static $attributeMap = [
         'comments' => 'Comments',
         'isValid' => 'IsValid',
-        'signTime' => 'SignTime'
+        'signTime' => 'SignTime',
+        'pdfDigitalSignature' => 'PdfDigitalSignature'
     ];
 
     /*
@@ -107,7 +110,8 @@ class DigitalSignature extends Signature
     protected static $setters = [
         'comments' => 'setComments',
         'isValid' => 'setIsValid',
-        'signTime' => 'setSignTime'
+        'signTime' => 'setSignTime',
+        'pdfDigitalSignature' => 'setPdfDigitalSignature'
     ];
 
     /*
@@ -118,7 +122,8 @@ class DigitalSignature extends Signature
     protected static $getters = [
         'comments' => 'getComments',
         'isValid' => 'getIsValid',
-        'signTime' => 'getSignTime'
+        'signTime' => 'getSignTime',
+        'pdfDigitalSignature' => 'getPdfDigitalSignature'
     ];
 
     /*
@@ -180,6 +185,7 @@ class DigitalSignature extends Signature
         $this->container['comments'] = isset($data['comments']) ? $data['comments'] : null;
         $this->container['isValid'] = isset($data['isValid']) ? $data['isValid'] : null;
         $this->container['signTime'] = isset($data['signTime']) ? $data['signTime'] : null;
+        $this->container['pdfDigitalSignature'] = isset($data['pdfDigitalSignature']) ? $data['pdfDigitalSignature'] : null;
     }
 
     /*
@@ -290,6 +296,30 @@ class DigitalSignature extends Signature
     public function setSignTime($signTime)
     {
         $this->container['signTime'] = $signTime;
+
+        return $this;
+    }
+
+    /*
+     * Gets pdfDigitalSignature
+     *
+     * @return \GroupDocs\Signature\Model\PdfDigitalSignature
+     */
+    public function getPdfDigitalSignature()
+    {
+        return $this->container['pdfDigitalSignature'];
+    }
+
+    /*
+     * Sets pdfDigitalSignature
+     *
+     * @param \GroupDocs\Signature\Model\PdfDigitalSignature $pdfDigitalSignature Pdf digital signature properties
+     *
+     * @return $this
+     */
+    public function setPdfDigitalSignature($pdfDigitalSignature)
+    {
+        $this->container['pdfDigitalSignature'] = $pdfDigitalSignature;
 
         return $this;
     }

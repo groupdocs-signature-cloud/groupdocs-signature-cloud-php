@@ -2,7 +2,7 @@
 /*
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose Pty Ltd" file="SignApi.php">
- *   Copyright (c) 2003-2020 Aspose Pty Ltd
+ *   Copyright (c) 2003-2021 Aspose Pty Ltd
  * </copyright>
  * <summary>
  *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -130,9 +130,9 @@ class SignApi
                 $error = json_decode($content);
 
                 $errorCode = $e->getCode();
-                $errorMessage = $error->Error != null && $error->Error->Message != null
-                    ? $error->Error->Message
-                    : $e->getMessage();
+                $errorMessage = $error != null && $error->message != null
+                    ? $error->message
+                    : ($error != null && $error->error != null && $error->error->message != null ? $error->error->message : $e->getMessage());
                 
                 throw new ApiException($errorMessage, $errorCode);
             }
@@ -400,9 +400,9 @@ class SignApi
                 $error = json_decode($content);
 
                 $errorCode = $e->getCode();
-                $errorMessage = $error->Error != null && $error->Error->Message != null
-                    ? $error->Error->Message
-                    : $e->getMessage();
+                $errorMessage = $error != null && $error->message != null
+                    ? $error->message
+                    : ($error != null && $error->error != null && $error->error->message != null ? $error->error->message : $e->getMessage());
                 
                 throw new ApiException($errorMessage, $errorCode);
             }
@@ -670,9 +670,9 @@ class SignApi
                 $error = json_decode($content);
 
                 $errorCode = $e->getCode();
-                $errorMessage = $error->Error != null && $error->Error->Message != null
-                    ? $error->Error->Message
-                    : $e->getMessage();
+                $errorMessage = $error != null && $error->message != null
+                    ? $error->message
+                    : ($error != null && $error->error != null && $error->error->message != null ? $error->error->message : $e->getMessage());
                 
                 throw new ApiException($errorMessage, $errorCode);
             }
@@ -940,9 +940,9 @@ class SignApi
                 $error = json_decode($content);
 
                 $errorCode = $e->getCode();
-                $errorMessage = $error->Error != null && $error->Error->Message != null
-                    ? $error->Error->Message
-                    : $e->getMessage();
+                $errorMessage = $error != null && $error->message != null
+                    ? $error->message
+                    : ($error != null && $error->error != null && $error->error->message != null ? $error->error->message : $e->getMessage());
                 
                 throw new ApiException($errorMessage, $errorCode);
             }
@@ -1210,9 +1210,9 @@ class SignApi
                 $error = json_decode($content);
 
                 $errorCode = $e->getCode();
-                $errorMessage = $error->Error != null && $error->Error->Message != null
-                    ? $error->Error->Message
-                    : $e->getMessage();
+                $errorMessage = $error != null && $error->message != null
+                    ? $error->message
+                    : ($error != null && $error->error != null && $error->error->message != null ? $error->error->message : $e->getMessage());
                 
                 throw new ApiException($errorMessage, $errorCode);
             }
@@ -1539,7 +1539,7 @@ class SignApi
 /*
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose Pty Ltd" file="createSignaturesRequest.php">
- *   Copyright (c) 2003-2020 Aspose Pty Ltd
+ *   Copyright (c) 2003-2021 Aspose Pty Ltd
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -1588,7 +1588,7 @@ class createSignaturesRequest
 /*
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose Pty Ltd" file="deleteSignaturesRequest.php">
- *   Copyright (c) 2003-2020 Aspose Pty Ltd
+ *   Copyright (c) 2003-2021 Aspose Pty Ltd
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -1637,7 +1637,7 @@ class deleteSignaturesRequest
 /*
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose Pty Ltd" file="searchSignaturesRequest.php">
- *   Copyright (c) 2003-2020 Aspose Pty Ltd
+ *   Copyright (c) 2003-2021 Aspose Pty Ltd
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -1686,7 +1686,7 @@ class searchSignaturesRequest
 /*
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose Pty Ltd" file="updateSignaturesRequest.php">
- *   Copyright (c) 2003-2020 Aspose Pty Ltd
+ *   Copyright (c) 2003-2021 Aspose Pty Ltd
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -1735,7 +1735,7 @@ class updateSignaturesRequest
 /*
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose Pty Ltd" file="verifySignaturesRequest.php">
- *   Copyright (c) 2003-2020 Aspose Pty Ltd
+ *   Copyright (c) 2003-2021 Aspose Pty Ltd
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy

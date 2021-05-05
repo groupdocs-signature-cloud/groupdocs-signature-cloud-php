@@ -1,7 +1,7 @@
 <?php
 /*
  * --------------------------------------------------------------------------------------------------------------------
- * <copyright company="Aspose Pty Ltd" file="StorageFile.php">
+ * <copyright company="Aspose Pty Ltd" file="PreviewPage.php">
  *   Copyright (c) 2003-2021 Aspose Pty Ltd
  * </copyright>
  * <summary>
@@ -32,20 +32,20 @@ use \ArrayAccess;
 use \GroupDocs\Signature\ObjectSerializer;
 
 /*
- * StorageFile
+ * PreviewPage
  *
- * @description File or folder information
+ * @description Document preview page
  */
-class StorageFile implements ArrayAccess
+class PreviewPage implements ArrayAccess
 {
-    const DISCRIMINATOR = 'Type';
+    const DISCRIMINATOR = null;
 
     /*
      * The original name of the model.
      *
      * @var string
      */
-    protected static $swaggerModelName = "StorageFile";
+    protected static $swaggerModelName = "PreviewPage";
 
     /*
      * Array of property to type mappings. Used for (de)serialization
@@ -53,11 +53,10 @@ class StorageFile implements ArrayAccess
      * @var string[]
      */
     protected static $swaggerTypes = [
-        'name' => 'string',
-        'isFolder' => 'bool',
-        'modifiedDate' => '\DateTime',
+        'pageNumber' => 'int',
+        'filePath' => 'string',
         'size' => 'int',
-        'path' => 'string'
+        'downloadUrl' => 'string'
     ];
 
     /*
@@ -66,11 +65,10 @@ class StorageFile implements ArrayAccess
      * @var string[]
      */
     protected static $swaggerFormats = [
-        'name' => null,
-        'isFolder' => null,
-        'modifiedDate' => 'date-time',
+        'pageNumber' => 'int32',
+        'filePath' => null,
         'size' => 'int64',
-        'path' => null
+        'downloadUrl' => null
     ];
 
     /*
@@ -100,11 +98,10 @@ class StorageFile implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'Name',
-        'isFolder' => 'IsFolder',
-        'modifiedDate' => 'ModifiedDate',
+        'pageNumber' => 'PageNumber',
+        'filePath' => 'FilePath',
         'size' => 'Size',
-        'path' => 'Path'
+        'downloadUrl' => 'DownloadUrl'
     ];
 
     /*
@@ -113,11 +110,10 @@ class StorageFile implements ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
-        'isFolder' => 'setIsFolder',
-        'modifiedDate' => 'setModifiedDate',
+        'pageNumber' => 'setPageNumber',
+        'filePath' => 'setFilePath',
         'size' => 'setSize',
-        'path' => 'setPath'
+        'downloadUrl' => 'setDownloadUrl'
     ];
 
     /*
@@ -126,11 +122,10 @@ class StorageFile implements ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
-        'isFolder' => 'getIsFolder',
-        'modifiedDate' => 'getModifiedDate',
+        'pageNumber' => 'getPageNumber',
+        'filePath' => 'getFilePath',
         'size' => 'getSize',
-        'path' => 'getPath'
+        'downloadUrl' => 'getDownloadUrl'
     ];
 
     /*
@@ -193,15 +188,10 @@ class StorageFile implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
-        $this->container['isFolder'] = isset($data['isFolder']) ? $data['isFolder'] : null;
-        $this->container['modifiedDate'] = isset($data['modifiedDate']) ? $data['modifiedDate'] : null;
+        $this->container['pageNumber'] = isset($data['pageNumber']) ? $data['pageNumber'] : null;
+        $this->container['filePath'] = isset($data['filePath']) ? $data['filePath'] : null;
         $this->container['size'] = isset($data['size']) ? $data['size'] : null;
-        $this->container['path'] = isset($data['path']) ? $data['path'] : null;
-
-        // Initialize discriminator property with the model name.
-        $discriminator = array_search('Type', self::$attributeMap);
-        $this->container[$discriminator] = static::$swaggerModelName;
+        $this->container['downloadUrl'] = isset($data['downloadUrl']) ? $data['downloadUrl'] : null;
     }
 
     /*
@@ -213,8 +203,8 @@ class StorageFile implements ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['isFolder'] === null) {
-            $invalidProperties[] = "'isFolder' can't be null";
+        if ($this->container['pageNumber'] === null) {
+            $invalidProperties[] = "'pageNumber' can't be null";
         }
         if ($this->container['size'] === null) {
             $invalidProperties[] = "'size' can't be null";
@@ -231,7 +221,7 @@ class StorageFile implements ArrayAccess
     public function valid()
     {
 
-        if ($this->container['isFolder'] === null) {
+        if ($this->container['pageNumber'] === null) {
             return false;
         }
         if ($this->container['size'] === null) {
@@ -242,73 +232,49 @@ class StorageFile implements ArrayAccess
 
 
     /*
-     * Gets name
+     * Gets pageNumber
+     *
+     * @return int
+     */
+    public function getPageNumber()
+    {
+        return $this->container['pageNumber'];
+    }
+
+    /*
+     * Sets pageNumber
+     *
+     * @param int $pageNumber Page number
+     *
+     * @return $this
+     */
+    public function setPageNumber($pageNumber)
+    {
+        $this->container['pageNumber'] = $pageNumber;
+
+        return $this;
+    }
+
+    /*
+     * Gets filePath
      *
      * @return string
      */
-    public function getName()
+    public function getFilePath()
     {
-        return $this->container['name'];
+        return $this->container['filePath'];
     }
 
     /*
-     * Sets name
+     * Sets filePath
      *
-     * @param string $name File or folder name.
+     * @param string $filePath Page file path in storage
      *
      * @return $this
      */
-    public function setName($name)
+    public function setFilePath($filePath)
     {
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /*
-     * Gets isFolder
-     *
-     * @return bool
-     */
-    public function getIsFolder()
-    {
-        return $this->container['isFolder'];
-    }
-
-    /*
-     * Sets isFolder
-     *
-     * @param bool $isFolder True if it is a folder.
-     *
-     * @return $this
-     */
-    public function setIsFolder($isFolder)
-    {
-        $this->container['isFolder'] = $isFolder;
-
-        return $this;
-    }
-
-    /*
-     * Gets modifiedDate
-     *
-     * @return \DateTime
-     */
-    public function getModifiedDate()
-    {
-        return $this->container['modifiedDate'];
-    }
-
-    /*
-     * Sets modifiedDate
-     *
-     * @param \DateTime $modifiedDate File or folder last modified DateTime.
-     *
-     * @return $this
-     */
-    public function setModifiedDate($modifiedDate)
-    {
-        $this->container['modifiedDate'] = $modifiedDate;
+        $this->container['filePath'] = $filePath;
 
         return $this;
     }
@@ -326,7 +292,7 @@ class StorageFile implements ArrayAccess
     /*
      * Sets size
      *
-     * @param int $size File or folder size.
+     * @param int $size Page file size
      *
      * @return $this
      */
@@ -338,25 +304,25 @@ class StorageFile implements ArrayAccess
     }
 
     /*
-     * Gets path
+     * Gets downloadUrl
      *
      * @return string
      */
-    public function getPath()
+    public function getDownloadUrl()
     {
-        return $this->container['path'];
+        return $this->container['downloadUrl'];
     }
 
     /*
-     * Sets path
+     * Sets downloadUrl
      *
-     * @param string $path File or folder path.
+     * @param string $downloadUrl Download url
      *
      * @return $this
      */
-    public function setPath($path)
+    public function setDownloadUrl($downloadUrl)
     {
-        $this->container['path'] = $path;
+        $this->container['downloadUrl'] = $downloadUrl;
 
         return $this;
     }

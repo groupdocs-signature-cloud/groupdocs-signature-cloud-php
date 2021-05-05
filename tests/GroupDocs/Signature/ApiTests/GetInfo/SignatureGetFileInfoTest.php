@@ -2,7 +2,7 @@
 /**
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose Pty Ltd" file="DocumentInfoApiTest.php">
-*   Copyright (c) 2003-2020 Aspose Pty Ltd
+*   Copyright (c) 2003-2021 Aspose Pty Ltd
 * </copyright>
 * <summary>
 *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -53,5 +53,17 @@ class TestSignatureGetFileInfo extends ApiTests\BaseApiTest
         $this->assertEquals($file->maxPageWidth, $response->getWidthForMaxHeight());
         $this->assertEquals($file->pagesCount, $response->getPagesCount());
         $this->assertEquals($file->ToFileInfo()->getFilePath(), $response->getFileInfo()->getFilePath());
+    }
+
+    public function testGetInfoReturnsFileNotFound()
+    {
+        $this->setExpectedException(
+            \GroupDocs\Signature\ApiException::class, "Can't find file located at 'some-folder\\\\NotExist.docx'.");
+
+            $file = Internal\TestFiles::getFileNotExist();
+            $settings = new Model\InfoSettings();
+            $settings->setFileInfo($file->ToFileInfo());
+            
+            $response = self::$infoApi->getInfo(new Requests\getInfoRequest($settings));
     }
 }

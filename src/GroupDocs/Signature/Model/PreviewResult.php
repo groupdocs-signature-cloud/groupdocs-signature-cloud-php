@@ -1,7 +1,7 @@
 <?php
 /*
  * --------------------------------------------------------------------------------------------------------------------
- * <copyright company="Aspose Pty Ltd" file="StorageFile.php">
+ * <copyright company="Aspose Pty Ltd" file="PreviewResult.php">
  *   Copyright (c) 2003-2021 Aspose Pty Ltd
  * </copyright>
  * <summary>
@@ -32,20 +32,20 @@ use \ArrayAccess;
 use \GroupDocs\Signature\ObjectSerializer;
 
 /*
- * StorageFile
+ * PreviewResult
  *
- * @description File or folder information
+ * @description Document preview result
  */
-class StorageFile implements ArrayAccess
+class PreviewResult implements ArrayAccess
 {
-    const DISCRIMINATOR = 'Type';
+    const DISCRIMINATOR = null;
 
     /*
      * The original name of the model.
      *
      * @var string
      */
-    protected static $swaggerModelName = "StorageFile";
+    protected static $swaggerModelName = "PreviewResult";
 
     /*
      * Array of property to type mappings. Used for (de)serialization
@@ -53,11 +53,10 @@ class StorageFile implements ArrayAccess
      * @var string[]
      */
     protected static $swaggerTypes = [
-        'name' => 'string',
-        'isFolder' => 'bool',
-        'modifiedDate' => '\DateTime',
+        'fileInfo' => '\GroupDocs\Signature\Model\FileInfo',
         'size' => 'int',
-        'path' => 'string'
+        'pagesCount' => 'int',
+        'pages' => '\GroupDocs\Signature\Model\PreviewPage[]'
     ];
 
     /*
@@ -66,11 +65,10 @@ class StorageFile implements ArrayAccess
      * @var string[]
      */
     protected static $swaggerFormats = [
-        'name' => null,
-        'isFolder' => null,
-        'modifiedDate' => 'date-time',
+        'fileInfo' => null,
         'size' => 'int64',
-        'path' => null
+        'pagesCount' => 'int32',
+        'pages' => null
     ];
 
     /*
@@ -100,11 +98,10 @@ class StorageFile implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'Name',
-        'isFolder' => 'IsFolder',
-        'modifiedDate' => 'ModifiedDate',
+        'fileInfo' => 'FileInfo',
         'size' => 'Size',
-        'path' => 'Path'
+        'pagesCount' => 'PagesCount',
+        'pages' => 'Pages'
     ];
 
     /*
@@ -113,11 +110,10 @@ class StorageFile implements ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
-        'isFolder' => 'setIsFolder',
-        'modifiedDate' => 'setModifiedDate',
+        'fileInfo' => 'setFileInfo',
         'size' => 'setSize',
-        'path' => 'setPath'
+        'pagesCount' => 'setPagesCount',
+        'pages' => 'setPages'
     ];
 
     /*
@@ -126,11 +122,10 @@ class StorageFile implements ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
-        'isFolder' => 'getIsFolder',
-        'modifiedDate' => 'getModifiedDate',
+        'fileInfo' => 'getFileInfo',
         'size' => 'getSize',
-        'path' => 'getPath'
+        'pagesCount' => 'getPagesCount',
+        'pages' => 'getPages'
     ];
 
     /*
@@ -193,15 +188,10 @@ class StorageFile implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
-        $this->container['isFolder'] = isset($data['isFolder']) ? $data['isFolder'] : null;
-        $this->container['modifiedDate'] = isset($data['modifiedDate']) ? $data['modifiedDate'] : null;
+        $this->container['fileInfo'] = isset($data['fileInfo']) ? $data['fileInfo'] : null;
         $this->container['size'] = isset($data['size']) ? $data['size'] : null;
-        $this->container['path'] = isset($data['path']) ? $data['path'] : null;
-
-        // Initialize discriminator property with the model name.
-        $discriminator = array_search('Type', self::$attributeMap);
-        $this->container[$discriminator] = static::$swaggerModelName;
+        $this->container['pagesCount'] = isset($data['pagesCount']) ? $data['pagesCount'] : null;
+        $this->container['pages'] = isset($data['pages']) ? $data['pages'] : null;
     }
 
     /*
@@ -213,11 +203,11 @@ class StorageFile implements ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['isFolder'] === null) {
-            $invalidProperties[] = "'isFolder' can't be null";
-        }
         if ($this->container['size'] === null) {
             $invalidProperties[] = "'size' can't be null";
+        }
+        if ($this->container['pagesCount'] === null) {
+            $invalidProperties[] = "'pagesCount' can't be null";
         }
         return $invalidProperties;
     }
@@ -231,10 +221,10 @@ class StorageFile implements ArrayAccess
     public function valid()
     {
 
-        if ($this->container['isFolder'] === null) {
+        if ($this->container['size'] === null) {
             return false;
         }
-        if ($this->container['size'] === null) {
+        if ($this->container['pagesCount'] === null) {
             return false;
         }
         return true;
@@ -242,73 +232,25 @@ class StorageFile implements ArrayAccess
 
 
     /*
-     * Gets name
+     * Gets fileInfo
      *
-     * @return string
+     * @return \GroupDocs\Signature\Model\FileInfo
      */
-    public function getName()
+    public function getFileInfo()
     {
-        return $this->container['name'];
+        return $this->container['fileInfo'];
     }
 
     /*
-     * Sets name
+     * Sets fileInfo
      *
-     * @param string $name File or folder name.
+     * @param \GroupDocs\Signature\Model\FileInfo $fileInfo Input File info
      *
      * @return $this
      */
-    public function setName($name)
+    public function setFileInfo($fileInfo)
     {
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /*
-     * Gets isFolder
-     *
-     * @return bool
-     */
-    public function getIsFolder()
-    {
-        return $this->container['isFolder'];
-    }
-
-    /*
-     * Sets isFolder
-     *
-     * @param bool $isFolder True if it is a folder.
-     *
-     * @return $this
-     */
-    public function setIsFolder($isFolder)
-    {
-        $this->container['isFolder'] = $isFolder;
-
-        return $this;
-    }
-
-    /*
-     * Gets modifiedDate
-     *
-     * @return \DateTime
-     */
-    public function getModifiedDate()
-    {
-        return $this->container['modifiedDate'];
-    }
-
-    /*
-     * Sets modifiedDate
-     *
-     * @param \DateTime $modifiedDate File or folder last modified DateTime.
-     *
-     * @return $this
-     */
-    public function setModifiedDate($modifiedDate)
-    {
-        $this->container['modifiedDate'] = $modifiedDate;
+        $this->container['fileInfo'] = $fileInfo;
 
         return $this;
     }
@@ -326,7 +268,7 @@ class StorageFile implements ArrayAccess
     /*
      * Sets size
      *
-     * @param int $size File or folder size.
+     * @param int $size Input File size
      *
      * @return $this
      */
@@ -338,25 +280,49 @@ class StorageFile implements ArrayAccess
     }
 
     /*
-     * Gets path
+     * Gets pagesCount
      *
-     * @return string
+     * @return int
      */
-    public function getPath()
+    public function getPagesCount()
     {
-        return $this->container['path'];
+        return $this->container['pagesCount'];
     }
 
     /*
-     * Sets path
+     * Sets pagesCount
      *
-     * @param string $path File or folder path.
+     * @param int $pagesCount Count of pages
      *
      * @return $this
      */
-    public function setPath($path)
+    public function setPagesCount($pagesCount)
     {
-        $this->container['path'] = $path;
+        $this->container['pagesCount'] = $pagesCount;
+
+        return $this;
+    }
+
+    /*
+     * Gets pages
+     *
+     * @return \GroupDocs\Signature\Model\PreviewPage[]
+     */
+    public function getPages()
+    {
+        return $this->container['pages'];
+    }
+
+    /*
+     * Sets pages
+     *
+     * @param \GroupDocs\Signature\Model\PreviewPage[] $pages Document preview pages
+     *
+     * @return $this
+     */
+    public function setPages($pages)
+    {
+        $this->container['pages'] = $pages;
 
         return $this;
     }

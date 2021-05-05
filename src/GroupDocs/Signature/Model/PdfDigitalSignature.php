@@ -1,7 +1,7 @@
 <?php
 /*
  * --------------------------------------------------------------------------------------------------------------------
- * <copyright company="Aspose Pty Ltd" file="StorageFile.php">
+ * <copyright company="Aspose Pty Ltd" file="PdfDigitalSignature.php">
  *   Copyright (c) 2003-2021 Aspose Pty Ltd
  * </copyright>
  * <summary>
@@ -32,20 +32,20 @@ use \ArrayAccess;
 use \GroupDocs\Signature\ObjectSerializer;
 
 /*
- * StorageFile
+ * PdfDigitalSignature
  *
- * @description File or folder information
+ * @description Contains pdf digital Signature properties
  */
-class StorageFile implements ArrayAccess
+class PdfDigitalSignature implements ArrayAccess
 {
-    const DISCRIMINATOR = 'Type';
+    const DISCRIMINATOR = null;
 
     /*
      * The original name of the model.
      *
      * @var string
      */
-    protected static $swaggerModelName = "StorageFile";
+    protected static $swaggerModelName = "PdfDigitalSignature";
 
     /*
      * Array of property to type mappings. Used for (de)serialization
@@ -53,11 +53,12 @@ class StorageFile implements ArrayAccess
      * @var string[]
      */
     protected static $swaggerTypes = [
-        'name' => 'string',
-        'isFolder' => 'bool',
-        'modifiedDate' => '\DateTime',
-        'size' => 'int',
-        'path' => 'string'
+        'contactInfo' => 'string',
+        'location' => 'string',
+        'reason' => 'string',
+        'type' => 'string',
+        'timeStamp' => '\GroupDocs\Signature\Model\TimeStamp',
+        'showProperties' => 'bool'
     ];
 
     /*
@@ -66,11 +67,12 @@ class StorageFile implements ArrayAccess
      * @var string[]
      */
     protected static $swaggerFormats = [
-        'name' => null,
-        'isFolder' => null,
-        'modifiedDate' => 'date-time',
-        'size' => 'int64',
-        'path' => null
+        'contactInfo' => null,
+        'location' => null,
+        'reason' => null,
+        'type' => null,
+        'timeStamp' => null,
+        'showProperties' => null
     ];
 
     /*
@@ -100,11 +102,12 @@ class StorageFile implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'Name',
-        'isFolder' => 'IsFolder',
-        'modifiedDate' => 'ModifiedDate',
-        'size' => 'Size',
-        'path' => 'Path'
+        'contactInfo' => 'ContactInfo',
+        'location' => 'Location',
+        'reason' => 'Reason',
+        'type' => 'Type',
+        'timeStamp' => 'TimeStamp',
+        'showProperties' => 'ShowProperties'
     ];
 
     /*
@@ -113,11 +116,12 @@ class StorageFile implements ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
-        'isFolder' => 'setIsFolder',
-        'modifiedDate' => 'setModifiedDate',
-        'size' => 'setSize',
-        'path' => 'setPath'
+        'contactInfo' => 'setContactInfo',
+        'location' => 'setLocation',
+        'reason' => 'setReason',
+        'type' => 'setType',
+        'timeStamp' => 'setTimeStamp',
+        'showProperties' => 'setShowProperties'
     ];
 
     /*
@@ -126,11 +130,12 @@ class StorageFile implements ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
-        'isFolder' => 'getIsFolder',
-        'modifiedDate' => 'getModifiedDate',
-        'size' => 'getSize',
-        'path' => 'getPath'
+        'contactInfo' => 'getContactInfo',
+        'location' => 'getLocation',
+        'reason' => 'getReason',
+        'type' => 'getType',
+        'timeStamp' => 'getTimeStamp',
+        'showProperties' => 'getShowProperties'
     ];
 
     /*
@@ -174,8 +179,23 @@ class StorageFile implements ArrayAccess
         return self::$swaggerModelName;
     }
 
+    const TYPE_SIGNATURE = 'Signature';
+    const TYPE_CERTIFICATE = 'Certificate';
     
 
+    
+    /*
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getTypeAllowableValues()
+    {
+        return [
+            self::TYPE_SIGNATURE,
+            self::TYPE_CERTIFICATE,
+        ];
+    }
     
 
     /*
@@ -193,15 +213,12 @@ class StorageFile implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
-        $this->container['isFolder'] = isset($data['isFolder']) ? $data['isFolder'] : null;
-        $this->container['modifiedDate'] = isset($data['modifiedDate']) ? $data['modifiedDate'] : null;
-        $this->container['size'] = isset($data['size']) ? $data['size'] : null;
-        $this->container['path'] = isset($data['path']) ? $data['path'] : null;
-
-        // Initialize discriminator property with the model name.
-        $discriminator = array_search('Type', self::$attributeMap);
-        $this->container[$discriminator] = static::$swaggerModelName;
+        $this->container['contactInfo'] = isset($data['contactInfo']) ? $data['contactInfo'] : null;
+        $this->container['location'] = isset($data['location']) ? $data['location'] : null;
+        $this->container['reason'] = isset($data['reason']) ? $data['reason'] : null;
+        $this->container['type'] = isset($data['type']) ? $data['type'] : null;
+        $this->container['timeStamp'] = isset($data['timeStamp']) ? $data['timeStamp'] : null;
+        $this->container['showProperties'] = isset($data['showProperties']) ? $data['showProperties'] : null;
     }
 
     /*
@@ -213,11 +230,22 @@ class StorageFile implements ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['isFolder'] === null) {
-            $invalidProperties[] = "'isFolder' can't be null";
+        if ($this->container['type'] === null) {
+            $invalidProperties[] = "'type' can't be null";
         }
-        if ($this->container['size'] === null) {
-            $invalidProperties[] = "'size' can't be null";
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!in_array($this->container['type'], $allowedValues)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'type', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if ($this->container['timeStamp'] === null) {
+            $invalidProperties[] = "'timeStamp' can't be null";
+        }
+        if ($this->container['showProperties'] === null) {
+            $invalidProperties[] = "'showProperties' can't be null";
         }
         return $invalidProperties;
     }
@@ -231,10 +259,17 @@ class StorageFile implements ArrayAccess
     public function valid()
     {
 
-        if ($this->container['isFolder'] === null) {
+        if ($this->container['type'] === null) {
             return false;
         }
-        if ($this->container['size'] === null) {
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!in_array($this->container['type'], $allowedValues)) {
+            return false;
+        }
+        if ($this->container['timeStamp'] === null) {
+            return false;
+        }
+        if ($this->container['showProperties'] === null) {
             return false;
         }
         return true;
@@ -242,121 +277,150 @@ class StorageFile implements ArrayAccess
 
 
     /*
-     * Gets name
+     * Gets contactInfo
      *
      * @return string
      */
-    public function getName()
+    public function getContactInfo()
     {
-        return $this->container['name'];
+        return $this->container['contactInfo'];
     }
 
     /*
-     * Sets name
+     * Sets contactInfo
      *
-     * @param string $name File or folder name.
+     * @param string $contactInfo Information provided by the signer to enable a recipient to contact the signer
      *
      * @return $this
      */
-    public function setName($name)
+    public function setContactInfo($contactInfo)
     {
-        $this->container['name'] = $name;
+        $this->container['contactInfo'] = $contactInfo;
 
         return $this;
     }
 
     /*
-     * Gets isFolder
+     * Gets location
+     *
+     * @return string
+     */
+    public function getLocation()
+    {
+        return $this->container['location'];
+    }
+
+    /*
+     * Sets location
+     *
+     * @param string $location The CPU host name or physical location of the signing.
+     *
+     * @return $this
+     */
+    public function setLocation($location)
+    {
+        $this->container['location'] = $location;
+
+        return $this;
+    }
+
+    /*
+     * Gets reason
+     *
+     * @return string
+     */
+    public function getReason()
+    {
+        return $this->container['reason'];
+    }
+
+    /*
+     * Sets reason
+     *
+     * @param string $reason The reason for the signing, such as (I agreeРІР‚В¦).
+     *
+     * @return $this
+     */
+    public function setReason($reason)
+    {
+        $this->container['reason'] = $reason;
+
+        return $this;
+    }
+
+    /*
+     * Gets type
+     *
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->container['type'];
+    }
+
+    /*
+     * Sets type
+     *
+     * @param string $type Type of Pdf digital signature.
+     *
+     * @return $this
+     */
+    public function setType($type)
+    {
+        $allowedValues = $this->getTypeAllowableValues();
+        if ((!is_numeric($type) && !in_array($type, $allowedValues)) || (is_numeric($type) && !in_array($allowedValues[$type], $allowedValues))) {
+            throw new \InvalidArgumentException(sprintf("Invalid value for 'type', must be one of '%s'", implode("', '", $allowedValues)));
+        }
+			
+        $this->container['type'] = $type;
+
+        return $this;
+    }
+
+    /*
+     * Gets timeStamp
+     *
+     * @return \GroupDocs\Signature\Model\TimeStamp
+     */
+    public function getTimeStamp()
+    {
+        return $this->container['timeStamp'];
+    }
+
+    /*
+     * Sets timeStamp
+     *
+     * @param \GroupDocs\Signature\Model\TimeStamp $timeStamp Time stamp for Pdf digital signature. Default value is null.
+     *
+     * @return $this
+     */
+    public function setTimeStamp($timeStamp)
+    {
+        $this->container['timeStamp'] = $timeStamp;
+
+        return $this;
+    }
+
+    /*
+     * Gets showProperties
      *
      * @return bool
      */
-    public function getIsFolder()
+    public function getShowProperties()
     {
-        return $this->container['isFolder'];
+        return $this->container['showProperties'];
     }
 
     /*
-     * Sets isFolder
+     * Sets showProperties
      *
-     * @param bool $isFolder True if it is a folder.
+     * @param bool $showProperties Force to show/hide signature properties
      *
      * @return $this
      */
-    public function setIsFolder($isFolder)
+    public function setShowProperties($showProperties)
     {
-        $this->container['isFolder'] = $isFolder;
-
-        return $this;
-    }
-
-    /*
-     * Gets modifiedDate
-     *
-     * @return \DateTime
-     */
-    public function getModifiedDate()
-    {
-        return $this->container['modifiedDate'];
-    }
-
-    /*
-     * Sets modifiedDate
-     *
-     * @param \DateTime $modifiedDate File or folder last modified DateTime.
-     *
-     * @return $this
-     */
-    public function setModifiedDate($modifiedDate)
-    {
-        $this->container['modifiedDate'] = $modifiedDate;
-
-        return $this;
-    }
-
-    /*
-     * Gets size
-     *
-     * @return int
-     */
-    public function getSize()
-    {
-        return $this->container['size'];
-    }
-
-    /*
-     * Sets size
-     *
-     * @param int $size File or folder size.
-     *
-     * @return $this
-     */
-    public function setSize($size)
-    {
-        $this->container['size'] = $size;
-
-        return $this;
-    }
-
-    /*
-     * Gets path
-     *
-     * @return string
-     */
-    public function getPath()
-    {
-        return $this->container['path'];
-    }
-
-    /*
-     * Sets path
-     *
-     * @param string $path File or folder path.
-     *
-     * @return $this
-     */
-    public function setPath($path)
-    {
-        $this->container['path'] = $path;
+        $this->container['showProperties'] = $showProperties;
 
         return $this;
     }

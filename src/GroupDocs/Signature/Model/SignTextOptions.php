@@ -2,7 +2,7 @@
 /*
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose Pty Ltd" file="SignTextOptions.php">
- *   Copyright (c) 2003-2020 Aspose Pty Ltd
+ *   Copyright (c) 2003-2021 Aspose Pty Ltd
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -71,7 +71,8 @@ class SignTextOptions extends SignOptions
         'border' => '\GroupDocs\Signature\Model\BorderLine',
         'textHorizontalAlignment' => 'string',
         'textVerticalAlignment' => 'string',
-        'zOrder' => 'int'
+        'zOrder' => 'int',
+        'native' => 'bool'
     ];
 
     /*
@@ -100,7 +101,8 @@ class SignTextOptions extends SignOptions
         'border' => null,
         'textHorizontalAlignment' => null,
         'textVerticalAlignment' => null,
-        'zOrder' => 'int32'
+        'zOrder' => 'int32',
+        'native' => null
     ];
 
     /*
@@ -150,7 +152,8 @@ class SignTextOptions extends SignOptions
         'border' => 'Border',
         'textHorizontalAlignment' => 'TextHorizontalAlignment',
         'textVerticalAlignment' => 'TextVerticalAlignment',
-        'zOrder' => 'ZOrder'
+        'zOrder' => 'ZOrder',
+        'native' => 'Native'
     ];
 
     /*
@@ -179,7 +182,8 @@ class SignTextOptions extends SignOptions
         'border' => 'setBorder',
         'textHorizontalAlignment' => 'setTextHorizontalAlignment',
         'textVerticalAlignment' => 'setTextVerticalAlignment',
-        'zOrder' => 'setZOrder'
+        'zOrder' => 'setZOrder',
+        'native' => 'setNative'
     ];
 
     /*
@@ -208,7 +212,8 @@ class SignTextOptions extends SignOptions
         'border' => 'getBorder',
         'textHorizontalAlignment' => 'getTextHorizontalAlignment',
         'textVerticalAlignment' => 'getTextVerticalAlignment',
-        'zOrder' => 'getZOrder'
+        'zOrder' => 'getZOrder',
+        'native' => 'getNative'
     ];
 
     /*
@@ -430,6 +435,7 @@ class SignTextOptions extends SignOptions
         $this->container['textHorizontalAlignment'] = isset($data['textHorizontalAlignment']) ? $data['textHorizontalAlignment'] : null;
         $this->container['textVerticalAlignment'] = isset($data['textVerticalAlignment']) ? $data['textVerticalAlignment'] : null;
         $this->container['zOrder'] = isset($data['zOrder']) ? $data['zOrder'] : null;
+        $this->container['native'] = isset($data['native']) ? $data['native'] : null;
     }
 
     /*
@@ -547,6 +553,9 @@ class SignTextOptions extends SignOptions
         if ($this->container['zOrder'] === null) {
             $invalidProperties[] = "'zOrder' can't be null";
         }
+        if ($this->container['native'] === null) {
+            $invalidProperties[] = "'native' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -634,6 +643,9 @@ class SignTextOptions extends SignOptions
             return false;
         }
         if ($this->container['zOrder'] === null) {
+            return false;
+        }
+        if ($this->container['native'] === null) {
             return false;
         }
         return true;
@@ -1180,6 +1192,30 @@ class SignTextOptions extends SignOptions
     public function setZOrder($zOrder)
     {
         $this->container['zOrder'] = $zOrder;
+
+        return $this;
+    }
+
+    /*
+     * Gets native
+     *
+     * @return bool
+     */
+    public function getNative()
+    {
+        return $this->container['native'];
+    }
+
+    /*
+     * Sets native
+     *
+     * @param bool $native Gets or sets the native attribute. If it is set document specific signatures could be used. Native text watermark for WordProcessing documents is different than regular, for example.
+     *
+     * @return $this
+     */
+    public function setNative($native)
+    {
+        $this->container['native'] = $native;
 
         return $this;
     }

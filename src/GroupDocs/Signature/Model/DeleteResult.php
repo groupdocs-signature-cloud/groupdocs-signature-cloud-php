@@ -2,7 +2,7 @@
 /*
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose Pty Ltd" file="DeleteResult.php">
- *   Copyright (c) 2003-2020 Aspose Pty Ltd
+ *   Copyright (c) 2003-2021 Aspose Pty Ltd
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -238,7 +238,7 @@ class DeleteResult implements ArrayAccess
     /*
      * Sets fileInfo
      *
-     * @param \GroupDocs\Signature\Model\FileInfo $fileInfo Source document basic info
+     * @param \GroupDocs\Signature\Model\FileInfo $fileInfo Source document file info
      *
      * @return $this
      */

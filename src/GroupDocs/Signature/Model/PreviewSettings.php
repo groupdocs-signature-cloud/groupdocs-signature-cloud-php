@@ -1,7 +1,7 @@
 <?php
 /*
  * --------------------------------------------------------------------------------------------------------------------
- * <copyright company="Aspose Pty Ltd" file="PagesSetup.php">
+ * <copyright company="Aspose Pty Ltd" file="PreviewSettings.php">
  *   Copyright (c) 2003-2021 Aspose Pty Ltd
  * </copyright>
  * <summary>
@@ -27,16 +27,14 @@
  */
 
 namespace GroupDocs\Signature\Model;
-
-use \ArrayAccess;
 use \GroupDocs\Signature\ObjectSerializer;
 
 /*
- * PagesSetup
+ * PreviewSettings
  *
- * @description Describes special pages of document to process
+ * @description Defines preview request settings
  */
-class PagesSetup implements ArrayAccess
+class PreviewSettings extends BaseSettings 
 {
     const DISCRIMINATOR = null;
 
@@ -45,7 +43,7 @@ class PagesSetup implements ArrayAccess
      *
      * @var string
      */
-    protected static $swaggerModelName = "PagesSetup";
+    protected static $swaggerModelName = "PreviewSettings";
 
     /*
      * Array of property to type mappings. Used for (de)serialization
@@ -53,11 +51,12 @@ class PagesSetup implements ArrayAccess
      * @var string[]
      */
     protected static $swaggerTypes = [
-        'firstPage' => 'bool',
-        'lastPage' => 'bool',
-        'oddPages' => 'bool',
-        'evenPages' => 'bool',
-        'pageNumbers' => 'int[]'
+        'width' => 'int',
+        'height' => 'int',
+        'pageNumbers' => 'int[]',
+        'previewFormat' => 'string',
+        'hideSignatures' => 'bool',
+        'outputPath' => 'string'
     ];
 
     /*
@@ -66,11 +65,12 @@ class PagesSetup implements ArrayAccess
      * @var string[]
      */
     protected static $swaggerFormats = [
-        'firstPage' => null,
-        'lastPage' => null,
-        'oddPages' => null,
-        'evenPages' => null,
-        'pageNumbers' => 'int32'
+        'width' => 'int32',
+        'height' => 'int32',
+        'pageNumbers' => 'int32',
+        'previewFormat' => null,
+        'hideSignatures' => null,
+        'outputPath' => null
     ];
 
     /*
@@ -80,7 +80,7 @@ class PagesSetup implements ArrayAccess
      */
     public static function swaggerTypes()
     {
-        return self::$swaggerTypes;
+        return self::$swaggerTypes + parent::swaggerTypes();
     }
 
     /*
@@ -90,7 +90,7 @@ class PagesSetup implements ArrayAccess
      */
     public static function swaggerFormats()
     {
-        return self::$swaggerFormats;
+        return self::$swaggerFormats + parent::swaggerFormats();
     }
 
     /*
@@ -100,11 +100,12 @@ class PagesSetup implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'firstPage' => 'FirstPage',
-        'lastPage' => 'LastPage',
-        'oddPages' => 'OddPages',
-        'evenPages' => 'EvenPages',
-        'pageNumbers' => 'PageNumbers'
+        'width' => 'Width',
+        'height' => 'Height',
+        'pageNumbers' => 'PageNumbers',
+        'previewFormat' => 'PreviewFormat',
+        'hideSignatures' => 'HideSignatures',
+        'outputPath' => 'OutputPath'
     ];
 
     /*
@@ -113,11 +114,12 @@ class PagesSetup implements ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'firstPage' => 'setFirstPage',
-        'lastPage' => 'setLastPage',
-        'oddPages' => 'setOddPages',
-        'evenPages' => 'setEvenPages',
-        'pageNumbers' => 'setPageNumbers'
+        'width' => 'setWidth',
+        'height' => 'setHeight',
+        'pageNumbers' => 'setPageNumbers',
+        'previewFormat' => 'setPreviewFormat',
+        'hideSignatures' => 'setHideSignatures',
+        'outputPath' => 'setOutputPath'
     ];
 
     /*
@@ -126,11 +128,12 @@ class PagesSetup implements ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'firstPage' => 'getFirstPage',
-        'lastPage' => 'getLastPage',
-        'oddPages' => 'getOddPages',
-        'evenPages' => 'getEvenPages',
-        'pageNumbers' => 'getPageNumbers'
+        'width' => 'getWidth',
+        'height' => 'getHeight',
+        'pageNumbers' => 'getPageNumbers',
+        'previewFormat' => 'getPreviewFormat',
+        'hideSignatures' => 'getHideSignatures',
+        'outputPath' => 'getOutputPath'
     ];
 
     /*
@@ -141,7 +144,7 @@ class PagesSetup implements ArrayAccess
      */
     public static function attributeMap()
     {
-        return self::$attributeMap;
+        return parent::attributeMap() + self::$attributeMap;
     }
 
     /*
@@ -151,7 +154,7 @@ class PagesSetup implements ArrayAccess
      */
     public static function setters()
     {
-        return self::$setters;
+        return parent::setters() + self::$setters;
     }
 
     /*
@@ -161,7 +164,7 @@ class PagesSetup implements ArrayAccess
      */
     public static function getters()
     {
-        return self::$getters;
+        return parent::getters() + self::$getters;
     }
 
     /*
@@ -174,16 +177,27 @@ class PagesSetup implements ArrayAccess
         return self::$swaggerModelName;
     }
 
+    const PREVIEW_FORMAT_PNG = 'PNG';
+    const PREVIEW_FORMAT_JPEG = 'JPEG';
+    const PREVIEW_FORMAT_BMP = 'BMP';
     
 
     
-
     /*
-     * Associative array for storing property values
+     * Gets allowable values of the enum
      *
-     * @var mixed[]
+     * @return string[]
      */
-    protected $container = [];
+    public function getPreviewFormatAllowableValues()
+    {
+        return [
+            self::PREVIEW_FORMAT_PNG,
+            self::PREVIEW_FORMAT_JPEG,
+            self::PREVIEW_FORMAT_BMP,
+        ];
+    }
+    
+
 
     /*
      * Constructor
@@ -193,11 +207,14 @@ class PagesSetup implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['firstPage'] = isset($data['firstPage']) ? $data['firstPage'] : null;
-        $this->container['lastPage'] = isset($data['lastPage']) ? $data['lastPage'] : null;
-        $this->container['oddPages'] = isset($data['oddPages']) ? $data['oddPages'] : null;
-        $this->container['evenPages'] = isset($data['evenPages']) ? $data['evenPages'] : null;
+        parent::__construct($data);
+
+        $this->container['width'] = isset($data['width']) ? $data['width'] : null;
+        $this->container['height'] = isset($data['height']) ? $data['height'] : null;
         $this->container['pageNumbers'] = isset($data['pageNumbers']) ? $data['pageNumbers'] : null;
+        $this->container['previewFormat'] = isset($data['previewFormat']) ? $data['previewFormat'] : null;
+        $this->container['hideSignatures'] = isset($data['hideSignatures']) ? $data['hideSignatures'] : null;
+        $this->container['outputPath'] = isset($data['outputPath']) ? $data['outputPath'] : null;
     }
 
     /*
@@ -207,19 +224,27 @@ class PagesSetup implements ArrayAccess
      */
     public function listInvalidProperties()
     {
-        $invalidProperties = [];
+        $invalidProperties = parent::listInvalidProperties();
 
-        if ($this->container['firstPage'] === null) {
-            $invalidProperties[] = "'firstPage' can't be null";
+        if ($this->container['width'] === null) {
+            $invalidProperties[] = "'width' can't be null";
         }
-        if ($this->container['lastPage'] === null) {
-            $invalidProperties[] = "'lastPage' can't be null";
+        if ($this->container['height'] === null) {
+            $invalidProperties[] = "'height' can't be null";
         }
-        if ($this->container['oddPages'] === null) {
-            $invalidProperties[] = "'oddPages' can't be null";
+        if ($this->container['previewFormat'] === null) {
+            $invalidProperties[] = "'previewFormat' can't be null";
         }
-        if ($this->container['evenPages'] === null) {
-            $invalidProperties[] = "'evenPages' can't be null";
+        $allowedValues = $this->getPreviewFormatAllowableValues();
+        if (!in_array($this->container['previewFormat'], $allowedValues)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'previewFormat', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if ($this->container['hideSignatures'] === null) {
+            $invalidProperties[] = "'hideSignatures' can't be null";
         }
         return $invalidProperties;
     }
@@ -232,17 +257,24 @@ class PagesSetup implements ArrayAccess
      */
     public function valid()
     {
+        if (!parent::valid()) {
+            return false;
+        }
 
-        if ($this->container['firstPage'] === null) {
+        if ($this->container['width'] === null) {
             return false;
         }
-        if ($this->container['lastPage'] === null) {
+        if ($this->container['height'] === null) {
             return false;
         }
-        if ($this->container['oddPages'] === null) {
+        if ($this->container['previewFormat'] === null) {
             return false;
         }
-        if ($this->container['evenPages'] === null) {
+        $allowedValues = $this->getPreviewFormatAllowableValues();
+        if (!in_array($this->container['previewFormat'], $allowedValues)) {
+            return false;
+        }
+        if ($this->container['hideSignatures'] === null) {
             return false;
         }
         return true;
@@ -250,97 +282,49 @@ class PagesSetup implements ArrayAccess
 
 
     /*
-     * Gets firstPage
+     * Gets width
      *
-     * @return bool
+     * @return int
      */
-    public function getFirstPage()
+    public function getWidth()
     {
-        return $this->container['firstPage'];
+        return $this->container['width'];
     }
 
     /*
-     * Sets firstPage
+     * Sets width
      *
-     * @param bool $firstPage Get or set flag to use first document page
+     * @param int $width Preview images width
      *
      * @return $this
      */
-    public function setFirstPage($firstPage)
+    public function setWidth($width)
     {
-        $this->container['firstPage'] = $firstPage;
+        $this->container['width'] = $width;
 
         return $this;
     }
 
     /*
-     * Gets lastPage
+     * Gets height
      *
-     * @return bool
+     * @return int
      */
-    public function getLastPage()
+    public function getHeight()
     {
-        return $this->container['lastPage'];
+        return $this->container['height'];
     }
 
     /*
-     * Sets lastPage
+     * Sets height
      *
-     * @param bool $lastPage Get or set flag to use last document page
+     * @param int $height Preview images height
      *
      * @return $this
      */
-    public function setLastPage($lastPage)
+    public function setHeight($height)
     {
-        $this->container['lastPage'] = $lastPage;
-
-        return $this;
-    }
-
-    /*
-     * Gets oddPages
-     *
-     * @return bool
-     */
-    public function getOddPages()
-    {
-        return $this->container['oddPages'];
-    }
-
-    /*
-     * Sets oddPages
-     *
-     * @param bool $oddPages Get or set flag to use odd pages of document
-     *
-     * @return $this
-     */
-    public function setOddPages($oddPages)
-    {
-        $this->container['oddPages'] = $oddPages;
-
-        return $this;
-    }
-
-    /*
-     * Gets evenPages
-     *
-     * @return bool
-     */
-    public function getEvenPages()
-    {
-        return $this->container['evenPages'];
-    }
-
-    /*
-     * Sets evenPages
-     *
-     * @param bool $evenPages Get or set flag to use even pages of document
-     *
-     * @return $this
-     */
-    public function setEvenPages($evenPages)
-    {
-        $this->container['evenPages'] = $evenPages;
+        $this->container['height'] = $height;
 
         return $this;
     }
@@ -358,13 +342,90 @@ class PagesSetup implements ArrayAccess
     /*
      * Sets pageNumbers
      *
-     * @param int[] $pageNumbers Set arbitrary pages of document to use
+     * @param int[] $pageNumbers Preview page numbers
      *
      * @return $this
      */
     public function setPageNumbers($pageNumbers)
     {
         $this->container['pageNumbers'] = $pageNumbers;
+
+        return $this;
+    }
+
+    /*
+     * Gets previewFormat
+     *
+     * @return string
+     */
+    public function getPreviewFormat()
+    {
+        return $this->container['previewFormat'];
+    }
+
+    /*
+     * Sets previewFormat
+     *
+     * @param string $previewFormat Preview format
+     *
+     * @return $this
+     */
+    public function setPreviewFormat($previewFormat)
+    {
+        $allowedValues = $this->getPreviewFormatAllowableValues();
+        if ((!is_numeric($previewFormat) && !in_array($previewFormat, $allowedValues)) || (is_numeric($previewFormat) && !in_array($allowedValues[$previewFormat], $allowedValues))) {
+            throw new \InvalidArgumentException(sprintf("Invalid value for 'previewFormat', must be one of '%s'", implode("', '", $allowedValues)));
+        }
+			
+        $this->container['previewFormat'] = $previewFormat;
+
+        return $this;
+    }
+
+    /*
+     * Gets hideSignatures
+     *
+     * @return bool
+     */
+    public function getHideSignatures()
+    {
+        return $this->container['hideSignatures'];
+    }
+
+    /*
+     * Sets hideSignatures
+     *
+     * @param bool $hideSignatures Flag to hide signatures from page preview image. Only signatures are marked as IsSignature will be hidden from generated document page image
+     *
+     * @return $this
+     */
+    public function setHideSignatures($hideSignatures)
+    {
+        $this->container['hideSignatures'] = $hideSignatures;
+
+        return $this;
+    }
+
+    /*
+     * Gets outputPath
+     *
+     * @return string
+     */
+    public function getOutputPath()
+    {
+        return $this->container['outputPath'];
+    }
+
+    /*
+     * Sets outputPath
+     *
+     * @param string $outputPath Set path for output pages. If not set then default path used.
+     *
+     * @return $this
+     */
+    public function setOutputPath($outputPath)
+    {
+        $this->container['outputPath'] = $outputPath;
 
         return $this;
     }

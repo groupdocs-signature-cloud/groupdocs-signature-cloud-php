@@ -2,7 +2,7 @@
 /*
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose Pty Ltd" file="Configuration.php">
- *   Copyright (c) 2003-2020 Aspose Pty Ltd
+ *   Copyright (c) 2003-2021 Aspose Pty Ltd
  * </copyright>
  * <summary>
  *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -95,7 +95,7 @@ class Configuration
      * Version of client SDK
      *
      */
-    protected $clientVersion = '20.7';
+    protected $clientVersion = '21.5';
 
     /*
      * Constructor
@@ -290,7 +290,7 @@ class Configuration
     }
 
     /*
-     * Gets client version, default value is '20.7'
+     * Gets client version, default value is '21.5'
      *
      */
     public function getClientVersion()
@@ -308,7 +308,7 @@ class Configuration
         $report  = 'PHP SDK (GroupDocs\Signature) Debug Report:' . PHP_EOL;
         $report .= '    OS: ' . php_uname() . PHP_EOL;
         $report .= '    PHP Version: ' . PHP_VERSION . PHP_EOL;
-        $report .= '    SDK Package Version: 20.7' . PHP_EOL;
+        $report .= '    SDK Package Version: 21.5' . PHP_EOL;
         $report .= '    Temp Folder Path: ' . self::getDefaultConfiguration()->getTempFolderPath() . PHP_EOL;
 
         return $report;
