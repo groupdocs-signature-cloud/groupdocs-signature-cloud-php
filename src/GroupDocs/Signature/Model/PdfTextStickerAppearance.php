@@ -1,7 +1,7 @@
 <?php
 /*
  * --------------------------------------------------------------------------------------------------------------------
- * <copyright company="Aspose Pty Ltd" file="DeleteOptions.php">
+ * <copyright company="Aspose Pty Ltd" file="PdfTextStickerAppearance.php">
  *   Copyright (c) 2003-2021 Aspose Pty Ltd
  * </copyright>
  * <summary>
@@ -27,16 +27,14 @@
  */
 
 namespace GroupDocs\Signature\Model;
-
-use \ArrayAccess;
 use \GroupDocs\Signature\ObjectSerializer;
 
 /*
- * DeleteOptions
+ * PdfTextStickerAppearance
  *
- * @description Base container class for delete signature options
+ * @description Describes appearance of PDF text annotation sticker object and pop-up window of sticker.
  */
-class DeleteOptions implements ArrayAccess
+class PdfTextStickerAppearance extends SignatureAppearance 
 {
     const DISCRIMINATOR = null;
 
@@ -45,7 +43,7 @@ class DeleteOptions implements ArrayAccess
      *
      * @var string
      */
-    protected static $swaggerModelName = "DeleteOptions";
+    protected static $swaggerModelName = "PdfTextStickerAppearance";
 
     /*
      * Array of property to type mappings. Used for (de)serialization
@@ -53,8 +51,11 @@ class DeleteOptions implements ArrayAccess
      * @var string[]
      */
     protected static $swaggerTypes = [
-        'signatureType' => 'string',
-        'signatureId' => 'string'
+        'contents' => 'string',
+        'icon' => 'string',
+        'opened' => 'bool',
+        'subject' => 'string',
+        'title' => 'string'
     ];
 
     /*
@@ -63,8 +64,11 @@ class DeleteOptions implements ArrayAccess
      * @var string[]
      */
     protected static $swaggerFormats = [
-        'signatureType' => null,
-        'signatureId' => null
+        'contents' => null,
+        'icon' => null,
+        'opened' => null,
+        'subject' => null,
+        'title' => null
     ];
 
     /*
@@ -74,7 +78,7 @@ class DeleteOptions implements ArrayAccess
      */
     public static function swaggerTypes()
     {
-        return self::$swaggerTypes;
+        return self::$swaggerTypes + parent::swaggerTypes();
     }
 
     /*
@@ -84,7 +88,7 @@ class DeleteOptions implements ArrayAccess
      */
     public static function swaggerFormats()
     {
-        return self::$swaggerFormats;
+        return self::$swaggerFormats + parent::swaggerFormats();
     }
 
     /*
@@ -94,8 +98,11 @@ class DeleteOptions implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'signatureType' => 'SignatureType',
-        'signatureId' => 'SignatureId'
+        'contents' => 'Contents',
+        'icon' => 'Icon',
+        'opened' => 'Opened',
+        'subject' => 'Subject',
+        'title' => 'Title'
     ];
 
     /*
@@ -104,8 +111,11 @@ class DeleteOptions implements ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'signatureType' => 'setSignatureType',
-        'signatureId' => 'setSignatureId'
+        'contents' => 'setContents',
+        'icon' => 'setIcon',
+        'opened' => 'setOpened',
+        'subject' => 'setSubject',
+        'title' => 'setTitle'
     ];
 
     /*
@@ -114,8 +124,11 @@ class DeleteOptions implements ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'signatureType' => 'getSignatureType',
-        'signatureId' => 'getSignatureId'
+        'contents' => 'getContents',
+        'icon' => 'getIcon',
+        'opened' => 'getOpened',
+        'subject' => 'getSubject',
+        'title' => 'getTitle'
     ];
 
     /*
@@ -126,7 +139,7 @@ class DeleteOptions implements ArrayAccess
      */
     public static function attributeMap()
     {
-        return self::$attributeMap;
+        return parent::attributeMap() + self::$attributeMap;
     }
 
     /*
@@ -136,7 +149,7 @@ class DeleteOptions implements ArrayAccess
      */
     public static function setters()
     {
-        return self::$setters;
+        return parent::setters() + self::$setters;
     }
 
     /*
@@ -146,7 +159,7 @@ class DeleteOptions implements ArrayAccess
      */
     public static function getters()
     {
-        return self::$getters;
+        return parent::getters() + self::$getters;
     }
 
     /*
@@ -159,15 +172,17 @@ class DeleteOptions implements ArrayAccess
         return self::$swaggerModelName;
     }
 
-    const SIGNATURE_TYPE_NONE = 'None';
-    const SIGNATURE_TYPE_TEXT = 'Text';
-    const SIGNATURE_TYPE_IMAGE = 'Image';
-    const SIGNATURE_TYPE_DIGITAL = 'Digital';
-    const SIGNATURE_TYPE_BARCODE = 'Barcode';
-    const SIGNATURE_TYPE_QR_CODE = 'QRCode';
-    const SIGNATURE_TYPE_STAMP = 'Stamp';
-    const SIGNATURE_TYPE_FORM_FIELD = 'FormField';
-    const SIGNATURE_TYPE_METADATA = 'Metadata';
+    const ICON_NOTE = 'Note';
+    const ICON_COMMENT = 'Comment';
+    const ICON_KEY = 'Key';
+    const ICON_HELP = 'Help';
+    const ICON_NEW_PARAGRAPH = 'NewParagraph';
+    const ICON_PARAGRAPH = 'Paragraph';
+    const ICON_INSERT = 'Insert';
+    const ICON_CHECK = 'Check';
+    const ICON_CROSS = 'Cross';
+    const ICON_CIRCLE = 'Circle';
+    const ICON_STAR = 'Star';
     
 
     
@@ -176,28 +191,24 @@ class DeleteOptions implements ArrayAccess
      *
      * @return string[]
      */
-    public function getSignatureTypeAllowableValues()
+    public function getIconAllowableValues()
     {
         return [
-            self::SIGNATURE_TYPE_NONE,
-            self::SIGNATURE_TYPE_TEXT,
-            self::SIGNATURE_TYPE_IMAGE,
-            self::SIGNATURE_TYPE_DIGITAL,
-            self::SIGNATURE_TYPE_BARCODE,
-            self::SIGNATURE_TYPE_QR_CODE,
-            self::SIGNATURE_TYPE_STAMP,
-            self::SIGNATURE_TYPE_FORM_FIELD,
-            self::SIGNATURE_TYPE_METADATA,
+            self::ICON_NOTE,
+            self::ICON_COMMENT,
+            self::ICON_KEY,
+            self::ICON_HELP,
+            self::ICON_NEW_PARAGRAPH,
+            self::ICON_PARAGRAPH,
+            self::ICON_INSERT,
+            self::ICON_CHECK,
+            self::ICON_CROSS,
+            self::ICON_CIRCLE,
+            self::ICON_STAR,
         ];
     }
     
 
-    /*
-     * Associative array for storing property values
-     *
-     * @var mixed[]
-     */
-    protected $container = [];
 
     /*
      * Constructor
@@ -207,8 +218,13 @@ class DeleteOptions implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['signatureType'] = isset($data['signatureType']) ? $data['signatureType'] : null;
-        $this->container['signatureId'] = isset($data['signatureId']) ? $data['signatureId'] : null;
+        parent::__construct($data);
+
+        $this->container['contents'] = isset($data['contents']) ? $data['contents'] : null;
+        $this->container['icon'] = isset($data['icon']) ? $data['icon'] : null;
+        $this->container['opened'] = isset($data['opened']) ? $data['opened'] : null;
+        $this->container['subject'] = isset($data['subject']) ? $data['subject'] : null;
+        $this->container['title'] = isset($data['title']) ? $data['title'] : null;
     }
 
     /*
@@ -218,19 +234,22 @@ class DeleteOptions implements ArrayAccess
      */
     public function listInvalidProperties()
     {
-        $invalidProperties = [];
+        $invalidProperties = parent::listInvalidProperties();
 
-        if ($this->container['signatureType'] === null) {
-            $invalidProperties[] = "'signatureType' can't be null";
+        if ($this->container['icon'] === null) {
+            $invalidProperties[] = "'icon' can't be null";
         }
-        $allowedValues = $this->getSignatureTypeAllowableValues();
-        if (!in_array($this->container['signatureType'], $allowedValues)) {
+        $allowedValues = $this->getIconAllowableValues();
+        if (!in_array($this->container['icon'], $allowedValues)) {
             $invalidProperties[] = sprintf(
-                "invalid value for 'signatureType', must be one of '%s'",
+                "invalid value for 'icon', must be one of '%s'",
                 implode("', '", $allowedValues)
             );
         }
 
+        if ($this->container['opened'] === null) {
+            $invalidProperties[] = "'opened' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -242,12 +261,18 @@ class DeleteOptions implements ArrayAccess
      */
     public function valid()
     {
-
-        if ($this->container['signatureType'] === null) {
+        if (!parent::valid()) {
             return false;
         }
-        $allowedValues = $this->getSignatureTypeAllowableValues();
-        if (!in_array($this->container['signatureType'], $allowedValues)) {
+
+        if ($this->container['icon'] === null) {
+            return false;
+        }
+        $allowedValues = $this->getIconAllowableValues();
+        if (!in_array($this->container['icon'], $allowedValues)) {
+            return false;
+        }
+        if ($this->container['opened'] === null) {
             return false;
         }
         return true;
@@ -255,54 +280,126 @@ class DeleteOptions implements ArrayAccess
 
 
     /*
-     * Gets signatureType
+     * Gets contents
      *
      * @return string
      */
-    public function getSignatureType()
+    public function getContents()
     {
-        return $this->container['signatureType'];
+        return $this->container['contents'];
     }
 
     /*
-     * Sets signatureType
+     * Sets contents
      *
-     * @param string $signatureType Specifies the type of signature
+     * @param string $contents Gets or sets the contents of pop-up window.
      *
      * @return $this
      */
-    public function setSignatureType($signatureType)
+    public function setContents($contents)
     {
-        $allowedValues = $this->getSignatureTypeAllowableValues();
-        if ((!is_numeric($signatureType) && !in_array($signatureType, $allowedValues)) || (is_numeric($signatureType) && !in_array($allowedValues[$signatureType], $allowedValues))) {
-            throw new \InvalidArgumentException(sprintf("Invalid value for 'signatureType', must be one of '%s'", implode("', '", $allowedValues)));
-        }
-			
-        $this->container['signatureType'] = $signatureType;
+        $this->container['contents'] = $contents;
 
         return $this;
     }
 
     /*
-     * Gets signatureId
+     * Gets icon
      *
      * @return string
      */
-    public function getSignatureId()
+    public function getIcon()
     {
-        return $this->container['signatureId'];
+        return $this->container['icon'];
     }
 
     /*
-     * Sets signatureId
+     * Sets icon
      *
-     * @param string $signatureId Unique signature identifier to modify signature in the document over Update or Delete methods. This property will be set automatically after Sign or Search method being called. If this property was saved before it can be set manually to manipulate the signature.
+     * @param string $icon Gets or sets the icon of sticker.
      *
      * @return $this
      */
-    public function setSignatureId($signatureId)
+    public function setIcon($icon)
     {
-        $this->container['signatureId'] = $signatureId;
+        $allowedValues = $this->getIconAllowableValues();
+        if ((!is_numeric($icon) && !in_array($icon, $allowedValues)) || (is_numeric($icon) && !in_array($allowedValues[$icon], $allowedValues))) {
+            throw new \InvalidArgumentException(sprintf("Invalid value for 'icon', must be one of '%s'", implode("', '", $allowedValues)));
+        }
+			
+        $this->container['icon'] = $icon;
+
+        return $this;
+    }
+
+    /*
+     * Gets opened
+     *
+     * @return bool
+     */
+    public function getOpened()
+    {
+        return $this->container['opened'];
+    }
+
+    /*
+     * Sets opened
+     *
+     * @param bool $opened Setup if sticker pop-up window will be opened by default.
+     *
+     * @return $this
+     */
+    public function setOpened($opened)
+    {
+        $this->container['opened'] = $opened;
+
+        return $this;
+    }
+
+    /*
+     * Gets subject
+     *
+     * @return string
+     */
+    public function getSubject()
+    {
+        return $this->container['subject'];
+    }
+
+    /*
+     * Sets subject
+     *
+     * @param string $subject Gets or sets subject.
+     *
+     * @return $this
+     */
+    public function setSubject($subject)
+    {
+        $this->container['subject'] = $subject;
+
+        return $this;
+    }
+
+    /*
+     * Gets title
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->container['title'];
+    }
+
+    /*
+     * Sets title
+     *
+     * @param string $title Gets or sets title of pop-up window.
+     *
+     * @return $this
+     */
+    public function setTitle($title)
+    {
+        $this->container['title'] = $title;
 
         return $this;
     }

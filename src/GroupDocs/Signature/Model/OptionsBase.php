@@ -176,6 +176,8 @@ class OptionsBase implements ArrayAccess
     const SIGNATURE_TYPE_BARCODE = 'Barcode';
     const SIGNATURE_TYPE_QR_CODE = 'QRCode';
     const SIGNATURE_TYPE_STAMP = 'Stamp';
+    const SIGNATURE_TYPE_FORM_FIELD = 'FormField';
+    const SIGNATURE_TYPE_METADATA = 'Metadata';
     
 
     
@@ -194,6 +196,8 @@ class OptionsBase implements ArrayAccess
             self::SIGNATURE_TYPE_BARCODE,
             self::SIGNATURE_TYPE_QR_CODE,
             self::SIGNATURE_TYPE_STAMP,
+            self::SIGNATURE_TYPE_FORM_FIELD,
+            self::SIGNATURE_TYPE_METADATA,
         ];
     }
     

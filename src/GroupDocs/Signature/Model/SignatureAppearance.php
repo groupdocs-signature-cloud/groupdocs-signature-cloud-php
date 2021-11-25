@@ -1,7 +1,7 @@
 <?php
 /*
  * --------------------------------------------------------------------------------------------------------------------
- * <copyright company="Aspose Pty Ltd" file="DeleteOptions.php">
+ * <copyright company="Aspose Pty Ltd" file="SignatureAppearance.php">
  *   Copyright (c) 2003-2021 Aspose Pty Ltd
  * </copyright>
  * <summary>
@@ -32,20 +32,20 @@ use \ArrayAccess;
 use \GroupDocs\Signature\ObjectSerializer;
 
 /*
- * DeleteOptions
+ * SignatureAppearance
  *
- * @description Base container class for delete signature options
+ * @description Appearance is a base class for keeping additional information for various options
  */
-class DeleteOptions implements ArrayAccess
+class SignatureAppearance implements ArrayAccess
 {
-    const DISCRIMINATOR = null;
+    const DISCRIMINATOR = 'Type';
 
     /*
      * The original name of the model.
      *
      * @var string
      */
-    protected static $swaggerModelName = "DeleteOptions";
+    protected static $swaggerModelName = "SignatureAppearance";
 
     /*
      * Array of property to type mappings. Used for (de)serialization
@@ -53,8 +53,7 @@ class DeleteOptions implements ArrayAccess
      * @var string[]
      */
     protected static $swaggerTypes = [
-        'signatureType' => 'string',
-        'signatureId' => 'string'
+        'appearanceType' => 'string'
     ];
 
     /*
@@ -63,8 +62,7 @@ class DeleteOptions implements ArrayAccess
      * @var string[]
      */
     protected static $swaggerFormats = [
-        'signatureType' => null,
-        'signatureId' => null
+        'appearanceType' => null
     ];
 
     /*
@@ -94,8 +92,7 @@ class DeleteOptions implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'signatureType' => 'SignatureType',
-        'signatureId' => 'SignatureId'
+        'appearanceType' => 'AppearanceType'
     ];
 
     /*
@@ -104,8 +101,7 @@ class DeleteOptions implements ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'signatureType' => 'setSignatureType',
-        'signatureId' => 'setSignatureId'
+        'appearanceType' => 'setAppearanceType'
     ];
 
     /*
@@ -114,8 +110,7 @@ class DeleteOptions implements ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'signatureType' => 'getSignatureType',
-        'signatureId' => 'getSignatureId'
+        'appearanceType' => 'getAppearanceType'
     ];
 
     /*
@@ -159,15 +154,12 @@ class DeleteOptions implements ArrayAccess
         return self::$swaggerModelName;
     }
 
-    const SIGNATURE_TYPE_NONE = 'None';
-    const SIGNATURE_TYPE_TEXT = 'Text';
-    const SIGNATURE_TYPE_IMAGE = 'Image';
-    const SIGNATURE_TYPE_DIGITAL = 'Digital';
-    const SIGNATURE_TYPE_BARCODE = 'Barcode';
-    const SIGNATURE_TYPE_QR_CODE = 'QRCode';
-    const SIGNATURE_TYPE_STAMP = 'Stamp';
-    const SIGNATURE_TYPE_FORM_FIELD = 'FormField';
-    const SIGNATURE_TYPE_METADATA = 'Metadata';
+    const APPEARANCE_TYPE_UNDEFINED = 'Undefined';
+    const APPEARANCE_TYPE_PDF_TEXT_ANNOTATION = 'PdfTextAnnotation';
+    const APPEARANCE_TYPE_PDF_TEXT_STICKER = 'PdfTextSticker';
+    const APPEARANCE_TYPE_IMAGE = 'Image';
+    const APPEARANCE_TYPE_DIGITAL_SIGNATURE = 'DigitalSignature';
+    const APPEARANCE_TYPE_PDF_DIGITAL_SIGNATURE = 'PdfDigitalSignature';
     
 
     
@@ -176,18 +168,15 @@ class DeleteOptions implements ArrayAccess
      *
      * @return string[]
      */
-    public function getSignatureTypeAllowableValues()
+    public function getAppearanceTypeAllowableValues()
     {
         return [
-            self::SIGNATURE_TYPE_NONE,
-            self::SIGNATURE_TYPE_TEXT,
-            self::SIGNATURE_TYPE_IMAGE,
-            self::SIGNATURE_TYPE_DIGITAL,
-            self::SIGNATURE_TYPE_BARCODE,
-            self::SIGNATURE_TYPE_QR_CODE,
-            self::SIGNATURE_TYPE_STAMP,
-            self::SIGNATURE_TYPE_FORM_FIELD,
-            self::SIGNATURE_TYPE_METADATA,
+            self::APPEARANCE_TYPE_UNDEFINED,
+            self::APPEARANCE_TYPE_PDF_TEXT_ANNOTATION,
+            self::APPEARANCE_TYPE_PDF_TEXT_STICKER,
+            self::APPEARANCE_TYPE_IMAGE,
+            self::APPEARANCE_TYPE_DIGITAL_SIGNATURE,
+            self::APPEARANCE_TYPE_PDF_DIGITAL_SIGNATURE,
         ];
     }
     
@@ -207,8 +196,11 @@ class DeleteOptions implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['signatureType'] = isset($data['signatureType']) ? $data['signatureType'] : null;
-        $this->container['signatureId'] = isset($data['signatureId']) ? $data['signatureId'] : null;
+        $this->container['appearanceType'] = isset($data['appearanceType']) ? $data['appearanceType'] : null;
+
+        // Initialize discriminator property with the model name.
+        $discriminator = array_search('Type', self::$attributeMap);
+        $this->container[$discriminator] = static::$swaggerModelName;
     }
 
     /*
@@ -220,13 +212,13 @@ class DeleteOptions implements ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['signatureType'] === null) {
-            $invalidProperties[] = "'signatureType' can't be null";
+        if ($this->container['appearanceType'] === null) {
+            $invalidProperties[] = "'appearanceType' can't be null";
         }
-        $allowedValues = $this->getSignatureTypeAllowableValues();
-        if (!in_array($this->container['signatureType'], $allowedValues)) {
+        $allowedValues = $this->getAppearanceTypeAllowableValues();
+        if (!in_array($this->container['appearanceType'], $allowedValues)) {
             $invalidProperties[] = sprintf(
-                "invalid value for 'signatureType', must be one of '%s'",
+                "invalid value for 'appearanceType', must be one of '%s'",
                 implode("', '", $allowedValues)
             );
         }
@@ -243,11 +235,11 @@ class DeleteOptions implements ArrayAccess
     public function valid()
     {
 
-        if ($this->container['signatureType'] === null) {
+        if ($this->container['appearanceType'] === null) {
             return false;
         }
-        $allowedValues = $this->getSignatureTypeAllowableValues();
-        if (!in_array($this->container['signatureType'], $allowedValues)) {
+        $allowedValues = $this->getAppearanceTypeAllowableValues();
+        if (!in_array($this->container['appearanceType'], $allowedValues)) {
             return false;
         }
         return true;
@@ -255,54 +247,30 @@ class DeleteOptions implements ArrayAccess
 
 
     /*
-     * Gets signatureType
+     * Gets appearanceType
      *
      * @return string
      */
-    public function getSignatureType()
+    public function getAppearanceType()
     {
-        return $this->container['signatureType'];
+        return $this->container['appearanceType'];
     }
 
     /*
-     * Sets signatureType
+     * Sets appearanceType
      *
-     * @param string $signatureType Specifies the type of signature
+     * @param string $appearanceType Specifies the type of appearance
      *
      * @return $this
      */
-    public function setSignatureType($signatureType)
+    public function setAppearanceType($appearanceType)
     {
-        $allowedValues = $this->getSignatureTypeAllowableValues();
-        if ((!is_numeric($signatureType) && !in_array($signatureType, $allowedValues)) || (is_numeric($signatureType) && !in_array($allowedValues[$signatureType], $allowedValues))) {
-            throw new \InvalidArgumentException(sprintf("Invalid value for 'signatureType', must be one of '%s'", implode("', '", $allowedValues)));
+        $allowedValues = $this->getAppearanceTypeAllowableValues();
+        if ((!is_numeric($appearanceType) && !in_array($appearanceType, $allowedValues)) || (is_numeric($appearanceType) && !in_array($allowedValues[$appearanceType], $allowedValues))) {
+            throw new \InvalidArgumentException(sprintf("Invalid value for 'appearanceType', must be one of '%s'", implode("', '", $allowedValues)));
         }
 			
-        $this->container['signatureType'] = $signatureType;
-
-        return $this;
-    }
-
-    /*
-     * Gets signatureId
-     *
-     * @return string
-     */
-    public function getSignatureId()
-    {
-        return $this->container['signatureId'];
-    }
-
-    /*
-     * Sets signatureId
-     *
-     * @param string $signatureId Unique signature identifier to modify signature in the document over Update or Delete methods. This property will be set automatically after Sign or Search method being called. If this property was saved before it can be set manually to manipulate the signature.
-     *
-     * @return $this
-     */
-    public function setSignatureId($signatureId)
-    {
-        $this->container['signatureId'] = $signatureId;
+        $this->container['appearanceType'] = $appearanceType;
 
         return $this;
     }

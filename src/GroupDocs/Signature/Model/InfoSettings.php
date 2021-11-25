@@ -51,7 +51,7 @@ class InfoSettings extends BaseSettings
      * @var string[]
      */
     protected static $swaggerTypes = [
-        
+        'showDeletedSignaturesInfo' => 'bool'
     ];
 
     /*
@@ -60,7 +60,7 @@ class InfoSettings extends BaseSettings
      * @var string[]
      */
     protected static $swaggerFormats = [
-        
+        'showDeletedSignaturesInfo' => null
     ];
 
     /*
@@ -90,7 +90,7 @@ class InfoSettings extends BaseSettings
      * @var string[]
      */
     protected static $attributeMap = [
-        
+        'showDeletedSignaturesInfo' => 'ShowDeletedSignaturesInfo'
     ];
 
     /*
@@ -99,7 +99,7 @@ class InfoSettings extends BaseSettings
      * @var string[]
      */
     protected static $setters = [
-        
+        'showDeletedSignaturesInfo' => 'setShowDeletedSignaturesInfo'
     ];
 
     /*
@@ -108,7 +108,7 @@ class InfoSettings extends BaseSettings
      * @var string[]
      */
     protected static $getters = [
-        
+        'showDeletedSignaturesInfo' => 'getShowDeletedSignaturesInfo'
     ];
 
     /*
@@ -167,6 +167,7 @@ class InfoSettings extends BaseSettings
     {
         parent::__construct($data);
 
+        $this->container['showDeletedSignaturesInfo'] = isset($data['showDeletedSignaturesInfo']) ? $data['showDeletedSignaturesInfo'] : null;
     }
 
     /*
@@ -178,6 +179,9 @@ class InfoSettings extends BaseSettings
     {
         $invalidProperties = parent::listInvalidProperties();
 
+        if ($this->container['showDeletedSignaturesInfo'] === null) {
+            $invalidProperties[] = "'showDeletedSignaturesInfo' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -193,9 +197,36 @@ class InfoSettings extends BaseSettings
             return false;
         }
 
+        if ($this->container['showDeletedSignaturesInfo'] === null) {
+            return false;
+        }
         return true;
     }
 
+
+    /*
+     * Gets showDeletedSignaturesInfo
+     *
+     * @return bool
+     */
+    public function getShowDeletedSignaturesInfo()
+    {
+        return $this->container['showDeletedSignaturesInfo'];
+    }
+
+    /*
+     * Sets showDeletedSignaturesInfo
+     *
+     * @param bool $showDeletedSignaturesInfo Gets or sets flag that includes deleted signatures into Document Info result.
+     *
+     * @return $this
+     */
+    public function setShowDeletedSignaturesInfo($showDeletedSignaturesInfo)
+    {
+        $this->container['showDeletedSignaturesInfo'] = $showDeletedSignaturesInfo;
+
+        return $this;
+    }
     /*
      * Returns true if offset exists. False otherwise.
      *

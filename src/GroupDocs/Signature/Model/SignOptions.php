@@ -51,7 +51,7 @@ class SignOptions extends OptionsBase
      * @var string[]
      */
     protected static $swaggerTypes = [
-        
+        'appearance' => '\GroupDocs\Signature\Model\SignatureAppearance'
     ];
 
     /*
@@ -60,7 +60,7 @@ class SignOptions extends OptionsBase
      * @var string[]
      */
     protected static $swaggerFormats = [
-        
+        'appearance' => null
     ];
 
     /*
@@ -90,7 +90,7 @@ class SignOptions extends OptionsBase
      * @var string[]
      */
     protected static $attributeMap = [
-        
+        'appearance' => 'Appearance'
     ];
 
     /*
@@ -99,7 +99,7 @@ class SignOptions extends OptionsBase
      * @var string[]
      */
     protected static $setters = [
-        
+        'appearance' => 'setAppearance'
     ];
 
     /*
@@ -108,7 +108,7 @@ class SignOptions extends OptionsBase
      * @var string[]
      */
     protected static $getters = [
-        
+        'appearance' => 'getAppearance'
     ];
 
     /*
@@ -167,6 +167,7 @@ class SignOptions extends OptionsBase
     {
         parent::__construct($data);
 
+        $this->container['appearance'] = isset($data['appearance']) ? $data['appearance'] : null;
     }
 
     /*
@@ -196,6 +197,30 @@ class SignOptions extends OptionsBase
         return true;
     }
 
+
+    /*
+     * Gets appearance
+     *
+     * @return \GroupDocs\Signature\Model\SignatureAppearance
+     */
+    public function getAppearance()
+    {
+        return $this->container['appearance'];
+    }
+
+    /*
+     * Sets appearance
+     *
+     * @param \GroupDocs\Signature\Model\SignatureAppearance $appearance Specifies Appearance with additional properties for this options instance
+     *
+     * @return $this
+     */
+    public function setAppearance($appearance)
+    {
+        $this->container['appearance'] = $appearance;
+
+        return $this;
+    }
     /*
      * Returns true if offset exists. False otherwise.
      *

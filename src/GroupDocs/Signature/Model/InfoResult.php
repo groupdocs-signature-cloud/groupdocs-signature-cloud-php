@@ -62,7 +62,8 @@ class InfoResult implements ArrayAccess
         'dateModified' => '\DateTime',
         'widthForMaxHeight' => 'int',
         'maxPageHeight' => 'int',
-        'pages' => '\GroupDocs\Signature\Model\PageInfo[]'
+        'pages' => '\GroupDocs\Signature\Model\PageInfo[]',
+        'signatures' => '\GroupDocs\Signature\Model\Signature[]'
     ];
 
     /*
@@ -80,7 +81,8 @@ class InfoResult implements ArrayAccess
         'dateModified' => 'date-time',
         'widthForMaxHeight' => 'int32',
         'maxPageHeight' => 'int32',
-        'pages' => null
+        'pages' => null,
+        'signatures' => null
     ];
 
     /*
@@ -119,7 +121,8 @@ class InfoResult implements ArrayAccess
         'dateModified' => 'DateModified',
         'widthForMaxHeight' => 'WidthForMaxHeight',
         'maxPageHeight' => 'MaxPageHeight',
-        'pages' => 'Pages'
+        'pages' => 'Pages',
+        'signatures' => 'Signatures'
     ];
 
     /*
@@ -137,7 +140,8 @@ class InfoResult implements ArrayAccess
         'dateModified' => 'setDateModified',
         'widthForMaxHeight' => 'setWidthForMaxHeight',
         'maxPageHeight' => 'setMaxPageHeight',
-        'pages' => 'setPages'
+        'pages' => 'setPages',
+        'signatures' => 'setSignatures'
     ];
 
     /*
@@ -155,7 +159,8 @@ class InfoResult implements ArrayAccess
         'dateModified' => 'getDateModified',
         'widthForMaxHeight' => 'getWidthForMaxHeight',
         'maxPageHeight' => 'getMaxPageHeight',
-        'pages' => 'getPages'
+        'pages' => 'getPages',
+        'signatures' => 'getSignatures'
     ];
 
     /*
@@ -228,6 +233,7 @@ class InfoResult implements ArrayAccess
         $this->container['widthForMaxHeight'] = isset($data['widthForMaxHeight']) ? $data['widthForMaxHeight'] : null;
         $this->container['maxPageHeight'] = isset($data['maxPageHeight']) ? $data['maxPageHeight'] : null;
         $this->container['pages'] = isset($data['pages']) ? $data['pages'] : null;
+        $this->container['signatures'] = isset($data['signatures']) ? $data['signatures'] : null;
     }
 
     /*
@@ -527,6 +533,30 @@ class InfoResult implements ArrayAccess
     public function setPages($pages)
     {
         $this->container['pages'] = $pages;
+
+        return $this;
+    }
+
+    /*
+     * Gets signatures
+     *
+     * @return \GroupDocs\Signature\Model\Signature[]
+     */
+    public function getSignatures()
+    {
+        return $this->container['signatures'];
+    }
+
+    /*
+     * Sets signatures
+     *
+     * @param \GroupDocs\Signature\Model\Signature[] $signatures Collection of document signatures
+     *
+     * @return $this
+     */
+    public function setSignatures($signatures)
+    {
+        $this->container['signatures'] = $signatures;
 
         return $this;
     }
