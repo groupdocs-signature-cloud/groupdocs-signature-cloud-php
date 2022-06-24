@@ -1,7 +1,7 @@
 <?php
 /*
  * --------------------------------------------------------------------------------------------------------------------
- * <copyright company="Aspose Pty Ltd" file="DiscUsage.php">
+ * <copyright company="Aspose Pty Ltd" file="ConsumptionResult.php">
  *   Copyright (c) 2003-2022 Aspose Pty Ltd
  * </copyright>
  * <summary>
@@ -32,11 +32,11 @@ use \ArrayAccess;
 use \GroupDocs\Signature\ObjectSerializer;
 
 /*
- * DiscUsage
+ * ConsumptionResult
  *
- * @description Class for disc space information.
+ * @description Metered license consumption information
  */
-class DiscUsage implements ArrayAccess
+class ConsumptionResult implements ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -45,7 +45,7 @@ class DiscUsage implements ArrayAccess
      *
      * @var string
      */
-    protected static $swaggerModelName = "DiscUsage";
+    protected static $swaggerModelName = "ConsumptionResult";
 
     /*
      * Array of property to type mappings. Used for (de)serialization
@@ -53,8 +53,8 @@ class DiscUsage implements ArrayAccess
      * @var string[]
      */
     protected static $swaggerTypes = [
-        'usedSize' => 'int',
-        'totalSize' => 'int'
+        'credit' => 'float',
+        'quantity' => 'float'
     ];
 
     /*
@@ -63,8 +63,8 @@ class DiscUsage implements ArrayAccess
      * @var string[]
      */
     protected static $swaggerFormats = [
-        'usedSize' => 'int64',
-        'totalSize' => 'int64'
+        'credit' => 'decimal',
+        'quantity' => 'decimal'
     ];
 
     /*
@@ -94,8 +94,8 @@ class DiscUsage implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'usedSize' => 'UsedSize',
-        'totalSize' => 'TotalSize'
+        'credit' => 'Credit',
+        'quantity' => 'Quantity'
     ];
 
     /*
@@ -104,8 +104,8 @@ class DiscUsage implements ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'usedSize' => 'setUsedSize',
-        'totalSize' => 'setTotalSize'
+        'credit' => 'setCredit',
+        'quantity' => 'setQuantity'
     ];
 
     /*
@@ -114,8 +114,8 @@ class DiscUsage implements ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'usedSize' => 'getUsedSize',
-        'totalSize' => 'getTotalSize'
+        'credit' => 'getCredit',
+        'quantity' => 'getQuantity'
     ];
 
     /*
@@ -178,8 +178,8 @@ class DiscUsage implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['usedSize'] = isset($data['usedSize']) ? $data['usedSize'] : null;
-        $this->container['totalSize'] = isset($data['totalSize']) ? $data['totalSize'] : null;
+        $this->container['credit'] = isset($data['credit']) ? $data['credit'] : null;
+        $this->container['quantity'] = isset($data['quantity']) ? $data['quantity'] : null;
     }
 
     /*
@@ -191,11 +191,11 @@ class DiscUsage implements ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['usedSize'] === null) {
-            $invalidProperties[] = "'usedSize' can't be null";
+        if ($this->container['credit'] === null) {
+            $invalidProperties[] = "'credit' can't be null";
         }
-        if ($this->container['totalSize'] === null) {
-            $invalidProperties[] = "'totalSize' can't be null";
+        if ($this->container['quantity'] === null) {
+            $invalidProperties[] = "'quantity' can't be null";
         }
         return $invalidProperties;
     }
@@ -209,10 +209,10 @@ class DiscUsage implements ArrayAccess
     public function valid()
     {
 
-        if ($this->container['usedSize'] === null) {
+        if ($this->container['credit'] === null) {
             return false;
         }
-        if ($this->container['totalSize'] === null) {
+        if ($this->container['quantity'] === null) {
             return false;
         }
         return true;
@@ -220,49 +220,49 @@ class DiscUsage implements ArrayAccess
 
 
     /*
-     * Gets usedSize
+     * Gets credit
      *
-     * @return int
+     * @return float
      */
-    public function getUsedSize()
+    public function getCredit()
     {
-        return $this->container['usedSize'];
+        return $this->container['credit'];
     }
 
     /*
-     * Sets usedSize
+     * Sets credit
      *
-     * @param int $usedSize Application used disc space.
+     * @param float $credit Amount of used credits
      *
      * @return $this
      */
-    public function setUsedSize($usedSize)
+    public function setCredit($credit)
     {
-        $this->container['usedSize'] = $usedSize;
+        $this->container['credit'] = $credit;
 
         return $this;
     }
 
     /*
-     * Gets totalSize
+     * Gets quantity
      *
-     * @return int
+     * @return float
      */
-    public function getTotalSize()
+    public function getQuantity()
     {
-        return $this->container['totalSize'];
+        return $this->container['quantity'];
     }
 
     /*
-     * Sets totalSize
+     * Sets quantity
      *
-     * @param int $totalSize Total disc space.
+     * @param float $quantity Amount of MBs processed
      *
      * @return $this
      */
-    public function setTotalSize($totalSize)
+    public function setQuantity($quantity)
     {
-        $this->container['totalSize'] = $totalSize;
+        $this->container['quantity'] = $quantity;
 
         return $this;
     }

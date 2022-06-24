@@ -2,7 +2,7 @@
 /*
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose Pty Ltd" file="Color.php">
- *   Copyright (c) 2003-2021 Aspose Pty Ltd
+ *   Copyright (c) 2003-2022 Aspose Pty Ltd
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -53,7 +53,8 @@ class Color implements ArrayAccess
      * @var string[]
      */
     protected static $swaggerTypes = [
-        'web' => 'string'
+        'web' => 'string',
+        'alpha' => 'int'
     ];
 
     /*
@@ -62,7 +63,8 @@ class Color implements ArrayAccess
      * @var string[]
      */
     protected static $swaggerFormats = [
-        'web' => null
+        'web' => null,
+        'alpha' => 'byte'
     ];
 
     /*
@@ -92,7 +94,8 @@ class Color implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'web' => 'Web'
+        'web' => 'Web',
+        'alpha' => 'Alpha'
     ];
 
     /*
@@ -101,7 +104,8 @@ class Color implements ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'web' => 'setWeb'
+        'web' => 'setWeb',
+        'alpha' => 'setAlpha'
     ];
 
     /*
@@ -110,7 +114,8 @@ class Color implements ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'web' => 'getWeb'
+        'web' => 'getWeb',
+        'alpha' => 'getAlpha'
     ];
 
     /*
@@ -174,6 +179,7 @@ class Color implements ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['web'] = isset($data['web']) ? $data['web'] : null;
+        $this->container['alpha'] = isset($data['alpha']) ? $data['alpha'] : null;
     }
 
     /*
@@ -185,6 +191,9 @@ class Color implements ArrayAccess
     {
         $invalidProperties = [];
 
+        if ($this->container['alpha'] === null) {
+            $invalidProperties[] = "'alpha' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -197,6 +206,9 @@ class Color implements ArrayAccess
     public function valid()
     {
 
+        if ($this->container['alpha'] === null) {
+            return false;
+        }
         return true;
     }
 
@@ -221,6 +233,30 @@ class Color implements ArrayAccess
     public function setWeb($web)
     {
         $this->container['web'] = $web;
+
+        return $this;
+    }
+
+    /*
+     * Gets alpha
+     *
+     * @return int
+     */
+    public function getAlpha()
+    {
+        return $this->container['alpha'];
+    }
+
+    /*
+     * Sets alpha
+     *
+     * @param int $alpha Alpha component of color structure
+     *
+     * @return $this
+     */
+    public function setAlpha($alpha)
+    {
+        $this->container['alpha'] = $alpha;
 
         return $this;
     }

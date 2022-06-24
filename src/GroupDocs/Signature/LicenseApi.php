@@ -1,7 +1,7 @@
 <?php
 /*
  * --------------------------------------------------------------------------------------------------------------------
- * <copyright company="Aspose Pty Ltd" file="PreviewApi.php">
+ * <copyright company="Aspose Pty Ltd" file="LicenseApi.php">
  *   Copyright (c) 2003-2022 Aspose Pty Ltd
  * </copyright>
  * <summary>
@@ -39,7 +39,7 @@ use GroupDocs\Signature\Model\Requests;
 /*
  * GroupDocs.Signature Cloud API Reference
  */
-class PreviewApi
+class LicenseApi
 {
     /*
      * Stores client instance
@@ -66,7 +66,7 @@ class PreviewApi
     protected $accessToken;
 
     /*
-     * Initialize a new instance of PreviewApi
+     * Initialize a new instance of LicenseApi
      * @param Configuration   $config configuration info
      * @param ClientInterface   $client client for calling api
      * @param HeaderSelector   $selector class for header selection
@@ -88,37 +88,33 @@ class PreviewApi
     }
 
     /*
-     * Operation previewDocument
+     * Operation getConsumptionCredit
      *
-     * Creates document preview images
-     *
-     * @param Requests\previewDocumentRequest $request is a request object for operation
+     * Get license consumption
      *
      * @throws \GroupDocs\Signature\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GroupDocs\Signature\Model\PreviewResult
+     * @return \GroupDocs\Signature\Model\ConsumptionResult
      */
-    public function previewDocument(Requests\previewDocumentRequest $request)
+    public function getConsumptionCredit()
     {
-        list($response) = $this->previewDocumentWithHttpInfo($request);
+        list($response) = $this->getConsumptionCreditWithHttpInfo();
         return $response;
     }
 
     /*
-     * Operation previewDocumentWithHttpInfo
+     * Operation getConsumptionCreditWithHttpInfo
      *
-     * Creates document preview images
-     *
-     * @param Requests\previewDocumentRequest $request is a request object for operation
+     * Get license consumption
      *
      * @throws \GroupDocs\Signature\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GroupDocs\Signature\Model\PreviewResult, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GroupDocs\Signature\Model\ConsumptionResult, HTTP status code, HTTP response headers (array of strings)
      */
-    public function previewDocumentWithHttpInfo(Requests\previewDocumentRequest $request)
+    public function getConsumptionCreditWithHttpInfo()
     {
-        $returnType = '\GroupDocs\Signature\Model\PreviewResult';
-        $request = $this->previewDocumentRequest($request);
+        $returnType = '\GroupDocs\Signature\Model\ConsumptionResult';
+        $request = $this->getConsumptionCreditRequest();
 
         try {
             $options = $this->_createHttpClientOption();
@@ -166,7 +162,7 @@ class PreviewApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
             case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\GroupDocs\Signature\Model\PreviewResult', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\GroupDocs\Signature\Model\ConsumptionResult', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                 break;
             }
@@ -175,18 +171,16 @@ class PreviewApi
     }
 
     /*
-     * Operation previewDocumentAsync
+     * Operation getConsumptionCreditAsync
      *
-     * Creates document preview images
-     *
-     * @param Requests\previewDocumentRequest $request is a request object for operation
+     * Get license consumption
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function previewDocumentAsync(Requests\previewDocumentRequest $request) 
+    public function getConsumptionCreditAsync() 
     {
-        return $this->previewDocumentAsyncWithHttpInfo($request)
+        return $this->getConsumptionCreditAsyncWithHttpInfo()
             ->then(
                 function ($response) {
                     return $response[0];
@@ -195,19 +189,19 @@ class PreviewApi
     }
 
     /*
-     * Operation previewDocumentAsyncWithHttpInfo
+     * Operation getConsumptionCreditAsyncWithHttpInfo
      *
-     * Creates document preview images
+     * Get license consumption
      *
-     * @param Requests\previewDocumentRequest $request is a request object for operation
+     * @param Requests\getConsumptionCreditRequest $request is a request object for operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function previewDocumentAsyncWithHttpInfo(Requests\previewDocumentRequest $request) 
+    public function getConsumptionCreditAsyncWithHttpInfo() 
     {
-        $returnType = '\GroupDocs\Signature\Model\PreviewResult';
-        $request = $this->previewDocumentRequest($request);
+        $returnType = '\GroupDocs\Signature\Model\ConsumptionResult';
+        $request = $this->getConsumptionCreditRequest();
 
         return $this->client
             ->sendAsync($request, $this->_createHttpClientOption())
@@ -245,21 +239,17 @@ class PreviewApi
     }
 
     /*
-     * Create request for operation 'previewDocument'
+     * Create request for operation 'getConsumptionCredit'
      *
-     * @param Requests\previewDocumentRequest $request is a request object for operation
+     * @param Requests\getConsumptionCreditRequest $request is a request object for operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function previewDocumentRequest(Requests\previewDocumentRequest $request)
+    protected function getConsumptionCreditRequest()
     {
-        // verify the required parameter 'previewSettings' is set
-        if ($request->previewSettings === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $previewSettings when calling previewDocument');
-        }
 
-        $resourcePath = '/signature/preview';
+        $resourcePath = '/signature/consumption';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -273,13 +263,6 @@ class PreviewApi
 
         // body params
         $_tempBody = null;
-        if (isset($request->previewSettings)) {
-            if (is_string($request->previewSettings)) {
-                $_tempBody = "\"" . $request->previewSettings . "\"";   
-            } else {
-                $_tempBody = $request->previewSettings;
-            }
-        }
 
         if ($multipart) {
             $headers= $this->headerSelector->selectHeadersForMultipart(
@@ -345,13 +328,13 @@ class PreviewApi
         );
     
         $req = new Request(
-            'POST',
+            'GET',
             $resourcePath,
             $headers,
             $httpBody
         );
         if ($this->config->getDebug()) {
-            $this->_writeRequestLog('POST', $resourcePath, $headers, $httpBody);
+            $this->_writeRequestLog('GET', $resourcePath, $headers, $httpBody);
         }
         
         return $req;
@@ -455,53 +438,4 @@ class PreviewApi
         }
     }
   
-}
-/*
- * --------------------------------------------------------------------------------------------------------------------
- * <copyright company="Aspose Pty Ltd" file="previewDocumentRequest.php">
- *   Copyright (c) 2003-2022 Aspose Pty Ltd
- * </copyright>
- * <summary>
- *   Permission is hereby granted, free of charge, to any person obtaining a copy
- *  of this software and associated documentation files (the "Software"), to deal
- *  in the Software without restriction, including without limitation the rights
- *  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- *  copies of the Software, and to permit persons to whom the Software is
- *  furnished to do so, subject to the following conditions:
- * 
- *  The above copyright notice and this permission notice shall be included in all
- *  copies or substantial portions of the Software.
- * 
- *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- *  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- *  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- *  SOFTWARE.
- * </summary>
- * --------------------------------------------------------------------------------------------------------------------
- */
-
-namespace GroupDocs\Signature\Model\Requests;
-
-/*
- * Request model for previewDocument operation.
- */
-class previewDocumentRequest
-{
-    /*
-     * Initializes a new instance of the previewDocumentRequest class.
-     *  
-     * @param \GroupDocs\Signature\Model\PreviewSettings $previewSettings Document preview settings
-     */
-    public function __construct($previewSettings)             
-    {
-        $this->previewSettings = $previewSettings;
-    }
-
-    /*
-     * Document preview settings
-     */
-    public $previewSettings;
 }
