@@ -1,7 +1,7 @@
 <?php
 /*
  * --------------------------------------------------------------------------------------------------------------------
- * <copyright company="Aspose Pty Ltd" file="PdfDigitalSignature.php">
+ * <copyright company="Aspose Pty Ltd" file="MetadataSignature.php">
  *   Copyright (c) 2003-2023 Aspose Pty Ltd
  * </copyright>
  * <summary>
@@ -27,16 +27,14 @@
  */
 
 namespace GroupDocs\Signature\Model;
-
-use \ArrayAccess;
 use \GroupDocs\Signature\ObjectSerializer;
 
 /*
- * PdfDigitalSignature
+ * MetadataSignature
  *
- * @description Contains pdf digital Signature properties
+ * @description Contains Metadata signature properties.
  */
-class PdfDigitalSignature implements ArrayAccess
+class MetadataSignature extends Signature 
 {
     const DISCRIMINATOR = null;
 
@@ -45,7 +43,7 @@ class PdfDigitalSignature implements ArrayAccess
      *
      * @var string
      */
-    protected static $swaggerModelName = "PdfDigitalSignature";
+    protected static $swaggerModelName = "MetadataSignature";
 
     /*
      * Array of property to type mappings. Used for (de)serialization
@@ -53,12 +51,14 @@ class PdfDigitalSignature implements ArrayAccess
      * @var string[]
      */
     protected static $swaggerTypes = [
-        'contactInfo' => 'string',
-        'location' => 'string',
-        'reason' => 'string',
         'type' => 'string',
-        'timeStamp' => '\GroupDocs\Signature\Model\TimeStamp',
-        'showProperties' => 'bool'
+        'dataType' => 'string',
+        'value' => 'string',
+        'name' => 'string',
+        'id' => 'int',
+        'size' => 'int',
+        'description' => 'string',
+        'tagPrefix' => 'string'
     ];
 
     /*
@@ -67,12 +67,14 @@ class PdfDigitalSignature implements ArrayAccess
      * @var string[]
      */
     protected static $swaggerFormats = [
-        'contactInfo' => null,
-        'location' => null,
-        'reason' => null,
         'type' => null,
-        'timeStamp' => null,
-        'showProperties' => null
+        'dataType' => null,
+        'value' => null,
+        'name' => null,
+        'id' => null,
+        'size' => 'int32',
+        'description' => null,
+        'tagPrefix' => null
     ];
 
     /*
@@ -82,7 +84,7 @@ class PdfDigitalSignature implements ArrayAccess
      */
     public static function swaggerTypes()
     {
-        return self::$swaggerTypes;
+        return self::$swaggerTypes + parent::swaggerTypes();
     }
 
     /*
@@ -92,7 +94,7 @@ class PdfDigitalSignature implements ArrayAccess
      */
     public static function swaggerFormats()
     {
-        return self::$swaggerFormats;
+        return self::$swaggerFormats + parent::swaggerFormats();
     }
 
     /*
@@ -102,12 +104,14 @@ class PdfDigitalSignature implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'contactInfo' => 'ContactInfo',
-        'location' => 'Location',
-        'reason' => 'Reason',
         'type' => 'Type',
-        'timeStamp' => 'TimeStamp',
-        'showProperties' => 'ShowProperties'
+        'dataType' => 'DataType',
+        'value' => 'Value',
+        'name' => 'Name',
+        'id' => 'Id',
+        'size' => 'Size',
+        'description' => 'Description',
+        'tagPrefix' => 'TagPrefix'
     ];
 
     /*
@@ -116,12 +120,14 @@ class PdfDigitalSignature implements ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'contactInfo' => 'setContactInfo',
-        'location' => 'setLocation',
-        'reason' => 'setReason',
         'type' => 'setType',
-        'timeStamp' => 'setTimeStamp',
-        'showProperties' => 'setShowProperties'
+        'dataType' => 'setDataType',
+        'value' => 'setValue',
+        'name' => 'setName',
+        'id' => 'setId',
+        'size' => 'setSize',
+        'description' => 'setDescription',
+        'tagPrefix' => 'setTagPrefix'
     ];
 
     /*
@@ -130,12 +136,14 @@ class PdfDigitalSignature implements ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'contactInfo' => 'getContactInfo',
-        'location' => 'getLocation',
-        'reason' => 'getReason',
         'type' => 'getType',
-        'timeStamp' => 'getTimeStamp',
-        'showProperties' => 'getShowProperties'
+        'dataType' => 'getDataType',
+        'value' => 'getValue',
+        'name' => 'getName',
+        'id' => 'getId',
+        'size' => 'getSize',
+        'description' => 'getDescription',
+        'tagPrefix' => 'getTagPrefix'
     ];
 
     /*
@@ -146,7 +154,7 @@ class PdfDigitalSignature implements ArrayAccess
      */
     public static function attributeMap()
     {
-        return self::$attributeMap;
+        return parent::attributeMap() + self::$attributeMap;
     }
 
     /*
@@ -156,7 +164,7 @@ class PdfDigitalSignature implements ArrayAccess
      */
     public static function setters()
     {
-        return self::$setters;
+        return parent::setters() + self::$setters;
     }
 
     /*
@@ -166,7 +174,7 @@ class PdfDigitalSignature implements ArrayAccess
      */
     public static function getters()
     {
-        return self::$getters;
+        return parent::getters() + self::$getters;
     }
 
     /*
@@ -179,8 +187,19 @@ class PdfDigitalSignature implements ArrayAccess
         return self::$swaggerModelName;
     }
 
-    const TYPE_SIGNATURE = 'Signature';
+    const TYPE_NONE = 'None';
     const TYPE_CERTIFICATE = 'Certificate';
+    const TYPE_IMAGE = 'Image';
+    const TYPE_PDF = 'Pdf';
+    const TYPE_PRESENTATION = 'Presentation';
+    const TYPE_SPREADSHEET = 'Spreadsheet';
+    const TYPE_WORD_PROCESSING = 'WordProcessing';
+    const DATA_TYPE_UNDEFINED = 'Undefined';
+    const DATA_TYPE_BOOLEAN = 'Boolean';
+    const DATA_TYPE_INTEGER = 'Integer';
+    const DATA_TYPE_DOUBLE = 'Double';
+    const DATA_TYPE_DATE_TIME = 'DateTime';
+    const DATA_TYPE_STRING = 'String';
     
 
     
@@ -192,18 +211,34 @@ class PdfDigitalSignature implements ArrayAccess
     public function getTypeAllowableValues()
     {
         return [
-            self::TYPE_SIGNATURE,
+            self::TYPE_NONE,
             self::TYPE_CERTIFICATE,
+            self::TYPE_IMAGE,
+            self::TYPE_PDF,
+            self::TYPE_PRESENTATION,
+            self::TYPE_SPREADSHEET,
+            self::TYPE_WORD_PROCESSING,
+        ];
+    }
+    
+    /*
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getDataTypeAllowableValues()
+    {
+        return [
+            self::DATA_TYPE_UNDEFINED,
+            self::DATA_TYPE_BOOLEAN,
+            self::DATA_TYPE_INTEGER,
+            self::DATA_TYPE_DOUBLE,
+            self::DATA_TYPE_DATE_TIME,
+            self::DATA_TYPE_STRING,
         ];
     }
     
 
-    /*
-     * Associative array for storing property values
-     *
-     * @var mixed[]
-     */
-    protected $container = [];
 
     /*
      * Constructor
@@ -213,12 +248,16 @@ class PdfDigitalSignature implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['contactInfo'] = isset($data['contactInfo']) ? $data['contactInfo'] : null;
-        $this->container['location'] = isset($data['location']) ? $data['location'] : null;
-        $this->container['reason'] = isset($data['reason']) ? $data['reason'] : null;
+        parent::__construct($data);
+
         $this->container['type'] = isset($data['type']) ? $data['type'] : null;
-        $this->container['timeStamp'] = isset($data['timeStamp']) ? $data['timeStamp'] : null;
-        $this->container['showProperties'] = isset($data['showProperties']) ? $data['showProperties'] : null;
+        $this->container['dataType'] = isset($data['dataType']) ? $data['dataType'] : null;
+        $this->container['value'] = isset($data['value']) ? $data['value'] : null;
+        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
+        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        $this->container['size'] = isset($data['size']) ? $data['size'] : null;
+        $this->container['description'] = isset($data['description']) ? $data['description'] : null;
+        $this->container['tagPrefix'] = isset($data['tagPrefix']) ? $data['tagPrefix'] : null;
     }
 
     /*
@@ -228,7 +267,7 @@ class PdfDigitalSignature implements ArrayAccess
      */
     public function listInvalidProperties()
     {
-        $invalidProperties = [];
+        $invalidProperties = parent::listInvalidProperties();
 
         if ($this->container['type'] === null) {
             $invalidProperties[] = "'type' can't be null";
@@ -241,11 +280,22 @@ class PdfDigitalSignature implements ArrayAccess
             );
         }
 
-        if ($this->container['timeStamp'] === null) {
-            $invalidProperties[] = "'timeStamp' can't be null";
+        if ($this->container['dataType'] === null) {
+            $invalidProperties[] = "'dataType' can't be null";
         }
-        if ($this->container['showProperties'] === null) {
-            $invalidProperties[] = "'showProperties' can't be null";
+        $allowedValues = $this->getDataTypeAllowableValues();
+        if (!in_array($this->container['dataType'], $allowedValues)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'dataType', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
+        }
+        if ($this->container['size'] === null) {
+            $invalidProperties[] = "'size' can't be null";
         }
         return $invalidProperties;
     }
@@ -258,6 +308,9 @@ class PdfDigitalSignature implements ArrayAccess
      */
     public function valid()
     {
+        if (!parent::valid()) {
+            return false;
+        }
 
         if ($this->container['type'] === null) {
             return false;
@@ -266,87 +319,22 @@ class PdfDigitalSignature implements ArrayAccess
         if (!in_array($this->container['type'], $allowedValues)) {
             return false;
         }
-        if ($this->container['timeStamp'] === null) {
+        if ($this->container['dataType'] === null) {
             return false;
         }
-        if ($this->container['showProperties'] === null) {
+        $allowedValues = $this->getDataTypeAllowableValues();
+        if (!in_array($this->container['dataType'], $allowedValues)) {
+            return false;
+        }
+        if ($this->container['id'] === null) {
+            return false;
+        }
+        if ($this->container['size'] === null) {
             return false;
         }
         return true;
     }
 
-
-    /*
-     * Gets contactInfo
-     *
-     * @return string
-     */
-    public function getContactInfo()
-    {
-        return $this->container['contactInfo'];
-    }
-
-    /*
-     * Sets contactInfo
-     *
-     * @param string $contactInfo Information provided by the signer to enable a recipient to contact the signer
-     *
-     * @return $this
-     */
-    public function setContactInfo($contactInfo)
-    {
-        $this->container['contactInfo'] = $contactInfo;
-
-        return $this;
-    }
-
-    /*
-     * Gets location
-     *
-     * @return string
-     */
-    public function getLocation()
-    {
-        return $this->container['location'];
-    }
-
-    /*
-     * Sets location
-     *
-     * @param string $location The CPU host name or physical location of the signing.
-     *
-     * @return $this
-     */
-    public function setLocation($location)
-    {
-        $this->container['location'] = $location;
-
-        return $this;
-    }
-
-    /*
-     * Gets reason
-     *
-     * @return string
-     */
-    public function getReason()
-    {
-        return $this->container['reason'];
-    }
-
-    /*
-     * Sets reason
-     *
-     * @param string $reason The reason for the signing, such as (I agreeРІР‚В¦).
-     *
-     * @return $this
-     */
-    public function setReason($reason)
-    {
-        $this->container['reason'] = $reason;
-
-        return $this;
-    }
 
     /*
      * Gets type
@@ -361,7 +349,7 @@ class PdfDigitalSignature implements ArrayAccess
     /*
      * Sets type
      *
-     * @param string $type Type of Pdf digital signature.
+     * @param string $type Specifies metadata type.
      *
      * @return $this
      */
@@ -378,49 +366,174 @@ class PdfDigitalSignature implements ArrayAccess
     }
 
     /*
-     * Gets timeStamp
+     * Gets dataType
      *
-     * @return \GroupDocs\Signature\Model\TimeStamp
+     * @return string
      */
-    public function getTimeStamp()
+    public function getDataType()
     {
-        return $this->container['timeStamp'];
+        return $this->container['dataType'];
     }
 
     /*
-     * Sets timeStamp
+     * Sets dataType
      *
-     * @param \GroupDocs\Signature\Model\TimeStamp $timeStamp Time stamp for Pdf digital signature. Default value is null.
+     * @param string $dataType Specifies metadata value type.
      *
      * @return $this
      */
-    public function setTimeStamp($timeStamp)
+    public function setDataType($dataType)
     {
-        $this->container['timeStamp'] = $timeStamp;
+        $allowedValues = $this->getDataTypeAllowableValues();
+        if ((!is_numeric($dataType) && !in_array($dataType, $allowedValues)) || (is_numeric($dataType) && !in_array($allowedValues[$dataType], $allowedValues))) {
+            throw new \InvalidArgumentException(sprintf("Invalid value for 'dataType', must be one of '%s'", implode("', '", $allowedValues)));
+        }
+			
+        $this->container['dataType'] = $dataType;
 
         return $this;
     }
 
     /*
-     * Gets showProperties
+     * Gets value
      *
-     * @return bool
+     * @return string
      */
-    public function getShowProperties()
+    public function getValue()
     {
-        return $this->container['showProperties'];
+        return $this->container['value'];
     }
 
     /*
-     * Sets showProperties
+     * Sets value
      *
-     * @param bool $showProperties Force to show/hide signature properties
+     * @param string $value Specifies metadata object value
      *
      * @return $this
      */
-    public function setShowProperties($showProperties)
+    public function setValue($value)
     {
-        $this->container['showProperties'] = $showProperties;
+        $this->container['value'] = $value;
+
+        return $this;
+    }
+
+    /*
+     * Gets name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /*
+     * Sets name
+     *
+     * @param string $name Specifies unique metadata name
+     *
+     * @return $this
+     */
+    public function setName($name)
+    {
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /*
+     * Gets id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /*
+     * Sets id
+     *
+     * @param int $id The identifier of Image Metadata signature. See GroupDocs.Signature.Domain.ImageMetadataSignatures class that contains standard Signature with predefined Id value.
+     *
+     * @return $this
+     */
+    public function setId($id)
+    {
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /*
+     * Gets size
+     *
+     * @return int
+     */
+    public function getSize()
+    {
+        return $this->container['size'];
+    }
+
+    /*
+     * Sets size
+     *
+     * @param int $size Size of  Image Metadata value
+     *
+     * @return $this
+     */
+    public function setSize($size)
+    {
+        $this->container['size'] = $size;
+
+        return $this;
+    }
+
+    /*
+     * Gets description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->container['description'];
+    }
+
+    /*
+     * Sets description
+     *
+     * @param string $description Description for standard Image Metadata signature
+     *
+     * @return $this
+     */
+    public function setDescription($description)
+    {
+        $this->container['description'] = $description;
+
+        return $this;
+    }
+
+    /*
+     * Gets tagPrefix
+     *
+     * @return string
+     */
+    public function getTagPrefix()
+    {
+        return $this->container['tagPrefix'];
+    }
+
+    /*
+     * Sets tagPrefix
+     *
+     * @param string $tagPrefix The prefix tag of Pdf Metadata signature name. By default this property is set to \"xmp\". Possible values are
+     *
+     * @return $this
+     */
+    public function setTagPrefix($tagPrefix)
+    {
+        $this->container['tagPrefix'] = $tagPrefix;
 
         return $this;
     }

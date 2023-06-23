@@ -1,7 +1,7 @@
 {
     "description": "This repository contains GroupDocs.Signature for Cloud SDK for PHP source code.",
     "name": "groupdocscloud/groupdocs-signature-cloud",
-    "version": "22.6",
+    "version": "23.6",
     "license": "MIT",
     "type": "library",
     "keywords": [
@@ -21,27 +21,25 @@
     ],
     "config": {
         "platform": {
-            "php": "5.6.32"
+            "php": "8.2"
         }
     },
     "require": {
-        "php": ">=5.5",
+        "php": ">=8.2",
         "ext-curl": "*",
         "ext-json": "*",
         "ext-mbstring": "*",
-        "guzzlehttp/guzzle": "^6.2"
+        "guzzlehttp/guzzle": "^6.5.8|^7.4.5"
     },
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "2.10.*",
-        "squizlabs/php_codesniffer": "3.*",
-        "phpunit/phpunit": "^5.7"
+       "phpunit/phpunit": "^10.0.0"
     },
     "autoload": {
         "classmap": [ "src/" ],
         "psr-4": { "GroupDocs\\Signature\\" : "src/" }
     },
     "autoload-dev": {
-        "classmap": [ "src/" ],
+        "classmap": [ "src/", "tests/" ],
         "psr-4": { "GroupDocs\\Signature\\" : "tests/" }
     }
 }

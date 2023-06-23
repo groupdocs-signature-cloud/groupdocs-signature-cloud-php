@@ -2,7 +2,7 @@
 /**
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose Pty Ltd" file="DocumentInfoApiTest.php">
-*   Copyright (c) 2003-2022 Aspose Pty Ltd
+*   Copyright (c) 2003-2023 Aspose Pty Ltd
 * </copyright>
 * <summary>
 *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -32,10 +32,10 @@ use GroupDocs\Signature\Model;
 use GroupDocs\Signature\ApiTests\Internal;
 use GroupDocs\Signature\Model\Requests;
 
-require_once __DIR__."\..\BaseApiTest.php";
+require_once __DIR__."\..\BaseApiTestCase.php";
 require_once __DIR__."\..\Internal\TestFiles.php";
 
-class TestSignatureGetFileInfo extends ApiTests\BaseApiTest
+class SignatureGetFileInfoTest extends ApiTests\BaseApiTestCase
 {
     public function testDocumentInfo()
     {
@@ -57,13 +57,12 @@ class TestSignatureGetFileInfo extends ApiTests\BaseApiTest
 
     public function testGetInfoReturnsFileNotFound()
     {
-        $this->setExpectedException(
-            \GroupDocs\Signature\ApiException::class, "Can't find file located at 'some-folder\\\\NotExist.docx'.");
-
-            $file = Internal\TestFiles::getFileNotExist();
-            $settings = new Model\InfoSettings();
-            $settings->setFileInfo($file->ToFileInfo());
-            
-            $response = self::$infoApi->getInfo(new Requests\getInfoRequest($settings));
+        $this->expectException(\GroupDocs\Signature\ApiException::class);
+        $this->expectExceptionMessage("Can't find file located at 'some-folder\\\\NotExist.docx'.");
+        $file = Internal\TestFiles::getFileNotExist();
+        $settings = new Model\InfoSettings();
+        $settings->setFileInfo($file->ToFileInfo());
+        
+        $response = self::$infoApi->getInfo(new Requests\getInfoRequest($settings));
     }
 }

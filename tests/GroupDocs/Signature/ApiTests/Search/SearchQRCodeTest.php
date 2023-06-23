@@ -2,7 +2,7 @@
 /**
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose Pty Ltd">
-*   Copyright (c) 2003-2022 Aspose Pty Ltd
+*   Copyright (c) 2003-2023 Aspose Pty Ltd
 * </copyright>
 * <summary>
 *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -33,10 +33,10 @@ use GroupDocs\Signature\ApiTests\Internal;
 use GroupDocs\Signature\Model\Requests;
 
 
-require_once __DIR__."\..\BaseApiTest.php";
+require_once __DIR__."\..\BaseApiTestCase.php";
 require_once __DIR__."\..\Internal\TestFiles.php";
 
-class SearchQRTest extends  ApiTests\BaseApiTest
+class SearchQRCodeTest extends ApiTests\BaseApiTestCase
 {
     public function testSearchQRCodeImage()
     {
