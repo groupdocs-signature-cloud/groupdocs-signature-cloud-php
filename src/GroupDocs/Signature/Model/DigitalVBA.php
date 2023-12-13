@@ -1,7 +1,7 @@
 <?php
 /*
  * --------------------------------------------------------------------------------------------------------------------
- * <copyright company="Aspose Pty Ltd" file="SignDigitalOptions.php">
+ * <copyright company="Aspose Pty Ltd" file="DigitalVBA.php">
  *   Copyright (c) 2003-2023 Aspose Pty Ltd
  * </copyright>
  * <summary>
@@ -27,14 +27,15 @@
  */
 
 namespace GroupDocs\Signature\Model;
+
+use \ArrayAccess;
 use \GroupDocs\Signature\ObjectSerializer;
 
 /*
- * SignDigitalOptions
+ * DigitalVBA
  *
- * @description Represents the Digital sign options
  */
-class SignDigitalOptions extends SignImageOptions 
+class DigitalVBA implements ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -43,7 +44,7 @@ class SignDigitalOptions extends SignImageOptions
      *
      * @var string
      */
-    protected static $swaggerModelName = "SignDigitalOptions";
+    protected static $swaggerModelName = "DigitalVBA";
 
     /*
      * Array of property to type mappings. Used for (de)serialization
@@ -51,14 +52,10 @@ class SignDigitalOptions extends SignImageOptions
      * @var string[]
      */
     protected static $swaggerTypes = [
-        'reason' => 'string',
-        'contact' => 'string',
-        'location' => 'string',
-        'visible' => 'bool',
         'password' => 'string',
         'certificateFilePath' => 'string',
-        'xAdESType' => 'string',
-        'digitalVBA' => '\GroupDocs\Signature\Model\DigitalVBA'
+        'signOnlyVBAProject' => 'bool',
+        'comments' => 'string'
     ];
 
     /*
@@ -67,14 +64,10 @@ class SignDigitalOptions extends SignImageOptions
      * @var string[]
      */
     protected static $swaggerFormats = [
-        'reason' => null,
-        'contact' => null,
-        'location' => null,
-        'visible' => null,
         'password' => null,
         'certificateFilePath' => null,
-        'xAdESType' => null,
-        'digitalVBA' => null
+        'signOnlyVBAProject' => null,
+        'comments' => null
     ];
 
     /*
@@ -84,7 +77,7 @@ class SignDigitalOptions extends SignImageOptions
      */
     public static function swaggerTypes()
     {
-        return self::$swaggerTypes + parent::swaggerTypes();
+        return self::$swaggerTypes;
     }
 
     /*
@@ -94,7 +87,7 @@ class SignDigitalOptions extends SignImageOptions
      */
     public static function swaggerFormats()
     {
-        return self::$swaggerFormats + parent::swaggerFormats();
+        return self::$swaggerFormats;
     }
 
     /*
@@ -104,14 +97,10 @@ class SignDigitalOptions extends SignImageOptions
      * @var string[]
      */
     protected static $attributeMap = [
-        'reason' => 'Reason',
-        'contact' => 'Contact',
-        'location' => 'Location',
-        'visible' => 'Visible',
         'password' => 'Password',
         'certificateFilePath' => 'CertificateFilePath',
-        'xAdESType' => 'XAdESType',
-        'digitalVBA' => 'DigitalVBA'
+        'signOnlyVBAProject' => 'SignOnlyVBAProject',
+        'comments' => 'Comments'
     ];
 
     /*
@@ -120,14 +109,10 @@ class SignDigitalOptions extends SignImageOptions
      * @var string[]
      */
     protected static $setters = [
-        'reason' => 'setReason',
-        'contact' => 'setContact',
-        'location' => 'setLocation',
-        'visible' => 'setVisible',
         'password' => 'setPassword',
         'certificateFilePath' => 'setCertificateFilePath',
-        'xAdESType' => 'setXAdESType',
-        'digitalVBA' => 'setDigitalVBA'
+        'signOnlyVBAProject' => 'setSignOnlyVBAProject',
+        'comments' => 'setComments'
     ];
 
     /*
@@ -136,14 +121,10 @@ class SignDigitalOptions extends SignImageOptions
      * @var string[]
      */
     protected static $getters = [
-        'reason' => 'getReason',
-        'contact' => 'getContact',
-        'location' => 'getLocation',
-        'visible' => 'getVisible',
         'password' => 'getPassword',
         'certificateFilePath' => 'getCertificateFilePath',
-        'xAdESType' => 'getXAdESType',
-        'digitalVBA' => 'getDigitalVBA'
+        'signOnlyVBAProject' => 'getSignOnlyVBAProject',
+        'comments' => 'getComments'
     ];
 
     /*
@@ -154,7 +135,7 @@ class SignDigitalOptions extends SignImageOptions
      */
     public static function attributeMap()
     {
-        return parent::attributeMap() + self::$attributeMap;
+        return self::$attributeMap;
     }
 
     /*
@@ -164,7 +145,7 @@ class SignDigitalOptions extends SignImageOptions
      */
     public static function setters()
     {
-        return parent::setters() + self::$setters;
+        return self::$setters;
     }
 
     /*
@@ -174,7 +155,7 @@ class SignDigitalOptions extends SignImageOptions
      */
     public static function getters()
     {
-        return parent::getters() + self::$getters;
+        return self::$getters;
     }
 
     /*
@@ -187,25 +168,16 @@ class SignDigitalOptions extends SignImageOptions
         return self::$swaggerModelName;
     }
 
-    const X_AD_ES_TYPE_NONE = 'None';
-    const X_AD_ES_TYPE_X_AD_ES = 'XAdES';
     
 
     
+
     /*
-     * Gets allowable values of the enum
+     * Associative array for storing property values
      *
-     * @return string[]
+     * @var mixed[]
      */
-    public function getXAdESTypeAllowableValues()
-    {
-        return [
-            self::X_AD_ES_TYPE_NONE,
-            self::X_AD_ES_TYPE_X_AD_ES,
-        ];
-    }
-    
-
+    protected $container = [];
 
     /*
      * Constructor
@@ -215,16 +187,10 @@ class SignDigitalOptions extends SignImageOptions
      */
     public function __construct(array $data = null)
     {
-        parent::__construct($data);
-
-        $this->container['reason'] = isset($data['reason']) ? $data['reason'] : null;
-        $this->container['contact'] = isset($data['contact']) ? $data['contact'] : null;
-        $this->container['location'] = isset($data['location']) ? $data['location'] : null;
-        $this->container['visible'] = isset($data['visible']) ? $data['visible'] : null;
         $this->container['password'] = isset($data['password']) ? $data['password'] : null;
         $this->container['certificateFilePath'] = isset($data['certificateFilePath']) ? $data['certificateFilePath'] : null;
-        $this->container['xAdESType'] = isset($data['xAdESType']) ? $data['xAdESType'] : null;
-        $this->container['digitalVBA'] = isset($data['digitalVBA']) ? $data['digitalVBA'] : null;
+        $this->container['signOnlyVBAProject'] = isset($data['signOnlyVBAProject']) ? $data['signOnlyVBAProject'] : null;
+        $this->container['comments'] = isset($data['comments']) ? $data['comments'] : null;
     }
 
     /*
@@ -234,22 +200,11 @@ class SignDigitalOptions extends SignImageOptions
      */
     public function listInvalidProperties()
     {
-        $invalidProperties = parent::listInvalidProperties();
+        $invalidProperties = [];
 
-        if ($this->container['visible'] === null) {
-            $invalidProperties[] = "'visible' can't be null";
+        if ($this->container['signOnlyVBAProject'] === null) {
+            $invalidProperties[] = "'signOnlyVBAProject' can't be null";
         }
-        if ($this->container['xAdESType'] === null) {
-            $invalidProperties[] = "'xAdESType' can't be null";
-        }
-        $allowedValues = $this->getXAdESTypeAllowableValues();
-        if (!in_array($this->container['xAdESType'], $allowedValues)) {
-            $invalidProperties[] = sprintf(
-                "invalid value for 'xAdESType', must be one of '%s'",
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -261,119 +216,13 @@ class SignDigitalOptions extends SignImageOptions
      */
     public function valid()
     {
-        if (!parent::valid()) {
-            return false;
-        }
 
-        if ($this->container['visible'] === null) {
-            return false;
-        }
-        if ($this->container['xAdESType'] === null) {
-            return false;
-        }
-        $allowedValues = $this->getXAdESTypeAllowableValues();
-        if (!in_array($this->container['xAdESType'], $allowedValues)) {
+        if ($this->container['signOnlyVBAProject'] === null) {
             return false;
         }
         return true;
     }
 
-
-    /*
-     * Gets reason
-     *
-     * @return string
-     */
-    public function getReason()
-    {
-        return $this->container['reason'];
-    }
-
-    /*
-     * Sets reason
-     *
-     * @param string $reason Gets or sets the reason of signature.
-     *
-     * @return $this
-     */
-    public function setReason($reason)
-    {
-        $this->container['reason'] = $reason;
-
-        return $this;
-    }
-
-    /*
-     * Gets contact
-     *
-     * @return string
-     */
-    public function getContact()
-    {
-        return $this->container['contact'];
-    }
-
-    /*
-     * Sets contact
-     *
-     * @param string $contact Gets or sets the signature contact.
-     *
-     * @return $this
-     */
-    public function setContact($contact)
-    {
-        $this->container['contact'] = $contact;
-
-        return $this;
-    }
-
-    /*
-     * Gets location
-     *
-     * @return string
-     */
-    public function getLocation()
-    {
-        return $this->container['location'];
-    }
-
-    /*
-     * Sets location
-     *
-     * @param string $location Gets or sets the signature location.
-     *
-     * @return $this
-     */
-    public function setLocation($location)
-    {
-        $this->container['location'] = $location;
-
-        return $this;
-    }
-
-    /*
-     * Gets visible
-     *
-     * @return bool
-     */
-    public function getVisible()
-    {
-        return $this->container['visible'];
-    }
-
-    /*
-     * Sets visible
-     *
-     * @param bool $visible Gets or sets the visibility of signature.
-     *
-     * @return $this
-     */
-    public function setVisible($visible)
-    {
-        $this->container['visible'] = $visible;
-
-        return $this;
-    }
 
     /*
      * Gets password
@@ -412,7 +261,7 @@ class SignDigitalOptions extends SignImageOptions
     /*
      * Sets certificateFilePath
      *
-     * @param string $certificateFilePath Gets or sets the digital certificate file GUID
+     * @param string $certificateFilePath Gets or sets the digital certificate file path
      *
      * @return $this
      */
@@ -424,54 +273,49 @@ class SignDigitalOptions extends SignImageOptions
     }
 
     /*
-     * Gets xAdESType
+     * Gets signOnlyVBAProject
      *
-     * @return string
+     * @return bool
      */
-    public function getXAdESType()
+    public function getSignOnlyVBAProject()
     {
-        return $this->container['xAdESType'];
+        return $this->container['signOnlyVBAProject'];
     }
 
     /*
-     * Sets xAdESType
+     * Sets signOnlyVBAProject
      *
-     * @param string $xAdESType XAdES type GroupDocs.Signature.Options.DigitalSignOptions.XAdESType. Default value is None (XAdES is off). At this moment XAdES signature type is supported only for Spreadsheet documents.
+     * @param bool $signOnlyVBAProject Gets or sets setting of only VBA project signing. If set to true, the SpreadSheet document will not be signed, but the VBA project will be signed.
      *
      * @return $this
      */
-    public function setXAdESType($xAdESType)
+    public function setSignOnlyVBAProject($signOnlyVBAProject)
     {
-        $allowedValues = $this->getXAdESTypeAllowableValues();
-        if ((!is_numeric($xAdESType) && !in_array($xAdESType, $allowedValues)) || (is_numeric($xAdESType) && !in_array($allowedValues[$xAdESType], $allowedValues))) {
-            throw new \InvalidArgumentException(sprintf("Invalid value for 'xAdESType', must be one of '%s'", implode("', '", $allowedValues)));
-        }
-			
-        $this->container['xAdESType'] = $xAdESType;
+        $this->container['signOnlyVBAProject'] = $signOnlyVBAProject;
 
         return $this;
     }
 
     /*
-     * Gets digitalVBA
+     * Gets comments
      *
-     * @return \GroupDocs\Signature\Model\DigitalVBA
+     * @return string
      */
-    public function getDigitalVBA()
+    public function getComments()
     {
-        return $this->container['digitalVBA'];
+        return $this->container['comments'];
     }
 
     /*
-     * Sets digitalVBA
+     * Sets comments
      *
-     * @param \GroupDocs\Signature\Model\DigitalVBA $digitalVBA Options for signing VBA project
+     * @param string $comments Gets or sets the signature comments.
      *
      * @return $this
      */
-    public function setDigitalVBA($digitalVBA)
+    public function setComments($comments)
     {
-        $this->container['digitalVBA'] = $digitalVBA;
+        $this->container['comments'] = $comments;
 
         return $this;
     }
