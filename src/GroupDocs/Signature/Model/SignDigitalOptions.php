@@ -58,7 +58,9 @@ class SignDigitalOptions extends SignImageOptions
         'password' => 'string',
         'certificateFilePath' => 'string',
         'xAdESType' => 'string',
-        'digitalVBA' => '\GroupDocs\Signature\Model\DigitalVBA'
+        'digitalVBA' => '\GroupDocs\Signature\Model\DigitalVBA',
+        'signTime' => '\DateTime',
+        'comments' => 'string'
     ];
 
     /*
@@ -74,7 +76,9 @@ class SignDigitalOptions extends SignImageOptions
         'password' => null,
         'certificateFilePath' => null,
         'xAdESType' => null,
-        'digitalVBA' => null
+        'digitalVBA' => null,
+        'signTime' => 'date-time',
+        'comments' => null
     ];
 
     /*
@@ -111,7 +115,9 @@ class SignDigitalOptions extends SignImageOptions
         'password' => 'Password',
         'certificateFilePath' => 'CertificateFilePath',
         'xAdESType' => 'XAdESType',
-        'digitalVBA' => 'DigitalVBA'
+        'digitalVBA' => 'DigitalVBA',
+        'signTime' => 'SignTime',
+        'comments' => 'Comments'
     ];
 
     /*
@@ -127,7 +133,9 @@ class SignDigitalOptions extends SignImageOptions
         'password' => 'setPassword',
         'certificateFilePath' => 'setCertificateFilePath',
         'xAdESType' => 'setXAdESType',
-        'digitalVBA' => 'setDigitalVBA'
+        'digitalVBA' => 'setDigitalVBA',
+        'signTime' => 'setSignTime',
+        'comments' => 'setComments'
     ];
 
     /*
@@ -143,7 +151,9 @@ class SignDigitalOptions extends SignImageOptions
         'password' => 'getPassword',
         'certificateFilePath' => 'getCertificateFilePath',
         'xAdESType' => 'getXAdESType',
-        'digitalVBA' => 'getDigitalVBA'
+        'digitalVBA' => 'getDigitalVBA',
+        'signTime' => 'getSignTime',
+        'comments' => 'getComments'
     ];
 
     /*
@@ -225,6 +235,8 @@ class SignDigitalOptions extends SignImageOptions
         $this->container['certificateFilePath'] = isset($data['certificateFilePath']) ? $data['certificateFilePath'] : null;
         $this->container['xAdESType'] = isset($data['xAdESType']) ? $data['xAdESType'] : null;
         $this->container['digitalVBA'] = isset($data['digitalVBA']) ? $data['digitalVBA'] : null;
+        $this->container['signTime'] = isset($data['signTime']) ? $data['signTime'] : null;
+        $this->container['comments'] = isset($data['comments']) ? $data['comments'] : null;
     }
 
     /*
@@ -472,6 +484,54 @@ class SignDigitalOptions extends SignImageOptions
     public function setDigitalVBA($digitalVBA)
     {
         $this->container['digitalVBA'] = $digitalVBA;
+
+        return $this;
+    }
+
+    /*
+     * Gets signTime
+     *
+     * @return \DateTime
+     */
+    public function getSignTime()
+    {
+        return $this->container['signTime'];
+    }
+
+    /*
+     * Sets signTime
+     *
+     * @param \DateTime $signTime The time the document was signed.
+     *
+     * @return $this
+     */
+    public function setSignTime($signTime)
+    {
+        $this->container['signTime'] = $signTime;
+
+        return $this;
+    }
+
+    /*
+     * Gets comments
+     *
+     * @return string
+     */
+    public function getComments()
+    {
+        return $this->container['comments'];
+    }
+
+    /*
+     * Sets comments
+     *
+     * @param string $comments The signing purpose comment.
+     *
+     * @return $this
+     */
+    public function setComments($comments)
+    {
+        $this->container['comments'] = $comments;
 
         return $this;
     }
