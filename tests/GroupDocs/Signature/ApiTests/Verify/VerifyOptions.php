@@ -36,7 +36,7 @@ class VerifyOptions
         $options->setPage(1);
         $options->setAllPages(true);        
         $options->setSignatureType(Model\OptionsBase::SIGNATURE_TYPE_BARCODE);        
-        $options->setBarcodeType("Code39Standard");
+        $options->setBarcodeType("Code39");
         $options->setText("123456789012");
         $options->setMatchType(Model\VerifyTextOptions::MATCH_TYPE_CONTAINS);
 

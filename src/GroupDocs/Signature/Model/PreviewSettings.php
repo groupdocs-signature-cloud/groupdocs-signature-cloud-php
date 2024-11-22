@@ -53,6 +53,7 @@ class PreviewSettings extends BaseSettings
     protected static $swaggerTypes = [
         'width' => 'int',
         'height' => 'int',
+        'resolution' => 'int',
         'pageNumbers' => 'int[]',
         'previewFormat' => 'string',
         'hideSignatures' => 'bool',
@@ -67,6 +68,7 @@ class PreviewSettings extends BaseSettings
     protected static $swaggerFormats = [
         'width' => 'int32',
         'height' => 'int32',
+        'resolution' => 'int32',
         'pageNumbers' => 'int32',
         'previewFormat' => null,
         'hideSignatures' => null,
@@ -102,6 +104,7 @@ class PreviewSettings extends BaseSettings
     protected static $attributeMap = [
         'width' => 'Width',
         'height' => 'Height',
+        'resolution' => 'Resolution',
         'pageNumbers' => 'PageNumbers',
         'previewFormat' => 'PreviewFormat',
         'hideSignatures' => 'HideSignatures',
@@ -116,6 +119,7 @@ class PreviewSettings extends BaseSettings
     protected static $setters = [
         'width' => 'setWidth',
         'height' => 'setHeight',
+        'resolution' => 'setResolution',
         'pageNumbers' => 'setPageNumbers',
         'previewFormat' => 'setPreviewFormat',
         'hideSignatures' => 'setHideSignatures',
@@ -130,6 +134,7 @@ class PreviewSettings extends BaseSettings
     protected static $getters = [
         'width' => 'getWidth',
         'height' => 'getHeight',
+        'resolution' => 'getResolution',
         'pageNumbers' => 'getPageNumbers',
         'previewFormat' => 'getPreviewFormat',
         'hideSignatures' => 'getHideSignatures',
@@ -211,6 +216,7 @@ class PreviewSettings extends BaseSettings
 
         $this->container['width'] = isset($data['width']) ? $data['width'] : null;
         $this->container['height'] = isset($data['height']) ? $data['height'] : null;
+        $this->container['resolution'] = isset($data['resolution']) ? $data['resolution'] : null;
         $this->container['pageNumbers'] = isset($data['pageNumbers']) ? $data['pageNumbers'] : null;
         $this->container['previewFormat'] = isset($data['previewFormat']) ? $data['previewFormat'] : null;
         $this->container['hideSignatures'] = isset($data['hideSignatures']) ? $data['hideSignatures'] : null;
@@ -231,6 +237,9 @@ class PreviewSettings extends BaseSettings
         }
         if ($this->container['height'] === null) {
             $invalidProperties[] = "'height' can't be null";
+        }
+        if ($this->container['resolution'] === null) {
+            $invalidProperties[] = "'resolution' can't be null";
         }
         if ($this->container['previewFormat'] === null) {
             $invalidProperties[] = "'previewFormat' can't be null";
@@ -265,6 +274,9 @@ class PreviewSettings extends BaseSettings
             return false;
         }
         if ($this->container['height'] === null) {
+            return false;
+        }
+        if ($this->container['resolution'] === null) {
             return false;
         }
         if ($this->container['previewFormat'] === null) {
@@ -325,6 +337,30 @@ class PreviewSettings extends BaseSettings
     public function setHeight($height)
     {
         $this->container['height'] = $height;
+
+        return $this;
+    }
+
+    /*
+     * Gets resolution
+     *
+     * @return int
+     */
+    public function getResolution()
+    {
+        return $this->container['resolution'];
+    }
+
+    /*
+     * Sets resolution
+     *
+     * @param int $resolution Gets or sets the resolution of the preview images in DPI (dots per inch).
+     *
+     * @return $this
+     */
+    public function setResolution($resolution)
+    {
+        $this->container['resolution'] = $resolution;
 
         return $this;
     }

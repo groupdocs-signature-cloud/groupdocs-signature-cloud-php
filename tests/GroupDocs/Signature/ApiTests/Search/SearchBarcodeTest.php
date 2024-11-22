@@ -103,7 +103,7 @@ class SearchBarcodeTest extends ApiTests\BaseApiTestCase
         $options->setPage(1);
         $options->setAllPages(true);        
         $options->setSignatureType(Model\OptionsBase::SIGNATURE_TYPE_BARCODE);
-        $options->setBarcodeType("Code39Standard");
+        $options->setBarcodeType("Code39");
         $options->setText("123456789012");
         $pagesSetup = new Model\PagesSetup();
         $pagesSetup->setEvenPages(false);
