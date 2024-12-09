@@ -52,6 +52,7 @@ class PdfDigitalSignatureAppearance extends SignatureAppearance
      */
     protected static $swaggerTypes = [
         'background' => '\GroupDocs\Signature\Model\Color',
+        'foreground' => '\GroupDocs\Signature\Model\Color',
         'contactInfoLabel' => 'string',
         'dateSignedAtLabel' => 'string',
         'digitalSignedLabel' => 'string',
@@ -68,6 +69,7 @@ class PdfDigitalSignatureAppearance extends SignatureAppearance
      */
     protected static $swaggerFormats = [
         'background' => null,
+        'foreground' => null,
         'contactInfoLabel' => null,
         'dateSignedAtLabel' => null,
         'digitalSignedLabel' => null,
@@ -105,6 +107,7 @@ class PdfDigitalSignatureAppearance extends SignatureAppearance
      */
     protected static $attributeMap = [
         'background' => 'Background',
+        'foreground' => 'Foreground',
         'contactInfoLabel' => 'ContactInfoLabel',
         'dateSignedAtLabel' => 'DateSignedAtLabel',
         'digitalSignedLabel' => 'DigitalSignedLabel',
@@ -121,6 +124,7 @@ class PdfDigitalSignatureAppearance extends SignatureAppearance
      */
     protected static $setters = [
         'background' => 'setBackground',
+        'foreground' => 'setForeground',
         'contactInfoLabel' => 'setContactInfoLabel',
         'dateSignedAtLabel' => 'setDateSignedAtLabel',
         'digitalSignedLabel' => 'setDigitalSignedLabel',
@@ -137,6 +141,7 @@ class PdfDigitalSignatureAppearance extends SignatureAppearance
      */
     protected static $getters = [
         'background' => 'getBackground',
+        'foreground' => 'getForeground',
         'contactInfoLabel' => 'getContactInfoLabel',
         'dateSignedAtLabel' => 'getDateSignedAtLabel',
         'digitalSignedLabel' => 'getDigitalSignedLabel',
@@ -203,6 +208,7 @@ class PdfDigitalSignatureAppearance extends SignatureAppearance
         parent::__construct($data);
 
         $this->container['background'] = isset($data['background']) ? $data['background'] : null;
+        $this->container['foreground'] = isset($data['foreground']) ? $data['foreground'] : null;
         $this->container['contactInfoLabel'] = isset($data['contactInfoLabel']) ? $data['contactInfoLabel'] : null;
         $this->container['dateSignedAtLabel'] = isset($data['dateSignedAtLabel']) ? $data['dateSignedAtLabel'] : null;
         $this->container['digitalSignedLabel'] = isset($data['digitalSignedLabel']) ? $data['digitalSignedLabel'] : null;
@@ -253,13 +259,37 @@ class PdfDigitalSignatureAppearance extends SignatureAppearance
     /*
      * Sets background
      *
-     * @param \GroupDocs\Signature\Model\Color $background Get or set background color of signature appearance. By default the value is SystemColors.Windows
+     * @param \GroupDocs\Signature\Model\Color $background Get or set background color of signature appearance.
      *
      * @return $this
      */
     public function setBackground($background)
     {
         $this->container['background'] = $background;
+
+        return $this;
+    }
+
+    /*
+     * Gets foreground
+     *
+     * @return \GroupDocs\Signature\Model\Color
+     */
+    public function getForeground()
+    {
+        return $this->container['foreground'];
+    }
+
+    /*
+     * Sets foreground
+     *
+     * @param \GroupDocs\Signature\Model\Color $foreground Get or set foreground text color of signature appearance. By default the value is Color.FromArgb(76, 100, 255)
+     *
+     * @return $this
+     */
+    public function setForeground($foreground)
+    {
+        $this->container['foreground'] = $foreground;
 
         return $this;
     }
