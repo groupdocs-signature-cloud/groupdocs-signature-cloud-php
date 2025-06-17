@@ -1,7 +1,7 @@
 <?php
 /*
  * --------------------------------------------------------------------------------------------------------------------
- * <copyright company="Aspose Pty Ltd" file="BarcodesResult.php">
+ * <copyright company="Aspose Pty Ltd" file="ApiErrorResponse.php">
  *   Copyright (c) Aspose Pty Ltd
  * </copyright>
  * <summary>
@@ -32,11 +32,10 @@ use \ArrayAccess;
 use \GroupDocs\Signature\ObjectSerializer;
 
 /*
- * BarcodesResult
+ * ApiErrorResponse
  *
- * @description Describes collection of supported Barcode types
  */
-class BarcodesResult implements ArrayAccess
+class ApiErrorResponse implements ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -45,7 +44,7 @@ class BarcodesResult implements ArrayAccess
      *
      * @var string
      */
-    protected static $swaggerModelName = "BarcodesResult";
+    protected static $swaggerModelName = "ApiErrorResponse";
 
     /*
      * Array of property to type mappings. Used for (de)serialization
@@ -53,7 +52,8 @@ class BarcodesResult implements ArrayAccess
      * @var string[]
      */
     protected static $swaggerTypes = [
-        'barcodeTypes' => '\GroupDocs\Signature\Model\BarcodeType[]'
+        'requestId' => 'string',
+        'error' => '\GroupDocs\Signature\Model\ApiError'
     ];
 
     /*
@@ -62,7 +62,8 @@ class BarcodesResult implements ArrayAccess
      * @var string[]
      */
     protected static $swaggerFormats = [
-        'barcodeTypes' => null
+        'requestId' => null,
+        'error' => null
     ];
 
     /*
@@ -92,7 +93,8 @@ class BarcodesResult implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'barcodeTypes' => 'BarcodeTypes'
+        'requestId' => 'RequestId',
+        'error' => 'Error'
     ];
 
     /*
@@ -101,7 +103,8 @@ class BarcodesResult implements ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'barcodeTypes' => 'setBarcodeTypes'
+        'requestId' => 'setRequestId',
+        'error' => 'setError'
     ];
 
     /*
@@ -110,7 +113,8 @@ class BarcodesResult implements ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'barcodeTypes' => 'getBarcodeTypes'
+        'requestId' => 'getRequestId',
+        'error' => 'getError'
     ];
 
     /*
@@ -173,7 +177,8 @@ class BarcodesResult implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['barcodeTypes'] = isset($data['barcodeTypes']) ? $data['barcodeTypes'] : null;
+        $this->container['requestId'] = isset($data['requestId']) ? $data['requestId'] : null;
+        $this->container['error'] = isset($data['error']) ? $data['error'] : null;
     }
 
     /*
@@ -202,25 +207,49 @@ class BarcodesResult implements ArrayAccess
 
 
     /*
-     * Gets barcodeTypes
+     * Gets requestId
      *
-     * @return \GroupDocs\Signature\Model\BarcodeType[]
+     * @return string
      */
-    public function getBarcodeTypes()
+    public function getRequestId()
     {
-        return $this->container['barcodeTypes'];
+        return $this->container['requestId'];
     }
 
     /*
-     * Sets barcodeTypes
+     * Sets requestId
      *
-     * @param \GroupDocs\Signature\Model\BarcodeType[] $barcodeTypes List of Barcode types
+     * @param string $requestId requestId
      *
      * @return $this
      */
-    public function setBarcodeTypes($barcodeTypes)
+    public function setRequestId($requestId)
     {
-        $this->container['barcodeTypes'] = $barcodeTypes;
+        $this->container['requestId'] = $requestId;
+
+        return $this;
+    }
+
+    /*
+     * Gets error
+     *
+     * @return \GroupDocs\Signature\Model\ApiError
+     */
+    public function getError()
+    {
+        return $this->container['error'];
+    }
+
+    /*
+     * Sets error
+     *
+     * @param \GroupDocs\Signature\Model\ApiError $error error
+     *
+     * @return $this
+     */
+    public function setError($error)
+    {
+        $this->container['error'] = $error;
 
         return $this;
     }

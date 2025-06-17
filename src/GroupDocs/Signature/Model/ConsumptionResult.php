@@ -2,7 +2,7 @@
 /*
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose Pty Ltd" file="ConsumptionResult.php">
- *   Copyright (c) 2003-2023 Aspose Pty Ltd
+ *   Copyright (c) Aspose Pty Ltd
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -54,7 +54,8 @@ class ConsumptionResult implements ArrayAccess
      */
     protected static $swaggerTypes = [
         'credit' => 'float',
-        'quantity' => 'float'
+        'quantity' => 'float',
+        'billedApiCalls' => 'float'
     ];
 
     /*
@@ -64,7 +65,8 @@ class ConsumptionResult implements ArrayAccess
      */
     protected static $swaggerFormats = [
         'credit' => 'decimal',
-        'quantity' => 'decimal'
+        'quantity' => 'decimal',
+        'billedApiCalls' => 'decimal'
     ];
 
     /*
@@ -95,7 +97,8 @@ class ConsumptionResult implements ArrayAccess
      */
     protected static $attributeMap = [
         'credit' => 'Credit',
-        'quantity' => 'Quantity'
+        'quantity' => 'Quantity',
+        'billedApiCalls' => 'BilledApiCalls'
     ];
 
     /*
@@ -105,7 +108,8 @@ class ConsumptionResult implements ArrayAccess
      */
     protected static $setters = [
         'credit' => 'setCredit',
-        'quantity' => 'setQuantity'
+        'quantity' => 'setQuantity',
+        'billedApiCalls' => 'setBilledApiCalls'
     ];
 
     /*
@@ -115,7 +119,8 @@ class ConsumptionResult implements ArrayAccess
      */
     protected static $getters = [
         'credit' => 'getCredit',
-        'quantity' => 'getQuantity'
+        'quantity' => 'getQuantity',
+        'billedApiCalls' => 'getBilledApiCalls'
     ];
 
     /*
@@ -180,6 +185,7 @@ class ConsumptionResult implements ArrayAccess
     {
         $this->container['credit'] = isset($data['credit']) ? $data['credit'] : null;
         $this->container['quantity'] = isset($data['quantity']) ? $data['quantity'] : null;
+        $this->container['billedApiCalls'] = isset($data['billedApiCalls']) ? $data['billedApiCalls'] : null;
     }
 
     /*
@@ -197,6 +203,9 @@ class ConsumptionResult implements ArrayAccess
         if ($this->container['quantity'] === null) {
             $invalidProperties[] = "'quantity' can't be null";
         }
+        if ($this->container['billedApiCalls'] === null) {
+            $invalidProperties[] = "'billedApiCalls' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -213,6 +222,9 @@ class ConsumptionResult implements ArrayAccess
             return false;
         }
         if ($this->container['quantity'] === null) {
+            return false;
+        }
+        if ($this->container['billedApiCalls'] === null) {
             return false;
         }
         return true;
@@ -263,6 +275,30 @@ class ConsumptionResult implements ArrayAccess
     public function setQuantity($quantity)
     {
         $this->container['quantity'] = $quantity;
+
+        return $this;
+    }
+
+    /*
+     * Gets billedApiCalls
+     *
+     * @return float
+     */
+    public function getBilledApiCalls()
+    {
+        return $this->container['billedApiCalls'];
+    }
+
+    /*
+     * Sets billedApiCalls
+     *
+     * @param float $billedApiCalls Billed API calls number
+     *
+     * @return $this
+     */
+    public function setBilledApiCalls($billedApiCalls)
+    {
+        $this->container['billedApiCalls'] = $billedApiCalls;
 
         return $this;
     }

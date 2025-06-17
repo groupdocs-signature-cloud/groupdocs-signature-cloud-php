@@ -2,7 +2,7 @@
 /*
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose Pty Ltd" file="LicenseApi.php">
- *   Copyright (c) 2003-2023 Aspose Pty Ltd
+ *   Copyright (c) Aspose Pty Ltd
  * </copyright>
  * <summary>
  *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -163,6 +163,14 @@ class LicenseApi
             switch ($e->getCode()) {
             case 200:
                     $data = ObjectSerializer::deserialize($e->getResponseBody(), '\GroupDocs\Signature\Model\ConsumptionResult', $e->getResponseHeaders());
+                    $e->setResponseObject($data);
+                break;
+            case 401:
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\GroupDocs\Signature\Model\ApiErrorResponse', $e->getResponseHeaders());
+                    $e->setResponseObject($data);
+                break;
+            case 500:
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\GroupDocs\Signature\Model\ApiErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                 break;
             }

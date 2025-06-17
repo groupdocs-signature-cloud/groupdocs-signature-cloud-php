@@ -1,7 +1,7 @@
 <?php
 /*
  * --------------------------------------------------------------------------------------------------------------------
- * <copyright company="Aspose Pty Ltd" file="BarcodesResult.php">
+ * <copyright company="Aspose Pty Ltd" file="ApiError.php">
  *   Copyright (c) Aspose Pty Ltd
  * </copyright>
  * <summary>
@@ -32,11 +32,10 @@ use \ArrayAccess;
 use \GroupDocs\Signature\ObjectSerializer;
 
 /*
- * BarcodesResult
+ * ApiError
  *
- * @description Describes collection of supported Barcode types
  */
-class BarcodesResult implements ArrayAccess
+class ApiError implements ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -45,7 +44,7 @@ class BarcodesResult implements ArrayAccess
      *
      * @var string
      */
-    protected static $swaggerModelName = "BarcodesResult";
+    protected static $swaggerModelName = "ApiError";
 
     /*
      * Array of property to type mappings. Used for (de)serialization
@@ -53,7 +52,11 @@ class BarcodesResult implements ArrayAccess
      * @var string[]
      */
     protected static $swaggerTypes = [
-        'barcodeTypes' => '\GroupDocs\Signature\Model\BarcodeType[]'
+        'code' => 'string',
+        'message' => 'string',
+        'description' => 'string',
+        'dateTime' => '\DateTime',
+        'innerError' => '\GroupDocs\Signature\Model\ApiError'
     ];
 
     /*
@@ -62,7 +65,11 @@ class BarcodesResult implements ArrayAccess
      * @var string[]
      */
     protected static $swaggerFormats = [
-        'barcodeTypes' => null
+        'code' => null,
+        'message' => null,
+        'description' => null,
+        'dateTime' => 'date-time',
+        'innerError' => null
     ];
 
     /*
@@ -92,7 +99,11 @@ class BarcodesResult implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'barcodeTypes' => 'BarcodeTypes'
+        'code' => 'Code',
+        'message' => 'Message',
+        'description' => 'Description',
+        'dateTime' => 'DateTime',
+        'innerError' => 'InnerError'
     ];
 
     /*
@@ -101,7 +112,11 @@ class BarcodesResult implements ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'barcodeTypes' => 'setBarcodeTypes'
+        'code' => 'setCode',
+        'message' => 'setMessage',
+        'description' => 'setDescription',
+        'dateTime' => 'setDateTime',
+        'innerError' => 'setInnerError'
     ];
 
     /*
@@ -110,7 +125,11 @@ class BarcodesResult implements ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'barcodeTypes' => 'getBarcodeTypes'
+        'code' => 'getCode',
+        'message' => 'getMessage',
+        'description' => 'getDescription',
+        'dateTime' => 'getDateTime',
+        'innerError' => 'getInnerError'
     ];
 
     /*
@@ -173,7 +192,11 @@ class BarcodesResult implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['barcodeTypes'] = isset($data['barcodeTypes']) ? $data['barcodeTypes'] : null;
+        $this->container['code'] = isset($data['code']) ? $data['code'] : null;
+        $this->container['message'] = isset($data['message']) ? $data['message'] : null;
+        $this->container['description'] = isset($data['description']) ? $data['description'] : null;
+        $this->container['dateTime'] = isset($data['dateTime']) ? $data['dateTime'] : null;
+        $this->container['innerError'] = isset($data['innerError']) ? $data['innerError'] : null;
     }
 
     /*
@@ -202,25 +225,121 @@ class BarcodesResult implements ArrayAccess
 
 
     /*
-     * Gets barcodeTypes
+     * Gets code
      *
-     * @return \GroupDocs\Signature\Model\BarcodeType[]
+     * @return string
      */
-    public function getBarcodeTypes()
+    public function getCode()
     {
-        return $this->container['barcodeTypes'];
+        return $this->container['code'];
     }
 
     /*
-     * Sets barcodeTypes
+     * Sets code
      *
-     * @param \GroupDocs\Signature\Model\BarcodeType[] $barcodeTypes List of Barcode types
+     * @param string $code code
      *
      * @return $this
      */
-    public function setBarcodeTypes($barcodeTypes)
+    public function setCode($code)
     {
-        $this->container['barcodeTypes'] = $barcodeTypes;
+        $this->container['code'] = $code;
+
+        return $this;
+    }
+
+    /*
+     * Gets message
+     *
+     * @return string
+     */
+    public function getMessage()
+    {
+        return $this->container['message'];
+    }
+
+    /*
+     * Sets message
+     *
+     * @param string $message message
+     *
+     * @return $this
+     */
+    public function setMessage($message)
+    {
+        $this->container['message'] = $message;
+
+        return $this;
+    }
+
+    /*
+     * Gets description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->container['description'];
+    }
+
+    /*
+     * Sets description
+     *
+     * @param string $description description
+     *
+     * @return $this
+     */
+    public function setDescription($description)
+    {
+        $this->container['description'] = $description;
+
+        return $this;
+    }
+
+    /*
+     * Gets dateTime
+     *
+     * @return \DateTime
+     */
+    public function getDateTime()
+    {
+        return $this->container['dateTime'];
+    }
+
+    /*
+     * Sets dateTime
+     *
+     * @param \DateTime $dateTime dateTime
+     *
+     * @return $this
+     */
+    public function setDateTime($dateTime)
+    {
+        $this->container['dateTime'] = $dateTime;
+
+        return $this;
+    }
+
+    /*
+     * Gets innerError
+     *
+     * @return \GroupDocs\Signature\Model\ApiError
+     */
+    public function getInnerError()
+    {
+        return $this->container['innerError'];
+    }
+
+    /*
+     * Sets innerError
+     *
+     * @param \GroupDocs\Signature\Model\ApiError $innerError innerError
+     *
+     * @return $this
+     */
+    public function setInnerError($innerError)
+    {
+        $this->container['innerError'] = $innerError;
 
         return $this;
     }
