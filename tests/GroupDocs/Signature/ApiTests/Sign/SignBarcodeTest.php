@@ -33,8 +33,8 @@ use GroupDocs\Signature\ApiTests\Internal;
 use GroupDocs\Signature\Model\Requests;
 
 
-require_once __DIR__."\..\BaseApiTestCase.php";
-require_once __DIR__."\..\Internal\TestFiles.php";
+require_once __DIR__ . "/../BaseApiTestCase.php";
+require_once __DIR__ . "/../Internal/TestFiles.php";
 require_once "SignOptions.php";
 
 class SignBarcodeTest extends ApiTests\BaseApiTestCase
@@ -42,7 +42,7 @@ class SignBarcodeTest extends ApiTests\BaseApiTestCase
     public function testSignBarcodeImage()
     {
         $file = Internal\TestFiles::GetImage01PagesJpg();
-        $signedFileName = "Output\ImageBarcodeSigned." . $file->getExt();
+        $signedFileName = "Output/ImageBarcodeSigned." . $file->getExt();
         $settings = new Model\SignSettings();
         $settings->setFileInfo($file->ToFileInfo());
         $saveOptions =  new Model\SaveOptions();
@@ -61,7 +61,7 @@ class SignBarcodeTest extends ApiTests\BaseApiTestCase
     public function testSignBarcodePdf()
     {
         $file = Internal\TestFiles::getFile01PagesPdf();
-        $signedFileName = "Output\PdfBarcodeSigned." . $file->getExt();
+        $signedFileName = "Output/PdfBarcodeSigned." . $file->getExt();
         $settings = new Model\SignSettings();
         $settings->setFileInfo($file->ToFileInfo());
         $saveOptions =  new Model\SaveOptions();
@@ -79,7 +79,7 @@ class SignBarcodeTest extends ApiTests\BaseApiTestCase
     public function testSignBarcodePresentation()
     {
         $file = Internal\TestFiles::getFile01PagesSlides();
-        $signedFileName = "Output\PresentationBarcodeSigned." . $file->getExt();
+        $signedFileName = "Output/PresentationBarcodeSigned." . $file->getExt();
         $settings = new Model\SignSettings();
         $settings->setFileInfo($file->ToFileInfo());
         $saveOptions =  new Model\SaveOptions();
@@ -97,7 +97,7 @@ class SignBarcodeTest extends ApiTests\BaseApiTestCase
     public function testSignBarcodeSpreadsheet()
     {
         $file = Internal\TestFiles::getFile01PagesCells();
-        $signedFileName = "Output\SpreadsheetBarcodeSigned." . $file->getExt();
+        $signedFileName = "Output/SpreadsheetBarcodeSigned." . $file->getExt();
         $settings = new Model\SignSettings();
         $settings->setFileInfo($file->ToFileInfo());
         $saveOptions =  new Model\SaveOptions();
@@ -115,7 +115,7 @@ class SignBarcodeTest extends ApiTests\BaseApiTestCase
     public function testSignBarcodeWordProcessing()
     {
         $file = Internal\TestFiles::getFile01PagesWords();
-        $signedFileName = "Output\WordBarcodeSigned." . $file->getExt();
+        $signedFileName = "Output/WordBarcodeSigned." . $file->getExt();
         $settings = new Model\SignSettings();
         $settings->setFileInfo($file->ToFileInfo());
         $saveOptions =  new Model\SaveOptions();

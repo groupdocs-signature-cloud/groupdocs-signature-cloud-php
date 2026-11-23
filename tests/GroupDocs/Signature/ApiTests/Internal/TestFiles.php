@@ -197,6 +197,16 @@ class TestFiles
         return $file;
     }
 
+    public static function getFileDigitalSignedPdf()
+    {
+        $file = new TestFile();
+        $file->fileName = "SignedForVerificationDigital.pdf";
+        $file->folder = "Signed";
+        $file->fileFormat = "Portable Document Format File";
+        $file->size = 581574;
+        return $file;
+    }
+
     /* Words Documents */
 
     public static function getFile01PagesWords()
@@ -268,7 +278,7 @@ class TestFiles
     {
         $file = new TestFile();
         $file->fileName = "NotExist.docx";
-        $file->folder = "some-folder\\";
+        $file->folder = "some-folder/";
         $file->fileFormat = "docx";           
         return $file;
     }       

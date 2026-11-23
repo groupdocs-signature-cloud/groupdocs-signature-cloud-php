@@ -32,8 +32,8 @@ use GroupDocs\Signature\Model;
 use GroupDocs\Signature\ApiTests\Internal;
 use GroupDocs\Signature\Model\Requests;
 
-require_once __DIR__."\..\BaseApiTestCase.php";
-require_once __DIR__."\..\Internal\TestFiles.php";
+require_once __DIR__ . "/../BaseApiTestCase.php";
+require_once __DIR__ . "/../Internal/TestFiles.php";
 
 class SignatureGetFileInfoTest extends ApiTests\BaseApiTestCase
 {
@@ -58,7 +58,7 @@ class SignatureGetFileInfoTest extends ApiTests\BaseApiTestCase
     public function testGetInfoReturnsFileNotFound()
     {
         $this->expectException(\GroupDocs\Signature\ApiException::class);
-        $this->expectExceptionMessage("Can't find file located at 'some-folder\\\\NotExist.docx'.");
+        $this->expectExceptionMessage("Can't find file located at 'some-folder/NotExist.docx'.");
         $file = Internal\TestFiles::getFileNotExist();
         $settings = new Model\InfoSettings();
         $settings->setFileInfo($file->ToFileInfo());

@@ -33,8 +33,8 @@ use GroupDocs\Signature\ApiTests\Internal;
 use GroupDocs\Signature\Model\Requests;
 
 
-require_once __DIR__."\..\BaseApiTestCase.php";
-require_once __DIR__."\..\Internal\TestFiles.php";
+require_once __DIR__ . "/../BaseApiTestCase.php";
+require_once __DIR__ . "/../Internal/TestFiles.php";
 require_once "VerifyOptions.php";
 
 class VerifyDigitalTest extends ApiTests\BaseApiTestCase
@@ -46,7 +46,7 @@ class VerifyDigitalTest extends ApiTests\BaseApiTestCase
 
     public function testVerifyDigitalPdf()
     {
-        $file = Internal\TestFiles::getFileSignedPdf();
+        $file = Internal\TestFiles::getFileDigitalSignedPdf();
         $settings = new Model\VerifySettings();
         $settings->setFileInfo($file->ToFileInfo());
 

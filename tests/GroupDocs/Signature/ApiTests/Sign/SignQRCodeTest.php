@@ -33,8 +33,8 @@ use GroupDocs\Signature\ApiTests\Internal;
 use GroupDocs\Signature\Model\Requests;
 
 
-require_once __DIR__."\..\BaseApiTestCase.php";
-require_once __DIR__."\..\Internal\TestFiles.php";
+require_once __DIR__ . "/../BaseApiTestCase.php";
+require_once __DIR__ . "/../Internal/TestFiles.php";
 require_once "SignOptions.php";
 
 class SignQRCodeTest extends ApiTests\BaseApiTestCase
@@ -42,7 +42,7 @@ class SignQRCodeTest extends ApiTests\BaseApiTestCase
     public function testSignQRCodeImage()
     {
         $file = Internal\TestFiles::GetImage01PagesJpg();
-        $signedFileName = "Output\ImageQRCodeSigned." . $file->getExt();
+        $signedFileName = "Output/ImageQRCodeSigned." . $file->getExt();
         $settings = new Model\SignSettings();
         $settings->setFileInfo($file->ToFileInfo());
         $saveOptions =  new Model\SaveOptions();
@@ -61,7 +61,7 @@ class SignQRCodeTest extends ApiTests\BaseApiTestCase
     public function testSignQRCodePdf()
     {
         $file = Internal\TestFiles::getFile01PagesPdf();
-        $signedFileName = "Output\PdfQRCodeSigned." . $file->getExt();
+        $signedFileName = "Output/PdfQRCodeSigned." . $file->getExt();
         $settings = new Model\SignSettings();
         $settings->setFileInfo($file->ToFileInfo());
         $saveOptions =  new Model\SaveOptions();
@@ -79,7 +79,7 @@ class SignQRCodeTest extends ApiTests\BaseApiTestCase
     public function testSignQRCodePresentation()
     {
         $file = Internal\TestFiles::getFile01PagesSlides();
-        $signedFileName = "Output\PresentationQRCodeSigned." . $file->getExt();
+        $signedFileName = "Output/PresentationQRCodeSigned." . $file->getExt();
         $settings = new Model\SignSettings();
         $settings->setFileInfo($file->ToFileInfo());
         $saveOptions =  new Model\SaveOptions();
@@ -97,7 +97,7 @@ class SignQRCodeTest extends ApiTests\BaseApiTestCase
     public function testSignQRCodeSpreadsheet()
     {
         $file = Internal\TestFiles::getFile01PagesCells();
-        $signedFileName = "Output\SpreadsheetQRCodeSigned." . $file->getExt();
+        $signedFileName = "Output/SpreadsheetQRCodeSigned." . $file->getExt();
         $settings = new Model\SignSettings();
         $settings->setFileInfo($file->ToFileInfo());
         $saveOptions =  new Model\SaveOptions();
@@ -115,7 +115,7 @@ class SignQRCodeTest extends ApiTests\BaseApiTestCase
     public function testSignQRCodeWordProcessing()
     {
         $file = Internal\TestFiles::getFile01PagesWords();
-        $signedFileName = "Output\WordQRCodeSigned." . $file->getExt();
+        $signedFileName = "Output/WordQRCodeSigned." . $file->getExt();
         $settings = new Model\SignSettings();
         $settings->setFileInfo($file->ToFileInfo());
         $saveOptions =  new Model\SaveOptions();

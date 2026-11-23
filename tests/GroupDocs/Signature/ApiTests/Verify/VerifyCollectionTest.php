@@ -33,8 +33,8 @@ use GroupDocs\Signature\ApiTests\Internal;
 use GroupDocs\Signature\Model\Requests;
 
 
-require_once __DIR__."\..\BaseApiTestCase.php";
-require_once __DIR__."\..\Internal\TestFiles.php";
+require_once __DIR__ . "/../BaseApiTestCase.php";
+require_once __DIR__ . "/../Internal/TestFiles.php";
 require_once "VerifyOptions.php";
 
 class VerifyCollectionTest extends ApiTests\BaseApiTestCase
@@ -70,13 +70,11 @@ class VerifyCollectionTest extends ApiTests\BaseApiTestCase
         $options2 = new Model\VerifyQRCodeOptions();
         VerifyOptions::populateQRCodeOptions($options2);
 
-        $options3 = new Model\VerifyDigitalOptions();
-        VerifyOptions::populateDigitalOptions($options3);        
-
         $options4 = new Model\VerifyTextOptions();
         VerifyOptions::populateTextOptions($options4);        
 
-        $settings->setOptions([$options1, $options2, $options3, $options4]);                
+        // Digital verification is covered by VerifyDigitalTest (uses a dedicated digitally signed file)
+        $settings->setOptions([$options1, $options2, $options4]);                
         $response = self::$signApi->verifySignatures(new Requests\verifySignaturesRequest($settings));
         $this->_checkResponse($response, $file);
     }    

@@ -127,8 +127,8 @@ class SignOptions
         $options->setPage(1);
         $options->setAllPages(false);        
         $options->setSignatureType(Model\OptionsBase::SIGNATURE_TYPE_DIGITAL);        
-        $options->setImageFilePath("Additional\\signature_01.jpg");
-        $options->setCertificateFilePath("Additional\SherlockHolmes.pfx");
+        $options->setImageFilePath("Additional/signature_01.jpg");
+        $options->setCertificateFilePath("Additional/TestCertificate.pfx");
         $options->setPassword("1234567890");        
 
         $options->setLeft(100);
@@ -160,7 +160,7 @@ class SignOptions
         $options->setPage(1);
         $options->setAllPages(false);        
         $options->setSignatureType(Model\OptionsBase::SIGNATURE_TYPE_IMAGE);
-        $options->setImageFilePath("Additional\\JohnSmithSign.png");
+        $options->setImageFilePath("Additional/JohnSmithSign.png");
 
         $options->setLeft(100);
         $options->setTop(100);
@@ -238,7 +238,7 @@ class SignOptions
         $options->setPage(1);
         $options->setAllPages(false);        
         $options->setSignatureType(Model\OptionsBase::SIGNATURE_TYPE_STAMP);
-        $options->setImageFilePath("Additional\\JohnSmithSign.png");
+        $options->setImageFilePath("Additional/JohnSmithSign.png");
 
         $options->setLeft(100);
         $options->setTop(100);

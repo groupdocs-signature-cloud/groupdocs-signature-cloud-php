@@ -71,7 +71,7 @@ class PreviewApi
      * @param ClientInterface   $client client for calling api
      * @param HeaderSelector   $selector class for header selection
      */
-    public function __construct(Configuration $config = null, ClientInterface $client = null, HeaderSelector $selector = null)
+    public function __construct(?Configuration $config = null, ?ClientInterface $client = null, ?HeaderSelector $selector = null)
     {
         $this->config = $config ?: new Configuration();
         $this->client = $client ?: new Client();
@@ -298,7 +298,7 @@ class PreviewApi
             $httpBody = $_tempBody;
             // \stdClass has no __toString(), so we should encode it manually
             if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($httpBody);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($httpBody);
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -314,7 +314,7 @@ class PreviewApi
                 $httpBody = new MultipartStream($multipartContents);
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)

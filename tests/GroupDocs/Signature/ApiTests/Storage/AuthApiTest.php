@@ -29,6 +29,9 @@ namespace GroupDocs\Signature\ApiTests;
 
 use GroupDocs\Signature\Configuration;
 use GroupDocs\Signature\InfoApi;
+use GroupDocs\Signature\ApiTests\Internal\TestConfig;
+
+require_once __DIR__ . "/../Internal/TestConfig.php";
 
 class AuthApiTest extends \PHPUnit\Framework\TestCase
 {
@@ -76,9 +79,6 @@ class AuthApiTest extends \PHPUnit\Framework\TestCase
 
     protected static function getConfig()
     {
-        $contents = file_get_contents(realpath(__DIR__ . "/../../config.json"));
-        $config = \GuzzleHttp\json_decode($contents, true);
-
-        return $config;
+        return TestConfig::get();
     }    
 }

@@ -59,7 +59,8 @@ class PdfDigitalSignatureAppearance extends SignatureAppearance
         'fontFamilyName' => 'string',
         'fontSize' => 'double',
         'locationLabel' => 'string',
-        'reasonLabel' => 'string'
+        'reasonLabel' => 'string',
+        'isForegroundImage' => 'bool'
     ];
 
     /*
@@ -76,7 +77,8 @@ class PdfDigitalSignatureAppearance extends SignatureAppearance
         'fontFamilyName' => null,
         'fontSize' => 'double',
         'locationLabel' => null,
-        'reasonLabel' => null
+        'reasonLabel' => null,
+        'isForegroundImage' => null
     ];
 
     /*
@@ -114,7 +116,8 @@ class PdfDigitalSignatureAppearance extends SignatureAppearance
         'fontFamilyName' => 'FontFamilyName',
         'fontSize' => 'FontSize',
         'locationLabel' => 'LocationLabel',
-        'reasonLabel' => 'ReasonLabel'
+        'reasonLabel' => 'ReasonLabel',
+        'isForegroundImage' => 'IsForegroundImage'
     ];
 
     /*
@@ -131,7 +134,8 @@ class PdfDigitalSignatureAppearance extends SignatureAppearance
         'fontFamilyName' => 'setFontFamilyName',
         'fontSize' => 'setFontSize',
         'locationLabel' => 'setLocationLabel',
-        'reasonLabel' => 'setReasonLabel'
+        'reasonLabel' => 'setReasonLabel',
+        'isForegroundImage' => 'setIsForegroundImage'
     ];
 
     /*
@@ -148,7 +152,8 @@ class PdfDigitalSignatureAppearance extends SignatureAppearance
         'fontFamilyName' => 'getFontFamilyName',
         'fontSize' => 'getFontSize',
         'locationLabel' => 'getLocationLabel',
-        'reasonLabel' => 'getReasonLabel'
+        'reasonLabel' => 'getReasonLabel',
+        'isForegroundImage' => 'getIsForegroundImage'
     ];
 
     /*
@@ -203,7 +208,7 @@ class PdfDigitalSignatureAppearance extends SignatureAppearance
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         parent::__construct($data);
 
@@ -216,6 +221,7 @@ class PdfDigitalSignatureAppearance extends SignatureAppearance
         $this->container['fontSize'] = isset($data['fontSize']) ? $data['fontSize'] : null;
         $this->container['locationLabel'] = isset($data['locationLabel']) ? $data['locationLabel'] : null;
         $this->container['reasonLabel'] = isset($data['reasonLabel']) ? $data['reasonLabel'] : null;
+        $this->container['isForegroundImage'] = isset($data['isForegroundImage']) ? $data['isForegroundImage'] : null;
     }
 
     /*
@@ -461,6 +467,30 @@ class PdfDigitalSignatureAppearance extends SignatureAppearance
 
         return $this;
     }
+
+    /*
+     * Gets isForegroundImage
+     *
+     * @return bool
+     */
+    public function getIsForegroundImage()
+    {
+        return $this->container['isForegroundImage'];
+    }
+
+    /*
+     * Sets isForegroundImage
+     *
+     * @param bool $isForegroundImage Gets or sets whether the signature image is drawn in front of the text.
+     *
+     * @return $this
+     */
+    public function setIsForegroundImage($isForegroundImage)
+    {
+        $this->container['isForegroundImage'] = $isForegroundImage;
+
+        return $this;
+    }
     /*
      * Returns true if offset exists. False otherwise.
      *
@@ -468,7 +498,7 @@ class PdfDigitalSignatureAppearance extends SignatureAppearance
      *
      * @return boolean
      */
-    public function offsetExists($offset)
+    public function offsetExists(mixed $offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -480,7 +510,7 @@ class PdfDigitalSignatureAppearance extends SignatureAppearance
      *
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet(mixed $offset): mixed
     {
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
@@ -493,7 +523,7 @@ class PdfDigitalSignatureAppearance extends SignatureAppearance
      *
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet(mixed $offset, mixed $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -509,7 +539,7 @@ class PdfDigitalSignatureAppearance extends SignatureAppearance
      *
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset(mixed $offset): void
     {
         unset($this->container[$offset]);
     }

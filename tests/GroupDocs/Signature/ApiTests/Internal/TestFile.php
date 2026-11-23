@@ -53,10 +53,19 @@ class TestFile
 
     public $size;
     
+    /*
+     * Returns the path of the file in cloud storage.
+     * Always uses '/' as a separator, regardless of the OS the tests run on.
+     */
+    public function getPath()
+    {
+        return rtrim(str_replace('\\', '/', $this->folder), '/') . '/' . $this->fileName;
+    }
+
     public function ToFileInfo()
     {
         $fileInfo = new \GroupDocs\Signature\Model\FileInfo();
-        $fileInfo->setFilePath($this->folder . DIRECTORY_SEPARATOR . $this->fileName);
+        $fileInfo->setFilePath($this->getPath());
         $fileInfo->setPassword($this->password);
         return $fileInfo;
     } 

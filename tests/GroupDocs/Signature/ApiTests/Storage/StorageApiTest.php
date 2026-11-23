@@ -32,8 +32,8 @@ use GroupDocs\Signature\Model;
 use GroupDocs\Signature\ApiTests\Internal;
 use GroupDocs\Signature\Model\Requests;
 
-require_once __DIR__."\..\BaseApiTestCase.php";
-require_once __DIR__."\..\Internal\TestFiles.php";
+require_once __DIR__ . "/../BaseApiTestCase.php";
+require_once __DIR__ . "/../Internal/TestFiles.php";
 
 class StorageApiTest extends ApiTests\BaseApiTestCase
 {
@@ -60,7 +60,7 @@ class StorageApiTest extends ApiTests\BaseApiTestCase
     {
         $testFile = Internal\TestFiles::getFile01PagesPdf();
 
-        $request = new Requests\getFileVersionsRequest($testFile->folder . $testFile->fileName);
+        $request = new Requests\getFileVersionsRequest($testFile->getPath());
        
         $response = self::$storageApi->getFileVersions($request);
 
@@ -71,7 +71,7 @@ class StorageApiTest extends ApiTests\BaseApiTestCase
     {
         $testFile = Internal\TestFiles::getFile01PagesPdf();
 
-        $request = new Requests\objectExistsRequest($testFile->folder . $testFile->fileName);
+        $request = new Requests\objectExistsRequest($testFile->getPath());
        
         $response = self::$storageApi->objectExists($request);
 

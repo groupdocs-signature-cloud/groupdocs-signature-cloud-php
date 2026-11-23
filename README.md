@@ -2,7 +2,7 @@
 This repository contains GroupDocs.Signature Cloud SDK for PHP source code. This SDK allows you to work with GroupDocs.Signature Cloud REST APIs in your PHP applications.
 
 ## Dependencies
-- PHP 5.5 or later
+- PHP 8.2 or later
 
 ## Authorization
 To use SDK you need AppSID and AppKey authorization keys. You can your AppSID and AppKey at https://dashboard.groupdocs.cloud (free registration is required).  
@@ -43,12 +43,20 @@ require_once('/path/to/groupdocs-signature-cloud-php/vendor/autoload.php');
 
 ## Tests
 
-To run the unit tests set your AppSID and AppKey in [json.config](tests/GroupDocs/Signature/config.json) and execute following commands:
+To run the tests set your AppSID and AppKey in [config.json](tests/GroupDocs/Signature/config.json) and execute following commands:
 
 ```
 composer install
 ./vendor/bin/phpunit
 ```
+
+Credentials and API url can also be passed via `TEST_APP_SID`, `TEST_APP_KEY` and `TEST_API_BASE_URL` environment variables, which take precedence over `config.json`:
+
+```
+TEST_APP_SID=... TEST_APP_KEY=... ./vendor/bin/phpunit
+```
+
+Tests that do not require a cloud connection (for example `tests/GroupDocs/Signature/ModelTests`) can be run separately: `./vendor/bin/phpunit tests/GroupDocs/Signature/ModelTests`.
 
 ## Getting Started
 Please follow the [installation procedure](#installation--usage) and then run the following:

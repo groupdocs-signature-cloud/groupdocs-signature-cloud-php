@@ -33,8 +33,8 @@ use GroupDocs\Signature\ApiTests\Internal;
 use GroupDocs\Signature\Model\Requests;
 
 
-require_once __DIR__."\..\BaseApiTestCase.php";
-require_once __DIR__."\..\Internal\TestFiles.php";
+require_once __DIR__ . "/../BaseApiTestCase.php";
+require_once __DIR__ . "/../Internal/TestFiles.php";
 require_once "SignOptions.php";
 
 class SignCollectionTest extends ApiTests\BaseApiTestCase
@@ -42,7 +42,7 @@ class SignCollectionTest extends ApiTests\BaseApiTestCase
     public function testSignCollectionImage()
     {
         $file = Internal\TestFiles::GetImage01PagesJpg();
-        $signedFileName = "Output\ImageCollectionSigned." . $file->getExt();
+        $signedFileName = "Output/ImageCollectionSigned." . $file->getExt();
         $settings = new Model\SignSettings();
         $settings->setFileInfo($file->ToFileInfo());
         $saveOptions =  new Model\SaveOptions();
@@ -77,7 +77,7 @@ class SignCollectionTest extends ApiTests\BaseApiTestCase
     public function testSignCollectionPdf()
     {
         $file = Internal\TestFiles::getFile01PagesPdf();
-        $signedFileName = "Output\PdfCollectionSigned." . $file->getExt();
+        $signedFileName = "Output/PdfCollectionSigned." . $file->getExt();
         $settings = new Model\SignSettings();
         $settings->setFileInfo($file->ToFileInfo());
         $saveOptions =  new Model\SaveOptions();
@@ -110,7 +110,7 @@ class SignCollectionTest extends ApiTests\BaseApiTestCase
     public function testSignCollectionPresentation()
     {
         $file = Internal\TestFiles::getFile01PagesSlides();
-        $signedFileName = "Output\PresentationCollectionSigned." . $file->getExt();
+        $signedFileName = "Output/PresentationCollectionSigned." . $file->getExt();
         $settings = new Model\SignSettings();
         $settings->setFileInfo($file->ToFileInfo());
         $saveOptions =  new Model\SaveOptions();
@@ -140,7 +140,7 @@ class SignCollectionTest extends ApiTests\BaseApiTestCase
     public function testSignCollectionSpreadsheet()
     {
         $file = Internal\TestFiles::getFile01PagesCells();
-        $signedFileName = "Output\SpreadsheetCollectionSigned." . $file->getExt();
+        $signedFileName = "Output/SpreadsheetCollectionSigned." . $file->getExt();
         $settings = new Model\SignSettings();
         $settings->setFileInfo($file->ToFileInfo());
         $saveOptions =  new Model\SaveOptions();
@@ -173,7 +173,7 @@ class SignCollectionTest extends ApiTests\BaseApiTestCase
     public function testSignCollectionWordProcessing()
     {
         $file = Internal\TestFiles::getFile01PagesWords();
-        $signedFileName = "Output\WordCollectionSigned." . $file->getExt();
+        $signedFileName = "Output/WordCollectionSigned." . $file->getExt();
         $settings = new Model\SignSettings();
         $settings->setFileInfo($file->ToFileInfo());
         $saveOptions =  new Model\SaveOptions();

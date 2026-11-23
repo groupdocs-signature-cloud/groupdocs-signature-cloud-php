@@ -33,8 +33,8 @@ use GroupDocs\Signature\ApiTests\Internal;
 use GroupDocs\Signature\Model\Requests;
 
 
-require_once __DIR__."\..\BaseApiTestCase.php";
-require_once __DIR__."\..\Internal\TestFiles.php";
+require_once __DIR__ . "/../BaseApiTestCase.php";
+require_once __DIR__ . "/../Internal/TestFiles.php";
 require_once "SignOptions.php";
 
 class SignImageTest extends ApiTests\BaseApiTestCase
@@ -42,7 +42,7 @@ class SignImageTest extends ApiTests\BaseApiTestCase
     public function testSignImageImage()
     {
         $file = Internal\TestFiles::GetImage01PagesJpg();
-        $signedFileName = "Output\ImageImageSigned." . $file->getExt();
+        $signedFileName = "Output/ImageImageSigned." . $file->getExt();
         $settings = new Model\SignSettings();
         $settings->setFileInfo($file->ToFileInfo());
         $saveOptions =  new Model\SaveOptions();
@@ -61,7 +61,7 @@ class SignImageTest extends ApiTests\BaseApiTestCase
     public function testSignImagePdf()
     {
         $file = Internal\TestFiles::getFile01PagesPdf();
-        $signedFileName = "Output\PdfImageSigned." . $file->getExt();
+        $signedFileName = "Output/PdfImageSigned." . $file->getExt();
         $settings = new Model\SignSettings();
         $settings->setFileInfo($file->ToFileInfo());
         $saveOptions =  new Model\SaveOptions();
@@ -79,7 +79,7 @@ class SignImageTest extends ApiTests\BaseApiTestCase
     public function testSignImagePresentation()
     {
         $file = Internal\TestFiles::getFile01PagesSlides();
-        $signedFileName = "Output\PresentationImageSigned." . $file->getExt();
+        $signedFileName = "Output/PresentationImageSigned." . $file->getExt();
         $settings = new Model\SignSettings();
         $settings->setFileInfo($file->ToFileInfo());
         $saveOptions =  new Model\SaveOptions();
@@ -97,7 +97,7 @@ class SignImageTest extends ApiTests\BaseApiTestCase
     public function testSignImageSpreadsheet()
     {
         $file = Internal\TestFiles::getFile01PagesCells();
-        $signedFileName = "Output\SpreadsheetImageSigned." . $file->getExt();
+        $signedFileName = "Output/SpreadsheetImageSigned." . $file->getExt();
         $settings = new Model\SignSettings();
         $settings->setFileInfo($file->ToFileInfo());
         $saveOptions =  new Model\SaveOptions();
@@ -115,7 +115,7 @@ class SignImageTest extends ApiTests\BaseApiTestCase
     public function testSignImageWordProcessing()
     {
         $file = Internal\TestFiles::getFile01PagesWords();
-        $signedFileName = "Output\WordImageSigned." . $file->getExt();
+        $signedFileName = "Output/WordImageSigned." . $file->getExt();
         $settings = new Model\SignSettings();
         $settings->setFileInfo($file->ToFileInfo());
         $saveOptions =  new Model\SaveOptions();

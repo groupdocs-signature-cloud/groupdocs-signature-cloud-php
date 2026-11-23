@@ -116,3 +116,4 @@ report/*
 
 # VS Code files
 .vscode/*
+.phpunit.cache/

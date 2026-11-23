@@ -33,8 +33,8 @@ use GroupDocs\Signature\ApiTests\Internal;
 use GroupDocs\Signature\Model\Requests;
 
 
-require_once __DIR__."\..\BaseApiTestCase.php";
-require_once __DIR__."\..\Internal\TestFiles.php";
+require_once __DIR__ . "/../BaseApiTestCase.php";
+require_once __DIR__ . "/../Internal/TestFiles.php";
 require_once "SignOptions.php";
 
 class SignDigitalTest extends ApiTests\BaseApiTestCase
@@ -47,7 +47,7 @@ class SignDigitalTest extends ApiTests\BaseApiTestCase
     public function testSignDigitalPdf()
     {
         $file = Internal\TestFiles::getFile01PagesPdf();
-        $signedFileName = "Output\PdfDigitalSigned." . $file->getExt();
+        $signedFileName = "Output/PdfDigitalSigned." . $file->getExt();
         $settings = new Model\SignSettings();
         $settings->setFileInfo($file->ToFileInfo());
         $saveOptions =  new Model\SaveOptions();
@@ -70,7 +70,7 @@ class SignDigitalTest extends ApiTests\BaseApiTestCase
     public function testSignDigitalSpreadsheet()
     {
         $file = Internal\TestFiles::getFile01PagesCells();
-        $signedFileName = "Output\SpreadsheetDigitalSigned." . $file->getExt();
+        $signedFileName = "Output/SpreadsheetDigitalSigned." . $file->getExt();
         $settings = new Model\SignSettings();
         $settings->setFileInfo($file->ToFileInfo());
         $saveOptions =  new Model\SaveOptions();
@@ -88,7 +88,7 @@ class SignDigitalTest extends ApiTests\BaseApiTestCase
     public function testSignDigitalWordProcessing()
     {
         $file = Internal\TestFiles::getFile01PagesWords();
-        $signedFileName = "Output\WordDigitalSigned." . $file->getExt();
+        $signedFileName = "Output/WordDigitalSigned." . $file->getExt();
         $settings = new Model\SignSettings();
         $settings->setFileInfo($file->ToFileInfo());
         $saveOptions =  new Model\SaveOptions();

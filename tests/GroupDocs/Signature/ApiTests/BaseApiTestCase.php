@@ -35,6 +35,9 @@ use GroupDocs\Signature\StorageApi;
 use GroupDocs\Signature\FileApi;
 use GroupDocs\Signature\FolderApi;
 use GroupDocs\Signature\Model\Requests;
+use GroupDocs\Signature\ApiTests\Internal\TestConfig;
+
+require_once __DIR__ . "/Internal/TestConfig.php";
 
 class BaseApiTestCase extends \PHPUnit\Framework\TestCase
 {
@@ -46,8 +49,8 @@ class BaseApiTestCase extends \PHPUnit\Framework\TestCase
     protected static $folderApi;
 
     protected static $fontsFolder = "fonts";
-    protected static $fromUrlFolder = "tests\\from_url";
-    protected static $fromContentFolder = "tests\\from_content";
+    protected static $fromUrlFolder = "tests/from_url";
+    protected static $fromContentFolder = "tests/from_content";
 
     protected static $testFilesUploaded = false;
 
@@ -100,10 +103,7 @@ class BaseApiTestCase extends \PHPUnit\Framework\TestCase
 
     private static function _getConfig()
     {
-        $contents = file_get_contents(realpath(__DIR__ . "/../config.json"));
-        $config = \GuzzleHttp\json_decode($contents, true);
-
-        return $config;
+        return TestConfig::get();
     }
 
     private static function _uploadTestFiles()
@@ -120,8 +120,9 @@ class BaseApiTestCase extends \PHPUnit\Framework\TestCase
             if (!$file->isDir()) {
                 $filePath = $file->getPathName();
 
-                $filePathInStorage = str_replace($folder . '\\', "", $filePath);
-                $filePathInStorage = str_replace("\\", "/", $filePathInStorage);
+                // Storage paths always use '/', regardless of the OS the tests run on
+                $filePathInStorage = substr($filePath, strlen($folder) + 1);
+                $filePathInStorage = str_replace(DIRECTORY_SEPARATOR, "/", $filePathInStorage);
 
                 $isExistRequest = new \GroupDocs\Signature\Model\Requests\objectExistsRequest($filePathInStorage);
                 $isExistResponse = self::$storageApi->objectExists($isExistRequest);

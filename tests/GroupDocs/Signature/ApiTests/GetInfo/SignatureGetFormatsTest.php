@@ -30,7 +30,7 @@ namespace GroupDocs\Signature\ApiTests\GetInfo;
 use GroupDocs\Signature\ApiTests;
 use GroupDocs\Signature\ApiTests\Internal;
 
-require_once __DIR__."\..\BaseApiTestCase.php";
+require_once __DIR__ . "/../BaseApiTestCase.php";
 
 class SignatureGetFormatsTest extends ApiTests\BaseApiTestCase
 {

@@ -32,15 +32,15 @@ use GroupDocs\Signature\Model;
 use GroupDocs\Signature\ApiTests\Internal;
 use GroupDocs\Signature\Model\Requests;
 
-require_once __DIR__."\..\BaseApiTestCase.php";
-require_once __DIR__."\..\Internal\TestFiles.php";
+require_once __DIR__ . "/../BaseApiTestCase.php";
+require_once __DIR__ . "/../Internal/TestFiles.php";
 
 class FileApiTest extends ApiTests\BaseApiTestCase
 {
     public function testDeleteFile()
     {
         $testFile = Internal\TestFiles::getFile01PagesPdf();        
-        $path = $testFile->folder . $testFile->fileName;
+        $path = $testFile->getPath();
 
         // Delete file & check
         self::$fileApi->deleteFile(new Requests\deleteFileRequest($path));
@@ -59,7 +59,7 @@ class FileApiTest extends ApiTests\BaseApiTestCase
     public function testDownloadFile()
     {               
         $testFile = Internal\TestFiles::getFile01PagesPdf();
-        $path = $testFile->folder . $testFile->fileName;
+        $path = $testFile->getPath();
 
         $response = self::$fileApi->downloadFile(new Requests\downloadFileRequest($path));
         $size = $response->getSize();
@@ -69,7 +69,7 @@ class FileApiTest extends ApiTests\BaseApiTestCase
     public function testCopyMoveFile()
     {               
         $testFile = Internal\TestFiles::getFile01PagesPdf();
-        $path = $testFile->folder . $testFile->fileName;
+        $path = $testFile->getPath();
 
         self::$folderApi->createFolder(new Requests\createFolderRequest("temp"));
 
